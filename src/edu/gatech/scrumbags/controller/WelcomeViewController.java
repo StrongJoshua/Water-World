@@ -3,6 +3,7 @@ import edu.gatech.scrumbags.fxapp.MainFXApplication;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -19,7 +20,7 @@ public class WelcomeViewController {
     public void handleLoginPressed() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainFXApplication.class.getResource("../view/LoginView.fxml"));
+            loader.setLocation(getClass().getResource("/edu/gatech/scrumbags/view/LoginView.fxml"));
             Scene loginScene = new Scene(loader.load());
             LoginViewController loginController = loader.getController();
             loginController.setMainStage(mainStage);
