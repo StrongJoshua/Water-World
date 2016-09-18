@@ -1,6 +1,5 @@
 package edu.gatech.scrumbags.fxapp;
 
-import edu.gatech.scrumbags.controller.LoginViewController;
 import edu.gatech.scrumbags.controller.WelcomeViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
