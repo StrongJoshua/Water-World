@@ -3,7 +3,7 @@ CS 2340 Final
 
 Versions
 ========
-Latest Stable: **0.1.0**
+Latest Stable: **0.1.1**
 ###How the Numbers Work
 ####First Digit
 This digit goes up whenever we reach a milestone.

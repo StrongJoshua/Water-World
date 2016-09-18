@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class MainFXApplication extends Application {
+	public static final String version = "0.1.1";
+	
 	public static Stage mainStage;
 	
     @Override
