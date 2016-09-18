@@ -1,21 +1,15 @@
 package edu.gatech.scrumbags.controller;
 
+import edu.gatech.scrumbags.fxapp.MainFXApplication;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
 public class LoginViewController {
-    private Stage mainStage;
     private Scene welcomeScene;
-
-    public void setMainStage(Stage mainStage) {
-        this.mainStage = mainStage;
-    }
-
 
     public void setWelcomeScene(Scene welcomeScene) {
         this.welcomeScene = welcomeScene;
@@ -55,6 +49,6 @@ public class LoginViewController {
 
     @FXML
     public void handleCancelPressed() {
-        mainStage.setScene(welcomeScene);
+        MainFXApplication.mainStage.setScene(welcomeScene);
     }
 }
