@@ -1,20 +1,15 @@
 package edu.gatech.scrumbags.controller;
 
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
+import edu.gatech.scrumbags.fxapp.MainFXApplication.Scenes;
+import edu.gatech.scrumbags.model.User;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
 public class LoginViewController {
-    private Scene welcomeScene;
-
-    public void setWelcomeScene(Scene welcomeScene) {
-        this.welcomeScene = welcomeScene;
-    }
-
     @FXML
     private Label badLoginLabel;
 
@@ -32,9 +27,8 @@ public class LoginViewController {
     @FXML
     public void handleLoginPressed() {
         if (validateCredentials()) {
-            badLoginLabel.setVisible(true);
-            badLoginLabel.setText("Login successful.");
-            badLoginLabel.setTextFill(Color.DARKGREEN);
+            MainFXApplication.userInfo = new User(usernameField.getText(), passwordField.getText());
+            MainFXApplication.loadScene(Scenes.loggedIn);
         } else {
             badLoginLabel.setVisible(true);
             badLoginLabel.setText("Bad login attempt! Try again.");
@@ -49,6 +43,6 @@ public class LoginViewController {
 
     @FXML
     public void handleCancelPressed() {
-        MainFXApplication.mainStage.setScene(welcomeScene);
+        MainFXApplication.loadScene(Scenes.welcome);
     }
 }

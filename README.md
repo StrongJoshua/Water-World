@@ -8,6 +8,6 @@ Latest Stable: **0.1.1**
 ####First Digit
 This digit goes up whenever we reach a milestone.
 ####Second Digit
-This digit goes up whenever a new feature is added.
+This digit goes up whenever a new feature is added and resets whenever the first digit goes up.
 ####Third Digit
-This digit goes up whenever a collaborator pushes.
+This digit goes up whenever a collaborator pushes and resets whenever the second digit goes up.
