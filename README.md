@@ -4,7 +4,9 @@ CS 2340 Final
 Versions
 ========
 Latest Stable: **0.4.0.0**
+
 Current Development Build **0.4.2.1**
+
 ###How the Numbers Work
 ####First Digit
 Becomes 1 once we have our final project completed. Anything after V1 is extra credit.
