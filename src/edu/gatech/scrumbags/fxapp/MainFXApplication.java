@@ -1,10 +1,10 @@
+
 package edu.gatech.scrumbags.fxapp;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 import edu.gatech.scrumbags.model.Authorized;
-import edu.gatech.scrumbags.model.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,37 +13,35 @@ import javafx.stage.Stage;
 
 public class MainFXApplication extends Application {
 	public enum Scenes {
-		welcome("/edu/gatech/scrumbags/view/WelcomeView.fxml"), login(
-				"/edu/gatech/scrumbags/view/LoginView.fxml"), loggedIn(
-						"/edu/gatech/scrumbags/view/LoggedInView.fxml"), registration(
-								"/edu/gatech/scrumbags/view/RegistrationView.fxml");
+		welcome("/edu/gatech/scrumbags/view/WelcomeView.fxml"), login("/edu/gatech/scrumbags/view/LoginView.fxml"), loggedIn(
+			"/edu/gatech/scrumbags/view/LoggedInView.fxml"), registration("/edu/gatech/scrumbags/view/RegistrationView.fxml");
 
 		private String path;
 
-		private Scenes(String path) {
+		private Scenes (String path) {
 			this.path = path;
 		}
 
-		private String getPath() {
+		private String getPath () {
 			return path;
 		}
 	}
 
-	public static final String version = "0.2.0";
+	public static final String version = "0.4.3.0";
 
 	public static ArrayList<Authorized> allUsers;
 
 	public static Stage mainStage;
-	public static User userInfo;
+	public static Authorized userInfo;
 
 	@Override
-	public void start(Stage primaryStage) {
+	public void start (Stage primaryStage) {
 		mainStage = primaryStage;
 		loadScene(Scenes.welcome);
 		primaryStage.show();
 	}
 
-	public static void loadScene(Scenes scene) {
+	public static void loadScene (Scenes scene) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainFXApplication.class.getResource(scene.getPath()));
@@ -55,7 +53,20 @@ public class MainFXApplication extends Application {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main (String[] args) {
 		launch(args);
+	}
+
+	public static Authorized authorizeUser (String username, String password) {
+		for (Authorized auth : allUsers) {
+			if (auth.authenticate(username, password)) return auth;
+		}
+		return null;
+	}
+
+	public static Authorized createAccount (String first, String last, String username, String password, String accountType) {
+		Authorized auth = new Authorized(first, last, username, password);
+		allUsers.add(auth);
+		return auth;
 	}
 }
