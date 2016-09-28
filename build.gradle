@@ -17,9 +17,9 @@ sourceSets {
         }
     }
 }
-// dependencies {
-// compile files('lib/resources.jar')
-// }
+dependencies {
+	compile files('libs/jbcrypt.jar')
+}
 
 // These lines allow gradle to generate and insert a manifest when building a .jar
 //jar {
