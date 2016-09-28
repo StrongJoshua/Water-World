@@ -3,7 +3,7 @@ import edu.gatech.scrumbags.fxapp.MainFXApplication;
 import edu.gatech.scrumbags.fxapp.MainFXApplication.Scenes;
 import javafx.fxml.FXML;
 
-public class WelcomeViewController {
+public class WelcomeController {
 	@FXML
 	public void initialize() {
 		if(MainFXApplication.userInfo != null) {

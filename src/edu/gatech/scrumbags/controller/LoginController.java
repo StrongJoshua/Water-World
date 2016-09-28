@@ -9,7 +9,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
-public class LoginViewController {
+public class LoginController {
     @FXML
     private Label badLoginLabel;
 

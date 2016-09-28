@@ -5,7 +5,7 @@ import edu.gatech.scrumbags.fxapp.MainFXApplication.Scenes;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class LoggedInViewController {
+public class LoggedInController {
 	@FXML
 	private Button logout;
 	
