@@ -37,18 +37,16 @@ public class RegistrationController {
 
     @FXML
     public void handleRegisterPressed() {
-        if (validateCredentials()) {
+        if(passwordField.getText().equals(confirmPasswordField.getText())) {
             MainFXApplication.userInfo = new User(usernameField.getText(), passwordField.getText());
             MainFXApplication.loadScene(MainFXApplication.Scenes.loggedIn);
-        } else {
+        }
+        else
+        {
 
         }
     }
 
-    public boolean validateCredentials() {
-        // TODO
-        return usernameField.getText().equals("scrumbags") && passwordField.getText().equals("2340");
-    }
 
     @FXML
     public void handleCancelPressed() {
