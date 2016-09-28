@@ -103,7 +103,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="accounttypeCombo" prefWidth="150.0" />
+                  <ComboBox fx:id="accountTypeCombo" prefWidth="150.0" />
                </children>
                <padding>
                   <Insets right="27.0" />

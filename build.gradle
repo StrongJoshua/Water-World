@@ -3,7 +3,7 @@ apply plugin: 'java'
 apply plugin: 'application'
 
 sourceCompatibility = 1.8
-version = '0.4.3.0'
+version = '0.4.3.1'
 defaultTasks 'run'
 mainClassName = 'edu.gatech.scrumbags.fxapp.MainFXApplication'
 

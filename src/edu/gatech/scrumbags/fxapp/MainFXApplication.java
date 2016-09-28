@@ -39,6 +39,7 @@ public class MainFXApplication extends Application {
 		mainStage = primaryStage;
 		loadScene(Scenes.welcome);
 		primaryStage.show();
+		allUsers = new ArrayList<>();
 	}
 
 	public static void loadScene (Scenes scene) {
