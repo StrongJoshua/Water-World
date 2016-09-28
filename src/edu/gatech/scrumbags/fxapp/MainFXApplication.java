@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 public class MainFXApplication extends Application {
 	public enum Scenes {
-		welcome("../view/WelcomeView.fxml"), login("../view/LoginView.fxml"), loggedIn("../view/LoggedInView.fxml");
+		welcome("../view/WelcomeView.fxml"), login("../view/LoginView.fxml"), loggedIn("../view/LoggedInView.fxml"), registration("../view/RegistrationView.fxml");
 		
 		private String path;
 		
