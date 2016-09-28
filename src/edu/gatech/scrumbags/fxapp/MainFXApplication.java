@@ -1,6 +1,7 @@
 package edu.gatech.scrumbags.fxapp;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import edu.gatech.scrumbags.model.User;
 import javafx.application.Application;
@@ -24,6 +25,8 @@ public class MainFXApplication extends Application {
 		}
 	}
 	public static final String version = "0.2.0";
+	
+	public static ArrayList<Authorized> allUsers;
 	
 	public static Stage mainStage;
 	public static User userInfo;
