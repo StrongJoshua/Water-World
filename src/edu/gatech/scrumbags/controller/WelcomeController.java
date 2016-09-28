@@ -18,5 +18,6 @@ public class WelcomeController {
 
     @FXML
     public void handleRegisterPressed() {
+        MainFXApplication.loadScene(Scenes.registration);
     }
 }

@@ -3,6 +3,7 @@ package edu.gatech.scrumbags.fxapp;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import edu.gatech.scrumbags.model.Authorized;
 import edu.gatech.scrumbags.model.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
