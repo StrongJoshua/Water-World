@@ -9,7 +9,7 @@ public class WelcomeController {
 	@FXML
 	public void initialize () {
 		if (MainFXApplication.userInfo != null) {
-			MainFXApplication.loadScene(Scenes.loggedIn);
+			MainFXApplication.loadScene(Scenes.profile);
 		}
 	}
 

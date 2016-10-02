@@ -25,7 +25,7 @@ public class LoginController {
 	public void handleLoginPressed () {
 		MainFXApplication.userInfo = MainFXApplication.authorizeUser(usernameField.getText(), passwordField.getText());
 		if (MainFXApplication.userInfo != null) {
-			MainFXApplication.loadScene(Scenes.loggedIn);
+			MainFXApplication.loadScene(Scenes.profile);
 		} else {
 			badLoginLabel.setVisible(true);
 			badLoginLabel.setText("Bad login attempt! Try again.");

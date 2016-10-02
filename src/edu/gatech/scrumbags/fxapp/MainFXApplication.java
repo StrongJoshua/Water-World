@@ -4,6 +4,7 @@ package edu.gatech.scrumbags.fxapp;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import edu.gatech.scrumbags.model.AccountType;
 import edu.gatech.scrumbags.model.Authorized;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,9 +13,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class MainFXApplication extends Application {
+	/** An enum that contains shortcuts to all the views.
+	 * @author Jan Risse */
 	public enum Scenes {
-		welcome("/edu/gatech/scrumbags/view/WelcomeView.fxml"), login("/edu/gatech/scrumbags/view/LoginView.fxml"), loggedIn(
-			"/edu/gatech/scrumbags/view/LoggedInView.fxml"), registration("/edu/gatech/scrumbags/view/RegistrationView.fxml");
+		welcome("/edu/gatech/scrumbags/view/WelcomeView.fxml"), login("/edu/gatech/scrumbags/view/LoginView.fxml"), profile(
+			"/edu/gatech/scrumbags/view/ProfileView.fxml"), registration("/edu/gatech/scrumbags/view/RegistrationView.fxml");
 
 		private String path;
 
@@ -22,12 +25,13 @@ public class MainFXApplication extends Application {
 			this.path = path;
 		}
 
+		/** @return THe scene's path. */
 		private String getPath () {
 			return path;
 		}
 	}
 
-	public static final String version = "0.4.3.0";
+	public static final String version = "0.4.4.0";
 
 	public static ArrayList<Authorized> allUsers;
 
@@ -40,6 +44,7 @@ public class MainFXApplication extends Application {
 		loadScene(Scenes.welcome);
 		primaryStage.show();
 		allUsers = new ArrayList<>();
+		createAccount("SCRUMBags", "2340", "SCRUMBags", "2340", AccountType.admin);
 	}
 
 	public static void loadScene (Scenes scene) {
@@ -65,8 +70,9 @@ public class MainFXApplication extends Application {
 		return null;
 	}
 
-	public static Authorized createAccount (String first, String last, String username, String password, String accountType) {
-		Authorized auth = new Authorized(first, last, username, password);
+	public static Authorized createAccount (String first, String last, String username, String password,
+		AccountType accountType) {
+		Authorized auth = new Authorized(first, last, username, password, accountType);
 		allUsers.add(auth);
 		return auth;
 	}

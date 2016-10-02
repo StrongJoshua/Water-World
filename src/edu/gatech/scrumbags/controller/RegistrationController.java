@@ -1,7 +1,11 @@
 
 package edu.gatech.scrumbags.controller;
 
+import java.util.Arrays;
+
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
+import edu.gatech.scrumbags.model.AccountType;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
@@ -18,11 +22,11 @@ public class RegistrationController {
 
 	@FXML private PasswordField confirmPasswordField;
 
-	@FXML private ComboBox<String> accountTypeCombo;
+	@FXML private ComboBox<AccountType> accountTypeCombo;
 
 	@FXML
 	public void initialize () {
-
+		accountTypeCombo.setItems(FXCollections.observableArrayList(Arrays.asList(AccountType.values())));
 	}
 
 	@FXML
@@ -30,7 +34,7 @@ public class RegistrationController {
 		if (passwordField.getText().equals(confirmPasswordField.getText())) {
 			MainFXApplication.userInfo = MainFXApplication.createAccount(firstNameField.getText(), lastNameField.getText(),
 				usernameField.getText(), passwordField.getText(), accountTypeCombo.getValue());
-			MainFXApplication.loadScene(MainFXApplication.Scenes.loggedIn);
+			MainFXApplication.loadScene(MainFXApplication.Scenes.profile);
 		} else {
 
 		}
