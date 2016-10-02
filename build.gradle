@@ -37,13 +37,13 @@ jar {
 }
 
 task parseVersion {
-	String text = new File('src/edu/gatech/scrumbags/fxapp/MainFXApplication.java').text
+	String text = file('/src/edu/gatech/scrumbags/fxapp/MainFXApplication.java').text
 	String parsed = (text =~ 'version = "[(\\d|\\.)]+";')[0]
 	version = (parsed =~ '[(\\d|\\.)]+')[0]
 }
 
 task prepareCommit(dependsOn: 'parseVersion') {
-	File README = new File('README.md')
+	File README = file('README.md')
 	String readme = README.text
 	readme = readme.replaceAll('Build \\*\\*[(\\d|\\.)]+\\*\\*', "Build \\*\\*$version\\*\\*")
 	README.text = readme
