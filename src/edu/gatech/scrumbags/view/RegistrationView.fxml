@@ -109,6 +109,14 @@
                   <Insets right="27.0" />
                </padding>
             </HBox>
+            <Label fx:id="errorLabel" text="Error" textFill="RED">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Button fx:id="confirmRegistrationButton" mnemonicParsing="false" onAction="#handleRegisterPressed" text="OK">

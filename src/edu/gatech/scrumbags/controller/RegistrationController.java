@@ -5,13 +5,15 @@ import java.util.Arrays;
 
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
 import edu.gatech.scrumbags.model.AccountType;
+import edu.gatech.scrumbags.model.Authorized;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-/** Te controller for the registration view.
+/** The controller for the registration view.
  * @author Rishi Raj */
 public class RegistrationController {
 
@@ -25,21 +27,40 @@ public class RegistrationController {
 
 	@FXML private ComboBox<AccountType> accountTypeCombo;
 
+	@FXML private Label errorLabel;
+
 	@FXML
 	public void initialize () {
 		accountTypeCombo.setItems(FXCollections.observableArrayList(Arrays.asList(AccountType.values())));
+		accountTypeCombo.setValue(AccountType.user);
+		setErrorMessage(null);
 	}
 
 	@FXML
 	/** Ensures the password and confirm password match then creates a new user in the backend. */
 	public void handleRegisterPressed () {
 		if (passwordField.getText().equals(confirmPasswordField.getText())) {
-			MainFXApplication.userInfo = MainFXApplication.createAccount(firstNameField.getText(), lastNameField.getText(),
+			Authorized userInfo = MainFXApplication.createAccount(firstNameField.getText(), lastNameField.getText(),
 				usernameField.getText(), passwordField.getText(), accountTypeCombo.getValue());
-			MainFXApplication.loadScene(MainFXApplication.Scenes.profile);
+			if (userInfo != null) {
+				MainFXApplication.userInfo = userInfo;
+				MainFXApplication.loadScene(MainFXApplication.Scenes.profile);
+			} else {
+				setErrorMessage("Error: Username already exists.");
+			}
 		} else {
-
+			setErrorMessage("Error: Passwords did not match.");
 		}
+	}
+
+	/** Shows the error label and sets the message.
+	 * @param msg The message to have the label display. */
+	private void setErrorMessage (String msg) {
+		if (msg != null) {
+			errorLabel.setText(msg);
+			errorLabel.setVisible(true);
+		} else
+			errorLabel.setVisible(false);
 	}
 
 	@FXML

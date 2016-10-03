@@ -33,7 +33,7 @@ public class MainFXApplication extends Application {
 		}
 	}
 
-	public static final String version = "0.4.5.2";
+	public static final String version = "0.4.6.0";
 
 	public static ArrayList<Authorized> allUsers;
 
@@ -79,9 +79,12 @@ public class MainFXApplication extends Application {
 	}
 
 	/** See {@link Authorized#Authorized(String, String, String, String, AccountType)}
-	 * @return The Authorized user object that was created. */
+	 * @return The Authorized user object that was created, if the given username does not already exist. */
 	public static Authorized createAccount (String first, String last, String username, String password,
 		AccountType accountType) {
+		for (Authorized auth : allUsers) {
+			if (auth.getUsername().equals(username)) return null;
+		}
 		Authorized auth = new Authorized(first, last, username, password, accountType);
 		allUsers.add(auth);
 		return auth;
