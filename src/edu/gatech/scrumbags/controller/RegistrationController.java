@@ -11,7 +11,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-/** Created by rajmi on 9/27/2016. */
+/** Te controller for the registration view.
+ * @author Rishi Raj */
 public class RegistrationController {
 
 	@FXML private TextField firstNameField;
@@ -30,6 +31,7 @@ public class RegistrationController {
 	}
 
 	@FXML
+	/** Ensures the password and confirm password match then creates a new user in the backend. */
 	public void handleRegisterPressed () {
 		if (passwordField.getText().equals(confirmPasswordField.getText())) {
 			MainFXApplication.userInfo = MainFXApplication.createAccount(firstNameField.getText(), lastNameField.getText(),
@@ -41,6 +43,7 @@ public class RegistrationController {
 	}
 
 	@FXML
+	/** Loads application back to the welcome scene. */
 	public void handleCancelPressed () {
 		MainFXApplication.loadScene(MainFXApplication.Scenes.welcome);
 	}

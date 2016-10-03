@@ -9,6 +9,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
+/** The controller for the login view.
+ * @author Beau Mitchell */
 public class LoginController {
 	@FXML private Label badLoginLabel;
 

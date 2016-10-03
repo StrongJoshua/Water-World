@@ -39,12 +39,14 @@ jar {
 	}
 }
 
+// Parses the version number from MainFXApplication.java
 task parseVersion {
 	String text = file('/src/edu/gatech/scrumbags/fxapp/MainFXApplication.java').text
 	String parsed = (text =~ 'version = "[(\\d|\\.)]+";')[0]
 	version = (parsed =~ '[(\\d|\\.)]+')[0]
 }
 
+// Edits the README.md to put in the newest version number parsed in parseVersion
 task prepareCommit(dependsOn: 'parseVersion') {
 	File README = file('README.md')
 	String readme = README.text

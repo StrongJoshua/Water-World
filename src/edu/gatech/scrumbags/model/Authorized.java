@@ -3,6 +3,8 @@ package edu.gatech.scrumbags.model;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+/** The class that contains all of an (authorized) user's information.
+ * @author Jan Risse */
 public class Authorized {
 	private String first, last;
 	private String username;
@@ -11,6 +13,12 @@ public class Authorized {
 	private String email;
 	private String address;
 
+	/** Creates a new user with the given information.
+	 * @param first The user's first name.
+	 * @param last The user's last name.
+	 * @param username The user's username.
+	 * @param pass The user's password (stored in a hash).
+	 * @param account The user's account type. */
 	public Authorized (String first, String last, String username, String pass, AccountType account) {
 		this.first = first;
 		this.last = last;

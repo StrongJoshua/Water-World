@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+/** THe controller for the profile view. Displays all user information and allows editing of the user's email and address.
+ * @author Jan Risse */
 public class ProfileController {
 	@FXML private Label userFirstLast;
 	@FXML private Label userAccountType;
@@ -18,7 +20,7 @@ public class ProfileController {
 	@FXML private TextField addressTextField;
 	@FXML private Button editButton;
 	@FXML private Button logout;
-	
+
 	private boolean editMode;
 
 	@FXML
@@ -31,13 +33,14 @@ public class ProfileController {
 		userFirstLast.setText(userInfo.getFullName());
 		String account = userInfo.getAccountType().toString();
 		userAccountType.setText(account.substring(0, 1).toUpperCase() + account.substring(1));
-		
+
 		resetEditableLabels();
-		
+
 		editMode = false;
 	}
-	
-	private void resetEditableLabels() {
+
+	/** Resets email and address labels to the session's user's info. */
+	private void resetEditableLabels () {
 		Authorized userInfo = MainFXApplication.userInfo;
 		userEmail.setVisible(true);
 		userEmail.setManaged(true);
@@ -46,15 +49,16 @@ public class ProfileController {
 		userEmail.setText(userInfo.getEmail());
 		userAddress.setText(userInfo.getAddress());
 	}
-	
+
 	@FXML
-	public void handleEditPressed() {
+	/** Switches in between edit and view mode for the email and address fields. */
+	public void handleEditPressed () {
 		Authorized userInfo = MainFXApplication.userInfo;
-		if(editMode) {
+		if (editMode) {
 			userInfo.setEmail(emailTextField.getText());
 			userInfo.setAddress(addressTextField.getText());
 			resetEditableLabels();
-			
+
 			emailTextField.setVisible(false);
 			addressTextField.setVisible(false);
 			editButton.setText("Edit");
@@ -63,19 +67,20 @@ public class ProfileController {
 			userEmail.setManaged(false);
 			userAddress.setVisible(false);
 			userAddress.setManaged(false);
-			
+
 			emailTextField.setVisible(true);
 			addressTextField.setVisible(true);
-			
+
 			emailTextField.setText(userInfo.getEmail());
 			addressTextField.setText(userInfo.getAddress());
-			
+
 			editButton.setText("Save");
 		}
 		editMode = !editMode;
 	}
 
 	@FXML
+	/** Logs the user out. */
 	public void handleLogoutPressed () {
 		MainFXApplication.userInfo = null;
 		MainFXApplication.loadScene(Scenes.welcome);

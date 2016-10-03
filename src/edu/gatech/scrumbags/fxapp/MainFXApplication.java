@@ -12,6 +12,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/** The main class for the FX app.
+ * @author Beau Mitchell */
 public class MainFXApplication extends Application {
 	/** An enum that contains shortcuts to all the views.
 	 * @author Jan Risse */
@@ -31,7 +33,7 @@ public class MainFXApplication extends Application {
 		}
 	}
 
-	public static final String version = "0.4.5.1";
+	public static final String version = "0.4.5.2";
 
 	public static ArrayList<Authorized> allUsers;
 
@@ -47,6 +49,8 @@ public class MainFXApplication extends Application {
 		createAccount("SCRUMBags", "2340", "SCRUMBags", "2340", AccountType.admin);
 	}
 
+	/** Loads a scene into the FX app.
+	 * @param scene A constant from the {@link Scenes} enum. */
 	public static void loadScene (Scenes scene) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
@@ -63,6 +67,10 @@ public class MainFXApplication extends Application {
 		launch(args);
 	}
 
+	/** Checks the given username and password against all registered users.
+	 * @param username The username to check.
+	 * @param password The password to compare.
+	 * @return The Authorized user object the given username and password correspond to (if one exists). */
 	public static Authorized authorizeUser (String username, String password) {
 		for (Authorized auth : allUsers) {
 			if (auth.authenticate(username, password)) return auth;
@@ -70,6 +78,8 @@ public class MainFXApplication extends Application {
 		return null;
 	}
 
+	/** See {@link Authorized#Authorized(String, String, String, String, AccountType)}
+	 * @return The Authorized user object that was created. */
 	public static Authorized createAccount (String first, String last, String username, String password,
 		AccountType accountType) {
 		Authorized auth = new Authorized(first, last, username, password, accountType);
