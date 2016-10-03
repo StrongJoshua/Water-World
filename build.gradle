@@ -34,6 +34,9 @@ jar {
 					'Implementation-Version': version,
 					'Main-Class' : 'edu.gatech.scrumbags.fxapp.MainFXApplication'
 	}
+	from {
+		configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+	}
 }
 
 task parseVersion {
