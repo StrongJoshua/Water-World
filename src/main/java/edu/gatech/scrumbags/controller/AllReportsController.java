@@ -20,6 +20,8 @@ public class AllReportsController {
 	/**
 	 * Called when the view is initialized.
 	 * Sets up the list view and binds the labels to the selection model.
+	 * note: reports from MainFXApplication::waterReports are loaded
+	 * here when the view is loaded.
 	 */
 	@FXML
 	public void initialize() {
