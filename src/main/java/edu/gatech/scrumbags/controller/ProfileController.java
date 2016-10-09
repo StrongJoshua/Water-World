@@ -82,7 +82,7 @@ public class ProfileController {
 	@FXML
 	/** Brings the user back to the main screen. */
 	public void handleBackPressed () {
-		MainFXApplication.userInfo = null;
 		MainFXApplication.loadScene(Scenes.main);
+		MainFXApplication.userInfo = null;
 	}
 }
