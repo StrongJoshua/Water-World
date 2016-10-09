@@ -58,7 +58,7 @@ public class AllReportsController {
 
 	/**
 	 * Centers the map on this water source and returns to the map view
-	 * TODO not yet implemented
+	 * TODO in M7 (map not yet implemented)
 	 */
 	@FXML
 	public void handleViewPressed () {
