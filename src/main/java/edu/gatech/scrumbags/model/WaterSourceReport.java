@@ -27,6 +27,10 @@ public class WaterSourceReport {
         return location;
     }
 
+    public String getLocationString() {
+        return "Location: " + location;
+    }
+
     public String getSourceDescription() {
         return sourceDescription;
     }

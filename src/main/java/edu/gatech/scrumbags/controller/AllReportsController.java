@@ -34,14 +34,14 @@ public class AllReportsController {
 			reportList.getSelectionModel().select(0);
 			WaterSourceReport selected = reportList.getItems().get(0);
 			descriptionLabel.setText(selected.getSourceDescription());
-			locationLabel.setText(selected.getLocation().toString());
+			locationLabel.setText(selected.getLocationString());
 			dateLabel.setText(selected.getDateString());
 			descriptionLabel.setVisible(true);
 			locationLabel.setVisible(true);
 			dateLabel.setVisible(true);
 			reportList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
                 descriptionLabel.setText(newValue.getSourceDescription());
-                locationLabel.setText(newValue.getLocation().toString());
+                locationLabel.setText(newValue.getLocationString());
                 dateLabel.setText(newValue.getDateString());
             });
 		}
