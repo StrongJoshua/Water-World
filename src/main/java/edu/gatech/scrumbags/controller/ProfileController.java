@@ -50,8 +50,8 @@ public class ProfileController {
 		userAddress.setText(userInfo.getAddress());
 	}
 
-	@FXML
 	/** Switches in between edit and view mode for the email and address fields. */
+	@FXML
 	public void handleEditPressed () {
 		Authorized userInfo = MainFXApplication.userInfo;
 		if (editMode) {
@@ -79,8 +79,8 @@ public class ProfileController {
 		editMode = !editMode;
 	}
 
-	@FXML
 	/** Brings the user back to the main screen. */
+	@FXML
 	public void handleBackPressed () {
 		MainFXApplication.loadScene(Scenes.main);
 		MainFXApplication.userInfo = null;

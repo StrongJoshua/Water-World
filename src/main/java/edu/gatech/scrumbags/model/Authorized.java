@@ -30,8 +30,8 @@ public class Authorized {
 	}
 
 	/** Checks if the username and password given match this user's username and password.
-	 * @param username
-	 * @param pass
+	 * @param username username of this user
+	 * @param pass hashed password for this user
 	 * @return Whether the user is authenticated. */
 	public boolean authenticate (String username, String pass) {
 		return username.equalsIgnoreCase(this.username) && BCrypt.checkpw(pass, this.pass);
