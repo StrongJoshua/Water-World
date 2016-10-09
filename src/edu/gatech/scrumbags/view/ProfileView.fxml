@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.scrumbags.controller.ProfileController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.scrumbags.controller.ProfileController">
    <top>
       <Label text="Profile" BorderPane.alignment="CENTER">
          <font>
@@ -24,7 +24,7 @@
       </Label>
    </top>
    <bottom>
-      <Button fx:id="logout" mnemonicParsing="false" onAction="#handleLogoutPressed" prefWidth="77.0" text="Log out" BorderPane.alignment="CENTER">
+      <Button fx:id="logout" mnemonicParsing="false" onAction="#handleLogoutPressed" prefWidth="77.0" text="Back" BorderPane.alignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>

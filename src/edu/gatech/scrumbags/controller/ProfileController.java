@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-/** THe controller for the profile view. Displays all user information and allows editing of the user's email and address.
+/** The controller for the profile view. Displays all user information and allows editing of the user's email and address.
  * @author Jan Risse */
 public class ProfileController {
 	@FXML private Label userFirstLast;
@@ -19,7 +19,7 @@ public class ProfileController {
 	@FXML private TextField emailTextField;
 	@FXML private TextField addressTextField;
 	@FXML private Button editButton;
-	@FXML private Button logout;
+	@FXML private Button backButton;
 
 	private boolean editMode;
 
@@ -80,9 +80,9 @@ public class ProfileController {
 	}
 
 	@FXML
-	/** Logs the user out. */
-	public void handleLogoutPressed () {
+	/** Brings the user back to the main screen. */
+	public void handleBackPressed () {
 		MainFXApplication.userInfo = null;
-		MainFXApplication.loadScene(Scenes.welcome);
+		MainFXApplication.loadScene(Scenes.main);
 	}
 }

@@ -18,8 +18,9 @@ public class MainFXApplication extends Application {
 	/** An enum that contains shortcuts to all the views.
 	 * @author Jan Risse */
 	public enum Scenes {
-		welcome("/edu/gatech/scrumbags/view/WelcomeView.fxml"), login("/edu/gatech/scrumbags/view/LoginView.fxml"), profile(
-			"/edu/gatech/scrumbags/view/ProfileView.fxml"), registration("/edu/gatech/scrumbags/view/RegistrationView.fxml");
+		welcome("/edu/gatech/scrumbags/view/WelcomeView.fxml"), login("/edu/gatech/scrumbags/view/LoginView.fxml"),
+		main("/edu/gatech/scrumbags/view/MainView.fxml"), profile("/edu/gatech/scrumbags/view/ProfileView.fxml"),
+		registration("/edu/gatech/scrumbags/view/RegistrationView.fxml");
 
 		private String path;
 
@@ -27,7 +28,7 @@ public class MainFXApplication extends Application {
 			this.path = path;
 		}
 
-		/** @return THe scene's path. */
+		/** @return The scene's path. */
 		private String getPath () {
 			return path;
 		}

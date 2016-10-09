@@ -21,22 +21,22 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="48.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Water Source Report">
+            <Button fx:id="waterSourceReportButton" mnemonicParsing="false" text="Water Source Report">
                <HBox.margin>
                   <Insets left="20.0" right="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Water Purity Report">
+            <Button fx:id="waterPurityReportButton" mnemonicParsing="false" text="Water Purity Report">
                <HBox.margin>
                   <Insets left="20.0" right="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Historical Report">
+            <Button fx:id="historicalReportButton" mnemonicParsing="false" text="Historical Report">
                <HBox.margin>
                   <Insets left="20.0" right="20.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="All Reports">
+            <Button fx:id="allReportsButton" mnemonicParsing="false" text="All Reports">
                <HBox.margin>
                   <Insets left="20.0" right="20.0" />
                </HBox.margin>
@@ -47,12 +47,12 @@
    <top>
       <HBox alignment="CENTER_RIGHT" prefHeight="43.0" prefWidth="600.0" BorderPane.alignment="CENTER_RIGHT">
          <children>
-            <Button mnemonicParsing="false" text="Profile">
+            <Button fx:id="profileButton" mnemonicParsing="false" text="Profile">
                <HBox.margin>
                   <Insets right="5.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Logout">
+            <Button fx:id="logoutButton" mnemonicParsing="false" text="Logout">
                <HBox.margin>
                   <Insets left="5.0" right="20.0" />
                </HBox.margin>
