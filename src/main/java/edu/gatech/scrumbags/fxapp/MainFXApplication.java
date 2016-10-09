@@ -18,9 +18,9 @@ public class MainFXApplication extends Application {
 	/** An enum that contains shortcuts to all the views.
 	 * @author Jan Risse */
 	public enum Scenes {
-		welcome("/edu/gatech/scrumbags/view/WelcomeView.fxml"), login("/edu/gatech/scrumbags/view/LoginView.fxml"),
-		main("/edu/gatech/scrumbags/view/MainView.fxml"), profile("/edu/gatech/scrumbags/view/ProfileView.fxml"),
-		registration("/edu/gatech/scrumbags/view/RegistrationView.fxml");
+		welcome("/view/WelcomeView.fxml"), login("/view/LoginView.fxml"),
+		main("/view/MainView.fxml"), profile("/view/ProfileView.fxml"),
+		registration("/view/RegistrationView.fxml");
 
 		private String path;
 

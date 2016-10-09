@@ -24,7 +24,7 @@
       </Label>
    </top>
    <bottom>
-      <Button fx:id="logout" mnemonicParsing="false" onAction="#handleLogoutPressed" prefWidth="77.0" text="Back" BorderPane.alignment="CENTER">
+      <Button fx:id="logout" mnemonicParsing="false" onAction="#handleBackPressed" prefWidth="77.0" text="Back" BorderPane.alignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
