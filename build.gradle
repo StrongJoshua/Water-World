@@ -10,10 +10,10 @@ version = new String()
 sourceSets {
 	main {
 		java {
-			srcDirs = ['src/']
+			srcDirs = ['src/main/java']
 		}
 		resources {
-			srcDirs = ['resources/']
+			srcDirs = ['src/main/resources']
 		}
 	}
 }
@@ -41,7 +41,7 @@ jar {
 
 // Parses the version number from MainFXApplication.java
 task parseVersion {
-	String text = file('/src/edu/gatech/scrumbags/fxapp/MainFXApplication.java').text
+	String text = file('/src/main/java/edu/gatech/scrumbags/fxapp/MainFXApplication.java').text
 	String parsed = (text =~ 'version = "[(\\d|\\.)]+";')[0]
 	version = (parsed =~ '[(\\d|\\.)]+')[0]
 }
