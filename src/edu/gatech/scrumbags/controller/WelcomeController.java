@@ -11,7 +11,7 @@ public class WelcomeController {
 	@FXML
 	public void initialize () {
 		if (MainFXApplication.userInfo != null) {
-			MainFXApplication.loadScene(Scenes.profile);
+			MainFXApplication.loadScene(Scenes.main);
 		}
 	}
 
