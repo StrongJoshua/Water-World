@@ -24,6 +24,7 @@ repositories {
 
 dependencies {
 	compile "org.mindrot:jbcrypt:0.3m"
+	compile "com.google.code.gson:gson:2.7"
 }
 
 // These lines allow gradle to generate and insert a manifest when building a .jar
