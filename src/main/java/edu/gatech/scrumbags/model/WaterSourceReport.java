@@ -11,16 +11,24 @@ import java.util.Date;
 public class WaterSourceReport {
     private WaterLocation location;
     private String sourceDescription;
+    private String sourceCondition;
     private Date sourceReportDate;
+    private String submitterName;
 
-    public WaterSourceReport(WaterLocation location, String sourceDescription) {
-        this(location, sourceDescription, new Date());
+    public WaterSourceReport(WaterLocation location, String sourceDescription,
+                             String sourceCondition, String submitterName) {
+        this(location, sourceDescription, sourceCondition, submitterName,
+                new Date());
     }
 
-    public WaterSourceReport(WaterLocation location, String sourceDescription, Date sourceReportDate) {
+    public WaterSourceReport(WaterLocation location, String sourceDescription,
+                             String sourceCondition, String submitterName,
+                             Date sourceReportDate) {
         this.sourceReportDate = sourceReportDate;
         this.sourceDescription = sourceDescription;
         this.location = location;
+        this.sourceCondition = sourceCondition;
+        this.submitterName = submitterName;
     }
 
     public WaterLocation getLocation() {
@@ -33,6 +41,14 @@ public class WaterSourceReport {
 
     public String getSourceDescription() {
         return sourceDescription;
+    }
+
+    public String getSourceCondition() {
+        return sourceCondition;
+    }
+
+    public String getSubmitterName() {
+        return submitterName;
     }
 
     public String getDateString() {

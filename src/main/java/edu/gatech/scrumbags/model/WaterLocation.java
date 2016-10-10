@@ -45,6 +45,6 @@ public class WaterLocation {
      */
     @Override
     public String toString() {
-        return String.format("%.8f,%.8f", lat, lng);
+        return String.format("%.8f, %.8f", lat, lng);
     }
 }

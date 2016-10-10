@@ -56,10 +56,11 @@ public class MainFXApplication extends Application {
 		allUsers = new ArrayList<>();
 		createAccount("SCRUMBags", "2340", "SCRUMBags", "2340", AccountType.admin);
 		waterReports = new ArrayList<>();
-		waterReports.add(new WaterSourceReport(new WaterLocation(0d, 0d), "A sample water report.",
+		waterReports.add(new WaterSourceReport(new WaterLocation(0d, 0d),
+				"A sample water report.", "Potable", "Bill",
 				new Date(1460000000000L)));
 		waterReports.add(new WaterSourceReport(new WaterLocation(33.7490, 84.3880),
-				"Another sample water report."));
+				"Another sample water report.", "Treatable", "Francis"));
 	}
 
 	/** Loads a scene into the FX app.
