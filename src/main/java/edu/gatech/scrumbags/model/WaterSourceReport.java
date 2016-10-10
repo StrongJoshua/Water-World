@@ -9,6 +9,7 @@ import java.util.Date;
  * Created by Beau on 10/9/2016.
  */
 public class WaterSourceReport {
+    private int reportNumber;
     private WaterLocation location;
     private String sourceDescription;
     private String sourceCondition;

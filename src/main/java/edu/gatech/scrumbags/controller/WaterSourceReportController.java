@@ -40,9 +40,11 @@ public class WaterSourceReportController {
 	public void handleSubmitPressed () {
 		// trying to get correct GPS coordinates
 		boolean successfulParse = false;
+		double latitude;
+		double longitude;
 		try {
-			double latitude = Double.parseDouble(latitudeText.getText());
-			double longitude = Double.parseDouble(longitudeText.getText());
+			latitude = Double.parseDouble(latitudeText.getText());
+			longitude = Double.parseDouble(longitudeText.getText());
 			if (latitude < -90.0 || latitude > 90.0) {
 				setErrorMessage("Incorrect format! Latitude value must be " +
 						"larger than -90 and less than 90.");
