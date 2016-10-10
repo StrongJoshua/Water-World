@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 
 import java.util.Arrays;
 
@@ -14,50 +15,69 @@ import java.util.Arrays;
 Controls the flow of information when someone creates a new water source report.
  */
 public class WaterSourceReportController {
-	@FXML private TextField firstNameField;
-	@FXML private ComboBox<WaterType> waterTypeComboBox;
-	@FXML private ComboBox<ConditionType> conditionTypeComboBox;
+
+	@FXML private Label errorMessage;
+
+	@FXML private TextField latitudeText;
+	@FXML private TextField longitudeText;
+
+	@FXML private ComboBox<WaterType> waterTypeCombo;
+	@FXML private ComboBox<ConditionType> waterConditionCombo;
+	@FXML private TextField waterConditionOtherText;
 
 	@FXML
 	public void initialize () {
-		waterTypeComboBox.setItems(FXCollections.observableArrayList(
+		waterTypeCombo.setItems(FXCollections.observableArrayList(
 				Arrays.asList(WaterType.values())));
-		conditionTypeComboBox.setItems(FXCollections.observableArrayList(
+		waterConditionCombo.setItems(FXCollections.observableArrayList(
 				Arrays.asList(ConditionType.values())));
-		waterTypeComboBox.setValue(WaterType.Well);
-		conditionTypeComboBox.setValue(ConditionType.Potable);
-//		setErrorMessage(null);
+		waterTypeCombo.setValue(WaterType.Well);
+		waterConditionCombo.setValue(ConditionType.Potable);
+		setErrorMessage(null);
 	}
 
-//	@FXML
-//	public void handleRegisterPressed () {
-//		if (passwordField.getText().equals(confirmPasswordField.getText())) {
-//			Authorized userInfo = MainFXApplication.createAccount(firstNameField.getText(), lastNameField.getText(),
-//				usernameField.getText(), passwordField.getText(), accountTypeCombo.getValue());
-//			if (userInfo != null) {
-//				MainFXApplication.userInfo = userInfo;
-//				MainFXApplication.loadScene(MainFXApplication.Scenes.main);
-//			} else {
-//				setErrorMessage("Error: Username already exists.");
-//			}
-//		} else {
-//			setErrorMessage("Error: Passwords did not match.");
-//		}
-//	}
+	@FXML
+	public void handleSubmitPressed () {
+		// trying to get correct GPS coordinates
+		boolean successfulParse = false;
+		try {
+			double latitude = Double.parseDouble(latitudeText.getText());
+			double longitude = Double.parseDouble(longitudeText.getText());
+			if (latitude < -90.0 || latitude > 90.0) {
+				setErrorMessage("Incorrect format! Latitude value must be " +
+						"larger than -90 and less than 90.");
+			} else if (longitude < -180.0 || longitude > 180.0) {
+				setErrorMessage("Incorrect format! Longitude value must be " +
+						"larger than -180 and less than 180.");
+			} else {
+				successfulParse = true;
+			}
+		} catch (NullPointerException e) {
+			setErrorMessage("Incorrect format! Please enter GPS coordinates " +
+					"in the form of doubles.");
+		} catch (NumberFormatException e) {
+			setErrorMessage("Incorrect format! Please enter valid doubles for " +
+					"GPS coordinates.");
+		}
+
+		// submitting all information needed for a full water source report
+		if (successfulParse) {
+
+		}
+	}
 
 	/** Shows the error label and sets the message.
 	 * @param msg The message to have the label display. */
-//	private void setErrorMessage (String msg) {
-//		if (msg != null) {
-//			errorLabel.setText(msg);
-//			errorLabel.setVisible(true);
-//		} else
-//			errorLabel.setVisible(false);
-//	}
+	private void setErrorMessage (String msg) {
+		if (msg != null) {
+			errorMessage.setText(msg);
+			errorMessage.setVisible(true);
+		} else
+			errorMessage.setVisible(false);
+	}
 
-//	@FXML
-//	/** Loads application back to the welcome scene. */
-//	public void handleCancelPressed () {
-//		MainFXApplication.loadScene(MainFXApplication.Scenes.welcome);
-//	}
+	@FXML
+	public void handleCancelPressed () {
+		MainFXApplication.loadScene(MainFXApplication.Scenes.welcome);
+	}
 }

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.scrumbags.controller.RegistrationController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.scrumbags.controller.WaterSourceReportController">
    <top>
       <Label prefHeight="55.0" prefWidth="555.0" text="Create Water Source Report" textAlignment="CENTER" BorderPane.alignment="CENTER">
          <font>
@@ -24,7 +24,7 @@
    <center>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="errorLabel" text="Error" textFill="RED">
+            <Label id="errorMessage" fx:id="errorMessage" text="Error" textFill="RED">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
@@ -39,42 +39,8 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="25.0" prefWidth="34.0" />
-                  <Label alignment="CENTER" prefHeight="35.0" prefWidth="6.0" text="˚">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <TextField prefHeight="25.0" prefWidth="34.0" />
-                  <Label alignment="CENTER" prefHeight="35.0" prefWidth="7.0" text="'">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField prefHeight="25.0" prefWidth="34.0" />
-                  <Label prefHeight="35.0" prefWidth="34.0" text="''N">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField prefHeight="25.0" prefWidth="34.0" />
-                  <Label alignment="CENTER" prefHeight="35.0" prefWidth="6.0" text="˚">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <TextField prefHeight="25.0" prefWidth="34.0" />
-                  <Label alignment="CENTER" prefHeight="35.0" prefWidth="7.0" text="'">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField prefHeight="25.0" prefWidth="34.0" />
-                  <Label prefHeight="35.0" prefWidth="34.0" text="''W">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
+                  <TextField fx:id="latitudeText" prefHeight="25.0" prefWidth="151.0" text="Latitude Value" />
+                  <TextField fx:id="longitudeText" prefHeight="25.0" prefWidth="151.0" text="Longitude Value" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
@@ -84,7 +50,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="accountTypeCombo" prefWidth="150.0" />
+                  <ComboBox fx:id="waterTypeCombo" prefWidth="150.0" />
                </children>
                <padding>
                   <Insets right="27.0" />
@@ -97,7 +63,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="accountTypeCombo1" prefWidth="150.0" />
+                  <ComboBox fx:id="waterConditionCombo" prefWidth="150.0" />
                </children>
                <padding>
                   <Insets right="27.0" />
@@ -110,7 +76,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField />
+                  <TextField fx:id="waterConditionOtherText" />
                </children>
                <padding>
                   <Insets right="27.0" />
@@ -118,7 +84,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="confirmRegistrationButton" mnemonicParsing="false" onAction="#handleRegisterPressed" text="Submit">
+                  <Button fx:id="sumbitButton" mnemonicParsing="false" onAction="#handleSubmitPressed" text="Submit">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>

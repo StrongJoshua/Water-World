@@ -35,7 +35,7 @@ public class MainController {
 	}
 
 	@FXML public void handleWaterSourceReportPressed () {
-		//MainFXApplication.loadScene(Scenes.waterSourceReport);
+		MainFXApplication.loadScene(Scenes.waterSourceReport);
 	}
 
 	@FXML public void handleWaterPurityReportPressed () {
