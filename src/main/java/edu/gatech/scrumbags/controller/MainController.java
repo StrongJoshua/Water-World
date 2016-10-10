@@ -47,7 +47,7 @@ public class MainController {
 	}
 
 	@FXML public void handleAllReportsPressed () {
-		//MainFXApplication.loadScene(Scenes.allReports);
+		MainFXApplication.loadScene(Scenes.allReports);
 	}
 
 	@FXML public void handleProfilePressed () {

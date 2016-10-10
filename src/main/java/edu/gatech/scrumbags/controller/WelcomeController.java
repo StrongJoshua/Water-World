@@ -15,14 +15,14 @@ public class WelcomeController {
 		}
 	}
 
-	@FXML
 	/** Loads the login view. */
+	@FXML
 	public void handleLoginPressed () {
 		MainFXApplication.loadScene(Scenes.login);
 	}
 
-	@FXML
 	/** Loads the registration view. */
+	@FXML
 	public void handleRegisterPressed () {
 		MainFXApplication.loadScene(Scenes.registration);
 	}

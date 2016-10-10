@@ -36,8 +36,8 @@ public class RegistrationController {
 		setErrorMessage(null);
 	}
 
-	@FXML
 	/** Ensures the password and confirm password match then creates a new user in the backend. */
+	@FXML
 	public void handleRegisterPressed () {
 		if (passwordField.getText().equals(confirmPasswordField.getText())) {
 			Authorized userInfo = MainFXApplication.createAccount(firstNameField.getText(), lastNameField.getText(),
@@ -63,8 +63,8 @@ public class RegistrationController {
 			errorLabel.setVisible(false);
 	}
 
-	@FXML
 	/** Loads application back to the welcome scene. */
+	@FXML
 	public void handleCancelPressed () {
 		MainFXApplication.loadScene(MainFXApplication.Scenes.welcome);
 	}

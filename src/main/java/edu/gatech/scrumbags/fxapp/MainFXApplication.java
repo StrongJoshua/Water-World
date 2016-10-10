@@ -3,9 +3,13 @@ package edu.gatech.scrumbags.fxapp;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import edu.gatech.scrumbags.model.AccountType;
 import edu.gatech.scrumbags.model.Authorized;
+import edu.gatech.scrumbags.model.WaterLocation;
+import edu.gatech.scrumbags.model.WaterSourceReport;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,11 +24,12 @@ public class MainFXApplication extends Application {
 	public enum Scenes {
 		welcome("/view/WelcomeView.fxml"), login("/view/LoginView.fxml"),
 		main("/view/MainView.fxml"), profile("/view/ProfileView.fxml"),
-		registration("/view/RegistrationView.fxml");
+		registration("/view/RegistrationView.fxml"),
+		allReports("/view/AllReportsView.fxml"),;
 
 		private String path;
 
-		private Scenes (String path) {
+		Scenes (String path) {
 			this.path = path;
 		}
 
@@ -34,9 +39,10 @@ public class MainFXApplication extends Application {
 		}
 	}
 
-	public static final String version = "0.5.0.0";
+	public static final String version = "0.5.1.5";
 
 	public static ArrayList<Authorized> allUsers;
+	public static List<WaterSourceReport> waterReports;
 
 	public static Stage mainStage;
 	public static Authorized userInfo;
@@ -48,6 +54,11 @@ public class MainFXApplication extends Application {
 		primaryStage.show();
 		allUsers = new ArrayList<>();
 		createAccount("SCRUMBags", "2340", "SCRUMBags", "2340", AccountType.admin);
+		waterReports = new ArrayList<>();
+		waterReports.add(new WaterSourceReport(new WaterLocation(0d, 0d), "A sample water report.",
+				new Date(1460000000000L)));
+		waterReports.add(new WaterSourceReport(new WaterLocation(33.7490, 84.3880),
+				"Another sample water report."));
 	}
 
 	/** Loads a scene into the FX app.
