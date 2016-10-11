@@ -1,6 +1,8 @@
 package edu.gatech.scrumbags.controller;
 
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
+import edu.gatech.scrumbags.model.WaterLocation;
+import edu.gatech.scrumbags.model.WaterSourceReport;
 import edu.gatech.scrumbags.model.WaterType;
 import edu.gatech.scrumbags.model.ConditionType;
 import javafx.collections.FXCollections;
@@ -31,8 +33,8 @@ public class WaterSourceReportController {
 				Arrays.asList(WaterType.values())));
 		waterConditionCombo.setItems(FXCollections.observableArrayList(
 				Arrays.asList(ConditionType.values())));
-		waterTypeCombo.setValue(WaterType.Well);
-		waterConditionCombo.setValue(ConditionType.Potable);
+		waterTypeCombo.setValue(WaterType.Bottled);
+		waterConditionCombo.setValue(ConditionType.Waste);
 		setErrorMessage(null);
 	}
 
@@ -40,8 +42,8 @@ public class WaterSourceReportController {
 	public void handleSubmitPressed () {
 		// trying to get correct GPS coordinates
 		boolean successfulParse = false;
-		double latitude;
-		double longitude;
+		double latitude = 0.0;
+		double longitude = 0.0;
 		try {
 			latitude = Double.parseDouble(latitudeText.getText());
 			longitude = Double.parseDouble(longitudeText.getText());
@@ -64,7 +66,14 @@ public class WaterSourceReportController {
 
 		// submitting all information needed for a full water source report
 		if (successfulParse) {
-
+			String waterType = waterTypeCombo.getValue().toString();
+			if (waterTypeCombo.getValue().equals(WaterType.Other)) {
+				waterType += waterConditionOtherText.getText();
+			}
+			MainFXApplication.waterReports.add(new WaterSourceReport(new WaterLocation(latitude,
+					longitude), waterType, waterConditionCombo.getValue().toString(),
+					MainFXApplication.userInfo.getFullName()));
+			MainFXApplication.loadScene(MainFXApplication.Scenes.main);
 		}
 	}
 

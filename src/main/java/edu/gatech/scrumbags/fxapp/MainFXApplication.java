@@ -113,11 +113,10 @@ public class MainFXApplication extends Application {
 		return auth;
 	}
 
-	public static void addWaterSourceReport(WaterLocation loc, String title, String condition, String name, Date d)
-	{
-		WaterSourceReport report = new WaterSourceReport(loc, title,condition,name,d);
+	public static void addWaterSourceReport(WaterLocation loc, String title,
+											String condition, String name, Date d) {
+		WaterSourceReport report = new WaterSourceReport(loc, title, condition, name, d);
 		waterReports.add(report);
 		client.sendWaterReport(report);
-
 	}
 }

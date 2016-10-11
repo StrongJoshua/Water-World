@@ -9,6 +9,7 @@ import java.util.Date;
  * Created by Beau on 10/9/2016.
  */
 public class WaterSourceReport {
+    private static int counter = 0;
     private int reportNumber;
     private WaterLocation location;
     private String sourceDescription;
@@ -30,6 +31,7 @@ public class WaterSourceReport {
         this.location = location;
         this.sourceCondition = sourceCondition;
         this.submitterName = submitterName;
+        reportNumber = counter++;
     }
 
     public WaterLocation getLocation() {

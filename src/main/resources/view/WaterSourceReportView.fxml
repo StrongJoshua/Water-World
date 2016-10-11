@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.scrumbags.controller.WaterSourceReportController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.scrumbags.controller.WaterSourceReportController">
    <top>
       <Label prefHeight="55.0" prefWidth="555.0" text="Create Water Source Report" textAlignment="CENTER" BorderPane.alignment="CENTER">
          <font>
@@ -64,12 +64,12 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
                <children>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="209.0" text="Water Condition:  ">
+                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="209.0" text="If &quot;Other&quot;, please specify:  ">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="waterConditionCombo" prefWidth="150.0" />
+                  <TextField fx:id="waterConditionOtherText" />
                </children>
                <padding>
                   <Insets right="27.0" />
@@ -77,12 +77,12 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
                <children>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="209.0" text="if &quot;other&quot;, please specify:  ">
+                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="209.0" text="Water Condition:  ">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="waterConditionOtherText" />
+                  <ComboBox fx:id="waterConditionCombo" prefWidth="150.0" />
                </children>
                <padding>
                   <Insets right="27.0" />
