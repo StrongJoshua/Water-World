@@ -20,8 +20,10 @@ public class MainFXApplication extends Application {
 	/** An enum that contains shortcuts to all the views.
 	 * @author Jan Risse */
 	public enum Scenes {
-		welcome("/view/WelcomeView.fxml"), login("/view/LoginView.fxml"),
-		main("/view/MainView.fxml"), profile("/view/ProfileView.fxml"),
+		welcome("/view/WelcomeView.fxml"),
+		login("/view/LoginView.fxml"),
+		main("/view/MainView.fxml"),
+		profile("/view/ProfileView.fxml"),
 		registration("/view/RegistrationView.fxml"),
 		allReports("/view/AllReportsView.fxml"),
 		waterSourceReport("/view/WaterSourceReportView.fxml");
