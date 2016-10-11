@@ -2,8 +2,8 @@
 package edu.gatech.scrumbags.networking.messages;
 
 public class Message {
-	enum MessageType {
-		registration, login, userInfo
+	public enum MessageType {
+		registration, login, userInfo, loginfailed, console, sendWaterReport, requestReports
 	}
 
 	private MessageType type;

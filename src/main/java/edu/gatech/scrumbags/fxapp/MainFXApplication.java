@@ -10,6 +10,7 @@ import edu.gatech.scrumbags.model.AccountType;
 import edu.gatech.scrumbags.model.Authorized;
 import edu.gatech.scrumbags.model.WaterLocation;
 import edu.gatech.scrumbags.model.WaterSourceReport;
+import edu.gatech.scrumbags.networking.Client;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -47,6 +48,7 @@ public class MainFXApplication extends Application {
 
 	public static Stage mainStage;
 	public static Authorized userInfo;
+	public static Client client;
 
 	@Override
 	public void start (Stage primaryStage) {
@@ -78,6 +80,7 @@ public class MainFXApplication extends Application {
 	}
 
 	public static void main (String[] args) {
+		client = new Client();
 		launch(args);
 	}
 
@@ -87,7 +90,10 @@ public class MainFXApplication extends Application {
 	 * @return The Authorized user object the given username and password correspond to (if one exists). */
 	public static Authorized authorizeUser (String username, String password) {
 		for (Authorized auth : allUsers) {
-			if (auth.authenticate(username, password)) return auth;
+			if (auth.authenticate(username, password)) {
+				client.loginUser(auth);
+				return auth;
+			}
 		}
 		return null;
 	}
@@ -101,6 +107,17 @@ public class MainFXApplication extends Application {
 		}
 		Authorized auth = new Authorized(first, last, username, password, accountType);
 		allUsers.add(auth);
+
+		client.registerUser(auth);
+
 		return auth;
+	}
+
+	public static void addWaterSourceReport(WaterLocation loc, String title, String condition, String name, Date d)
+	{
+		WaterSourceReport report = new WaterSourceReport(loc, title,condition,name,d);
+		waterReports.add(report);
+		client.sendWaterReport(report);
+
 	}
 }
