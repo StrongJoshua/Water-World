@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.scrumbags.controller.WaterSourceReportController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.scrumbags.controller.WaterSourceReportController">
    <top>
       <Label prefHeight="55.0" prefWidth="555.0" text="Create Water Source Report" textAlignment="CENTER" BorderPane.alignment="CENTER">
          <font>
@@ -39,8 +39,14 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="latitudeText" prefHeight="25.0" prefWidth="151.0" text="Latitude Value" />
-                  <TextField fx:id="longitudeText" prefHeight="25.0" prefWidth="151.0" text="Longitude Value" />
+                  <TextField fx:id="latitudeText" prefHeight="25.0" prefWidth="151.0" promptText="Latitude">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin></TextField>
+                  <TextField fx:id="longitudeText" prefHeight="25.0" prefWidth="151.0" promptText="Longitude">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin></TextField>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
