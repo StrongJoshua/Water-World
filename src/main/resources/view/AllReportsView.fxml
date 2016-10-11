@@ -9,12 +9,12 @@
    <bottom>
       <HBox alignment="CENTER" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="View on map" onAction="#handleViewPressed">
+            <Button mnemonicParsing="false" onAction="#handleViewPressed" text="View on map">
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Back" onAction="#handleBackPressed">
+            <Button mnemonicParsing="false" onAction="#handleBackPressed" text="Back">
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
@@ -54,6 +54,28 @@
                <font>
                   <Font size="14.0" />
                </font>
+            </Label>
+            <Label fx:id="conditionLabel" text="Water condition:" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="userLabel" text="Reported by:" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </VBox.margin>
             </Label>
             <Label fx:id="noReportsLabel" text="No reports to be viewed">
                <font>

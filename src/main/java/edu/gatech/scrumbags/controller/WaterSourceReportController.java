@@ -1,10 +1,11 @@
 package edu.gatech.scrumbags.controller;
 
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
+import edu.gatech.scrumbags.model.WaterCondition;
 import edu.gatech.scrumbags.model.WaterLocation;
 import edu.gatech.scrumbags.model.WaterSourceReport;
 import edu.gatech.scrumbags.model.WaterType;
-import edu.gatech.scrumbags.model.ConditionType;
+import edu.gatech.scrumbags.model.WaterCondition;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -24,7 +25,7 @@ public class WaterSourceReportController {
 	@FXML private TextField longitudeText;
 
 	@FXML private ComboBox<WaterType> waterTypeCombo;
-	@FXML private ComboBox<ConditionType> waterConditionCombo;
+	@FXML private ComboBox<WaterCondition> waterConditionCombo;
 	@FXML private TextField waterConditionOtherText;
 
 	@FXML
@@ -32,9 +33,9 @@ public class WaterSourceReportController {
 		waterTypeCombo.setItems(FXCollections.observableArrayList(
 				Arrays.asList(WaterType.values())));
 		waterConditionCombo.setItems(FXCollections.observableArrayList(
-				Arrays.asList(ConditionType.values())));
+				Arrays.asList(WaterCondition.values())));
 		waterTypeCombo.setValue(WaterType.Bottled);
-		waterConditionCombo.setValue(ConditionType.Waste);
+		waterConditionCombo.setValue(WaterCondition.Waste);
 		setErrorMessage(null);
 	}
 
@@ -71,7 +72,7 @@ public class WaterSourceReportController {
 				waterType += waterConditionOtherText.getText();
 			}
 			MainFXApplication.waterReports.add(new WaterSourceReport(new WaterLocation(latitude,
-					longitude), waterType, waterConditionCombo.getValue().toString(),
+					longitude), waterTypeCombo.getValue(), waterConditionCombo.getValue(),
 					MainFXApplication.userInfo.getFullName()));
 			MainFXApplication.loadScene(MainFXApplication.Scenes.main);
 		}

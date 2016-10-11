@@ -6,10 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import edu.gatech.scrumbags.model.AccountType;
-import edu.gatech.scrumbags.model.Authorized;
-import edu.gatech.scrumbags.model.WaterLocation;
-import edu.gatech.scrumbags.model.WaterSourceReport;
+import edu.gatech.scrumbags.model.*;
 import edu.gatech.scrumbags.networking.Client;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -59,10 +56,10 @@ public class MainFXApplication extends Application {
 		createAccount("SCRUMBags", "2340", "SCRUMBags", "2340", AccountType.admin);
 		waterReports = new ArrayList<>();
 		waterReports.add(new WaterSourceReport(new WaterLocation(0d, 0d),
-				"A sample water report.", "Potable", "Bill",
+				WaterType.Other, WaterCondition.Treatable_Muddy, "Bill",
 				new Date(1460000000000L)));
 		waterReports.add(new WaterSourceReport(new WaterLocation(33.7490, 84.3880),
-				"Another sample water report.", "Treatable", "Francis"));
+				WaterType.Bottled, WaterCondition.Treatable_Clear, "Francis"));
 	}
 
 	/** Loads a scene into the FX app.
@@ -113,8 +110,8 @@ public class MainFXApplication extends Application {
 		return auth;
 	}
 
-	public static void addWaterSourceReport(WaterLocation loc, String title,
-											String condition, String name, Date d) {
+	public static void addWaterSourceReport(WaterLocation loc, WaterType title,
+											WaterCondition condition, String name, Date d) {
 		WaterSourceReport report = new WaterSourceReport(loc, title, condition, name, d);
 		waterReports.add(report);
 		client.sendWaterReport(report);

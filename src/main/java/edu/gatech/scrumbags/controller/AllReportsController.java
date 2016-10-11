@@ -15,6 +15,8 @@ public class AllReportsController {
 	@FXML private Label locationLabel;
 	@FXML private Label dateLabel;
 	@FXML private Label noReportsLabel;
+	@FXML private Label userLabel;
+	@FXML private Label conditionLabel;
 	@FXML private ListView<WaterSourceReport> reportList;
 
 	/**
@@ -31,20 +33,28 @@ public class AllReportsController {
 			descriptionLabel.setVisible(false);
 			locationLabel.setVisible(false);
 			dateLabel.setVisible(false);
+			userLabel.setVisible(false);
+			conditionLabel.setVisible(false);
 		} else {
 			noReportsLabel.setVisible(false);
 			reportList.getSelectionModel().select(0);
 			WaterSourceReport selected = reportList.getItems().get(0);
-			descriptionLabel.setText(selected.getSourceDescription());
+			descriptionLabel.setText(selected.getSourceTypeDescription());
 			locationLabel.setText(selected.getLocationString());
 			dateLabel.setText(selected.getDateString());
+			conditionLabel.setText(selected.getSourceConditionDescription());
+			userLabel.setText("Submitted by " + selected.getSubmitterName());
 			descriptionLabel.setVisible(true);
 			locationLabel.setVisible(true);
 			dateLabel.setVisible(true);
+			userLabel.setVisible(true);
+			conditionLabel.setVisible(true);
 			reportList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-                descriptionLabel.setText(newValue.getSourceDescription());
+                descriptionLabel.setText(newValue.getSourceTypeDescription());
                 locationLabel.setText(newValue.getLocationString());
                 dateLabel.setText(newValue.getDateString());
+				conditionLabel.setText(newValue.getSourceConditionDescription());
+				userLabel.setText("Submitted by " + newValue.getSubmitterName());
             });
 		}
 		if (MainFXApplication.userInfo != null) {
