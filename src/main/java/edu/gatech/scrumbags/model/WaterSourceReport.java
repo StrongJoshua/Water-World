@@ -55,8 +55,8 @@ public class WaterSourceReport {
     }
 
     public String getDateString() {
-        DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
-        return format.format(sourceReportDate);
+        DateFormat format = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
+        return "Date:" + format.format(sourceReportDate);
     }
 
     public String toString() {

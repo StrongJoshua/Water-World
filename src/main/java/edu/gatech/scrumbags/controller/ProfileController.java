@@ -83,6 +83,6 @@ public class ProfileController {
 	@FXML
 	public void handleBackPressed () {
 		MainFXApplication.loadScene(Scenes.main);
-		MainFXApplication.userInfo = null;
+		// MainFXApplication.userInfo = null;
 	}
 }
