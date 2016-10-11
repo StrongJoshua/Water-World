@@ -80,6 +80,6 @@ public class WaterSourceReportController {
 
 	@FXML
 	public void handleCancelPressed () {
-		MainFXApplication.loadScene(MainFXApplication.Scenes.welcome);
+		MainFXApplication.loadScene(MainFXApplication.Scenes.main);
 	}
 }
