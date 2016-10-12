@@ -4,7 +4,7 @@ package edu.gatech.scrumbags.model;
 /*
 List of possible water conditions.
 
-@author gnoziere (Guillaume Noziere)
+@author gnoziere
  */
 public enum WaterCondition {
 	Waste("Waste water"),
