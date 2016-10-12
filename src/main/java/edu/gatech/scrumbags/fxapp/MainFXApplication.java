@@ -57,11 +57,10 @@ public class MainFXApplication extends Application {
 		allUsers = new ArrayList<>();
 		createAccount("SCRUMBags", "2340", "SCRUMBags", "2340", AccountType.admin);
 		waterReports = new ArrayList<>();
-		waterReports.add(new WaterSourceReport(new WaterLocation(0d, 0d),
-				WaterType.Other, WaterCondition.Treatable_Muddy, "Bill",
-				new Date(1460000000000L)));
-		waterReports.add(new WaterSourceReport(new WaterLocation(33.7490, 84.3880),
-				WaterType.Bottled, WaterCondition.Treatable_Clear, "Francis"));
+		waterReports.add(new WaterSourceReport(new WaterLocation(0d, 0d), WaterType.Other,
+			WaterCondition.Treatable_Muddy, "Bill", new Date(1460000000000L)));
+		waterReports.add(new WaterSourceReport(new WaterLocation(33.7490, 84.3880), WaterType.Bottled,
+			WaterCondition.Treatable_Clear, "Francis"));
 	}
 
 	/** Loads a scene into the FX app.
@@ -112,8 +111,8 @@ public class MainFXApplication extends Application {
 		return auth;
 	}
 
-	public static void addWaterSourceReport(WaterLocation loc, WaterType title,
-											WaterCondition condition, String name, Date d) {
+	public static void addWaterSourceReport (WaterLocation loc, WaterType title, WaterCondition condition,
+		String name, Date d) {
 		WaterSourceReport report = new WaterSourceReport(loc, title, condition, name, d);
 		waterReports.add(report);
 		client.sendWaterReport(report);
