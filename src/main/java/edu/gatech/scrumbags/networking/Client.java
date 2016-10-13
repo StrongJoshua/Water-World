@@ -1,6 +1,7 @@
 
 package edu.gatech.scrumbags.networking;
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
+import edu.gatech.scrumbags.model.Authorization;
 import edu.gatech.scrumbags.model.User;
 import edu.gatech.scrumbags.model.WaterSourceReport;
 import edu.gatech.scrumbags.networking.messages.Message;
@@ -19,6 +20,8 @@ public class Client extends Thread {
 	private static Gson json;
 	private static boolean connected = false;
 	private static boolean running;
+	private volatile Message handle;
+	private volatile boolean request;
 
 	public Client () {
 		json = new Gson();
@@ -40,17 +43,15 @@ public class Client extends Thread {
 		new Thread() {
 			@Override
 			public void run () {
-				while (running)
+				while (running) {
 					try {
 						//System.out.print(json.fromJson((String)in.readObject(), Message.class).getPayload()[0]);
 						readMessage(in.readObject());
-					} catch (ClassNotFoundException | IOException e) {
+						} catch (ClassNotFoundException | IOException e) {
 					}
+				}
 			}
 		}.start();
-
-		while (running) {
-		}
 	}
 	private void quit () {
 		running = false;
@@ -82,32 +83,48 @@ public class Client extends Thread {
 			MainFXApplication.loadScene(MainFXApplication.Scenes.welcome);
 		}
 	}
-	private static void readMessage (Object o) {
-		Message m =json.fromJson((String)o, Message.class);
-		 System.out.println("Recieved: " + o);
-		if (m.getType() == Message.MessageType.registration){
-
+	private void readMessage (Object o) {
+		Message m = json.fromJson((String)o, Message.class);
+		if(request) {
+			request = false;
+			handle = m;
+			return;
 		}
-		else if (m.getType() == Message.MessageType.login) {
+			System.out.println("Recieved: " + o);
+			if (m.getType() == Message.MessageType.registration) {
 
-		}
-		else if (m.getType() == Message.MessageType.loginfailed) {
+			} else if (m.getType() == Message.MessageType.login) {
 
-		}
-		else if (m.getType() == Message.MessageType.console) {
+			} else if (m.getType() == Message.MessageType.console) {
 
-		}
-		else if (m.getType() == Message.MessageType.requestReports) {
+			} else if (m.getType() == Message.MessageType.requestReports) {
 
-		}
+			}
+
 	}
 
 	public void registerUser (User user, String password) {
 		sendMessage(new Message(Message.MessageType.registration, new String[] {user.getFirst(), user.getLast(), user.getUsername(),
 			password, user.getAuthorization().toString(), user.getEmail(),user.getAddress()}));
 	}
-	public void loginUser (User user, String password) {
+	public User loginUser (User user, String password) {
 		sendMessage(new Message(Message.MessageType.login, new String[] {user.getUsername(), password}));
+		request = true;
+		while(handle == null)
+		{
+			try {
+				Thread.sleep(5);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		if(handle.getType() != Message.MessageType.userInfo || handle.getPayload().length == 0)
+		{
+			return null;
+		}
+		String[] info = handle.getPayload();
+		return new User(info[0], info[1],info[2], Authorization.valueOf(info[4]), info[5], info[6]);
+
 	}
 	public void sendWaterReport(WaterSourceReport report) {
 		sendMessage(new Message(Message.MessageType.sendWaterReport, json.toJson(report)));

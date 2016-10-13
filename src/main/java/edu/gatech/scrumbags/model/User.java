@@ -32,6 +32,23 @@ public class User {
 	}
 
 	/**
+	 * Creates a new user with the given information.
+	 *
+	 * @param first    The user's first name.
+	 * @param last     The user's last name.
+	 * @param username The user's username.
+	 * @param authorization  The user's authorization.
+	 */
+	public User (String first, String last, String username, Authorization authorization, String email, String address) {
+		this.first = first;
+		this.last = last;
+		this.username = username;
+		this.authorization = authorization;
+		this.setEmail(email);
+		this.setAddress(address);
+	}
+
+	/**
 	 * Checks if the username and password given match this user's username and password.
 	 *
 	 * @param username username of this user

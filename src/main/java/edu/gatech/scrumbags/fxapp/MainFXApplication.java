@@ -43,7 +43,7 @@ public class MainFXApplication extends Application {
 		}
 	}
 
-	public static final String version = "0.5.2.3";
+	public static final String version = "0.5.2.4";
 
 	public static ArrayList<User> allUsers;
 	public static List<WaterSourceReport> waterReports;
