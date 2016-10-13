@@ -79,7 +79,9 @@ public class ProfileController {
 		editMode = !editMode;
 	}
 
-	/** Brings the user back to the main screen. */
+	/**
+	 * Brings the user back to the main screen.
+	 */
 	@FXML
 	public void handleBackPressed () {
 		MainFXApplication.loadScene(Scenes.main);

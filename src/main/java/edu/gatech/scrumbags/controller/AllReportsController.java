@@ -1,15 +1,17 @@
-
 package edu.gatech.scrumbags.controller;
 
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
 import edu.gatech.scrumbags.fxapp.MainFXApplication.Scenes;
 import edu.gatech.scrumbags.model.WaterSourceReport;
+import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.fxml.FXML;
 
-/** The controller for the all reports view, the view containing a list of all water source reports
- * @author Beau Mitchell */
+/**
+ * The controller for the all reports view, the view containing a list of all water source reports
+ *
+ * @author Beau Mitchell
+ */
 public class AllReportsController {
 	@FXML private Label descriptionLabel;
 	@FXML private Label locationLabel;
@@ -25,11 +27,10 @@ public class AllReportsController {
 	 * note: reports from MainFXApplication::waterReports are loaded
 	 * here when the view is loaded.
 	 */
-	@FXML
-	public void initialize() {
+	@FXML public void initialize () {
 		reportList.getItems().addAll(MainFXApplication.waterReports);
 		if (reportList == null || reportList.getItems().size() == 0) {
-			noReportsLabel.setVisible(true);
+			noReportsLabel.setVisible(trSue);
 			descriptionLabel.setVisible(false);
 			locationLabel.setVisible(false);
 			dateLabel.setVisible(false);
@@ -50,21 +51,22 @@ public class AllReportsController {
 			userLabel.setVisible(true);
 			conditionLabel.setVisible(true);
 			reportList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-                descriptionLabel.setText(newValue.getSourceTypeDescription());
-                locationLabel.setText(newValue.getLocationString());
-                dateLabel.setText(newValue.getDateString());
+				descriptionLabel.setText(newValue.getSourceTypeDescription());
+				locationLabel.setText(newValue.getLocationString());
+				dateLabel.setText(newValue.getDateString());
 				conditionLabel.setText(newValue.getSourceConditionDescription());
 				userLabel.setText("Submitted by " + newValue.getSubmitterName());
-            });
+			});
 		}
 		if (MainFXApplication.userInfo != null) {
 			MainFXApplication.loadScene(Scenes.main);
 		}
 	}
 
-	/** Returns to the main view when back button is pressed. */
-	@FXML
-	public void handleBackPressed () {
+	/**
+	 * Returns to the main view when back button is pressed.
+	 */
+	@FXML public void handleBackPressed () {
 		MainFXApplication.loadScene(Scenes.main);
 	}
 
@@ -72,8 +74,7 @@ public class AllReportsController {
 	 * Centers the map on this water source and returns to the map view
 	 * TODO in M7 (map not yet implemented)
 	 */
-	@FXML
-	public void handleViewPressed () {
+	@FXML public void handleViewPressed () {
 		MainFXApplication.loadScene(Scenes.main);
 	}
 }

@@ -1,4 +1,3 @@
-
 package edu.gatech.scrumbags.controller;
 
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
@@ -9,8 +8,11 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
-/** The controller for the login view.
- * @author Beau Mitchell */
+/**
+ * The controller for the login view.
+ *
+ * @author Beau Mitchell
+ */
 public class LoginController {
 	@FXML private Label badLoginLabel;
 
@@ -18,13 +20,14 @@ public class LoginController {
 
 	@FXML private PasswordField passwordField;
 
-	@FXML
-	public void initialize () {
+	@FXML public void initialize () {
 		badLoginLabel.setVisible(false);
 	}
 
-	@FXML
-	public void handleLoginPressed () {
+	/**
+	 * Authenticates user and brings the user to the main screen.
+	 */
+	@FXML public void handleLoginPressed () {
 		MainFXApplication.userInfo = MainFXApplication.authorizeUser(usernameField.getText(), passwordField.getText());
 		if (MainFXApplication.userInfo != null) {
 			MainFXApplication.loadScene(Scenes.main);
@@ -35,8 +38,10 @@ public class LoginController {
 		}
 	}
 
-	@FXML
-	public void handleCancelPressed () {
+	/**
+	 * Brings the user to the welcome screen.
+	 */
+	@FXML public void handleCancelPressed () {
 		MainFXApplication.loadScene(Scenes.welcome);
 	}
 }

@@ -10,41 +10,44 @@ package edu.gatech.scrumbags.model;
  */
 public class WaterLocation {
 
-    private double lat;
-    private double lng;
+	private double lat;
+	private double lng;
 
-    /**
-     * Creates a new Water report location from a latitude and longitude.
-     * @param lat Latitude of water report location
-     * @param lng Longitude of water report location
-     */
-    public WaterLocation(double lat, double lng) {
-        this.lat = lat;
-        this.lng = lng;
-    }
+	/**
+	 * Creates a new Water report location from a latitude and longitude.
+	 *
+	 * @param lat Latitude of water report location
+	 * @param lng Longitude of water report location
+	 */
+	public WaterLocation (double lat, double lng) {
+		this.lat = lat;
+		this.lng = lng;
+	}
 
-    /**
-     * Returns the latitude of this water location
-     * @return latitude
-     */
-    public double getLat() {
-        return lat;
-    }
+	/**
+	 * Returns the latitude of this water location
+	 *
+	 * @return latitude
+	 */
+	public double getLat () {
+		return lat;
+	}
 
-    /**
-     * Returns the longitude of this water location
-     * @return longitude
-     */
-    public double getLng() {
-        return lng;
-    }
+	/**
+	 * Returns the longitude of this water location
+	 *
+	 * @return longitude
+	 */
+	public double getLng () {
+		return lng;
+	}
 
-    /**
-     * Returns a string representation of this latitude, longitude pair
-     * @return String representation of the form "#,#"
-     */
-    @Override
-    public String toString() {
-        return String.format("%.8f, %.8f", lat, lng);
-    }
+	/**
+	 * Returns a string representation of this latitude, longitude pair
+	 *
+	 * @return String representation of the form "#,#"
+	 */
+	@Override public String toString () {
+		return String.format("%.8f, %.8f", lat, lng);
+	}
 }

@@ -20,8 +20,7 @@ public class MainController {
 	@FXML private Button profileButton;
 	@FXML private Button logoutButton;
 
-	@FXML
-	public void initialize() {
+	@FXML public void initialize () {
 		Authorized userInfo = MainFXApplication.userInfo;
 		if (userInfo.getAccountType() == AccountType.user) {
 			waterPurityReportButton.setVisible(false);
@@ -34,32 +33,44 @@ public class MainController {
 		}
 	}
 
-	/** Brings the user to the water source report screen. */
+	/**
+	 * Brings the user to the water source report screen.
+	 */
 	@FXML public void handleWaterSourceReportPressed () {
 		MainFXApplication.loadScene(Scenes.waterSourceReport);
 	}
 
-	/** Brings the user to the water purity report screen. */
+	/**
+	 * Brings the user to the water purity report screen.
+	 */
 	@FXML public void handleWaterPurityReportPressed () {
 		//MainFXApplication.loadScene(Scenes.waterPurityReport);
 	}
 
-	/** Brings the user to the historical report screen. */
+	/**
+	 * Brings the user to the historical report screen.
+	 */
 	@FXML public void handleHistoricalReportPressed () {
 		//MainFXApplication.loadScene(Scenes.historicalReport);
 	}
 
-	/** Brings the user to the all reports screen. */
+	/**
+	 * Brings the user to the all reports screen.
+	 */
 	@FXML public void handleAllReportsPressed () {
 		MainFXApplication.loadScene(Scenes.allReports);
 	}
 
-	/** Brings the user to the profle screen. */
+	/**
+	 * Brings the user to the profle screen.
+	 */
 	@FXML public void handleProfilePressed () {
 		MainFXApplication.loadScene(Scenes.profile);
 	}
 
-	/** Brings the user to the logout screen. */
+	/**
+	 * Brings the user to the logout screen.
+	 */
 	@FXML public void handleLogoutPressed () {
 		MainFXApplication.loadScene(Scenes.welcome);
 	}
