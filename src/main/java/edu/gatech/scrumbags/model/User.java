@@ -3,7 +3,7 @@ package edu.gatech.scrumbags.model;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**
- * The class that contains all of an (authorized) user's information.
+ * The class that contains all of an user's information.
  *
  * @author Jan Risse
  */
@@ -11,7 +11,7 @@ public class User {
 	private String first, last;
 	private String username;
 	private String pass;
-	private Authorization accountType;
+	private Authorization authorization;
 	private String email;
 	private String address;
 
@@ -29,7 +29,7 @@ public class User {
 		this.last = last;
 		this.username = username;
 		this.pass = BCrypt.hashpw(pass, BCrypt.gensalt());
-		this.accountType = authorization;
+		this.authorization = authorization;
 		this.setEmail("");
 		this.setAddress("");
 	}
@@ -77,7 +77,7 @@ public class User {
 	 * @return User's account type.
 	 */
 	public Authorization getAccountType () {
-		return accountType;
+		return authorization;
 	}
 
 	/**
