@@ -1,4 +1,3 @@
-
 package edu.gatech.scrumbags.controller;
 
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
@@ -9,8 +8,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-/** The controller for the profile view. Displays all user information and allows editing of the user's email and address.
- * @author Jan Risse */
+/**
+ * The controller for the profile view. Displays all user information and allows editing of the user's email and address.
+ *
+ * @author Jan Risse
+ */
 public class ProfileController {
 	@FXML private Label userFirstLast;
 	@FXML private Label userAccountType;
@@ -23,8 +25,7 @@ public class ProfileController {
 
 	private boolean editMode;
 
-	@FXML
-	public void initialize () {
+	@FXML public void initialize () {
 		User userInfo = MainFXApplication.userInfo;
 		if (MainFXApplication.userInfo == null) {
 			MainFXApplication.loadScene(Scenes.welcome);
@@ -39,7 +40,9 @@ public class ProfileController {
 		editMode = false;
 	}
 
-	/** Resets email and address labels to the session's user's info. */
+	/**
+	 * Resets email and address labels to the session's user's info.
+	 */
 	private void resetEditableLabels () {
 		User userInfo = MainFXApplication.userInfo;
 		userEmail.setVisible(true);
@@ -50,13 +53,15 @@ public class ProfileController {
 		userAddress.setText(userInfo.getAddress());
 	}
 
-	/** Switches in between edit and view mode for the email and address fields. */
-	@FXML
-	public void handleEditPressed () {
+	/**
+	 * Switches in between edit and view mode for the email and address fields.
+	 */
+	@FXML public void handleEditPressed () {
 		User userInfo = MainFXApplication.userInfo;
 		if (editMode) {
-			userInfo.setEmail(emailTextField.getText());
-			userInfo.setAddress(addressTextField.getText());
+			//userInfo.setEmail(emailTextField.getText());
+			//userInfo.setAddress(addressTextField.getText());
+			MainFXApplication.client.updateUserInfo(emailTextField.getText(), addressTextField.getText());
 			resetEditableLabels();
 
 			emailTextField.setVisible(false);
@@ -82,8 +87,7 @@ public class ProfileController {
 	/**
 	 * Brings the user back to the main screen.
 	 */
-	@FXML
-	public void handleBackPressed () {
+	@FXML public void handleBackPressed () {
 		MainFXApplication.loadScene(Scenes.main);
 		// MainFXApplication.userInfo = null;
 	}

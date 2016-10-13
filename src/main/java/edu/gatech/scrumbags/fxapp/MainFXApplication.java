@@ -43,7 +43,7 @@ public class MainFXApplication extends Application {
 		}
 	}
 
-	public static final String version = "0.5.2.5";
+	public static final String version = "0.5.2.6";
 
 	public static ArrayList<User> allUsers;
 	public static List<WaterSourceReport> waterReports;
@@ -96,7 +96,7 @@ public class MainFXApplication extends Application {
 	 * @return The Authorized user object the given username and password correspond to (if one exists).
 	 */
 	public static User authorizeUser (String username, String password) {
-		return client.loginUser(username,password);
+		return client.loginUser(username, password);
 	}
 
 	/**
@@ -104,8 +104,7 @@ public class MainFXApplication extends Application {
 	 *
 	 * @return The Authorized user object that was created, if the given username does not already exist.
 	 */
-	public static User createAccount (String first, String last, String username, String password,
-		Authorization accountType) {
+	public static User createAccount (String first, String last, String username, String password, Authorization accountType) {
 		for (User auth : allUsers) {
 			if (auth.getUsername().equals(username))
 				return null;
@@ -124,9 +123,8 @@ public class MainFXApplication extends Application {
 		client.sendWaterReport(report);
 	}
 
-	public static void disconnect()
-	{
-		userInfo=null;
+	public static void disconnect () {
+		userInfo = null;
 		client = new Client();
 		client.start();
 		System.out.println("Reconnecting");
