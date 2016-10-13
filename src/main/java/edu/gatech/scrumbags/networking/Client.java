@@ -162,4 +162,8 @@ public class Client extends Thread {
 			MainFXApplication.userInfo.setAddress(handle.getPayload()[1]);
 		handle = null;
 	}
+	public void logout()
+	{
+		sendMessage(new Message(Message.MessageType.logout));
+	}
 }

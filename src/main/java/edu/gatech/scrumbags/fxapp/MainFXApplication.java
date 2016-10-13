@@ -43,7 +43,7 @@ public class MainFXApplication extends Application {
 		}
 	}
 
-	public static final String version = "0.5.2.8";
+	public static final String version = "0.5.3.0";
 
 	public static ArrayList<User> allUsers;
 	public static List<WaterSourceReport> waterReports;
@@ -134,4 +134,8 @@ public class MainFXApplication extends Application {
 		client.start();
 		System.out.println("Reconnecting");
 	}
-}
+	public static void logout()
+	{
+		client.logout();
+	}
+ }

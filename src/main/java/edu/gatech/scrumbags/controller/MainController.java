@@ -73,5 +73,6 @@ public class MainController {
 	 */
 	@FXML public void handleLogoutPressed () {
 		MainFXApplication.loadScene(Scenes.welcome);
+		MainFXApplication.logout();
 	}
 }
