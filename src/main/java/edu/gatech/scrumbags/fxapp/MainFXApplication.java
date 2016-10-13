@@ -43,7 +43,7 @@ public class MainFXApplication extends Application {
 		}
 	}
 
-	public static final String version = "0.5.2.1";
+	public static final String version = "0.5.2.3";
 
 	public static ArrayList<User> allUsers;
 	public static List<WaterSourceReport> waterReports;
@@ -98,7 +98,7 @@ public class MainFXApplication extends Application {
 	public static User authorizeUser (String username, String password) {
 		for (User auth : allUsers) {
 			if (auth.authenticate(username, password)) {
-				client.loginUser(auth);
+				client.loginUser(auth,password);
 				return auth;
 			}
 		}
@@ -116,10 +116,10 @@ public class MainFXApplication extends Application {
 			if (auth.getUsername().equals(username))
 				return null;
 		}
-		User auth = new User(first, last, username, password, accountType);
+		User auth = new User(first, last, username, accountType);
 		allUsers.add(auth);
 
-		client.registerUser(auth);
+		client.registerUser(auth, password);
 
 		return auth;
 	}

@@ -22,12 +22,12 @@ public class MainController {
 
 	@FXML public void initialize () {
 		User userInfo = MainFXApplication.userInfo;
-		if (userInfo.getAccountType() == Authorization.user) {
+		if (userInfo.getAuthorization() == Authorization.user) {
 			waterPurityReportButton.setVisible(false);
 			waterPurityReportButton.setManaged(false);
 			historicalReportButton.setVisible(false);
 			historicalReportButton.setManaged(false);
-		} else if (userInfo.getAccountType() == Authorization.worker) {
+		} else if (userInfo.getAuthorization() == Authorization.worker) {
 			historicalReportButton.setVisible(false);
 			historicalReportButton.setManaged(false);
 		}

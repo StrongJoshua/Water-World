@@ -1,5 +1,6 @@
 
 package edu.gatech.scrumbags.networking;
+import edu.gatech.scrumbags.fxapp.MainFXApplication;
 import edu.gatech.scrumbags.model.User;
 import edu.gatech.scrumbags.model.WaterSourceReport;
 import edu.gatech.scrumbags.networking.messages.Message;
@@ -73,7 +74,14 @@ public class Client extends Thread {
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("Could not send message " + m);
-		}	}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			System.out.println("Could not send message " + m);
+			MainFXApplication.loadScene(MainFXApplication.Scenes.welcome);
+		}
+	}
 	private static void readMessage (Object o) {
 		Message m =json.fromJson((String)o, Message.class);
 		 System.out.println("Recieved: " + o);
@@ -86,9 +94,6 @@ public class Client extends Thread {
 		else if (m.getType() == Message.MessageType.loginfailed) {
 
 		}
-		else if (m.getType() == Message.MessageType.userInfo) {
-
-		}
 		else if (m.getType() == Message.MessageType.console) {
 
 		}
@@ -97,14 +102,12 @@ public class Client extends Thread {
 		}
 	}
 
-	public void registerUser (User user) {
-		sendMessage(new Message(Message.MessageType.registration, json.toJson(user)));
+	public void registerUser (User user, String password) {
+		sendMessage(new Message(Message.MessageType.registration, new String[] {user.getFirst(), user.getLast(), user.getUsername(),
+			password, user.getAuthorization().toString(), user.getEmail(),user.getAddress()}));
 	}
-	public void loginUser (User user) {
-		sendMessage(new Message(Message.MessageType.login, json.toJson(user)));
-	}
-	public void getUser(String username) {
-		sendMessage(new Message(Message.MessageType.userInfo, json.toJson(username)));
+	public void loginUser (User user, String password) {
+		sendMessage(new Message(Message.MessageType.login, new String[] {user.getUsername(), password}));
 	}
 	public void sendWaterReport(WaterSourceReport report) {
 		sendMessage(new Message(Message.MessageType.sendWaterReport, json.toJson(report)));

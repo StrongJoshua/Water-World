@@ -31,7 +31,7 @@ public class ProfileController {
 		}
 
 		userFirstLast.setText(userInfo.getFullName());
-		String account = userInfo.getAccountType().toString();
+		String account = userInfo.getAuthorization().toString();
 		userAccountType.setText(account.substring(0, 1).toUpperCase() + account.substring(1));
 
 		resetEditableLabels();

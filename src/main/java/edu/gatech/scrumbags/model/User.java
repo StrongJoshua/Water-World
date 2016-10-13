@@ -74,7 +74,7 @@ public class User {
 	/**
 	 * @return User's account type.
 	 */
-	public Authorization getAccountType () {
+	public Authorization getAuthorization () {
 		return authorization;
 	}
 
