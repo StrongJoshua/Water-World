@@ -1,7 +1,4 @@
-
 package edu.gatech.scrumbags.controller;
-
-import java.util.Arrays;
 
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
 import edu.gatech.scrumbags.model.AccountType;
@@ -13,8 +10,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-/** The controller for the registration view.
- * @author Rishi Raj */
+import java.util.Arrays;
+
+/**
+ * The controller for the registration view.
+ *
+ * @author Rishi Raj
+ */
 public class RegistrationController {
 
 	@FXML private TextField firstNameField;
@@ -29,19 +31,20 @@ public class RegistrationController {
 
 	@FXML private Label errorLabel;
 
-	@FXML
-	public void initialize () {
+	@FXML public void initialize () {
 		accountTypeCombo.setItems(FXCollections.observableArrayList(Arrays.asList(AccountType.values())));
 		accountTypeCombo.setValue(AccountType.user);
 		setErrorMessage(null);
 	}
 
-	/** Ensures the password and confirm password match then creates a new user in the backend. */
-	@FXML
-	public void handleRegisterPressed () {
+	/**
+	 * Ensures the password and confirm password match then creates a new user in the backend.
+	 */
+	@FXML public void handleRegisterPressed () {
 		if (passwordField.getText().equals(confirmPasswordField.getText())) {
-			Authorized userInfo = MainFXApplication.createAccount(firstNameField.getText(), lastNameField.getText(),
-				usernameField.getText(), passwordField.getText(), accountTypeCombo.getValue());
+			Authorized userInfo = MainFXApplication
+				.createAccount(firstNameField.getText(), lastNameField.getText(), usernameField.getText(),
+					passwordField.getText(), accountTypeCombo.getValue());
 			if (userInfo != null) {
 				MainFXApplication.userInfo = userInfo;
 				MainFXApplication.loadScene(MainFXApplication.Scenes.main);
@@ -53,8 +56,11 @@ public class RegistrationController {
 		}
 	}
 
-	/** Shows the error label and sets the message.
-	 * @param msg The message to have the label display. */
+	/**
+	 * Shows the error label and sets the message.
+	 *
+	 * @param msg The message to have the label display.
+	 */
 	private void setErrorMessage (String msg) {
 		if (msg != null) {
 			errorLabel.setText(msg);
@@ -63,9 +69,10 @@ public class RegistrationController {
 			errorLabel.setVisible(false);
 	}
 
-	/** Loads application back to the welcome scene. */
-	@FXML
-	public void handleCancelPressed () {
+	/**
+	 * Loads application back to the welcome scene.
+	 */
+	@FXML public void handleCancelPressed () {
 		MainFXApplication.loadScene(MainFXApplication.Scenes.welcome);
 	}
 }

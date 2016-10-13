@@ -1,10 +1,4 @@
-
 package edu.gatech.scrumbags.fxapp;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 import edu.gatech.scrumbags.model.*;
 import edu.gatech.scrumbags.networking.Client;
@@ -14,19 +8,26 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/** The main class for the FX app.
- * @author Beau Mitchell */
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+/**
+ * The main class for the FX app.
+ *
+ * @author Beau Mitchell
+ */
 public class MainFXApplication extends Application {
-	/** An enum that contains shortcuts to all the views.
-	 * @author Jan Risse */
+	/**
+	 * An enum that contains shortcuts to all the views.
+	 *
+	 * @author Jan Risse
+	 */
 	public enum Scenes {
-		welcome("/view/WelcomeView.fxml"),
-		login("/view/LoginView.fxml"),
-		main("/view/MainView.fxml"),
-		profile("/view/ProfileView.fxml"),
-		registration("/view/RegistrationView.fxml"),
-		allReports("/view/AllReportsView.fxml"),
-		waterSourceReport("/view/WaterSourceReportView.fxml");
+		welcome("/view/WelcomeView.fxml"), login("/view/LoginView.fxml"), main("/view/MainView.fxml"), profile(
+			"/view/ProfileView.fxml"), registration("/view/RegistrationView.fxml"), allReports(
+			"/view/AllReportsView.fxml"), waterSourceReport("/view/WaterSourceReportView.fxml");
 
 		private String path;
 
@@ -34,7 +35,9 @@ public class MainFXApplication extends Application {
 			this.path = path;
 		}
 
-		/** @return The scene's path. */
+		/**
+		 * @return The scene's path.
+		 */
 		private String getPath () {
 			return path;
 		}
@@ -49,22 +52,25 @@ public class MainFXApplication extends Application {
 	public static Authorized userInfo;
 	public static Client client;
 
-	@Override
-	public void start (Stage primaryStage) {
+	@Override public void start (Stage primaryStage) {
 		mainStage = primaryStage;
 		loadScene(Scenes.welcome);
 		primaryStage.show();
 		allUsers = new ArrayList<>();
 		createAccount("SCRUMBags", "2340", "SCRUMBags", "2340", AccountType.admin);
 		waterReports = new ArrayList<>();
-		waterReports.add(new WaterSourceReport(new WaterLocation(0d, 0d), WaterType.Other,
-			WaterCondition.Treatable_Muddy, "Bill", new Date(1460000000000L)));
-		waterReports.add(new WaterSourceReport(new WaterLocation(33.7490, 84.3880), WaterType.Bottled,
-			WaterCondition.Treatable_Clear, "Francis"));
+		waterReports.add(new WaterSourceReport(new WaterLocation(0d, 0d), WaterType.Other, WaterCondition.Treatable_Muddy, "Bill",
+			new Date(1460000000000L)));
+		waterReports.add(
+			new WaterSourceReport(new WaterLocation(33.7490, 84.3880), WaterType.Bottled, WaterCondition.Treatable_Clear,
+				"Francis"));
 	}
 
-	/** Loads a scene into the FX app.
-	 * @param scene A constant from the {@link Scenes} enum. */
+	/**
+	 * Loads a scene into the FX app.
+	 *
+	 * @param scene A constant from the {@link Scenes} enum.
+	 */
 	public static void loadScene (Scenes scene) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
@@ -82,10 +88,13 @@ public class MainFXApplication extends Application {
 		launch(args);
 	}
 
-	/** Checks the given username and password against all registered users.
+	/**
+	 * Checks the given username and password against all registered users.
+	 *
 	 * @param username The username to check.
 	 * @param password The password to compare.
-	 * @return The Authorized user object the given username and password correspond to (if one exists). */
+	 * @return The Authorized user object the given username and password correspond to (if one exists).
+	 */
 	public static Authorized authorizeUser (String username, String password) {
 		for (Authorized auth : allUsers) {
 			if (auth.authenticate(username, password)) {
@@ -96,12 +105,16 @@ public class MainFXApplication extends Application {
 		return null;
 	}
 
-	/** See {@link Authorized#Authorized(String, String, String, String, AccountType)}
-	 * @return The Authorized user object that was created, if the given username does not already exist. */
+	/**
+	 * See {@link Authorized#Authorized(String, String, String, String, AccountType)}
+	 *
+	 * @return The Authorized user object that was created, if the given username does not already exist.
+	 */
 	public static Authorized createAccount (String first, String last, String username, String password,
 		AccountType accountType) {
 		for (Authorized auth : allUsers) {
-			if (auth.getUsername().equals(username)) return null;
+			if (auth.getUsername().equals(username))
+				return null;
 		}
 		Authorized auth = new Authorized(first, last, username, password, accountType);
 		allUsers.add(auth);
@@ -111,8 +124,7 @@ public class MainFXApplication extends Application {
 		return auth;
 	}
 
-	public static void addWaterSourceReport (WaterLocation loc, WaterType title, WaterCondition condition,
-		String name, Date d) {
+	public static void addWaterSourceReport (WaterLocation loc, WaterType title, WaterCondition condition, String name, Date d) {
 		WaterSourceReport report = new WaterSourceReport(loc, title, condition, name, d);
 		waterReports.add(report);
 		client.sendWaterReport(report);
