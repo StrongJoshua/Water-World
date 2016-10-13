@@ -10,7 +10,6 @@ import org.mindrot.jbcrypt.BCrypt;
 public class User {
 	private String first, last;
 	private String username;
-	private String password;
 	private Authorization authorization;
 	private String email;
 	private String address;
@@ -21,14 +20,12 @@ public class User {
 	 * @param first    The user's first name.
 	 * @param last     The user's last name.
 	 * @param username The user's username.
-	 * @param password     The user's password (stored in a hash).
 	 * @param authorization  The user's authorization.
 	 */
-	public User (String first, String last, String username, String password, Authorization authorization) {
+	public User (String first, String last, String username, Authorization authorization) {
 		this.first = first;
 		this.last = last;
 		this.username = username;
-		this.password = BCrypt.hashpw(password, BCrypt.gensalt());
 		this.authorization = authorization;
 		this.setEmail("");
 		this.setAddress("");
@@ -42,7 +39,8 @@ public class User {
 	 * @return Whether the user is authenticated.
 	 */
 	public boolean authenticate (String username, String pass) {
-		return username.equalsIgnoreCase(this.username) && BCrypt.checkpw(pass, this.password);
+		return false; // broken
+		//return username.equalsIgnoreCase(this.username) && BCrypt.checkpw(pass, this.password);
 	}
 
 	/**
