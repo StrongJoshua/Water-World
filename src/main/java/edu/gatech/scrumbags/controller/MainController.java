@@ -69,7 +69,7 @@ public class MainController {
 	}
 
 	/**
-	 * Brings the user to the logout screen.
+	 * Brings the user to the welcome screen.
 	 */
 	@FXML public void handleLogoutPressed () {
 		MainFXApplication.loadScene(Scenes.welcome);
