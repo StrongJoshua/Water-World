@@ -1,7 +1,5 @@
 package edu.gatech.scrumbags.model;
 
-import org.mindrot.jbcrypt.BCrypt;
-
 /**
  * The class that contains all of an user's information.
  *
