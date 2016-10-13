@@ -43,7 +43,7 @@ public class MainFXApplication extends Application {
 		}
 	}
 
-	public static final String version = "0.5.2.4";
+	public static final String version = "0.5.2.5";
 
 	public static ArrayList<User> allUsers;
 	public static List<WaterSourceReport> waterReports;
@@ -54,10 +54,11 @@ public class MainFXApplication extends Application {
 
 	@Override public void start (Stage primaryStage) {
 		mainStage = primaryStage;
+		disconnect();
 		loadScene(Scenes.welcome);
 		primaryStage.show();
 		allUsers = new ArrayList<>();
-		createAccount("SCRUMBags", "2340", "SCRUMBags", "2340", Authorization.admin);
+		//createAccount("SCRUMBags", "2340", "SCRUMBags", "2340", Authorization.admin);
 		waterReports = new ArrayList<>();
 		waterReports.add(new WaterSourceReport(new WaterLocation(0d, 0d), WaterType.Other, WaterCondition.Treatable_Muddy, "Bill",
 			new Date(1460000000000L)));
@@ -84,7 +85,6 @@ public class MainFXApplication extends Application {
 	}
 
 	public static void main (String[] args) {
-		client = new Client();
 		launch(args);
 	}
 
@@ -96,13 +96,7 @@ public class MainFXApplication extends Application {
 	 * @return The Authorized user object the given username and password correspond to (if one exists).
 	 */
 	public static User authorizeUser (String username, String password) {
-		for (User auth : allUsers) {
-			if (auth.authenticate(username, password)) {
-				client.loginUser(auth,password);
-				return auth;
-			}
-		}
-		return null;
+		return client.loginUser(username,password);
 	}
 
 	/**
@@ -128,5 +122,12 @@ public class MainFXApplication extends Application {
 		WaterSourceReport report = new WaterSourceReport(loc, title, condition, name, d);
 		waterReports.add(report);
 		client.sendWaterReport(report);
+	}
+
+	public static void disconnect()
+	{
+		userInfo=null;
+		client = new Client();
+		client.start();
 	}
 }

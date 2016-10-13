@@ -19,26 +19,26 @@ public class Client extends Thread {
 	private static ObjectOutputStream out;
 	private static Gson json;
 	private static boolean connected = false;
-	private static boolean running;
-	private volatile Message handle;
+	private volatile boolean running;
+	private volatile Message handle = null;
 	private volatile boolean request;
 
 	public Client () {
 		json = new Gson();
+	}
+
+	@Override
+	public void run () {
+		running = true;
 		try {
 			socket = new Socket(InetAddress.getByName("ec2-52-25-113-216.us-west-2.compute.amazonaws.com"),
 				63400);
 			out = new ObjectOutputStream(socket.getOutputStream());
 			in = new ObjectInputStream(socket.getInputStream());
 		} catch (IOException e) {
-			e.printStackTrace();
+			quit();
 		}
 		connected = true;
-	}
-
-	@Override
-	public void run () {
-		running = true;
 
 		new Thread() {
 			@Override
@@ -46,8 +46,11 @@ public class Client extends Thread {
 				while (running) {
 					try {
 						//System.out.print(json.fromJson((String)in.readObject(), Message.class).getPayload()[0]);
+						//System.out.println("Waiting");
+						if(in != null)
 						readMessage(in.readObject());
 						} catch (ClassNotFoundException | IOException e) {
+						quit();
 					}
 				}
 			}
@@ -56,14 +59,18 @@ public class Client extends Thread {
 	private void quit () {
 		running = false;
 		try {
+			if(in != null)
 			in.close();
+			if(out != null)
 			out.close();
+			if(socket!=null)
 			socket.close();
 		} catch (IOException e) {
 		}
+		MainFXApplication.disconnect();
 	}
 
-	public static void sendMessage (Message m) {
+	public void sendMessage (Message m) {
 		if (!connected) {
 			System.out.println("Not connected to server, cannot send message");
 			return;
@@ -73,18 +80,19 @@ public class Client extends Thread {
 			out.writeObject(s);
 			System.out.println("Sent " + s);
 		} catch (IOException e) {
-			e.printStackTrace();
 			System.out.println("Could not send message " + m);
+			quit();
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 			System.out.println("Could not send message " + m);
-			MainFXApplication.loadScene(MainFXApplication.Scenes.welcome);
+			quit();
 		}
 	}
 	private void readMessage (Object o) {
 		Message m = json.fromJson((String)o, Message.class);
+		System.out.println(o);
 		if(request) {
 			request = false;
 			handle = m;
@@ -107,8 +115,8 @@ public class Client extends Thread {
 		sendMessage(new Message(Message.MessageType.registration, new String[] {user.getFirst(), user.getLast(), user.getUsername(),
 			password, user.getAuthorization().toString(), user.getEmail(),user.getAddress()}));
 	}
-	public User loginUser (User user, String password) {
-		sendMessage(new Message(Message.MessageType.login, new String[] {user.getUsername(), password}));
+	public User loginUser (String username, String password) {
+		sendMessage(new Message(Message.MessageType.login, new String[] {username, password}));
 		request = true;
 		while(handle == null)
 		{
@@ -123,7 +131,7 @@ public class Client extends Thread {
 			return null;
 		}
 		String[] info = handle.getPayload();
-		return new User(info[0], info[1],info[2], Authorization.valueOf(info[4]), info[5], info[6]);
+		return new User(info[0], info[1],info[2], Authorization.valueOf(info[3]) , info[4], info[5]);
 
 	}
 	public void sendWaterReport(WaterSourceReport report) {
