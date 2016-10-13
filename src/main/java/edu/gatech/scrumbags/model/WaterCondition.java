@@ -3,7 +3,7 @@ package edu.gatech.scrumbags.model;
 /**
  * List of possible water conditions.
  *
- * @author gnoziere (Guillaume Noziere)
+ * @author gnoziere
  */
 public enum WaterCondition {
 	Waste("Waste water"), Treatable_Clear("Treatable water (clear)"), Treatable_Muddy("Treatable water (muddy)"), Potable(
