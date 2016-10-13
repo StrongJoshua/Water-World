@@ -1,8 +1,4 @@
-// package declaration
-
 package edu.gatech.scrumbags.controller;
-
-// package imports
 
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
 import edu.gatech.scrumbags.model.WaterCondition;
@@ -14,15 +10,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
 import java.util.Arrays;
 
-// JavaFX imports
-// java.util imports
 
 /**
  * Controls the flow of information when someone creates a new water source report.
- * Created by gnoziere on 10/09/2016.
+ *
+ * @author gnoziere
  */
 public class WaterSourceReportController {
 
