@@ -30,7 +30,7 @@ public class AllReportsController {
 	@FXML public void initialize () {
 		reportList.getItems().addAll(MainFXApplication.waterReports);
 		if (reportList == null || reportList.getItems().size() == 0) {
-			noReportsLabel.setVisible(trSue);
+			noReportsLabel.setVisible(true);
 			descriptionLabel.setVisible(false);
 			locationLabel.setVisible(false);
 			dateLabel.setVisible(false);
