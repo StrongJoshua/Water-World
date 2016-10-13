@@ -43,7 +43,7 @@ public class MainFXApplication extends Application {
 		}
 	}
 
-	public static final String version = "0.5.3.0";
+	public static final String version = "0.6.0.1";
 
 	public static ArrayList<User> allUsers;
 	public static List<WaterSourceReport> waterReports;
@@ -122,18 +122,33 @@ public class MainFXApplication extends Application {
 		return auth;
 	}
 
+	/**
+	 * Saves water report
+	 * @param loc Water location
+	 * @param title report title
+	 * @param condition water condition
+	 * @param name if other
+	 * @param d date report
+	 */
 	public static void addWaterSourceReport (WaterLocation loc, WaterType title, WaterCondition condition, String name, Date d) {
 		WaterSourceReport report = new WaterSourceReport(loc, title, condition, name, d);
 		waterReports.add(report);
 		client.sendWaterReport(report);
 	}
 
+	/**
+	 * This method will reattempt connection if it is ever lost
+	 */
 	public static void disconnect () {
 		userInfo = null;
 		client = new Client();
 		client.start();
 		System.out.println("Reconnecting");
 	}
+
+	/**
+	 * Will log the client out when the logout button is pressed
+	 */
 	public static void logout()
 	{
 		client.logout();
