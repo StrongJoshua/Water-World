@@ -45,11 +45,11 @@ public class MainFXApplication extends Application {
 
 	public static final String version = "0.5.2.1";
 
-	public static ArrayList<Authorized> allUsers;
+	public static ArrayList<User> allUsers;
 	public static List<WaterSourceReport> waterReports;
 
 	public static Stage mainStage;
-	public static Authorized userInfo;
+	public static User userInfo;
 	public static Client client;
 
 	@Override public void start (Stage primaryStage) {
@@ -57,7 +57,7 @@ public class MainFXApplication extends Application {
 		loadScene(Scenes.welcome);
 		primaryStage.show();
 		allUsers = new ArrayList<>();
-		createAccount("SCRUMBags", "2340", "SCRUMBags", "2340", AccountType.admin);
+		createAccount("SCRUMBags", "2340", "SCRUMBags", "2340", Authorization.admin);
 		waterReports = new ArrayList<>();
 		waterReports.add(new WaterSourceReport(new WaterLocation(0d, 0d), WaterType.Other, WaterCondition.Treatable_Muddy, "Bill",
 			new Date(1460000000000L)));
@@ -95,8 +95,8 @@ public class MainFXApplication extends Application {
 	 * @param password The password to compare.
 	 * @return The Authorized user object the given username and password correspond to (if one exists).
 	 */
-	public static Authorized authorizeUser (String username, String password) {
-		for (Authorized auth : allUsers) {
+	public static User authorizeUser (String username, String password) {
+		for (User auth : allUsers) {
 			if (auth.authenticate(username, password)) {
 				client.loginUser(auth);
 				return auth;
@@ -106,17 +106,17 @@ public class MainFXApplication extends Application {
 	}
 
 	/**
-	 * See {@link Authorized#Authorized(String, String, String, String, AccountType)}
+	 * See {@link User#Authorized(String, String, String, String, Authorization)}
 	 *
 	 * @return The Authorized user object that was created, if the given username does not already exist.
 	 */
-	public static Authorized createAccount (String first, String last, String username, String password,
-		AccountType accountType) {
-		for (Authorized auth : allUsers) {
+	public static User createAccount (String first, String last, String username, String password,
+		Authorization accountType) {
+		for (User auth : allUsers) {
 			if (auth.getUsername().equals(username))
 				return null;
 		}
-		Authorized auth = new Authorized(first, last, username, password, accountType);
+		User auth = new User(first, last, username, password, accountType);
 		allUsers.add(auth);
 
 		client.registerUser(auth);

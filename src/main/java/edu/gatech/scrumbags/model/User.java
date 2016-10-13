@@ -7,11 +7,11 @@ import org.mindrot.jbcrypt.BCrypt;
  *
  * @author Jan Risse
  */
-public class Authorized {
+public class User {
 	private String first, last;
 	private String username;
 	private String pass;
-	private AccountType accountType;
+	private Authorization accountType;
 	private String email;
 	private String address;
 
@@ -22,14 +22,14 @@ public class Authorized {
 	 * @param last     The user's last name.
 	 * @param username The user's username.
 	 * @param pass     The user's password (stored in a hash).
-	 * @param account  The user's account type.
+	 * @param authorization  The user's authorization.
 	 */
-	public Authorized (String first, String last, String username, String pass, AccountType account) {
+	public User (String first, String last, String username, String pass, Authorization authorization) {
 		this.first = first;
 		this.last = last;
 		this.username = username;
 		this.pass = BCrypt.hashpw(pass, BCrypt.gensalt());
-		this.accountType = account;
+		this.accountType = authorization;
 		this.setEmail("");
 		this.setAddress("");
 	}
@@ -76,7 +76,7 @@ public class Authorized {
 	/**
 	 * @return User's account type.
 	 */
-	public AccountType getAccountType () {
+	public Authorization getAccountType () {
 		return accountType;
 	}
 

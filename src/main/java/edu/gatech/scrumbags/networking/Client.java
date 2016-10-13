@@ -1,6 +1,6 @@
 
 package edu.gatech.scrumbags.networking;
-import edu.gatech.scrumbags.model.Authorized;
+import edu.gatech.scrumbags.model.User;
 import edu.gatech.scrumbags.model.WaterSourceReport;
 import edu.gatech.scrumbags.networking.messages.Message;
 
@@ -97,10 +97,10 @@ public class Client extends Thread {
 		}
 	}
 
-	public void registerUser (Authorized user) {
+	public void registerUser (User user) {
 		sendMessage(new Message(Message.MessageType.registration, json.toJson(user)));
 	}
-	public void loginUser (Authorized user) {
+	public void loginUser (User user) {
 		sendMessage(new Message(Message.MessageType.login, json.toJson(user)));
 	}
 	public void getUser(String username) {

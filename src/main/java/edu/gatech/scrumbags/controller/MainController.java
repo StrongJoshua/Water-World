@@ -2,8 +2,8 @@ package edu.gatech.scrumbags.controller;
 
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
 import edu.gatech.scrumbags.fxapp.MainFXApplication.Scenes;
-import edu.gatech.scrumbags.model.AccountType;
-import edu.gatech.scrumbags.model.Authorized;
+import edu.gatech.scrumbags.model.Authorization;
+import edu.gatech.scrumbags.model.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
@@ -21,13 +21,13 @@ public class MainController {
 	@FXML private Button logoutButton;
 
 	@FXML public void initialize () {
-		Authorized userInfo = MainFXApplication.userInfo;
-		if (userInfo.getAccountType() == AccountType.user) {
+		User userInfo = MainFXApplication.userInfo;
+		if (userInfo.getAccountType() == Authorization.user) {
 			waterPurityReportButton.setVisible(false);
 			waterPurityReportButton.setManaged(false);
 			historicalReportButton.setVisible(false);
 			historicalReportButton.setManaged(false);
-		} else if (userInfo.getAccountType() == AccountType.worker) {
+		} else if (userInfo.getAccountType() == Authorization.worker) {
 			historicalReportButton.setVisible(false);
 			historicalReportButton.setManaged(false);
 		}

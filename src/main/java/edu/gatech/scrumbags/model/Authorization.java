@@ -5,6 +5,6 @@ package edu.gatech.scrumbags.model;
  *
  * @author Jan Risse
  */
-public enum AccountType {
+public enum Authorization {
 	user, worker, manager, admin
 }

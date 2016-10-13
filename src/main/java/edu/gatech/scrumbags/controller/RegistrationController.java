@@ -1,8 +1,8 @@
 package edu.gatech.scrumbags.controller;
 
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
-import edu.gatech.scrumbags.model.AccountType;
-import edu.gatech.scrumbags.model.Authorized;
+import edu.gatech.scrumbags.model.Authorization;
+import edu.gatech.scrumbags.model.User;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -27,13 +27,13 @@ public class RegistrationController {
 
 	@FXML private PasswordField confirmPasswordField;
 
-	@FXML private ComboBox<AccountType> accountTypeCombo;
+	@FXML private ComboBox<Authorization> accountTypeCombo;
 
 	@FXML private Label errorLabel;
 
 	@FXML public void initialize () {
-		accountTypeCombo.setItems(FXCollections.observableArrayList(Arrays.asList(AccountType.values())));
-		accountTypeCombo.setValue(AccountType.user);
+		accountTypeCombo.setItems(FXCollections.observableArrayList(Arrays.asList(Authorization.values())));
+		accountTypeCombo.setValue(Authorization.user);
 		setErrorMessage(null);
 	}
 
@@ -42,7 +42,7 @@ public class RegistrationController {
 	 */
 	@FXML public void handleRegisterPressed () {
 		if (passwordField.getText().equals(confirmPasswordField.getText())) {
-			Authorized userInfo = MainFXApplication
+			User userInfo = MainFXApplication
 				.createAccount(firstNameField.getText(), lastNameField.getText(), usernameField.getText(),
 					passwordField.getText(), accountTypeCombo.getValue());
 			if (userInfo != null) {

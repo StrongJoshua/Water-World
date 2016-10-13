@@ -3,7 +3,7 @@ package edu.gatech.scrumbags.controller;
 
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
 import edu.gatech.scrumbags.fxapp.MainFXApplication.Scenes;
-import edu.gatech.scrumbags.model.Authorized;
+import edu.gatech.scrumbags.model.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -25,7 +25,7 @@ public class ProfileController {
 
 	@FXML
 	public void initialize () {
-		Authorized userInfo = MainFXApplication.userInfo;
+		User userInfo = MainFXApplication.userInfo;
 		if (MainFXApplication.userInfo == null) {
 			MainFXApplication.loadScene(Scenes.welcome);
 		}
@@ -41,7 +41,7 @@ public class ProfileController {
 
 	/** Resets email and address labels to the session's user's info. */
 	private void resetEditableLabels () {
-		Authorized userInfo = MainFXApplication.userInfo;
+		User userInfo = MainFXApplication.userInfo;
 		userEmail.setVisible(true);
 		userEmail.setManaged(true);
 		userAddress.setVisible(true);
@@ -53,7 +53,7 @@ public class ProfileController {
 	/** Switches in between edit and view mode for the email and address fields. */
 	@FXML
 	public void handleEditPressed () {
-		Authorized userInfo = MainFXApplication.userInfo;
+		User userInfo = MainFXApplication.userInfo;
 		if (editMode) {
 			userInfo.setEmail(emailTextField.getText());
 			userInfo.setAddress(addressTextField.getText());
