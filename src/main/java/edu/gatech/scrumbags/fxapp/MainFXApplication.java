@@ -129,5 +129,6 @@ public class MainFXApplication extends Application {
 		userInfo=null;
 		client = new Client();
 		client.start();
+		System.out.println("Reconnecting");
 	}
 }
