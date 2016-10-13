@@ -35,7 +35,8 @@ public class Client extends Thread {
 			out = new ObjectOutputStream(socket.getOutputStream());
 			in = new ObjectInputStream(socket.getInputStream());
 		} catch (IOException e) {
-			quit();
+			if(running)
+			disconnect();
 		}
 		connected = true;
 
@@ -48,14 +49,15 @@ public class Client extends Thread {
 						if (in != null)
 							readMessage(in.readObject());
 					} catch (ClassNotFoundException | IOException e) {
-						quit();
+						if(running)
+						disconnect();
 					}
 				}
 			}
 		}.start();
 	}
 
-	private void quit () {
+	public void quit () {
 		running = false;
 		try {
 			if (in != null)
@@ -66,8 +68,13 @@ public class Client extends Thread {
 				socket.close();
 		} catch (IOException e) {
 		}
+	}
+	public void disconnect()
+	{
+		quit();
 		MainFXApplication.disconnect();
 	}
+
 
 	public void sendMessage (Message m) {
 		if (!connected) {
@@ -78,13 +85,10 @@ public class Client extends Thread {
 			String s = json.toJson(m);
 			out.writeObject(s);
 			System.out.println("Sent " + s);
-		} catch (IOException e) {
+		}  catch (Exception e) {
 			System.out.println("Could not send message " + m);
-			quit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Could not send message " + m);
-			quit();
+			if(running)
+			disconnect();
 		}
 	}
 
@@ -118,7 +122,7 @@ public class Client extends Thread {
 	public User loginUser (String username, String password) {
 		sendMessage(new Message(Message.MessageType.login, new String[] {username, password}));
 		request = true;
-		while (handle == null) {
+		while (running && handle == null) {
 			try {
 				Thread.sleep(5);
 			} catch (InterruptedException e) {
@@ -129,6 +133,7 @@ public class Client extends Thread {
 			return null;
 		}
 		String[] info = handle.getPayload();
+		handle = null;
 		return new User(info[0], info[1], info[2], Authorization.valueOf(info[3]), info[4], info[5]);
 
 	}
@@ -140,7 +145,7 @@ public class Client extends Thread {
 	public void updateUserInfo (String email, String address) {
 		sendMessage(new Message(Message.MessageType.infoUpdate, new String[] {email, address}));
 		request = true;
-		while (handle == null) {
+		while (running && handle == null) {
 			try {
 				Thread.sleep(5);
 			} catch (InterruptedException e) {
@@ -148,10 +153,13 @@ public class Client extends Thread {
 			}
 		}
 		if (handle.getType() != Message.MessageType.infoUpdate || handle.getPayload().length == 0) {
+			//System.out.println(handle.getType() + "==" + Message.MessageType.infoUpdate + "?" + (handle.getType() != Message.MessageType.infoUpdate));
+			//System.out.println(handle.getPayload().length);
+			//System.out.println("Returning");
 			return;
 		}
-
 			MainFXApplication.userInfo.setEmail(handle.getPayload()[0]);
 			MainFXApplication.userInfo.setAddress(handle.getPayload()[1]);
+		handle = null;
 	}
 }

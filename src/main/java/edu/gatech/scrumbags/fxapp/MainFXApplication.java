@@ -43,7 +43,7 @@ public class MainFXApplication extends Application {
 		}
 	}
 
-	public static final String version = "0.5.2.6";
+	public static final String version = "0.5.2.7";
 
 	public static ArrayList<User> allUsers;
 	public static List<WaterSourceReport> waterReports;
@@ -66,6 +66,11 @@ public class MainFXApplication extends Application {
 			new WaterSourceReport(new WaterLocation(33.7490, 84.3880), WaterType.Bottled, WaterCondition.Treatable_Clear,
 				"Francis"));
 	}
+	@Override public void stop()
+	{
+		client.quit();
+	}
+
 
 	/**
 	 * Loads a scene into the FX app.
