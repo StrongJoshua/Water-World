@@ -24,6 +24,7 @@ repositories {
 
 dependencies {
 	compile "com.google.code.gson:gson:2.7"
+	compile "com.lynden:GMapsFX:2.0.9"
 }
 
 // These lines allow gradle to generate and insert a manifest when building a .jar
