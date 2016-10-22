@@ -5,7 +5,7 @@ Versions
 ========
 Latest Stable: **0.6.0.1**
 
-Current Development Build **0.6.0.1**
+Current Development Build **0.6.1.0**
 
 ###How the Numbers Work
 ####First Digit
