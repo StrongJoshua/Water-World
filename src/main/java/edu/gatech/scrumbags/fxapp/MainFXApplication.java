@@ -43,7 +43,7 @@ public class MainFXApplication extends Application {
 		}
 	}
 
-	public static final String version = "0.6.0.1";
+	public static final String version = "0.6.1.0";
 
 	public static ArrayList<User> allUsers;
 	public static List<WaterSourceReport> waterReports;
@@ -51,9 +51,12 @@ public class MainFXApplication extends Application {
 	public static Stage mainStage;
 	public static User userInfo;
 	public static Client client;
+	
+	private static boolean shouldReconnect;
 
 	@Override public void start (Stage primaryStage) {
 		mainStage = primaryStage;
+		shouldReconnect = true;
 		disconnect();
 		loadScene(Scenes.welcome);
 		primaryStage.show();
@@ -66,8 +69,10 @@ public class MainFXApplication extends Application {
 			new WaterSourceReport(new WaterLocation(33.7490, 84.3880), WaterType.Bottled, WaterCondition.Treatable_Clear,
 				"Francis"));
 	}
-	@Override public void stop()
-	{
+	
+	@Override
+	public void stop() {
+		shouldReconnect = false;
 		client.quit();
 	}
 
@@ -140,6 +145,7 @@ public class MainFXApplication extends Application {
 	 * This method will reattempt connection if it is ever lost
 	 */
 	public static void disconnect () {
+		if(!shouldReconnect) return;
 		userInfo = null;
 		client = new Client();
 		client.start();
