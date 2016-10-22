@@ -110,7 +110,7 @@ public class MainFXApplication extends Application {
 	}
 
 	/**
-	 * See {@link User#Authorized(String, String, String, String, Authorization)}
+	 * See {@link User Authorized(String, String, String, String, Authorization)}
 	 *
 	 * @return The Authorized user object that was created, if the given username does not already exist.
 	 */

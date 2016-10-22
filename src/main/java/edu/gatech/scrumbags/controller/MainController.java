@@ -3,17 +3,22 @@ package edu.gatech.scrumbags.controller;
 
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
-import com.lynden.gmapsfx.javascript.object.LatLong;
-import com.lynden.gmapsfx.javascript.object.MapOptions;
-import com.lynden.gmapsfx.javascript.object.MapTypeIdEnum;
+import com.lynden.gmapsfx.javascript.event.UIEventType;
+import com.lynden.gmapsfx.javascript.object.*;
 
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
 import edu.gatech.scrumbags.fxapp.MainFXApplication.Scenes;
 import edu.gatech.scrumbags.model.Authorization;
 import edu.gatech.scrumbags.model.User;
+import edu.gatech.scrumbags.model.WaterLocation;
+import edu.gatech.scrumbags.model.WaterSourceReport;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
+import netscape.javascript.JSObject;
+
+import java.util.List;
 
 /** The controller for the main view.
  *
@@ -25,9 +30,10 @@ public class MainController implements MapComponentInitializedListener {
 	@FXML private Button allReportsButton;
 	@FXML private Button profileButton;
 	@FXML private Button logoutButton;
-	@FXML private FlowPane mapPane;
+	@FXML private Pane mapPane;
 
-	private GoogleMapView mapView;
+	@FXML private GoogleMapView mapView;
+	private GoogleMap map;
 
 	@FXML
 	public void initialize () {
@@ -56,7 +62,32 @@ public class MainController implements MapComponentInitializedListener {
 		options.center(new LatLong(33.748, -84.388)).zoom(13).overviewMapControl(false).panControl(false)
 			.rotateControl(false).scaleControl(false).streetViewControl(false).zoomControl(false)
 			.mapType(MapTypeIdEnum.ROADMAP);
-		mapView.createMap(options);
+		map = mapView.createMap(options);
+
+		List<WaterSourceReport> reports = MainFXApplication.waterReports;
+		for (WaterSourceReport report: reports) {
+			WaterLocation location = report.getLocation();
+			MarkerOptions markerOptions = new MarkerOptions();
+			LatLong loc = new LatLong(location.getLatitude(), location.getLongitude());
+
+			markerOptions.position(loc)
+				.visible(Boolean.TRUE)
+				.title(location.toString());
+
+			Marker marker = new Marker(markerOptions);
+			map.addUIEventHandler(marker,
+				UIEventType.click,
+				(JSObject obj) -> {
+					InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
+					infoWindowOptions.content(report.toString());
+
+					InfoWindow window = new InfoWindow(infoWindowOptions);
+					window.open(map, marker);
+				});
+			map.addMarker(marker);
+		}
+
+
 	}
 
 	/** Brings the user to the water source report screen. */

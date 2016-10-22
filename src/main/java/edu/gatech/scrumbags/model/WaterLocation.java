@@ -10,18 +10,18 @@ package edu.gatech.scrumbags.model;
  */
 public class WaterLocation {
 
-	private double lat;
-	private double lng;
+	private double latitude;
+	private double longitude;
 
 	/**
 	 * Creates a new Water report location from a latitude and longitude.
 	 *
-	 * @param lat Latitude of water report location
-	 * @param lng Longitude of water report location
+	 * @param latitude Latitude of water report location
+	 * @param longitude Longitude of water report location
 	 */
-	public WaterLocation (double lat, double lng) {
-		this.lat = lat;
-		this.lng = lng;
+	public WaterLocation (double latitude, double longitude) {
+		this.latitude = latitude;
+		this.longitude = longitude;
 	}
 
 	/**
@@ -29,8 +29,8 @@ public class WaterLocation {
 	 *
 	 * @return latitude
 	 */
-	public double getLat () {
-		return lat;
+	public double getLatitude () {
+		return latitude;
 	}
 
 	/**
@@ -38,8 +38,8 @@ public class WaterLocation {
 	 *
 	 * @return longitude
 	 */
-	public double getLng () {
-		return lng;
+	public double getLongitude () {
+		return longitude;
 	}
 
 	/**
@@ -48,6 +48,6 @@ public class WaterLocation {
 	 * @return String representation of the form "#,#"
 	 */
 	@Override public String toString () {
-		return String.format("%.8f, %.8f", lat, lng);
+		return String.format("%.8f, %.8f", latitude, longitude);
 	}
 }
