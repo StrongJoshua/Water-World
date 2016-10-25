@@ -6,8 +6,8 @@ package edu.gatech.scrumbags.model;
  * @author gnoziere
  */
 public enum WaterCondition {
-	Waste("Waste water"), Treatable_Clear("Treatable water (clear)"), Treatable_Muddy("Treatable water (muddy)"), Potable(
-		"Potable water");
+	Waste("Waste Water"), Treatable_Clear("Treatable (Clear)"), Treatable_Muddy("Treatable (Muddy)"), Potable(
+		"Potable Water");
 
 	private final String repr;
 

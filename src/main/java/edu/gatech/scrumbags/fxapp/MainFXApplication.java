@@ -66,7 +66,7 @@ public class MainFXApplication extends Application {
 		waterReports.add(new WaterSourceReport(new WaterLocation(0d, 0d), WaterType.Other, WaterCondition.Treatable_Muddy, "Bill",
 			new Date(1460000000000L)));
 		waterReports.add(
-			new WaterSourceReport(new WaterLocation(33.7490, 84.3880), WaterType.Bottled, WaterCondition.Treatable_Clear,
+			new WaterSourceReport(new WaterLocation(33.7490, -84.3880), WaterType.Bottled, WaterCondition.Treatable_Clear,
 				"Francis"));
 	}
 	

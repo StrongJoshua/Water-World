@@ -75,15 +75,29 @@ public class MainController implements MapComponentInitializedListener {
 				.title(location.toString());
 
 			Marker marker = new Marker(markerOptions);
+            InfoWindow window = new InfoWindow();
+            // opens detailed window on click
 			map.addUIEventHandler(marker,
 				UIEventType.click,
 				(JSObject obj) -> {
-					InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
-					infoWindowOptions.content(report.toString());
-
-					InfoWindow window = new InfoWindow(infoWindowOptions);
+                    window.setContent(report.toString());
 					window.open(map, marker);
 				});
+            // opens basic info window on mouse over
+			map.addUIEventHandler(marker,
+                    UIEventType.mouseover,
+                    (JSObject obj) -> {
+                        window.setContent(report.getSourceConditionDescription());
+                        window.open(map, marker);
+                    });
+            // closes window on mouse out
+            map.addUIEventHandler(marker,
+                    UIEventType.mouseout,
+                    (JSObject obj) -> {
+                        if (!window.getContent().equals(report.toString())) {
+                            window.close();
+                        }
+                    });
 			map.addMarker(marker);
 		}
 
