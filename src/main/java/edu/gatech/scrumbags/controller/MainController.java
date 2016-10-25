@@ -35,6 +35,9 @@ public class MainController implements MapComponentInitializedListener {
 	@FXML private GoogleMapView mapView;
 	private GoogleMap map;
 
+	/**
+	 * Initialize the Main screen.
+	 */
 	@FXML
 	public void initialize () {
 		User userInfo = MainFXApplication.userInfo;
@@ -54,6 +57,9 @@ public class MainController implements MapComponentInitializedListener {
 		mapPane.getChildren().add(mapView);
 	}
 
+	/**
+	 * Initialize the map and load all pins from saved water reports.
+	 */
 	@Override
 	public void mapInitialized () {
 		mapView.setPrefSize(500, 300);
