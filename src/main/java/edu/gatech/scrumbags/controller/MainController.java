@@ -110,9 +110,11 @@ public class MainController implements MapComponentInitializedListener {
 				map.addMarker(marker);
 			}
 		} catch (JSException e) {
+			e.printStackTrace();
 			System.err.println("Javascript exception while initializing map.");
 		} catch (MapNotInitializedException e) {
-			System.err.println("Map not initialized successfully.");
+			e.printStackTrace();
+			System.err.println("GMapsFX threw exception: Map not initialized successfully.");
 		}
 
 
