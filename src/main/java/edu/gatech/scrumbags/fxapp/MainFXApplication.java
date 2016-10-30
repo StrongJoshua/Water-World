@@ -1,5 +1,6 @@
 package edu.gatech.scrumbags.fxapp;
 
+import edu.gatech.scrumbags.controller.MainController;
 import edu.gatech.scrumbags.model.*;
 import edu.gatech.scrumbags.networking.Client;
 import javafx.application.Application;
@@ -47,6 +48,7 @@ public class MainFXApplication extends Application {
 
 	public static ArrayList<User> allUsers;
 	public static List<WaterSourceReport> waterReports;
+	public static MainController mapController;
 
 	public static Stage mainStage;
 	public static User userInfo;
@@ -89,6 +91,9 @@ public class MainFXApplication extends Application {
 			Parent root = loader.load();
 			mainStage.setTitle("Clean Water by SCRUMbags for CS 2340");
 			mainStage.setScene(new Scene(root));
+			if (scene == Scenes.main) {
+				mapController = loader.getController();
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -158,5 +163,12 @@ public class MainFXApplication extends Application {
 	public static void logout()
 	{
 		client.logout();
+	}
+
+	public static void setMapLocation(WaterLocation location) {
+		if (null == mapController) {
+			throw new IllegalStateException("Cannot set Map location before map has been loaded.");
+		}
+		mapController.setMapCoords(location.getLatitude(), location.getLongitude());
 	}
  }

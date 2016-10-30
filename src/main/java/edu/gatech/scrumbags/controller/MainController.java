@@ -3,6 +3,7 @@ package edu.gatech.scrumbags.controller;
 
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
+import com.lynden.gmapsfx.MapNotInitializedException;
 import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.*;
 
@@ -16,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import netscape.javascript.JSException;
 import netscape.javascript.JSObject;
 
 import java.util.List;
@@ -62,49 +64,55 @@ public class MainController implements MapComponentInitializedListener {
 	 */
 	@Override
 	public void mapInitialized () {
-		mapView.setPrefSize(500, 300);
-		mapView.autosize();
-		MapOptions options = new MapOptions();
-		options.center(new LatLong(33.748, -84.388)).zoom(13).overviewMapControl(false).panControl(false)
-			.rotateControl(false).scaleControl(false).streetViewControl(false).zoomControl(false)
-			.mapType(MapTypeIdEnum.ROADMAP);
-		map = mapView.createMap(options);
+		try {
+			mapView.setPrefSize(500, 300);
+			mapView.autosize();
+			MapOptions options = new MapOptions();
+			options.center(new LatLong(33.748, -84.388)).zoom(13).overviewMapControl(false).panControl(false)
+					.rotateControl(false).scaleControl(false).streetViewControl(false).zoomControl(false)
+					.mapType(MapTypeIdEnum.ROADMAP);
+			map = mapView.createMap(options);
 
-		List<WaterSourceReport> reports = MainFXApplication.waterReports;
-		for (WaterSourceReport report: reports) {
-			WaterLocation location = report.getLocation();
-			MarkerOptions markerOptions = new MarkerOptions();
-			LatLong loc = new LatLong(location.getLatitude(), location.getLongitude());
+			List<WaterSourceReport> reports = MainFXApplication.waterReports;
+			for (WaterSourceReport report : reports) {
+				WaterLocation location = report.getLocation();
+				MarkerOptions markerOptions = new MarkerOptions();
+				LatLong loc = new LatLong(location.getLatitude(), location.getLongitude());
 
-			markerOptions.position(loc)
-				.visible(Boolean.TRUE)
-				.title(location.toString());
+				markerOptions.position(loc)
+						.visible(Boolean.TRUE)
+						.title(location.toString());
 
-			Marker marker = new Marker(markerOptions);
-            InfoWindow window = new InfoWindow();
-            // opens detailed window on click
-			map.addUIEventHandler(marker,
-				UIEventType.click,
-				(JSObject obj) -> {
-                    window.setContent(report.toString());
-					window.open(map, marker);
-				});
-            // opens basic info window on mouse over
-			map.addUIEventHandler(marker,
-                    UIEventType.mouseover,
-                    (JSObject obj) -> {
-                        window.setContent(report.getSourceConditionDescription());
-                        window.open(map, marker);
-                    });
-            // closes window on mouse out
-            map.addUIEventHandler(marker,
-                    UIEventType.mouseout,
-                    (JSObject obj) -> {
-                        if (!window.getContent().equals(report.toString())) {
-                            window.close();
-                        }
-                    });
-			map.addMarker(marker);
+				Marker marker = new Marker(markerOptions);
+				InfoWindow window = new InfoWindow();
+				// opens detailed window on click
+				map.addUIEventHandler(marker,
+						UIEventType.click,
+						(JSObject obj) -> {
+							window.setContent(report.toString());
+							window.open(map, marker);
+						});
+				// opens basic info window on mouse over
+				map.addUIEventHandler(marker,
+						UIEventType.mouseover,
+						(JSObject obj) -> {
+							window.setContent(report.getSourceConditionDescription());
+							window.open(map, marker);
+						});
+				// closes window on mouse out
+				map.addUIEventHandler(marker,
+						UIEventType.mouseout,
+						(JSObject obj) -> {
+							if (!window.getContent().equals(report.toString())) {
+								window.close();
+							}
+						});
+				map.addMarker(marker);
+			}
+		} catch (JSException e) {
+			System.err.println("Javascript exception while initializing map.");
+		} catch (MapNotInitializedException e) {
+			System.err.println("Map not initialized successfully.");
 		}
 
 
@@ -145,5 +153,13 @@ public class MainController implements MapComponentInitializedListener {
 	public void handleLogoutPressed () {
 		MainFXApplication.loadScene(Scenes.welcome);
 		MainFXApplication.logout();
+	}
+
+	public void setMapCoords(double latitude, double longitude) {
+		try {
+			map.setCenter(new LatLong(latitude, longitude));
+		} catch (Exception e) {
+			System.err.println("Failed to center map @ (" + latitude + ", " + longitude + ")");
+		}
 	}
 }

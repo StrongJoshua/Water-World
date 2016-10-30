@@ -21,12 +21,7 @@ public class User {
 	 * @param authorization  The user's authorization.
 	 */
 	public User (String first, String last, String username, Authorization authorization) {
-		this.first = first;
-		this.last = last;
-		this.username = username;
-		this.authorization = authorization;
-		this.setEmail("");
-		this.setAddress("");
+		this(first, last, username, authorization, "", "");
 	}
 
 	/**

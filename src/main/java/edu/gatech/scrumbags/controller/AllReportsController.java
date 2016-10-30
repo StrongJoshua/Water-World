@@ -76,5 +76,6 @@ public class AllReportsController {
 	 */
 	@FXML public void handleViewPressed () {
 		MainFXApplication.loadScene(Scenes.main);
+		MainFXApplication.setMapLocation(reportList.getSelectionModel().getSelectedItem().getLocation());
 	}
 }

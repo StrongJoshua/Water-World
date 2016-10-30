@@ -140,8 +140,8 @@ public class Client extends Thread {
 	 */
 	public void registerUser (User user, String password) {
 		sendMessage(new Message(Message.MessageType.registration,
-			new String[] {user.getFirst(), user.getLast(), user.getUsername(), password,
-				user.getAuthorization().toString(), user.getEmail(), user.getAddress()}));
+				user.getFirst(), user.getLast(), user.getUsername(), password,
+				user.getAuthorization().toString(), user.getEmail(), user.getAddress()));
 	}
 
 	/**
@@ -153,7 +153,7 @@ public class Client extends Thread {
 	 * @return User object with all associated info
 	 */
 	public User loginUser (String username, String password) {
-		sendMessage(new Message(Message.MessageType.login, new String[] {username, password}));
+		sendMessage(new Message(Message.MessageType.login, username, password));
 		request = true;
 		while (running && handle == null) {
 			try {
@@ -187,7 +187,7 @@ public class Client extends Thread {
 	 * @param address User's inputted physical address
 	 */
 	public void updateUserInfo (String email, String address) {
-		sendMessage(new Message(Message.MessageType.infoUpdate, new String[] {email, address}));
+		sendMessage(new Message(Message.MessageType.infoUpdate, email, address));
 		request = true;
 		while (running && handle == null) {
 			try {
