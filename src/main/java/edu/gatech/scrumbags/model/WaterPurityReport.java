@@ -126,7 +126,7 @@ public class WaterPurityReport extends WaterReport {
      * @return Returns the unique integer id of this WaterPurityReport
      */
     public int getId() {
-        return this.reportId;
+        return super.getId();
     }
 
     /**
