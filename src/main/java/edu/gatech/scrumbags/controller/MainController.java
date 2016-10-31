@@ -129,7 +129,9 @@ public class MainController implements MapComponentInitializedListener {
 	/** Brings the user to the water purity report screen. */
 	@FXML
 	public void handleWaterPurityReportPressed () {
-		// MainFXApplication.loadScene(Scenes.waterPurityReport);
+//        if (marker.click) {
+//            MainFXApplication.loadScene(Scenes.waterPurityReport);
+//        }
 	}
 
 	/** Brings the user to the historical report screen. */

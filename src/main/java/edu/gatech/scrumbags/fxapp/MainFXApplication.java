@@ -28,7 +28,8 @@ public class MainFXApplication extends Application {
 	public enum Scenes {
 		welcome("/view/WelcomeView.fxml"), login("/view/LoginView.fxml"), main("/view/MainView.fxml"), profile(
 			"/view/ProfileView.fxml"), registration("/view/RegistrationView.fxml"), allReports(
-			"/view/AllReportsView.fxml"), waterSourceReport("/view/WaterSourceReportView.fxml");
+			"/view/AllReportsView.fxml"), waterSourceReport("/view/WaterSourceReportView.fxml"),
+			waterPurityReport("view/WaterPurityReportView.fxml");
 
 		private String path;
 
