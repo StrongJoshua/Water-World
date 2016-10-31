@@ -59,6 +59,6 @@ public abstract class WaterReport {
     }
 
     public String toString() {
-        return "ID: " + reportId + ", Location: " + getLocationString()+ ", Date: " + getDateString();
+        return "ID: " + reportId + ", Submitter: " + getSubmitterName() + ", Location: " + getLocationString()+ ", Date: " + getDateString();
     }
 }
