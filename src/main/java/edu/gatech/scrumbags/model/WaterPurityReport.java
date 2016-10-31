@@ -27,26 +27,23 @@ import java.util.Date;
  */
 public class WaterPurityReport extends WaterReport {
     private WaterSourceReport waterSource;
-    private Date purityReportDate;
-    private String submitterName;
-    private WaterPurityCondition condition;
+    private WaterPurityCondition purityCondition;
     private double virusPPM;
     private double contaminantPPM;
 
     /**
      * Constructs a new WaterSourceReport, auto-generates the current java.util.Date
      * @param source the Water source associated with this purity report
-     * @param condition the overall condition of the water at this source
+     * @param purityCondition the overall condition of the water at this source
      * @param virusPPM the virus concentration at this water source
      * @param contaminantPPM the contaminant concentration at this water source
      * @param submitterName the full name of the submitter of this WaterSourceReport
      */
-    public WaterPurityReport(WaterSourceReport source,
-                             WaterPurityCondition condition,
-                             double virusPPM,
-                             double contaminantPPM,
-                             String submitterName) {
-        this(source, condition, virusPPM, contaminantPPM, submitterName, new Date());
+    public WaterPurityReport(WaterSourceReport source, WaterPurityCondition purityCondition, double virusPPM, double contaminantPPM, String submitterName) {
+        super(source.getLocation(), submitterName);
+        this.purityCondition = purityCondition;
+        this.virusPPM = virusPPM;
+        this.contaminantPPM = contaminantPPM;
     }
 
     /**
@@ -58,7 +55,7 @@ public class WaterPurityReport extends WaterReport {
      * @param submitterName the full name of the submitter of this WaterSourceReport
      * @param purityReportDate the date and time this report was submitted as a java.util.Date object
      */
-    public WaterPurityReport(WaterSourceReport source,
+    /*public WaterPurityReport(WaterSourceReport source,
                              WaterPurityCondition condition,
                              double virusPPM,
                              double contaminantPPM,
@@ -71,7 +68,7 @@ public class WaterPurityReport extends WaterReport {
         this.contaminantPPM = contaminantPPM;
         this.submitterName = submitterName;
         this.purityReportDate = purityReportDate;
-    }
+    }*/
 
     /**
      * Returns the WaterSourceReport associated with this purity report.
@@ -83,28 +80,19 @@ public class WaterPurityReport extends WaterReport {
     }
 
     /**
-     * Returns the full name of the submitter of this water source report
-     * @return full name of the submitted of this water source report as a String
-     */
-    public String getSubmitterName() {
-        return submitterName;
-    }
-
-    /**
      * Returns the condition of this WaterSourceReport
      * @return returns the condition of water available at the water source described by this report
      */
-    public WaterPurityCondition getCondition() {
-        return condition;
+    public WaterPurityCondition getPurityCondition() {
+        return purityCondition;
     }
 
     /**
-     * Returns the date of submission of this water purity report as a String
-     * @return Returns a
+     * Return a String description of the condition of this water source
+     * @return labeled String description of the general condition of this water source
      */
-    public String getDateString() {
-        DateFormat format = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
-        return "Date: " + format.format(purityReportDate);
+    public String getPurityConditionDescription() {
+        return "Condition: " + purityCondition.toString();
     }
 
     /**
@@ -122,18 +110,10 @@ public class WaterPurityReport extends WaterReport {
     }
 
     /**
-     * Returns the unique integer id of this WaterPurityReport
-     * @return Returns the unique integer id of this WaterPurityReport
-     */
-    public int getId() {
-        return super.getId();
-    }
-
-    /**
      * Returns a String representation of the readable information contained in this WaterPurityReport
      * @return Returns a String representation of the readable information contained in this WaterPurityReport
      */
     public String toString() {
-        return condition + ", " + purityReportDate + ", ";
+        return super.toString() + ", " + getPurityConditionDescription();
     }
 }
