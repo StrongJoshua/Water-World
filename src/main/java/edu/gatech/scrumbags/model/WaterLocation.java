@@ -34,12 +34,30 @@ public class WaterLocation {
 	}
 
 	/**
+	 * Returns the latitude string of this water location
+	 *
+	 * @return latitude
+	 */
+	public String getLatitudeString () {
+		return Double.toString(latitude);
+	}
+
+	/**
 	 * Returns the longitude of this water location
 	 *
 	 * @return longitude
 	 */
 	public double getLongitude () {
 		return longitude;
+	}
+
+	/**
+	 * Returns the latitude string of this water location
+	 *
+	 * @return latitude
+	 */
+	public String getLongitudeString () {
+		return Double.toString(longitude);
 	}
 
 	/**

@@ -54,6 +54,8 @@ public class MainFXApplication extends Application {
 	public static Stage mainStage;
 	public static User userInfo;
 	public static Client client;
+
+	public static WaterLocation lastUsedLocation;
 	
 	private static boolean shouldReconnect;
 
@@ -144,6 +146,14 @@ public class MainFXApplication extends Application {
 		WaterSourceReport report = new WaterSourceReport(loc, title, condition, name);
 		waterReports.add(report);
 		client.sendWaterReport(report);
+	}
+
+	public static void setLastUsedLocation(WaterLocation location) {
+		lastUsedLocation = location;
+	}
+
+	public static WaterLocation getLastUsedLocation() {
+		return lastUsedLocation;
 	}
 
 	/**

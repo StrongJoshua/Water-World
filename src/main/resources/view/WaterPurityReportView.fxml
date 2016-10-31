@@ -39,14 +39,16 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="latitudeText" prefHeight="25.0" prefWidth="151.0" promptText="Latitude">
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin></TextField>
-                  <TextField fx:id="longitudeText" prefHeight="25.0" prefWidth="151.0" promptText="Longitude">
-                     <HBox.margin>
-                        <Insets left="5.0" />
-                     </HBox.margin></TextField>
+                  <Label fx:id="latitudeLabel" prefHeight="27.0" prefWidth="124.0" text="Latitude">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="longitudeLabel" prefHeight="27.0" prefWidth="124.0" text="Longitude">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
