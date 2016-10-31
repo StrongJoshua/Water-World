@@ -15,6 +15,7 @@ public abstract class WaterReport {
     private String submitterName;
 
     WaterReport(WaterLocation location, String submitterName) {
+        this.location = location;
         this.reportId = reportCount++;
         this.reportDate = new Date();
         this.submitterName = submitterName;
@@ -37,7 +38,7 @@ public abstract class WaterReport {
      * @return Labeled string representation of the location of this water source report
      */
     public String getLocationString() {
-        return "Location: " + location.toString();
+        return location.toString();
     }
 
     /**
@@ -46,7 +47,7 @@ public abstract class WaterReport {
      */
     public String getDateString() {
         DateFormat format = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
-        return "Date: " + format.format(reportDate);
+        return format.format(reportDate);
     }
 
     /**
@@ -58,6 +59,6 @@ public abstract class WaterReport {
     }
 
     public String toString() {
-        return "id: " + reportId;
+        return "ID: " + reportId + ", Location: " + getLocationString()+ ", Date: " + getDateString();
     }
 }

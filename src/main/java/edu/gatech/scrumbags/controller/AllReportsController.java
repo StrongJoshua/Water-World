@@ -14,12 +14,12 @@ import javafx.scene.control.ListView;
  * @author Beau Mitchell
  */
 public class AllReportsController {
-	@FXML private Label descriptionLabel;
+/*	@FXML private Label descriptionLabel;
 	@FXML private Label locationLabel;
 	@FXML private Label dateLabel;
 	@FXML private Label noReportsLabel;
 	@FXML private Label userLabel;
-	@FXML private Label conditionLabel;
+	@FXML private Label conditionLabel;*/
 	@FXML private ListView<WaterReport> reportList;
 
 	/**
@@ -30,7 +30,7 @@ public class AllReportsController {
 	 */
 	@FXML public void initialize () {
 		reportList.getItems().addAll(MainFXApplication.waterReports);
-		if (reportList == null || reportList.getItems().size() == 0) {
+		/*if (reportList == null || reportList.getItems().size() == 0) {
 			noReportsLabel.setVisible(true);
 			descriptionLabel.setVisible(false);
 			locationLabel.setVisible(false);
@@ -56,14 +56,14 @@ public class AllReportsController {
 			conditionLabel.setVisible(true);
 			reportList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 				//descriptionLabel.setText(newValue.getSourceTypeDescription());
-				descriptionLabel.setText(selected.toString());
+				descriptionLabel.setText(newValue.toString());
 				locationLabel.setText(newValue.getLocationString());
 				dateLabel.setText(newValue.getDateString());
 				//conditionLabel.setText(newValue.getSourceConditionDescription());
-				conditionLabel.setText(selected.toString());
+				conditionLabel.setText(newValue.toString());
 				userLabel.setText("Submitted by " + newValue.getSubmitterName());
 			});
-		}
+		}*/
 		if (MainFXApplication.userInfo != null) {
 			MainFXApplication.loadScene(Scenes.main);
 		}

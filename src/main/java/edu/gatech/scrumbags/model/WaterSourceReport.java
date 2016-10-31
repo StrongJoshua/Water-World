@@ -58,7 +58,7 @@ public class WaterSourceReport extends WaterReport {
      * @return labeled String description of the general condition of this water source
      */
     public String getSourceConditionDescription() {
-        return "Condition: " + sourceCondition.toString();
+        return sourceCondition.toString();
     }
 
     /**
@@ -82,7 +82,6 @@ public class WaterSourceReport extends WaterReport {
      * @return Returns a String representation of the readable information contained in this WaterSourceReport
      */
     public String toString() {
-        return super.toString() + ", " + getSourceTypeDescription() + ", "
-                + getSourceConditionDescription();
+        return super.toString() + ", Type: " + getSourceTypeDescription() + ", Condition: " + getSourceConditionDescription();
     }
 }

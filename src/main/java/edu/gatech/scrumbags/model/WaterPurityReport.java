@@ -92,7 +92,7 @@ public class WaterPurityReport extends WaterReport {
      * @return labeled String description of the general condition of this water source
      */
     public String getPurityConditionDescription() {
-        return "Condition: " + purityCondition.toString();
+        return purityCondition.toString();
     }
 
     /**
@@ -114,6 +114,6 @@ public class WaterPurityReport extends WaterReport {
      * @return Returns a String representation of the readable information contained in this WaterPurityReport
      */
     public String toString() {
-        return super.toString() + ", " + getPurityConditionDescription();
+        return super.toString() + ", Condition: " + getPurityConditionDescription() + ", Virus PPM: " + getVirusPPM() + ", Contaminant PPM: " + getContaminantPPM();
     }
 }
