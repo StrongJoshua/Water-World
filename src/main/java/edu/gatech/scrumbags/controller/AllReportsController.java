@@ -2,6 +2,7 @@ package edu.gatech.scrumbags.controller;
 
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
 import edu.gatech.scrumbags.fxapp.MainFXApplication.Scenes;
+import edu.gatech.scrumbags.model.WaterReport;
 import edu.gatech.scrumbags.model.WaterSourceReport;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -19,7 +20,7 @@ public class AllReportsController {
 	@FXML private Label noReportsLabel;
 	@FXML private Label userLabel;
 	@FXML private Label conditionLabel;
-	@FXML private ListView<WaterSourceReport> reportList;
+	@FXML private ListView<WaterReport> reportList;
 
 	/**
 	 * Called when the view is initialized.
@@ -39,11 +40,14 @@ public class AllReportsController {
 		} else {
 			noReportsLabel.setVisible(false);
 			reportList.getSelectionModel().select(0);
-			WaterSourceReport selected = reportList.getItems().get(0);
-			descriptionLabel.setText(selected.getSourceTypeDescription());
-			locationLabel.setText(selected.getLocationString());
+			//WaterSourceReport selected = reportList.getItems().get(0);
+			WaterReport selected = reportList.getItems().get(0);
+			descriptionLabel.setText(selected.toString());
+			//descriptionLabel.setText(selected.getSourceTypeDescription());
+			//locationLabel.setText(selected.getLocationString());
 			dateLabel.setText(selected.getDateString());
-			conditionLabel.setText(selected.getSourceConditionDescription());
+			//conditionLabel.setText(selected.getSourceConditionDescription());
+			conditionLabel.setText(selected.toString());
 			userLabel.setText("Submitted by " + selected.getSubmitterName());
 			descriptionLabel.setVisible(true);
 			locationLabel.setVisible(true);
@@ -51,10 +55,12 @@ public class AllReportsController {
 			userLabel.setVisible(true);
 			conditionLabel.setVisible(true);
 			reportList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-				descriptionLabel.setText(newValue.getSourceTypeDescription());
+				//descriptionLabel.setText(newValue.getSourceTypeDescription());
+				descriptionLabel.setText(selected.toString());
 				locationLabel.setText(newValue.getLocationString());
 				dateLabel.setText(newValue.getDateString());
-				conditionLabel.setText(newValue.getSourceConditionDescription());
+				//conditionLabel.setText(newValue.getSourceConditionDescription());
+				conditionLabel.setText(selected.toString());
 				userLabel.setText("Submitted by " + newValue.getSubmitterName());
 			});
 		}

@@ -47,7 +47,7 @@ public class MainFXApplication extends Application {
 	public static final String version = "0.6.1.0";
 
 	public static ArrayList<User> allUsers;
-	public static List<WaterSourceReport> waterReports;
+	public static List<WaterReport> waterReports;
 	public static MainController mapController;
 
 	public static Stage mainStage;
@@ -65,8 +65,7 @@ public class MainFXApplication extends Application {
 		allUsers = new ArrayList<>();
 		//createAccount("SCRUMBags", "2340", "SCRUMBags", "2340", Authorization.admin);
 		waterReports = new ArrayList<>();
-		waterReports.add(new WaterSourceReport(new WaterLocation(0d, 0d), WaterType.Other, WaterCondition.Treatable_Muddy, "Bill",
-			new Date(1460000000000L)));
+		//waterReports.add(new WaterSourceReport(new WaterLocation(0d, 0d), WaterType.Other, WaterCondition.Treatable_Muddy, "Bill", new Date(1460000000000L)));
 		waterReports.add(
 			new WaterSourceReport(new WaterLocation(33.7490, -84.3880), WaterType.Bottled, WaterCondition.Treatable_Clear,
 				"Francis"));
@@ -138,10 +137,10 @@ public class MainFXApplication extends Application {
 	 * @param title report title
 	 * @param condition water condition
 	 * @param name if other
-	 * @param d date report
 	 */
-	public static void addWaterSourceReport (WaterLocation loc, WaterType title, WaterCondition condition, String name, Date d) {
-		WaterSourceReport report = new WaterSourceReport(loc, title, condition, name, d);
+	//public static void addWaterSourceReport (WaterLocation loc, WaterType title, WaterCondition condition, String name, Date d) {
+	public static void addWaterSourceReport (WaterLocation loc, WaterType title, WaterCondition condition, String name) {
+		WaterSourceReport report = new WaterSourceReport(loc, title, condition, name);
 		waterReports.add(report);
 		client.sendWaterReport(report);
 	}

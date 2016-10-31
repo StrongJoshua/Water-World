@@ -9,10 +9,7 @@ import com.lynden.gmapsfx.javascript.object.*;
 
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
 import edu.gatech.scrumbags.fxapp.MainFXApplication.Scenes;
-import edu.gatech.scrumbags.model.Authorization;
-import edu.gatech.scrumbags.model.User;
-import edu.gatech.scrumbags.model.WaterLocation;
-import edu.gatech.scrumbags.model.WaterSourceReport;
+import edu.gatech.scrumbags.model.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
@@ -73,41 +70,35 @@ public class MainController implements MapComponentInitializedListener {
 					.mapType(MapTypeIdEnum.ROADMAP);
 			map = mapView.createMap(options);
 
-			List<WaterSourceReport> reports = MainFXApplication.waterReports;
-			for (WaterSourceReport report : reports) {
-				WaterLocation location = report.getLocation();
-				MarkerOptions markerOptions = new MarkerOptions();
-				LatLong loc = new LatLong(location.getLatitude(), location.getLongitude());
+			List<WaterReport> reports = MainFXApplication.waterReports;
+			for (WaterReport report : reports) {
+				if (report instanceof WaterSourceReport) {
+					WaterLocation location = report.getLocation();
+					MarkerOptions markerOptions = new MarkerOptions();
+					LatLong loc = new LatLong(location.getLatitude(), location.getLongitude());
 
-				markerOptions.position(loc)
-						.visible(Boolean.TRUE)
-						.title(location.toString());
+					markerOptions.position(loc).visible(Boolean.TRUE).title(location.toString());
 
-				Marker marker = new Marker(markerOptions);
-				InfoWindow window = new InfoWindow();
-				// opens detailed window on click
-				map.addUIEventHandler(marker,
-						UIEventType.click,
-						(JSObject obj) -> {
-							window.setContent(report.toString());
-							window.open(map, marker);
-						});
-				// opens basic info window on mouse over
-				map.addUIEventHandler(marker,
-						UIEventType.mouseover,
-						(JSObject obj) -> {
-							window.setContent(report.getSourceConditionDescription());
-							window.open(map, marker);
-						});
-				// closes window on mouse out
-				map.addUIEventHandler(marker,
-						UIEventType.mouseout,
-						(JSObject obj) -> {
-							if (!window.getContent().equals(report.toString())) {
-								window.close();
-							}
-						});
-				map.addMarker(marker);
+					Marker marker = new Marker(markerOptions);
+					InfoWindow window = new InfoWindow();
+					// opens detailed window on click
+					map.addUIEventHandler(marker, UIEventType.click, (JSObject obj) -> {
+						window.setContent(report.toString());
+						window.open(map, marker);
+					});
+					// opens basic info window on mouse over
+					map.addUIEventHandler(marker, UIEventType.mouseover, (JSObject obj) -> {
+						window.setContent(((WaterSourceReport)report).getSourceConditionDescription());
+						window.open(map, marker);
+					});
+					// closes window on mouse out
+					map.addUIEventHandler(marker, UIEventType.mouseout, (JSObject obj) -> {
+						if (!window.getContent().equals(report.toString())) {
+							window.close();
+						}
+					});
+					map.addMarker(marker);
+				}
 			}
 		} catch (JSException e) {
 			e.printStackTrace();
