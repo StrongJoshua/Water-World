@@ -33,8 +33,7 @@ public class MainController implements MapComponentInitializedListener {
 
 	@FXML private GoogleMapView mapView;
 	private GoogleMap map;
-
-    private WaterLocation location = null;
+	private boolean hasClickedPin = false;
 
 	/**
 	 * Initialize the Main screen.
@@ -87,7 +86,8 @@ public class MainController implements MapComponentInitializedListener {
 					map.addUIEventHandler(marker, UIEventType.click, (JSObject obj) -> {
 						window.setContent(report.toString());
 						window.open(map, marker);
-                        MainFXApplication.setLastUsedLocation(location);
+                        MainFXApplication.setLastUsedSourceReport((WaterSourceReport)report);
+						hasClickedPin = true;
 					});
 					// opens basic info window on mouse over
 					map.addUIEventHandler(marker, UIEventType.mouseover, (JSObject obj) -> {
@@ -123,7 +123,7 @@ public class MainController implements MapComponentInitializedListener {
 	/** Brings the user to the water purity report screen. */
 	@FXML
 	public void handleWaterPurityReportPressed () {
-        if (location != null) {
+        if (hasClickedPin) {
             MainFXApplication.loadScene(Scenes.waterPurityReport);
         }
 	}

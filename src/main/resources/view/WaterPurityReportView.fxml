@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.scrumbags.controller.WaterSourceReportController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.scrumbags.controller.WaterPurityReportController">
    <top>
       <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="555.0" text="Water Purity Report" textAlignment="CENTER" BorderPane.alignment="CENTER">
          <font>
@@ -39,7 +39,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="latitudeLabel" prefHeight="27.0" prefWidth="124.0" text="Location">
+                  <Label fx:id="locationLabel" prefHeight="27.0" prefWidth="124.0" text="Location">
                      <font>
                         <Font size="18.0" />
                      </font>

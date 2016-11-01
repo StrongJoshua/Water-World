@@ -56,7 +56,7 @@ public class MainFXApplication extends Application {
 	public static User userInfo;
 	public static Client client;
 
-	public static WaterLocation lastUsedLocation;
+	public static WaterSourceReport lastUsedSourceReport;
 	
 	private static boolean shouldReconnect;
 
@@ -154,12 +154,12 @@ public class MainFXApplication extends Application {
 		client.sendWaterReport(report);
 	}
 
-	public static void setLastUsedLocation(WaterLocation location) {
-		lastUsedLocation = location;
+	public static void setLastUsedSourceReport(WaterSourceReport report) {
+		lastUsedSourceReport = report;
 	}
 
-	public static WaterLocation getLastUsedLocation() {
-		return lastUsedLocation;
+	public static WaterSourceReport getLastUsedSourceReport() {
+		return lastUsedSourceReport;
 	}
 
 	/**
