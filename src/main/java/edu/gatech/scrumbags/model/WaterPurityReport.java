@@ -49,26 +49,19 @@ public class WaterPurityReport extends WaterReport {
     /**
      * Constructs a new WaterSourceReport
      * @param source the Water source associated with this purity report
-     * @param condition the overall condition of the water at this source
+     * @param purityCondition the overall condition of the water at this source
      * @param virusPPM the virus concentration at this water source
      * @param contaminantPPM the contaminant concentration at this water source
      * @param submitterName the full name of the submitter of this WaterSourceReport
      * @param purityReportDate the date and time this report was submitted as a java.util.Date object
      */
-    /*public WaterPurityReport(WaterSourceReport source,
-                             WaterPurityCondition condition,
-                             double virusPPM,
-                             double contaminantPPM,
-                             String submitterName,
-                             Date purityReportDate) {
-        super();
+    public WaterPurityReport(WaterSourceReport source, Date purityReportDate, WaterPurityCondition purityCondition, double virusPPM, double contaminantPPM, String submitterName) {
+        super(source.getLocation(), purityReportDate, submitterName);
         this.waterSource = source;
-        this.condition = condition;
+        this.purityCondition = purityCondition;
         this.virusPPM = virusPPM;
         this.contaminantPPM = contaminantPPM;
-        this.submitterName = submitterName;
-        this.purityReportDate = purityReportDate;
-    }*/
+    }
 
     /**
      * Returns the WaterSourceReport associated with this purity report.

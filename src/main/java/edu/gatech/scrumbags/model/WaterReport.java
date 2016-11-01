@@ -15,9 +15,16 @@ public abstract class WaterReport {
     private String submitterName;
 
     WaterReport(WaterLocation location, String submitterName) {
-        this.location = location;
         this.reportId = reportCount++;
+        this.location = location;
         this.reportDate = new Date();
+        this.submitterName = submitterName;
+    }
+
+    WaterReport(WaterLocation location, Date reportDate, String submitterName) {
+        this.reportId = reportCount++;
+        this.location = location;
+        this.reportDate = reportDate;
         this.submitterName = submitterName;
     }
 

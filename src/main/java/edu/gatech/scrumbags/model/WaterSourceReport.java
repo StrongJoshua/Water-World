@@ -29,21 +29,16 @@ public class WaterSourceReport extends WaterReport {
     /**
      * Constructs a new WaterSourceReport
      * @param location the WaterLocation of this WaterSourceReport
-     * @param waterSourceType the WaterType of the water at this water source
+     * @param sourceType the WaterType of the water at this water source
      * @param sourceCondition the WaterCondition of the water at this water source
      * @param submitterName the full name of the submitter of this WaterSourceReport
      * @param sourceReportDate the date and time this report was submitted as a java.util.Date object
      */
-    /*public WaterSourceReport(WaterLocation location, WaterType waterSourceType,
-                             WaterCondition sourceCondition, String submitterName,
-                             Date sourceReportDate) {
-        this.sourceReportDate = sourceReportDate;
-        this.waterSourceType = waterSourceType;
-        this.location = location;
+    public WaterSourceReport(WaterLocation location, Date sourceReportDate, WaterType sourceType, WaterCondition sourceCondition, String submitterName) {
+        super(location, sourceReportDate, submitterName);
+        this.sourceType = sourceType;
         this.sourceCondition = sourceCondition;
-        this.submitterName = submitterName;
-        this.reportNumber = counter++;
-    }*/
+    }
 
     /**
      * Returns a description of the source type of this water source
