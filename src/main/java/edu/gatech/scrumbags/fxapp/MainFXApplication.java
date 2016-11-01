@@ -153,7 +153,7 @@ public class MainFXApplication extends Application {
 		String name) {
 		WaterSourceReport report = new WaterSourceReport(loc, title, condition, name);
 		waterReports.add(report);
-		client.sendWaterReport(report);
+		client.sendSourceReport(report);
 	}
 
 	public static void setLastUsedSourceReport (WaterSourceReport report) {

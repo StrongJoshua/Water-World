@@ -175,16 +175,42 @@ public class Client extends Thread {
 	 *
 	 * @param report Water report to be stored
 	 */
-	public void sendSourceReport (WaterSourceReport report) {
+	public boolean sendSourceReport (WaterSourceReport report) {
 		sendMessage(new Message(Message.MessageType.sourceReport, json.toJson(report)));
+		request = true;
+		while (running && handle == null) {
+			try {
+				Thread.sleep(5);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		if (handle.getType() != Message.MessageType.sourceReport || handle.getPayload().length == 0) {
+			return false;
+		}
+		handle = null;
+		return true;
 	}
 	/**
 	 * Method is not done.
 	 *
 	 * @param report Water report to be stored
 	 */
-	public void sendPurityReport (WaterSourceReport report) {
+	public boolean sendPurityReport (WaterSourceReport report) {
 		sendMessage(new Message(Message.MessageType.purityReport, json.toJson(report)));
+		request = true;
+		while (running && handle == null) {
+			try {
+				Thread.sleep(5);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		if (handle.getType() != Message.MessageType.purityReport || handle.getPayload().length == 0) {
+			return false;
+		}
+		handle = null;
+		return true;
 	}
 
 	/**
