@@ -175,8 +175,16 @@ public class Client extends Thread {
 	 *
 	 * @param report Water report to be stored
 	 */
-	public void sendWaterReport (WaterSourceReport report) {
-		sendMessage(new Message(Message.MessageType.sendWaterReport, json.toJson(report)));
+	public void sendSourceReport (WaterSourceReport report) {
+		sendMessage(new Message(Message.MessageType.sourceReport, json.toJson(report)));
+	}
+	/**
+	 * Method is not done.
+	 *
+	 * @param report Water report to be stored
+	 */
+	public void sendPurityReport (WaterSourceReport report) {
+		sendMessage(new Message(Message.MessageType.purityReport, json.toJson(report)));
 	}
 
 	/**
