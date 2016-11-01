@@ -1,4 +1,3 @@
-
 package edu.gatech.scrumbags.controller;
 
 import com.lynden.gmapsfx.GoogleMapView;
@@ -6,22 +5,22 @@ import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.MapNotInitializedException;
 import com.lynden.gmapsfx.javascript.event.UIEventType;
 import com.lynden.gmapsfx.javascript.object.*;
-
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
 import edu.gatech.scrumbags.fxapp.MainFXApplication.Scenes;
 import edu.gatech.scrumbags.model.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import netscape.javascript.JSException;
 import netscape.javascript.JSObject;
 
 import java.util.List;
 
-/** The controller for the main view.
+/**
+ * The controller for the main view.
  *
- * @author Kevin Lun */
+ * @author Kevin Lun
+ */
 public class MainController implements MapComponentInitializedListener {
 	@FXML private Button waterSourceReportButton;
 	@FXML private Button waterPurityReportButton;
@@ -38,8 +37,7 @@ public class MainController implements MapComponentInitializedListener {
 	/**
 	 * Initialize the Main screen.
 	 */
-	@FXML
-	public void initialize () {
+	@FXML public void initialize () {
 		User userInfo = MainFXApplication.userInfo;
 		if (userInfo.getAuthorization() == Authorization.user) {
 			waterPurityReportButton.setVisible(false);
@@ -51,20 +49,19 @@ public class MainController implements MapComponentInitializedListener {
 			historicalReportButton.setManaged(false);
 		}
 		mapView.addMapInializedListener(this);
-    }
+	}
 
 	/**
 	 * Initialize the map and load all pins from saved water reports.
 	 */
-	@Override
-	public void mapInitialized () {
+	@Override public void mapInitialized () {
 		try {
 			mapView.setPrefSize(500, 300);
 			mapView.autosize();
 			MapOptions options = new MapOptions();
 			options.center(new LatLong(33.748, -84.388)).zoom(13).overviewMapControl(false).panControl(false)
-					.rotateControl(false).scaleControl(false).streetViewControl(false).zoomControl(false)
-					.mapType(MapTypeIdEnum.ROADMAP);
+				.rotateControl(false).scaleControl(false).streetViewControl(false).zoomControl(false)
+				.mapType(MapTypeIdEnum.ROADMAP);
 			map = mapView.createMap(options);
 
 			List<WaterReport> reports = MainFXApplication.waterReports;
@@ -82,7 +79,7 @@ public class MainController implements MapComponentInitializedListener {
 					map.addUIEventHandler(marker, UIEventType.click, (JSObject obj) -> {
 						window.setContent(report.toString());
 						window.open(map, marker);
-                        MainFXApplication.setLastUsedSourceReport((WaterSourceReport)report);
+						MainFXApplication.setLastUsedSourceReport((WaterSourceReport)report);
 						hasClickedPin = true;
 					});
 					// opens basic info window on mouse over
@@ -107,51 +104,56 @@ public class MainController implements MapComponentInitializedListener {
 			System.err.println("GMapsFX threw exception: Map not initialized successfully.");
 		}
 
-
 	}
 
-	/** Brings the user to the water source report screen. */
-	@FXML
-	public void handleWaterSourceReportPressed () {
+	/**
+	 * Brings the user to the water source report screen.
+	 */
+	@FXML public void handleWaterSourceReportPressed () {
 		MainFXApplication.loadScene(Scenes.waterSourceReport);
 	}
 
-	/** Brings the user to the water purity report screen. */
-	@FXML
-	public void handleWaterPurityReportPressed () {
-        if (hasClickedPin) {
-            MainFXApplication.loadScene(Scenes.waterPurityReport);
-        }
+	/**
+	 * Brings the user to the water purity report screen.
+	 */
+	@FXML public void handleWaterPurityReportPressed () {
+		if (hasClickedPin) {
+			MainFXApplication.loadScene(Scenes.waterPurityReport);
+		}
 	}
 
-	/** Brings the user to the historical report screen. */
-	@FXML
-	public void handleHistoricalReportPressed () {
+	/**
+	 * Brings the user to the historical report screen.
+	 */
+	@FXML public void handleHistoricalReportPressed () {
 		if (hasClickedPin) {
 			MainFXApplication.loadScene(Scenes.historicalReport);
 		}
 	}
 
-	/** Brings the user to the all reports screen. */
-	@FXML
-	public void handleAllReportsPressed () {
+	/**
+	 * Brings the user to the all reports screen.
+	 */
+	@FXML public void handleAllReportsPressed () {
 		MainFXApplication.loadScene(Scenes.allReports);
 	}
 
-	/** Brings the user to the profle screen. */
-	@FXML
-	public void handleProfilePressed () {
+	/**
+	 * Brings the user to the profle screen.
+	 */
+	@FXML public void handleProfilePressed () {
 		MainFXApplication.loadScene(Scenes.profile);
 	}
 
-	/** Brings the user to the welcome screen. */
-	@FXML
-	public void handleLogoutPressed () {
+	/**
+	 * Brings the user to the welcome screen.
+	 */
+	@FXML public void handleLogoutPressed () {
 		MainFXApplication.loadScene(Scenes.welcome);
 		MainFXApplication.logout();
 	}
 
-	public void setMapCoords(double latitude, double longitude) {
+	public void setMapCoords (double latitude, double longitude) {
 		try {
 			map.setCenter(new LatLong(latitude, longitude));
 		} catch (Exception e) {

@@ -26,10 +26,12 @@ public class MainFXApplication extends Application {
 	 * @author Jan Risse
 	 */
 	public enum Scenes {
-		welcome("/view/WelcomeView.fxml"), login("/view/LoginView.fxml"), main("/view/MainView.fxml"), profile(
-			"/view/ProfileView.fxml"), registration("/view/RegistrationView.fxml"), allReports(
-			"/view/AllReportsView.fxml"), waterSourceReport("/view/WaterSourceReportView.fxml"),
-			waterPurityReport("/view/WaterPurityReportView.fxml"), historicalReport("/view/HistoricalReportView.fxml"), historicalReportGraph("/view/HistoricalReportGraphView.fxml");
+		welcome("/view/WelcomeView.fxml"), login("/view/LoginView.fxml"), main(
+			"/view/MainView.fxml"), profile("/view/ProfileView.fxml"), registration(
+			"/view/RegistrationView.fxml"), allReports("/view/AllReportsView.fxml"), waterSourceReport(
+			"/view/WaterSourceReportView.fxml"), waterPurityReport(
+			"/view/WaterPurityReportView.fxml"), historicalReport(
+			"/view/HistoricalReportView.fxml"), historicalReportGraph("/view/HistoricalReportGraphView.fxml");
 
 		private String path;
 
@@ -57,7 +59,7 @@ public class MainFXApplication extends Application {
 	public static Client client;
 
 	public static WaterSourceReport lastUsedSourceReport;
-	
+
 	private static boolean shouldReconnect;
 
 	@Override public void start (Stage primaryStage) {
@@ -70,22 +72,19 @@ public class MainFXApplication extends Application {
 		//createAccount("SCRUMBags", "2340", "SCRUMBags", "2340", Authorization.admin);
 		waterReports = new ArrayList<>();
 		//waterReports.add(new WaterSourceReport(new WaterLocation(0d, 0d), WaterType.Other, WaterCondition.Treatable_Muddy, "Bill", new Date(1460000000000L)));
-		waterReports.add(
-			new WaterSourceReport(new WaterLocation(33.7490, -84.3880), WaterType.Bottled, WaterCondition.Treatable_Clear,
-				"Francis"));
+		waterReports.add(new WaterSourceReport(new WaterLocation(33.7490, -84.3880), WaterType.Bottled,
+			WaterCondition.Treatable_Clear, "Francis"));
 		years = new ArrayList<>();
 		int currentYear = Calendar.getInstance().get(Calendar.YEAR);
 		for (int i = currentYear; i >= 1990; i--) {
 			years.add(i);
 		}
 	}
-	
-	@Override
-	public void stop() {
+
+	@Override public void stop () {
 		shouldReconnect = false;
 		client.quit();
 	}
-
 
 	/**
 	 * Loads a scene into the FX app.
@@ -127,7 +126,8 @@ public class MainFXApplication extends Application {
 	 *
 	 * @return The Authorized user object that was created, if the given username does not already exist.
 	 */
-	public static User createAccount (String first, String last, String username, String password, Authorization accountType) {
+	public static User createAccount (String first, String last, String username, String password,
+		Authorization accountType) {
 		for (User auth : allUsers) {
 			if (auth.getUsername().equals(username))
 				return null;
@@ -142,23 +142,25 @@ public class MainFXApplication extends Application {
 
 	/**
 	 * Saves water report
-	 * @param loc Water location
-	 * @param title report title
+	 *
+	 * @param loc       Water location
+	 * @param title     report title
 	 * @param condition water condition
-	 * @param name if other
+	 * @param name      if other
 	 */
 	//public static void addWaterSourceReport (WaterLocation loc, WaterType title, WaterCondition condition, String name, Date d) {
-	public static void addWaterSourceReport (WaterLocation loc, WaterType title, WaterCondition condition, String name) {
+	public static void addWaterSourceReport (WaterLocation loc, WaterType title, WaterCondition condition,
+		String name) {
 		WaterSourceReport report = new WaterSourceReport(loc, title, condition, name);
 		waterReports.add(report);
 		client.sendWaterReport(report);
 	}
 
-	public static void setLastUsedSourceReport(WaterSourceReport report) {
+	public static void setLastUsedSourceReport (WaterSourceReport report) {
 		lastUsedSourceReport = report;
 	}
 
-	public static WaterSourceReport getLastUsedSourceReport() {
+	public static WaterSourceReport getLastUsedSourceReport () {
 		return lastUsedSourceReport;
 	}
 
@@ -166,7 +168,8 @@ public class MainFXApplication extends Application {
 	 * This method will reattempt connection if it is ever lost
 	 */
 	public static void disconnect () {
-		if(!shouldReconnect) return;
+		if (!shouldReconnect)
+			return;
 		userInfo = null;
 		client = new Client();
 		client.start();
@@ -176,15 +179,14 @@ public class MainFXApplication extends Application {
 	/**
 	 * Will log the client out when the logout button is pressed
 	 */
-	public static void logout()
-	{
+	public static void logout () {
 		client.logout();
 	}
 
-	public static void setMapLocation(WaterLocation location) {
+	public static void setMapLocation (WaterLocation location) {
 		if (null == mapController) {
 			throw new IllegalStateException("Cannot set Map location before map has been loaded.");
 		}
 		mapController.setMapCoords(location.getLatitude(), location.getLongitude());
 	}
- }
+}

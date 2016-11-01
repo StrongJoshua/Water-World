@@ -1,5 +1,6 @@
 package edu.gatech.scrumbags.networking;
 
+import com.google.gson.Gson;
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
 import edu.gatech.scrumbags.model.Authorization;
 import edu.gatech.scrumbags.model.User;
@@ -11,8 +12,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
-
-import com.google.gson.Gson;
 
 public class Client extends Thread {
 	private Socket socket;
@@ -139,9 +138,9 @@ public class Client extends Thread {
 	 * @param password User's password, never stored locally
 	 */
 	public void registerUser (User user, String password) {
-		sendMessage(new Message(Message.MessageType.registration,
-				user.getFirst(), user.getLast(), user.getUsername(), password,
-				user.getAuthorization().toString(), user.getEmail(), user.getAddress()));
+		sendMessage(
+			new Message(Message.MessageType.registration, user.getFirst(), user.getLast(), user.getUsername(),
+				password, user.getAuthorization().toString(), user.getEmail(), user.getAddress()));
 	}
 
 	/**

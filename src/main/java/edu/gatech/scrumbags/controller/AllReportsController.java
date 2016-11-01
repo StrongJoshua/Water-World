@@ -3,9 +3,7 @@ package edu.gatech.scrumbags.controller;
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
 import edu.gatech.scrumbags.fxapp.MainFXApplication.Scenes;
 import edu.gatech.scrumbags.model.WaterReport;
-import edu.gatech.scrumbags.model.WaterSourceReport;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
 /**
@@ -14,12 +12,12 @@ import javafx.scene.control.ListView;
  * @author Beau Mitchell
  */
 public class AllReportsController {
-/*	@FXML private Label descriptionLabel;
-	@FXML private Label locationLabel;
-	@FXML private Label dateLabel;
-	@FXML private Label noReportsLabel;
-	@FXML private Label userLabel;
-	@FXML private Label conditionLabel;*/
+	/*	@FXML private Label descriptionLabel;
+		@FXML private Label locationLabel;
+		@FXML private Label dateLabel;
+		@FXML private Label noReportsLabel;
+		@FXML private Label userLabel;
+		@FXML private Label conditionLabel;*/
 	@FXML private ListView<WaterReport> reportList;
 
 	/**

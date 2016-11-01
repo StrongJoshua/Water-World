@@ -7,10 +7,9 @@ public class HistoricalReport {
 	private WaterSourceReport waterSource;
 	private int year;
 
-	public HistoricalReport(WaterSourceReport waterSource, int year) {
+	public HistoricalReport (WaterSourceReport waterSource, int year) {
 		this.waterSource = waterSource;
 		this.year = year;
 	}
-
 
 }

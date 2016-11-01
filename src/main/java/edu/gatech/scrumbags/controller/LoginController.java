@@ -28,7 +28,8 @@ public class LoginController {
 	 * Authenticates user and brings the user to the main screen.
 	 */
 	@FXML public void handleLoginPressed () {
-		MainFXApplication.userInfo = MainFXApplication.authorizeUser(usernameField.getText(), passwordField.getText());
+		MainFXApplication.userInfo = MainFXApplication
+			.authorizeUser(usernameField.getText(), passwordField.getText());
 		if (MainFXApplication.userInfo != null) {
 			MainFXApplication.loadScene(Scenes.main);
 		} else {

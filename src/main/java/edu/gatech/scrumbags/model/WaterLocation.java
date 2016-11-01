@@ -16,7 +16,7 @@ public class WaterLocation {
 	/**
 	 * Creates a new Water report location from a latitude and longitude.
 	 *
-	 * @param latitude Latitude of water report location
+	 * @param latitude  Latitude of water report location
 	 * @param longitude Longitude of water report location
 	 */
 	public WaterLocation (double latitude, double longitude) {

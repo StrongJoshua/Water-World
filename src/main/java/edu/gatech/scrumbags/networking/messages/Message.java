@@ -10,7 +10,8 @@ public class Message {
 
 	/**
 	 * Message for server-client relationship
-	 * @param type message type
+	 *
+	 * @param type    message type
 	 * @param payload message payload
 	 */
 	public Message (MessageType type, String... payload) {
@@ -19,7 +20,6 @@ public class Message {
 	}
 
 	/**
-	 *
 	 * @return Message type
 	 */
 	public MessageType getType () {
@@ -27,7 +27,6 @@ public class Message {
 	}
 
 	/**
-	 *
 	 * @return Message payload
 	 */
 	public String[] getPayload () {

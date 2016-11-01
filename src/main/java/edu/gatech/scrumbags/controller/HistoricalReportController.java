@@ -1,18 +1,11 @@
 package edu.gatech.scrumbags.controller;
 
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
-import edu.gatech.scrumbags.model.WaterCondition;
 import edu.gatech.scrumbags.model.WaterSourceReport;
-import edu.gatech.scrumbags.model.WaterType;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-
-import java.time.Year;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by klun on 10/31/2016.
@@ -29,7 +22,9 @@ public class HistoricalReportController {
 	 */
 	@FXML public void initialize () {
 		WaterSourceReport sourceReport = MainFXApplication.getLastUsedSourceReport();
-		locationLabel.setText(sourceReport.getLocation().getLatitudeString() + ", " + sourceReport.getLocation().getLongitudeString());
+		locationLabel.setText(
+			sourceReport.getLocation().getLatitudeString() + ", " + sourceReport.getLocation()
+				.getLongitudeString());
 		yearComboBox.setItems(FXCollections.observableArrayList(MainFXApplication.years));
 		setErrorMessage(null);
 	}
@@ -52,8 +47,7 @@ public class HistoricalReportController {
 	 * Checks that latitude and longitude values are acceptable and pulls the rest
 	 * of the needed information from the user or local time.
 	 */
-	@FXML
-	public void handleSubmitPressed () {
+	@FXML public void handleSubmitPressed () {
 		if (yearComboBox.getValue() == null) {
 			setErrorMessage("Must choose a year.");
 		} else {
@@ -64,8 +58,7 @@ public class HistoricalReportController {
 	/**
 	 * Sends the user back to the main screen when cancelling.
 	 */
-	@FXML
-	public void handleCancelPressed () {
+	@FXML public void handleCancelPressed () {
 		MainFXApplication.loadScene(MainFXApplication.Scenes.main);
 	}
 }

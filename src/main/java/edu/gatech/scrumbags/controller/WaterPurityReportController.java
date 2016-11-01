@@ -1,16 +1,16 @@
 package edu.gatech.scrumbags.controller;
 
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
-import edu.gatech.scrumbags.model.*;
+import edu.gatech.scrumbags.model.WaterPurityCondition;
+import edu.gatech.scrumbags.model.WaterPurityReport;
+import edu.gatech.scrumbags.model.WaterSourceReport;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import sun.applet.Main;
 
 import java.util.Arrays;
-
 
 /**
  * Controls the flow of information when someone creates a new water purity report.
@@ -31,9 +31,11 @@ public class WaterPurityReportController {
 	 */
 	@FXML public void initialize () {
 		WaterSourceReport sourceReport = MainFXApplication.getLastUsedSourceReport();
-		locationLabel.setText(sourceReport.getLocation().getLatitudeString() + ", "
-				+ sourceReport.getLocation().getLongitudeString());
-		waterConditionCombo.setItems(FXCollections.observableArrayList(Arrays.asList(WaterPurityCondition.values())));
+		locationLabel.setText(
+			sourceReport.getLocation().getLatitudeString() + ", " + sourceReport.getLocation()
+				.getLongitudeString());
+		waterConditionCombo
+			.setItems(FXCollections.observableArrayList(Arrays.asList(WaterPurityCondition.values())));
 		waterConditionCombo.setValue(WaterPurityCondition.Safe);
 		setErrorMessage(null);
 	}
@@ -65,9 +67,10 @@ public class WaterPurityReportController {
 		}
 		// submitting report if all data is valid
 		if (successfulParse) {
-			WaterPurityReport purityReport = new WaterPurityReport(MainFXApplication.getLastUsedSourceReport(),
-					waterConditionCombo.getValue(), Double.parseDouble(virusPPMText.getText()),
-					Double.parseDouble(virusPPMText.getText()), MainFXApplication.userInfo.getFullName());
+			WaterPurityReport purityReport = new WaterPurityReport(
+				MainFXApplication.getLastUsedSourceReport(), waterConditionCombo.getValue(),
+				Double.parseDouble(virusPPMText.getText()), Double.parseDouble(virusPPMText.getText()),
+				MainFXApplication.userInfo.getFullName());
 			MainFXApplication.waterReports.add(purityReport);
 			MainFXApplication.getLastUsedSourceReport().addPurityReport(purityReport);
 			MainFXApplication.loadScene(MainFXApplication.Scenes.main);
