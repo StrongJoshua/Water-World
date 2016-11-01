@@ -1,6 +1,5 @@
 package edu.gatech.scrumbags.controller;
 
-import com.lynden.gmapsfx.javascript.object.LatLong;
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
 import edu.gatech.scrumbags.model.*;
 import javafx.collections.FXCollections;
@@ -32,7 +31,8 @@ public class WaterPurityReportController {
 	 */
 	@FXML public void initialize () {
 		WaterSourceReport sourceReport = MainFXApplication.getLastUsedSourceReport();
-		locationLabel.setText(sourceReport.getLocation().getLatitudeString() + ", " + sourceReport.getLocation().getLongitudeString());
+		locationLabel.setText(sourceReport.getLocation().getLatitudeString() + ", "
+				+ sourceReport.getLocation().getLongitudeString());
 		waterConditionCombo.setItems(FXCollections.observableArrayList(Arrays.asList(WaterPurityCondition.values())));
 		waterConditionCombo.setValue(WaterPurityCondition.Safe);
 		setErrorMessage(null);
@@ -44,12 +44,30 @@ public class WaterPurityReportController {
 	 * of the needed information from the user or local time.
 	 */
 	@FXML public void handleSubmitPressed () {
-		if (virusPPMText.getText() == null || contaminantPPMText.getText() == null) {
-			setErrorMessage("Must enter a value for Virus PPM and Contaminant PPM");
-		} else if (waterConditionCombo.getValue() == null) {
-			setErrorMessage("Must choose a water condition");
-		} else {
-			WaterPurityReport purityReport = new WaterPurityReport(MainFXApplication.getLastUsedSourceReport(), waterConditionCombo.getValue(), Double.parseDouble(virusPPMText.getText()), Double.parseDouble(virusPPMText.getText()), MainFXApplication.userInfo.getFullName());
+		// trying to get correct GPS coordinates
+		boolean successfulParse = false;
+		int virusPPM = 0;
+		int contaminantPPM = 0;
+		try {
+			virusPPM = Integer.parseInt(virusPPMText.getText());
+			contaminantPPM = Integer.parseInt(contaminantPPMText.getText());
+			if (virusPPM < 0) {
+				setErrorMessage("Incorrect format! Virus PPM cannot be negative.");
+			} else if (contaminantPPM < 0) {
+				setErrorMessage("Incorrect format! Contaminant PPM cannot be negative.");
+			} else {
+				successfulParse = true;
+			}
+		} catch (NullPointerException e) {
+			setErrorMessage("Incorrect format! Please enter values in the form of integers.");
+		} catch (NumberFormatException e) {
+			setErrorMessage("Incorrect format! Please enter valid integers for PPM values.");
+		}
+		// submitting report if all data is valid
+		if (successfulParse) {
+			WaterPurityReport purityReport = new WaterPurityReport(MainFXApplication.getLastUsedSourceReport(),
+					waterConditionCombo.getValue(), Double.parseDouble(virusPPMText.getText()),
+					Double.parseDouble(virusPPMText.getText()), MainFXApplication.userInfo.getFullName());
 			MainFXApplication.waterReports.add(purityReport);
 			MainFXApplication.getLastUsedSourceReport().addPurityReport(purityReport);
 			MainFXApplication.loadScene(MainFXApplication.Scenes.main);
