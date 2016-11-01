@@ -50,11 +50,7 @@ public class MainController implements MapComponentInitializedListener {
 			historicalReportButton.setVisible(false);
 			historicalReportButton.setManaged(false);
 		}
-
-		mapView = new GoogleMapView();
 		mapView.addMapInializedListener(this);
-
-		mapPane.getChildren().add(mapView);
     }
 
 	/**

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.scrumbags.controller.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.scrumbags.controller.MainController">
    <bottom>
       <HBox alignment="CENTER" prefHeight="48.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -54,16 +54,19 @@
       </HBox>
    </top>
    <center>
-      <Pane fx:id="mapPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <Pane fx:id="mapPane" BorderPane.alignment="CENTER">
          <children>
-            <GoogleMapView fx:id="mapView" layoutX="25.0" layoutY="14.0" prefHeight="281.0" prefWidth="471.0">
-               <padding>
-                  <Insets left="60.0" right="60.0" />
-               </padding></GoogleMapView>
+            <GoogleMapView fx:id="mapView" layoutX="53.0" layoutY="2.0" prefHeight="306.0" prefWidth="494.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></GoogleMapView>
          </children>
          <BorderPane.margin>
-            <Insets left="40.0" right="40.0" />
+            <Insets />
          </BorderPane.margin>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </Pane>
    </center>
 </BorderPane>
