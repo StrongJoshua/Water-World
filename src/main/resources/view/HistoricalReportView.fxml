@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.scrumbags.controller.HistoricalReportController">
+    <top>
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="555.0" text="Historical Report" textAlignment="CENTER" BorderPane.alignment="CENTER">
+            <font>
+                <Font size="45.0" />
+            </font>
+            <BorderPane.margin>
+                <Insets top="50.0" />
+            </BorderPane.margin>
+        </Label>
+    </top>
+    <center>
+        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label id="errorMessage" fx:id="errorMessage" text="Error" textFill="RED">
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+                <HBox alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
+                    <children>
+                        <Label prefHeight="27.0" prefWidth="178.0" text="Water Location (GPS):">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                  <Label fx:id="locationLabel" text="Location">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
+                    <padding>
+                        <Insets right="27.0" />
+                    </padding>
+               <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="53.0" text="Year: ">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                        <ComboBox fx:id="yearComboBox" prefWidth="150.0" />
+               </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Button fx:id="sumbitButton" mnemonicParsing="false" onAction="#handleSubmitPressed" text="Submit">
+                            <HBox.margin>
+                                <Insets right="20.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button fx:id="cancelRegistrationButton" mnemonicParsing="false" onAction="#handleCancelPressed" text="Cancel">
+                            <HBox.margin>
+                                <Insets left="20.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </HBox>
+            </children>
+        </VBox>
+    </center>
+</BorderPane>
