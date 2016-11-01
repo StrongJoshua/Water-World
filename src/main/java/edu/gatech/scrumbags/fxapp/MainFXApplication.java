@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -29,7 +29,7 @@ public class MainFXApplication extends Application {
 		welcome("/view/WelcomeView.fxml"), login("/view/LoginView.fxml"), main("/view/MainView.fxml"), profile(
 			"/view/ProfileView.fxml"), registration("/view/RegistrationView.fxml"), allReports(
 			"/view/AllReportsView.fxml"), waterSourceReport("/view/WaterSourceReportView.fxml"),
-			waterPurityReport("view/WaterPurityReportView.fxml");
+			waterPurityReport("/view/WaterPurityReportView.fxml"), historicalReport("/view/HistoricalReportView.fxml");
 
 		private String path;
 
@@ -47,8 +47,9 @@ public class MainFXApplication extends Application {
 
 	public static final String version = "0.6.1.0";
 
-	public static ArrayList<User> allUsers;
+	public static List<User> allUsers;
 	public static List<WaterReport> waterReports;
+	public static List<Integer> years;
 	public static MainController mapController;
 
 	public static Stage mainStage;
@@ -72,6 +73,11 @@ public class MainFXApplication extends Application {
 		waterReports.add(
 			new WaterSourceReport(new WaterLocation(33.7490, -84.3880), WaterType.Bottled, WaterCondition.Treatable_Clear,
 				"Francis"));
+		years = new ArrayList<>();
+		int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+		for (int i = currentYear; i >= 1990; i--) {
+			years.add(i);
+		}
 	}
 	
 	@Override

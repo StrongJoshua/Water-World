@@ -131,7 +131,7 @@ public class MainController implements MapComponentInitializedListener {
 	/** Brings the user to the historical report screen. */
 	@FXML
 	public void handleHistoricalReportPressed () {
-		// MainFXApplication.loadScene(Scenes.historicalReport);
+		MainFXApplication.loadScene(Scenes.historicalReport);
 	}
 
 	/** Brings the user to the all reports screen. */
