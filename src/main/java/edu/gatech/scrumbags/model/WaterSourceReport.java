@@ -2,7 +2,9 @@ package edu.gatech.scrumbags.model;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Water source report class containing a location, description, report date, and relevant methods.
@@ -11,6 +13,7 @@ import java.util.Date;
 public class WaterSourceReport extends WaterReport {
     private WaterType sourceType;
     private WaterCondition sourceCondition;
+    private List<WaterPurityReport> purityReports;
 
     /**
      * Constructs a new WaterSourceReport that was submitted at the moment this object was constructed
@@ -24,6 +27,7 @@ public class WaterSourceReport extends WaterReport {
         super(location, submitterName);
         this.sourceType = sourceType;
         this.sourceCondition = sourceCondition;
+        purityReports = new ArrayList<>();
     }
 
     /**
@@ -38,6 +42,15 @@ public class WaterSourceReport extends WaterReport {
         super(location, sourceReportDate, submitterName);
         this.sourceType = sourceType;
         this.sourceCondition = sourceCondition;
+        purityReports = new ArrayList<>();
+    }
+
+    public List<WaterPurityReport> getPurityReports () {
+        return purityReports;
+    }
+
+    public void addPurityReport (WaterPurityReport purityReport) {
+        this.purityReports.add(purityReport);
     }
 
     /**

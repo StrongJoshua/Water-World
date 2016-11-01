@@ -2,6 +2,7 @@ package edu.gatech.scrumbags.controller;
 
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
 import edu.gatech.scrumbags.model.WaterCondition;
+import edu.gatech.scrumbags.model.WaterSourceReport;
 import edu.gatech.scrumbags.model.WaterType;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -27,7 +28,8 @@ public class HistoricalReportController {
 	 * combo boxes, setting default choices and making the error message invisible.
 	 */
 	@FXML public void initialize () {
-		locationLabel.setText("");
+		WaterSourceReport sourceReport = MainFXApplication.getLastUsedSourceReport();
+		locationLabel.setText(sourceReport.getLocation().getLatitudeString() + ", " + sourceReport.getLocation().getLongitudeString());
 		yearComboBox.setItems(FXCollections.observableArrayList(MainFXApplication.years));
 		setErrorMessage(null);
 	}
@@ -55,7 +57,7 @@ public class HistoricalReportController {
 		if (yearComboBox.getValue() == null) {
 			setErrorMessage("Must choose a year.");
 		} else {
-			MainFXApplication.loadScene(MainFXApplication.Scenes.main);
+			MainFXApplication.loadScene(MainFXApplication.Scenes.historicalReportGraph);
 		}
 	}
 

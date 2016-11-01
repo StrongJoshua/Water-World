@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import sun.applet.Main;
 
 import java.util.Arrays;
 
@@ -48,7 +49,9 @@ public class WaterPurityReportController {
 		} else if (waterConditionCombo.getValue() == null) {
 			setErrorMessage("Must choose a water condition");
 		} else {
-			MainFXApplication.waterReports.add(new WaterPurityReport(MainFXApplication.getLastUsedSourceReport(), waterConditionCombo.getValue(), Double.parseDouble(virusPPMText.getText()), Double.parseDouble(virusPPMText.getText()), MainFXApplication.userInfo.getFullName()));
+			WaterPurityReport purityReport = new WaterPurityReport(MainFXApplication.getLastUsedSourceReport(), waterConditionCombo.getValue(), Double.parseDouble(virusPPMText.getText()), Double.parseDouble(virusPPMText.getText()), MainFXApplication.userInfo.getFullName());
+			MainFXApplication.waterReports.add(purityReport);
+			MainFXApplication.getLastUsedSourceReport().addPurityReport(purityReport);
 			MainFXApplication.loadScene(MainFXApplication.Scenes.main);
 		}
 	}
