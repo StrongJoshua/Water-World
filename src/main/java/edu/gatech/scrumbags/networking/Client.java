@@ -178,7 +178,6 @@ public class Client extends Thread {
 	public boolean sendSourceReport (WaterSourceReport report) {
 		sendMessage(new Message(Message.MessageType.sourceReport, json.toJson(report)));
 		request = true;
-		System.out.println("about to run");
 		while (running && handle == null) {
 			try {
 				Thread.sleep(5);

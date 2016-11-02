@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public abstract class WaterReport {
 	public static int reportCount = 0;
-	private int reportId;
+	private int reportID;
 	private WaterLocation location;
 	private Date reportDate;
 	private String submitterName;
@@ -21,7 +21,7 @@ public abstract class WaterReport {
 	 * @param submitterName The name of the submitter of this WaterReport.
 	 */
 	WaterReport (WaterLocation location, String submitterName) {
-		this.reportId = reportCount++;
+		this.reportID = reportCount++;
 		this.location = location;
 		this.reportDate = new Date();
 		this.submitterName = submitterName;
@@ -35,7 +35,7 @@ public abstract class WaterReport {
 	 * @param submitterName The name of the submitter of this WaterReport.
 	 */
 	WaterReport (WaterLocation location, Date reportDate, String submitterName) {
-		this.reportId = reportCount++;
+		this.reportID = reportCount++;
 		this.location = location;
 		this.reportDate = reportDate;
 		this.submitterName = submitterName;
@@ -47,7 +47,7 @@ public abstract class WaterReport {
 	 * @return ID of this WaterReport
 	 */
 	public int getId () {
-		return reportId;
+		return reportID;
 	}
 
 	/**
@@ -88,7 +88,7 @@ public abstract class WaterReport {
 	}
 
 	public String toString () {
-		return "ID: " + reportId + ", Submitter: " + getSubmitterName() + ", Location: " + getLocationString()
+		return "ID: " + reportID + ", Submitter: " + getSubmitterName() + ", Location: " + getLocationString()
 			+ ", Date: " + getDateString();
 	}
 }

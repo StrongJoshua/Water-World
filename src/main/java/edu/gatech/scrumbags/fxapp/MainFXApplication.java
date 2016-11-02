@@ -75,9 +75,9 @@ public class MainFXApplication extends Application {
 		//createAccount("SCRUMBags", "2340", "SCRUMBags", "2340", Authorization.admin);
 		waterReports = new ArrayList<>();
 		//waterReports.add(new WaterSourceReport(new WaterLocation(0d, 0d), WaterType.Other, WaterCondition.Treatable_Muddy, "Bill", new Date(1460000000000L)));
-		WaterSourceReport test = new WaterSourceReport(new WaterLocation(33.7490, -84.3880), WaterType.Bottled,
-			WaterCondition.Treatable_Clear, "Francis");
-		waterReports.add(test);
+		//WaterSourceReport test = new WaterSourceReport(new WaterLocation(33.7490, -84.3880), WaterType.Bottled,
+		//	WaterCondition.Treatable_Clear, "Francis");
+		//waterReports.add(test);
 
 		years = new ArrayList<>();
 		int currentYear = Calendar.getInstance().get(Calendar.YEAR);

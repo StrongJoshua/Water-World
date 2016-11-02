@@ -76,7 +76,8 @@ public class WaterSourceReportController {
 			}
 			WaterSourceReport sourceReport = new WaterSourceReport(new WaterLocation(latitude, longitude), waterTypeCombo.getValue(),
 				waterConditionCombo.getValue(), MainFXApplication.userInfo.getFullName());
-			//if(MainFXApplication.client.sendSourceReport(sourceReport))
+
+			if(MainFXApplication.client.sendSourceReport(sourceReport))
 			MainFXApplication.waterReports.add(sourceReport);
 
 			MainFXApplication.loadScene(MainFXApplication.Scenes.main);

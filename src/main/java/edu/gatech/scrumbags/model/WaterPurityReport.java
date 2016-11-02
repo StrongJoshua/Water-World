@@ -26,6 +26,7 @@ import java.util.Date;
  * Created by Beau on 10/9/2016.
  */
 public class WaterPurityReport extends WaterReport {
+	//TODO To remove
 	private WaterSourceReport waterSource;
 	private WaterPurityCondition purityCondition;
 	private double virusPPM;
