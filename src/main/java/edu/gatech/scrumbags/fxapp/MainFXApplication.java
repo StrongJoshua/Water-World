@@ -48,7 +48,7 @@ public class MainFXApplication extends Application {
 		}
 	}
 
-	public static final String version = "0.6.1.0";
+	public static final String version = "0.8.1.0";
 
 	public static List<User> allUsers;
 	public static List<WaterReport> waterReports;
@@ -75,6 +75,8 @@ public class MainFXApplication extends Application {
 		waterReports = new ArrayList<>();
 		//waterReports.add(new WaterSourceReport(new WaterLocation(0d, 0d), WaterType.Other, WaterCondition.Treatable_Muddy, "Bill", new Date(1460000000000L)));
 		waterReports.add(new WaterSourceReport(new WaterLocation(33.7490, -84.3880), WaterType.Bottled,
+			WaterCondition.Treatable_Clear, "Francis"));
+		client.sendSourceReport(new WaterSourceReport(new WaterLocation(33.7490, -84.3880), WaterType.Bottled,
 			WaterCondition.Treatable_Clear, "Francis"));
 		//client.sendSourceReport(new WaterSourceReport(new WaterLocation(33.7490, -84.3880), WaterType.Bottled,
 		//	WaterCondition.Treatable_Clear, "Francis"));
