@@ -76,7 +76,7 @@ public class WaterPurityReport extends WaterReport {
 	}
 
 	/**
-	 * Returns the condition of this WaterSourceReport
+	 * Returns the condition of this WaterPurityReport
 	 *
 	 * @return returns the condition of water available at the water source described by this report
 	 */

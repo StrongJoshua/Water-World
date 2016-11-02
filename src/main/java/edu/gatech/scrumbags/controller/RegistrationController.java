@@ -22,15 +22,14 @@ public class RegistrationController {
 	@FXML private TextField firstNameField;
 	@FXML private TextField lastNameField;
 	@FXML private TextField usernameField;
-
 	@FXML private PasswordField passwordField;
-
 	@FXML private PasswordField confirmPasswordField;
-
 	@FXML private ComboBox<Authorization> accountTypeCombo;
-
 	@FXML private Label errorLabel;
 
+	/**
+	 * Initializes the RegistrationView with account types
+	 */
 	@FXML public void initialize () {
 		accountTypeCombo.setItems(FXCollections.observableArrayList(Arrays.asList(Authorization.values())));
 		accountTypeCombo.setValue(Authorization.user);

@@ -10,6 +10,10 @@ import javafx.fxml.FXML;
  * @author Beau Mitchell
  */
 public class WelcomeController {
+
+	/**
+	 * Initializes the HistoricalReportView with location of source report and years from 1990 to present.
+	 */
 	@FXML public void initialize () {
 		if (MainFXApplication.userInfo != null) {
 			MainFXApplication.loadScene(Scenes.main);

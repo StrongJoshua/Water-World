@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 
 /**
- * The controller for the all reports view, the view containing a list of all water source reports
+ * The controller for the all reports view, the view containing a list of all water reports
  *
  * @author Beau Mitchell
  */
