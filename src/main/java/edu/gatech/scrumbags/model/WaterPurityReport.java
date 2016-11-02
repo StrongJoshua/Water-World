@@ -73,8 +73,8 @@ public class WaterPurityReport extends WaterReport {
 	 *
 	 * @return the report of the WaterSource associated with this purity report
 	 */
-	public WaterSourceReport getSource () {
-		return MainFXApplication.purityMap.get(this);
+	public WaterSourceReport getSource () { return waterSource;
+		//return MainFXApplication.purityMap.get(this);
 	}
 
 	/**
