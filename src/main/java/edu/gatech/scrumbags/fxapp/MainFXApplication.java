@@ -78,11 +78,7 @@ public class MainFXApplication extends Application {
 		WaterSourceReport test = new WaterSourceReport(new WaterLocation(33.7490, -84.3880), WaterType.Bottled,
 			WaterCondition.Treatable_Clear, "Francis");
 		waterReports.add(test);
-		System.out.println("about to add");
-		//client.sendSourceReport(test);
-		//client.sendSourceReport(new WaterSourceReport(new WaterLocation(33.7490, -84.3880), WaterType.Bottled,
-		//	WaterCondition.Treatable_Clear, "Francis"));
-		System.out.println("added");
+
 		years = new ArrayList<>();
 		int currentYear = Calendar.getInstance().get(Calendar.YEAR);
 		for (int i = currentYear; i >= 1990; i--) {

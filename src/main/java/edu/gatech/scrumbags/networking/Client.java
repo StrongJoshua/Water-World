@@ -182,7 +182,6 @@ public class Client extends Thread {
 		while (running && handle == null) {
 			try {
 				Thread.sleep(5);
-				System.out.println(handle);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -280,4 +279,10 @@ public class Client extends Thread {
 	public void logout () {
 		sendMessage(new Message(Message.MessageType.logout));
 	}
+
+	public boolean isConnected()
+	{
+		return connected;
+	}
+
 }
