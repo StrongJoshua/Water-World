@@ -72,6 +72,7 @@ public class WaterPurityReportController {
 				Double.parseDouble(virusPPMText.getText()), Double.parseDouble(virusPPMText.getText()),
 				MainFXApplication.userInfo.getFullName());
 			MainFXApplication.waterReports.add(purityReport);
+			//MainFXApplication.client.sendPurityReport(purityReport);
 			MainFXApplication.getLastUsedSourceReport().addPurityReport(purityReport);
 			MainFXApplication.loadScene(MainFXApplication.Scenes.main);
 		}
