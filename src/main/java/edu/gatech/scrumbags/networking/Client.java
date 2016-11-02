@@ -178,9 +178,11 @@ public class Client extends Thread {
 	public boolean sendSourceReport (WaterSourceReport report) {
 		sendMessage(new Message(Message.MessageType.sourceReport, json.toJson(report)));
 		request = true;
+		System.out.println("about to run");
 		while (running && handle == null) {
 			try {
 				Thread.sleep(5);
+				System.out.println(handle);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -188,7 +190,7 @@ public class Client extends Thread {
 		if (handle.getType() != Message.MessageType.sourceReport || handle.getPayload().length == 0) {
 			return false;
 		}
-		System.out.print(handle.getPayload()[0]);
+		System.out.println(handle.getPayload()[0]);
 		handle = null;
 		return true;
 	}
