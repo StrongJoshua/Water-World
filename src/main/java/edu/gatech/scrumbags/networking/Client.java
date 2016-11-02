@@ -232,12 +232,13 @@ public class Client extends Thread {
 		}
 		for(String s : handle.getPayload())
 		{
-			WaterSourceReport ws = (json.fromJson(s, WaterSourceReport.class));
+			WaterSourceReport ws = json.fromJson(s, WaterSourceReport.class);
 			MainFXApplication.waterReports.add(ws);
 			MainFXApplication.purityMap = new HashMap<>();
-			for(WaterPurityReport p : ws.getPurityReports())
-			{
-				MainFXApplication.purityMap.put(p,ws);
+			if(ws.getPurityReports() != null) {
+				for (WaterPurityReport p : ws.getPurityReports()) {
+					MainFXApplication.purityMap.put(p, ws);
+				}
 			}
 
 		}
