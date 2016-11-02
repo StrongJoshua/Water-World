@@ -74,6 +74,8 @@ public class MainFXApplication extends Application {
 		//waterReports.add(new WaterSourceReport(new WaterLocation(0d, 0d), WaterType.Other, WaterCondition.Treatable_Muddy, "Bill", new Date(1460000000000L)));
 		waterReports.add(new WaterSourceReport(new WaterLocation(33.7490, -84.3880), WaterType.Bottled,
 			WaterCondition.Treatable_Clear, "Francis"));
+		//client.sendSourceReport(new WaterSourceReport(new WaterLocation(33.7490, -84.3880), WaterType.Bottled,
+		//	WaterCondition.Treatable_Clear, "Francis"));
 		years = new ArrayList<>();
 		int currentYear = Calendar.getInstance().get(Calendar.YEAR);
 		for (int i = currentYear; i >= 1990; i--) {
@@ -138,22 +140,6 @@ public class MainFXApplication extends Application {
 		client.registerUser(auth, password);
 
 		return auth;
-	}
-
-	/**
-	 * Saves water report
-	 *
-	 * @param loc       Water location
-	 * @param title     report title
-	 * @param condition water condition
-	 * @param name      if other
-	 */
-	//public static void addWaterSourceReport (WaterLocation loc, WaterType title, WaterCondition condition, String name, Date d) {
-	public static void addWaterSourceReport (WaterLocation loc, WaterType title, WaterCondition condition,
-		String name) {
-		WaterSourceReport report = new WaterSourceReport(loc, title, condition, name);
-		waterReports.add(report);
-		client.sendSourceReport(report);
 	}
 
 	public static void setLastUsedSourceReport (WaterSourceReport report) {
