@@ -66,10 +66,12 @@ public class MainFXApplication extends Application {
 
 	@Override public void start (Stage primaryStage) {
 		mainStage = primaryStage;
-		shouldReconnect = true;
-		disconnect();
 		loadScene(Scenes.welcome);
 		primaryStage.show();
+
+		shouldReconnect = true;
+		disconnect();
+		
 		allUsers = new ArrayList<>();
 		//createAccount("SCRUMBags", "2340", "SCRUMBags", "2340", Authorization.admin);
 		waterReports = new ArrayList<>();

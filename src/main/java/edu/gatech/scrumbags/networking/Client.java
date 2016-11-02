@@ -188,6 +188,7 @@ public class Client extends Thread {
 		if (handle.getType() != Message.MessageType.sourceReport || handle.getPayload().length == 0) {
 			return false;
 		}
+		System.out.print(handle.getPayload()[0]);
 		handle = null;
 		return true;
 	}
