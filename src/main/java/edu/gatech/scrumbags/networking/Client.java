@@ -13,6 +13,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.HashMap;
 import java.util.List;
 
 public class Client extends Thread {
@@ -24,7 +25,6 @@ public class Client extends Thread {
 	private volatile boolean running;
 	private volatile Message handle = null;
 	private volatile boolean request;
-
 	/**
 	 * Constructs client object
 	 */
@@ -231,7 +231,14 @@ public class Client extends Thread {
 		}
 		for(String s : handle.getPayload())
 		{
-			MainFXApplication.waterReports.add(json.fromJson(s, WaterSourceReport.class));
+			WaterSourceReport ws = (json.fromJson(s, WaterSourceReport.class);
+			MainFXApplication.waterReports.add(ws);
+			MainFXApplication.purityMap = new HashMap<>();
+			for(WaterPurityReport p : ws.getPurityReports())
+			{
+				MainFXApplication.purityMap.put(p,ws);
+			}
+
 		}
 		handle = null;
 		return;

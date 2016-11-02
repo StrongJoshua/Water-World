@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -57,6 +58,7 @@ public class MainFXApplication extends Application {
 	public static Stage mainStage;
 	public static User userInfo;
 	public static Client client;
+	public static HashMap<WaterPurityReport,WaterSourceReport> purityMap;
 
 	public static WaterSourceReport lastUsedSourceReport;
 
