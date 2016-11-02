@@ -2,7 +2,7 @@ package edu.gatech.scrumbags.networking.messages;
 
 public class Message {
 	public enum MessageType {
-		registration, login, userInfo, console, sourceReport, purityReport, requestReports, infoUpdate, logout
+		registration, login, userInfo, console, sourceReport, purityReport, requestAllReports, infoUpdate, logout
 	}
 
 	private MessageType type;

@@ -13,6 +13,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.List;
 
 public class Client extends Thread {
 	private Socket socket;
@@ -126,8 +127,6 @@ public class Client extends Thread {
 
 		} else if (m.getType() == Message.MessageType.console) {
 
-		} else if (m.getType() == Message.MessageType.requestReports) {
-
 		}
 
 	}
@@ -212,6 +211,30 @@ public class Client extends Thread {
 		}
 		handle = null;
 		return true;
+	}
+
+	/**
+	 * Method is not done
+	 */
+	public void requestAllReports () {
+		sendMessage(new Message(Message.MessageType.requestAllReports));
+		request = true;
+		while (running && handle == null) {
+			try {
+				Thread.sleep(5);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		if (handle.getType() != Message.MessageType.requestAllReports|| handle.getPayload().length == 0) {
+			return;
+		}
+		for(String s : handle.getPayload())
+		{
+			MainFXApplication.waterReports.add(json.fromJson(s, WaterSourceReport.class));
+		}
+		handle = null;
+		return;
 	}
 
 	/**
