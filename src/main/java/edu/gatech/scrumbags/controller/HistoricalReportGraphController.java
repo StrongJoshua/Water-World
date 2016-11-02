@@ -8,13 +8,18 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 
 /**
- * Created by klun on 11/1/2016.
+ * The controller for the historical report graph view.
+ *
+ * @author Kevin Lun
  */
 public class HistoricalReportGraphController {
 	@FXML private LineChart<String, Number> lineChart;
 	@FXML private CategoryAxis xAxis;
 	@FXML private NumberAxis yAxis;
 
+	/**
+	 * Initializes the HistoricalReportGraphView with chosen ppm for a chosen year for each month.
+	 */
 	@FXML public void initialize () {
 		XYChart.Series virus = new XYChart.Series();
 		virus.setName("My portfolio");

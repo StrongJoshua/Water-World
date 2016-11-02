@@ -41,9 +41,7 @@ public class WaterPurityReportController {
 	}
 
 	/**
-	 * Handles the input verification when the user presses the submit button
-	 * Checks that latitude and longitude values are acceptable and pulls the rest
-	 * of the needed information from the user or local time.
+	 * Handles the input verification when the user presses the submit button.  Checks that virusPPM and contaminantPPM are filled out correctly.
 	 */
 	@FXML public void handleSubmitPressed () {
 		// trying to get correct GPS coordinates

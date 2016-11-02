@@ -14,6 +14,12 @@ public abstract class WaterReport {
 	private Date reportDate;
 	private String submitterName;
 
+	/**
+	 * Creates a new WaterReport with current Date and given information
+	 *
+	 * @param location      The location of this WaterReport.
+	 * @param submitterName The name of the submitter of this WaterReport.
+	 */
 	WaterReport (WaterLocation location, String submitterName) {
 		this.reportId = reportCount++;
 		this.location = location;
@@ -21,6 +27,13 @@ public abstract class WaterReport {
 		this.submitterName = submitterName;
 	}
 
+	/**
+	 * Creates a new WaterReport with given Date and given information
+	 *
+	 * @param location      The location of this WaterReport.
+	 * @param reportDate    The date of this WaterReport.
+	 * @param submitterName The name of the submitter of this WaterReport.
+	 */
 	WaterReport (WaterLocation location, Date reportDate, String submitterName) {
 		this.reportId = reportCount++;
 		this.location = location;
@@ -28,30 +41,35 @@ public abstract class WaterReport {
 		this.submitterName = submitterName;
 	}
 
+	/**
+	 * Returns the ID of this WaterReport
+	 *
+	 * @return ID of this WaterReport
+	 */
 	public int getId () {
 		return reportId;
 	}
 
 	/**
-	 * Returns the WaterLocation of this WaterSourceReport
+	 * Returns the WaterLocation of this WaterReport
 	 *
-	 * @return WaterLocation of this Water Source
+	 * @return WaterLocation of this WaterReport
 	 */
 	public WaterLocation getLocation () {
 		return location;
 	}
 
 	/**
-	 * Returns a String representation of the location of this water source report
+	 * Returns a String representation of the location of this WaterReport
 	 *
-	 * @return Labeled string representation of the location of this water source report
+	 * @return Labeled string representation of the location of this WaterReport
 	 */
 	public String getLocationString () {
 		return location.toString();
 	}
 
 	/**
-	 * Returns the date of submission of this water source report as a String
+	 * Returns the date of submission of this WaterReport as a String
 	 *
 	 * @return Returns a
 	 */
@@ -61,9 +79,9 @@ public abstract class WaterReport {
 	}
 
 	/**
-	 * Returns the full name of the submitter of this water source report
+	 * Returns the full name of the submitter of this WaterReport
 	 *
-	 * @return full name of the submitted of this water source report as a String
+	 * @return full name of the submitted of this WaterReport as a String
 	 */
 	public String getSubmitterName () {
 		return submitterName;

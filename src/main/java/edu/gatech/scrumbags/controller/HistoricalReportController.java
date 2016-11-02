@@ -8,7 +8,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
 /**
- * Created by klun on 10/31/2016.
+ * The controller for the historical report view.
+ *
+ * @author Kevin Lun
  */
 public class HistoricalReportController {
 
@@ -17,8 +19,7 @@ public class HistoricalReportController {
 	@FXML private ComboBox<Integer> yearComboBox;
 
 	/**
-	 * Initializes the WaterSourceReportView as to minimize errors by populating
-	 * combo boxes, setting default choices and making the error message invisible.
+	 * Initializes the HistoricalReportView with location of source report and years from 1990 to present.
 	 */
 	@FXML public void initialize () {
 		WaterSourceReport sourceReport = MainFXApplication.getLastUsedSourceReport();
@@ -43,9 +44,7 @@ public class HistoricalReportController {
 	}
 
 	/**
-	 * Handles the input verification when the user presses the submit button
-	 * Checks that latitude and longitude values are acceptable and pulls the rest
-	 * of the needed information from the user or local time.
+	 * Handles the input verification when the user presses the submit button.  Checks that something is chosen for yearComboBox.
 	 */
 	@FXML public void handleSubmitPressed () {
 		if (yearComboBox.getValue() == null) {

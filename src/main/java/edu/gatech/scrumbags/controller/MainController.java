@@ -153,6 +153,12 @@ public class MainController implements MapComponentInitializedListener {
 		MainFXApplication.logout();
 	}
 
+	/**
+	 * Sets new map center
+	 *
+	 * @param latitude  latitude of new center
+	 * @param longitude longitude of new center
+	 */
 	public void setMapCoords (double latitude, double longitude) {
 		try {
 			map.setCenter(new LatLong(latitude, longitude));

@@ -25,6 +25,9 @@ public class ProfileController {
 
 	private boolean editMode;
 
+	/**
+	 * Initializes the ProfileView with name and account type.
+	 */
 	@FXML public void initialize () {
 		User userInfo = MainFXApplication.userInfo;
 		if (MainFXApplication.userInfo == null) {
