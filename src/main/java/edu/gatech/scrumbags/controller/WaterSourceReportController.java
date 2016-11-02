@@ -74,12 +74,11 @@ public class WaterSourceReportController {
 			if (waterTypeCombo.getValue().equals(WaterType.Other)) {
 				waterType += waterConditionOtherText.getText();
 			}
-			MainFXApplication.waterReports.add(
-				new WaterSourceReport(new WaterLocation(latitude, longitude), waterTypeCombo.getValue(),
-					waterConditionCombo.getValue(), MainFXApplication.userInfo.getFullName()));
-			/*MainFXApplication.client.sendSourceReport(
-				new WaterSourceReport(new WaterLocation(latitude, longitude), waterTypeCombo.getValue(),
-					waterConditionCombo.getValue(), MainFXApplication.userInfo.getFullName()));*/
+			WaterSourceReport sourceReport = new WaterSourceReport(new WaterLocation(latitude, longitude), waterTypeCombo.getValue(),
+				waterConditionCombo.getValue(), MainFXApplication.userInfo.getFullName());
+			//if(MainFXApplication.client.sendSourceReport(sourceReport))
+			MainFXApplication.waterReports.add(sourceReport);
+
 			MainFXApplication.loadScene(MainFXApplication.Scenes.main);
 		}
 	}
