@@ -7,6 +7,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.stage.PopupWindow;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -64,12 +68,17 @@ public class MainFXApplication extends Application {
 
 	private static boolean shouldReconnect;
 
+
 	@Override public void start (Stage primaryStage) {
 		mainStage = primaryStage;
 		loadScene(Scenes.welcome);
 		primaryStage.show();
+
+
+
 		shouldReconnect = true;
 		disconnect();
+
 
 		allUsers = new ArrayList<>();
 		//createAccount("SCRUMBags", "2340", "SCRUMBags", "2340", Authorization.admin);

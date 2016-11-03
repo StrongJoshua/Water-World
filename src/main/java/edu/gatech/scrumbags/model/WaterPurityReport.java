@@ -27,7 +27,7 @@ import java.util.Date;
  */
 public class WaterPurityReport extends WaterReport {
 	//TODO To remove
-	private WaterSourceReport waterSource;
+	//private WaterSourceReport waterSource;
 	private WaterPurityCondition purityCondition;
 	private double virusPPM;
 	private double contaminantPPM;
@@ -62,7 +62,8 @@ public class WaterPurityReport extends WaterReport {
 	public WaterPurityReport (WaterSourceReport source, Date purityReportDate,
 		WaterPurityCondition purityCondition, double virusPPM, double contaminantPPM, String submitterName) {
 		super(source.getLocation(), purityReportDate, submitterName);
-		this.waterSource = source;
+		//this.waterSource = source;
+		//this.waterSource = MainFXApplication.purityMap.get(this);
 		this.purityCondition = purityCondition;
 		this.virusPPM = virusPPM;
 		this.contaminantPPM = contaminantPPM;
@@ -74,8 +75,8 @@ public class WaterPurityReport extends WaterReport {
 	 *
 	 * @return the report of the WaterSource associated with this purity report
 	 */
-	public WaterSourceReport getSource () { return waterSource;
-		//return MainFXApplication.purityMap.get(this);
+	public WaterSourceReport getSource () { //return waterSource;
+		return MainFXApplication.purityMap.get(this);
 	}
 
 	/**

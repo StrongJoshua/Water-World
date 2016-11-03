@@ -195,7 +195,7 @@ public class Client extends Thread {
 	 * @param report Water report to be stored
 	 */
 	public boolean sendPurityReport (WaterPurityReport report) {
-		sendMessage(new Message(Message.MessageType.purityReport, report.getId() + "", json.toJson(report)));
+		sendMessage(new Message(Message.MessageType.purityReport, MainFXApplication.purityMap.get(report).getId() + "", json.toJson(report)));
 		request = true;
 		while (running && handle == null) {
 			try {
