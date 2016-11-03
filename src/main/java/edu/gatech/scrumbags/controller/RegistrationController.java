@@ -46,7 +46,7 @@ public class RegistrationController {
 					passwordField.getText(), accountTypeCombo.getValue());
 			if (userInfo != null) {
 				MainFXApplication.userInfo = userInfo;
-				MainFXApplication.loadScene(MainFXApplication.Scenes.main);
+				MainFXApplication.loadScene(MainFXApplication.Scenes.login);
 			} else {
 				setErrorMessage("Error: Username already exists.");
 			}

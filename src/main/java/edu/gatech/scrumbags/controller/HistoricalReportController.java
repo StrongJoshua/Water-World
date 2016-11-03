@@ -1,11 +1,15 @@
 package edu.gatech.scrumbags.controller;
 
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
+import edu.gatech.scrumbags.model.HistoricalType;
+import edu.gatech.scrumbags.model.WaterPurityCondition;
 import edu.gatech.scrumbags.model.WaterSourceReport;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+
+import java.util.Arrays;
 
 /**
  * The controller for the historical report view.
@@ -16,6 +20,7 @@ public class HistoricalReportController {
 
 	@FXML private Label errorMessage;
 	@FXML private Label locationLabel;
+	@FXML private ComboBox<HistoricalType> typeComboBox;
 	@FXML private ComboBox<Integer> yearComboBox;
 
 	/**
@@ -26,7 +31,9 @@ public class HistoricalReportController {
 		locationLabel.setText(
 			sourceReport.getLocation().getLatitudeString() + ", " + sourceReport.getLocation()
 				.getLongitudeString());
-		yearComboBox.setItems(FXCollections.observableArrayList(MainFXApplication.years));
+		typeComboBox.setItems(FXCollections.observableArrayList(Arrays.asList(HistoricalType.values())));
+		typeComboBox.setValue(HistoricalType.Contaminant);
+		yearComboBox.setItems(FXCollections.observableArrayList(MainFXApplication.years));;
 		setErrorMessage(null);
 	}
 
