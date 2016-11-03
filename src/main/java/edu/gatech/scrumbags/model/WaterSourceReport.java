@@ -51,6 +51,8 @@ public class WaterSourceReport extends WaterReport {
 	}
 
 	public void addPurityReport (WaterPurityReport purityReport) {
+		if(purityReports == null)
+			purityReports = new ArrayList<>();
 		this.purityReports.add(purityReport);
 	}
 
