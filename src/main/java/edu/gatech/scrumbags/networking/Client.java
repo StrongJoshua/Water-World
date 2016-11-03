@@ -227,21 +227,21 @@ public class Client extends Thread {
 		if (handle.getType() != Message.MessageType.requestAllReports|| handle.getPayload().length == 0) {
 			return;
 		}
+		int count = 0;
 		for(String s : handle.getPayload())
 		{
 			WaterSourceReport ws = json.fromJson(s, WaterSourceReport.class);
-			MainFXApplication.lastUsedSourceReport = ws;
 			MainFXApplication.waterReports.add(ws);
-			MainFXApplication.purityMap = new HashMap<>();
 			if(ws.getPurityReports() != null) {
 				for (WaterPurityReport p : ws.getPurityReports()) {
 					MainFXApplication.purityMap.put(p, ws);
 					MainFXApplication.waterReports.add(p);
+					count++;
 				}
 			}
-
+			count ++;
 		}
-		WaterReport.reportCount = handle.getPayload().length;
+		WaterReport.reportCount = count;
 		handle = null;
 		return;
 	}

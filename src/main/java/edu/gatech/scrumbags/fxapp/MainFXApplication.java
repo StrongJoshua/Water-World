@@ -62,7 +62,7 @@ public class MainFXApplication extends Application {
 	public static Stage mainStage;
 	public static User userInfo;
 	public static Client client;
-	public static HashMap<WaterPurityReport,WaterSourceReport> purityMap;
+	public static HashMap<WaterPurityReport,WaterSourceReport> purityMap = new HashMap<>();
 
 	public static WaterSourceReport lastUsedSourceReport;
 
@@ -178,6 +178,7 @@ public class MainFXApplication extends Application {
 	 * Will log the client out when the logout button is pressed
 	 */
 	public static void logout () {
+		waterReports.clear();
 		client.logout();
 	}
 
