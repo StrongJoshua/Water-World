@@ -2,10 +2,7 @@ package edu.gatech.scrumbags.networking;
 
 import com.google.gson.Gson;
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
-import edu.gatech.scrumbags.model.Authorization;
-import edu.gatech.scrumbags.model.User;
-import edu.gatech.scrumbags.model.WaterPurityReport;
-import edu.gatech.scrumbags.model.WaterSourceReport;
+import edu.gatech.scrumbags.model.*;
 import edu.gatech.scrumbags.networking.messages.Message;
 
 import java.io.IOException;
@@ -198,7 +195,7 @@ public class Client extends Thread {
 	 * @param report Water report to be stored
 	 */
 	public boolean sendPurityReport (WaterPurityReport report) {
-		sendMessage(new Message(Message.MessageType.purityReport, json.toJson(report)));
+		sendMessage(new Message(Message.MessageType.purityReport, report.getId() + "", json.toJson(report)));
 		request = true;
 		while (running && handle == null) {
 			try {
@@ -242,6 +239,7 @@ public class Client extends Thread {
 			}
 
 		}
+		WaterReport.reportCount = handle.getPayload().length;
 		handle = null;
 		return;
 	}
