@@ -154,10 +154,18 @@ public class MainFXApplication extends Application {
 		return auth;
 	}
 
+	/**
+	 * Sets the last used report
+	 * @param report the last used report
+	 */
 	public static void setLastUsedSourceReport (WaterSourceReport report) {
 		lastUsedSourceReport = report;
 	}
 
+	/**
+	 * Gets the last used report
+	 * @return the last used report
+	 */
 	public static WaterSourceReport getLastUsedSourceReport () {
 		return lastUsedSourceReport;
 	}
