@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.scrumbags.controller.HistoricalReportController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.scrumbags.controller.HistoricalReportController">
     <top>
-        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="555.0" text="Historical Report" textAlignment="CENTER" BorderPane.alignment="CENTER">
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="555.0" styleClass="titleText" stylesheets="@../css/main.css" text="Historical Report" textAlignment="CENTER" BorderPane.alignment="CENTER">
             <font>
                 <Font size="45.0" />
             </font>
@@ -23,7 +23,7 @@
     <center>
         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <children>
-                <Label id="errorMessage" fx:id="errorMessage" text="Error" textFill="RED">
+                <Label id="errorMessage" fx:id="errorMessage" style="-fx-text-fill: red;" styleClass="subtitleText" stylesheets="@../css/main.css" text="Error" textFill="RED">
                     <VBox.margin>
                         <Insets top="10.0" />
                     </VBox.margin>
@@ -33,12 +33,12 @@
                 </Label>
                 <HBox alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
                     <children>
-                        <Label prefHeight="27.0" prefWidth="178.0" text="Water Location (GPS):">
+                        <Label prefHeight="35.0" prefWidth="262.0" styleClass="subtitleText" stylesheets="@../css/main.css" text="Water Location (GPS):">
                             <font>
                                 <Font size="18.0" />
                             </font>
                         </Label>
-                        <Label fx:id="locationLabel" text="Location">
+                        <Label fx:id="locationLabel" styleClass="subtitleText" stylesheets="@../css/main.css" text="Location">
                             <font>
                                 <Font size="18.0" />
                             </font>
@@ -50,7 +50,7 @@
                   <Insets right="27.0" />
                </padding>
                <children>
-                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="53.0" text="Type:">
+                  <Label alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="72.0" styleClass="subtitleText" stylesheets="@../css/main.css" text="Type: ">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -63,7 +63,7 @@
                         <Insets right="27.0" />
                     </padding>
                     <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="53.0" text="Year: ">
+                        <Label alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="72.0" styleClass="subtitleText" stylesheets="@../css/main.css" text="Year: ">
                             <font>
                                 <Font size="18.0" />
                             </font>

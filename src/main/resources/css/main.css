@@ -1,9 +1,6 @@
 .root {
     -fx-background-image: url("WaterBackground.jpg");
     -fx-background-size: cover;
-    -fx-text-fill: navy;
-    -fx-font-family: fantasy;
-    -fx-font-style: normal;
 }
 
 .button {
@@ -16,6 +13,20 @@
     -fx-padding: 5 10 5 10;
     -fx-text-fill: black;
     -fx-font-size: 14px;
+}
+
+.titleText {
+    -fx-font-family: fantasy;
+    -fx-font-style: normal;
+    -fx-font-weight: bold;
+    -fx-font-size: 56px;
+}
+
+.subtitleText {
+    -fx-font-family: fantasy;
+    -fx-font-style: normal;
+    -fx-font-weight: bold;
+    -fx-font-size: 24px;
 }
 
 .loggedInVBox {
