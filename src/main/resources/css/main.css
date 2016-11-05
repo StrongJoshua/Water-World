@@ -1,3 +1,23 @@
+.root {
+    -fx-background-image: url("WaterBackground.jpg");
+    -fx-background-size: cover;
+    -fx-text-fill: navy;
+    -fx-font-family: fantasy;
+    -fx-font-style: normal;
+}
+
+.button {
+    -fx-background-color:
+            #3c7fb1,
+            linear-gradient(#fafdfe, #e8f5fc),
+            linear-gradient(#eaf6fd 0%, #d9f0fc 49%, #bee6fd 50%, #a7d9f5 100%);
+    -fx-background-insets: 0,1,2;
+    -fx-background-radius: 3,2,1;
+    -fx-padding: 5 10 5 10;
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+}
+
 .loggedInVBox {
 	-fx-border-color: black;
 	-fx-border-width: 1px;

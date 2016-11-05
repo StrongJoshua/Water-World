@@ -74,8 +74,6 @@ public class MainFXApplication extends Application {
 		loadScene(Scenes.welcome);
 		primaryStage.show();
 
-
-
 		shouldReconnect = true;
 		disconnect();
 
@@ -111,7 +109,9 @@ public class MainFXApplication extends Application {
 			loader.setLocation(MainFXApplication.class.getResource(scene.getPath()));
 			Parent root = loader.load();
 			mainStage.setTitle("Clean Water by SCRUMbags for CS 2340");
-			mainStage.setScene(new Scene(root));
+            Scene newScene = new Scene(root);
+			mainStage.setScene(newScene);
+            newScene.getStylesheets().add("/css/main.css");
 			if (scene == Scenes.main) {
 				mapController = loader.getController();
 			}

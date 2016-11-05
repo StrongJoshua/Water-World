@@ -12,13 +12,13 @@
         <HBox alignment="CENTER" prefHeight="48.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <children>
                 <Button fx:id="waterSourceReportButton" mnemonicParsing="false"
-                        onAction="#handleWaterSourceReportPressed" text="Water Source Report">
+                        onAction="#handleWaterSourceReportPressed" text="Source Report">
                     <HBox.margin>
                         <Insets left="20.0" right="20.0"/>
                     </HBox.margin>
                 </Button>
                 <Button fx:id="waterPurityReportButton" mnemonicParsing="false"
-                        onAction="#handleWaterPurityReportPressed" text="Water Purity Report">
+                        onAction="#handleWaterPurityReportPressed" text="Purity Report">
                     <HBox.margin>
                         <Insets left="20.0" right="20.0"/>
                     </HBox.margin>
