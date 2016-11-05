@@ -56,16 +56,16 @@ public class WaterSourceReportController {
 			latitude = Double.parseDouble(latitudeText.getText());
 			longitude = Double.parseDouble(longitudeText.getText());
 			if (latitude < -90.0 || latitude > 90.0) {
-				setErrorMessage("Incorrect format! Latitude value must be " + "larger than -90 and less than 90.");
+				setErrorMessage("Latitude must be between -90 and 90.");
 			} else if (longitude < -180.0 || longitude > 180.0) {
-				setErrorMessage("Incorrect format! Longitude value must be " + "larger than -180 and less than 180.");
+				setErrorMessage("Longitude must be between -180 and 180.");
 			} else {
 				successfulParse = true;
 			}
 		} catch (NullPointerException e) {
-			setErrorMessage("Incorrect format! Please enter GPS coordinates " + "in the form of doubles.");
+			setErrorMessage("GPS coordinates must be numbers.");
 		} catch (NumberFormatException e) {
-			setErrorMessage("Incorrect format! Please enter valid doubles for " + "GPS coordinates.");
+			setErrorMessage("GPS coordinates must be valid numbers.");
 		}
 
 		// submitting all information needed for a full water source report

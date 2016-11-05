@@ -39,7 +39,7 @@
                                 <Font size="18.0" />
                             </font>
                         </Label>
-                        <Label fx:id="locationLabel" prefHeight="27.0" prefWidth="124.0" styleClass="subtitleText" stylesheets="@../css/main.css" text="Location">
+                        <Label fx:id="locationLabel" prefHeight="35.0" prefWidth="202.0" styleClass="subtitleText" stylesheets="@../css/main.css" text="Location">
                             <font>
                                 <Font size="18.0" />
                             </font>

@@ -52,16 +52,16 @@ public class WaterPurityReportController {
 			virusPPM = Integer.parseInt(virusPPMText.getText());
 			contaminantPPM = Integer.parseInt(contaminantPPMText.getText());
 			if (virusPPM < 0) {
-				setErrorMessage("Incorrect format! Virus PPM cannot be negative.");
+				setErrorMessage("Virus PPM cannot be negative.");
 			} else if (contaminantPPM < 0) {
-				setErrorMessage("Incorrect format! Contaminant PPM cannot be negative.");
+				setErrorMessage("Contaminant PPM cannot be negative.");
 			} else {
 				successfulParse = true;
 			}
 		} catch (NullPointerException e) {
-			setErrorMessage("Incorrect format! Please enter values in the form of integers.");
+			setErrorMessage("PPM values must be integers.");
 		} catch (NumberFormatException e) {
-			setErrorMessage("Incorrect format! Please enter valid integers for PPM values.");
+			setErrorMessage("PPM values must be valid integers.");
 		}
 		// submitting report if all data is valid
 		if (successfulParse) {
