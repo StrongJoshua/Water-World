@@ -36,7 +36,8 @@ public class MainFXApplication extends Application {
 			"/view/RegistrationView.fxml"), allReports("/view/AllReportsView.fxml"), waterSourceReport(
 			"/view/WaterSourceReportView.fxml"), waterPurityReport(
 			"/view/WaterPurityReportView.fxml"), historicalReport(
-			"/view/HistoricalReportView.fxml"), historicalReportGraph("/view/HistoricalReportGraphView.fxml");
+			"/view/HistoricalReportView.fxml"), historicalVirusGraph("/view/HistoricalVirusGraphView.fxml"),
+			historicalContaminantGraph("/view/HistoricalContaminantGraphView.fxml");
 
 		private String path;
 
@@ -88,7 +89,7 @@ public class MainFXApplication extends Application {
 
 		years = new ArrayList<>();
 		int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-		for (int i = currentYear; i >= 1990; i--) {
+		for (int i = currentYear; i >= 2000; i--) {
 			years.add(i);
 		}
 	}

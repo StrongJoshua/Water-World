@@ -10,19 +10,19 @@ import javafx.scene.chart.XYChart;
 /**
  * The controller for the historical report graph view.
  *
- * @author Kevin Lun
+ * @author Guillaume Noziere
  */
-public class HistoricalReportGraphController {
+public class HistoricalVirusGraphController {
 	@FXML private LineChart<String, Number> lineChart;
 	@FXML private CategoryAxis xAxis;
 	@FXML private NumberAxis yAxis;
 
 	/**
-	 * Initializes the HistoricalReportGraphView with chosen ppm for a chosen year for each month.
+	 * Initializes the HistoricalVirusGraphView with ppm for a chosen year for each month.
 	 */
 	@FXML public void initialize () {
 		XYChart.Series virus = new XYChart.Series();
-		virus.setName("My portfolio");
+		lineChart.setLegendVisible(false);
 
 		virus.getData().add(new XYChart.Data("Jan", 23));
 		virus.getData().add(new XYChart.Data("Feb", 14));

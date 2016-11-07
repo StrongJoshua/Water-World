@@ -32,8 +32,9 @@ public class HistoricalReportController {
 			sourceReport.getLocation().getLatitudeString() + ", " + sourceReport.getLocation()
 				.getLongitudeString());
 		typeComboBox.setItems(FXCollections.observableArrayList(Arrays.asList(HistoricalType.values())));
-		typeComboBox.setValue(HistoricalType.Contaminant);
-		yearComboBox.setItems(FXCollections.observableArrayList(MainFXApplication.years));;
+		typeComboBox.setValue(HistoricalType.Virus);
+		yearComboBox.setItems(FXCollections.observableArrayList(MainFXApplication.years));
+        yearComboBox.setValue(MainFXApplication.years.get(0));
 		setErrorMessage(null);
 	}
 
@@ -56,8 +57,10 @@ public class HistoricalReportController {
 	@FXML public void handleSubmitPressed () {
 		if (yearComboBox.getValue() == null) {
 			setErrorMessage("Must choose a year.");
-		} else {
-			MainFXApplication.loadScene(MainFXApplication.Scenes.historicalReportGraph);
+		} else if (typeComboBox.getValue().equals(HistoricalType.Virus)) {
+			MainFXApplication.loadScene(MainFXApplication.Scenes.historicalVirusGraph);
+		} else if (typeComboBox.getValue().equals(HistoricalType.Contaminant)) {
+			MainFXApplication.loadScene(MainFXApplication.Scenes.historicalContaminantGraph);
 		}
 	}
 

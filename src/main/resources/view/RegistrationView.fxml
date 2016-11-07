@@ -69,7 +69,7 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="40.0" prefWidth="595.0">
                     <children>
-                        <Label prefHeight="35.0" prefWidth="119.0" styleClass="subtitleText" stylesheets="@../css/main.css" text="Password: " textAlignment="RIGHT">
+                        <Label prefHeight="35.0" prefWidth="123.0" styleClass="subtitleText" stylesheets="@../css/main.css" text="Password: " textAlignment="RIGHT">
                             <font>
                                 <Font size="18.0" />
                             </font>
