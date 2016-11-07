@@ -70,16 +70,6 @@ public class WaterPurityReport extends WaterReport {
 	}
 
 	/**
-	 * Returns the WaterSourceReport associated with this purity report.
-	 * The source report can then be used to return location and other source information.
-	 *
-	 * @return the report of the WaterSource associated with this purity report
-	 */
-	public WaterSourceReport getSource () { //return waterSource;
-		return MainFXApplication.purityMap.get(this);
-	}
-
-	/**
 	 * Returns the condition of this WaterPurityReport
 	 *
 	 * @return returns the condition of water available at the water source described by this report

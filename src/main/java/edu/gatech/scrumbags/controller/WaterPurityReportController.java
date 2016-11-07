@@ -46,8 +46,8 @@ public class WaterPurityReportController {
 	@FXML public void handleSubmitPressed () {
 		// trying to get correct GPS coordinates
 		boolean successfulParse = false;
-		int virusPPM = 0;
-		int contaminantPPM = 0;
+		int virusPPM;
+		int contaminantPPM;
 		try {
 			virusPPM = Integer.parseInt(virusPPMText.getText());
 			contaminantPPM = Integer.parseInt(contaminantPPMText.getText());
@@ -70,10 +70,10 @@ public class WaterPurityReportController {
 				Double.parseDouble(virusPPMText.getText()), Double.parseDouble(virusPPMText.getText()),
 				MainFXApplication.userInfo.getFullName());
 
-			MainFXApplication.purityMap.put(purityReport,MainFXApplication.getLastUsedSourceReport());
+			MainFXApplication.purityMap.get(MainFXApplication.getLastUsedSourceReport()).add(purityReport);
 
-			if(MainFXApplication.client.sendPurityReport(purityReport))
-			MainFXApplication.waterReports.add(purityReport);
+			if(MainFXApplication.client.sendPurityReport(purityReport, MainFXApplication.getLastUsedSourceReport()))
+				MainFXApplication.waterReports.add(purityReport);
 
 			MainFXApplication.getLastUsedSourceReport().addPurityReport(purityReport);
 			MainFXApplication.loadScene(MainFXApplication.Scenes.main);

@@ -11,6 +11,7 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Client extends Thread {
@@ -72,13 +73,14 @@ public class Client extends Thread {
 			if (socket != null)
 				socket.close();
 		} catch (IOException e) {
+			System.out.println("Error closing connection with server.");
 		}
 	}
 
 	/**
 	 * This method will reattempt connection if it is lost
 	 */
-	public void disconnect () {
+	private void disconnect () {
 		quit();
 		MainFXApplication.disconnect();
 	}
@@ -88,7 +90,7 @@ public class Client extends Thread {
 	 *
 	 * @param m Message with type and paylod
 	 */
-	public void sendMessage (Message m) {
+	private void sendMessage (Message m) {
 		if (!connected) {
 			//System.out.println("Not connected to server, cannot send message");
 			return;
@@ -194,8 +196,8 @@ public class Client extends Thread {
 	 *
 	 * @param report Water report to be stored
 	 */
-	public boolean sendPurityReport (WaterPurityReport report) {
-		sendMessage(new Message(Message.MessageType.purityReport, MainFXApplication.purityMap.get(report).getId() + "", json.toJson(report)));
+	public boolean sendPurityReport (WaterPurityReport report, WaterSourceReport source) {
+		sendMessage(new Message(Message.MessageType.purityReport, source.getId() + "", json.toJson(report)));
 		request = true;
 		while (running && handle == null) {
 			try {
@@ -232,9 +234,10 @@ public class Client extends Thread {
 		{
 			WaterSourceReport ws = json.fromJson(s, WaterSourceReport.class);
 			MainFXApplication.waterReports.add(ws);
+			MainFXApplication.purityMap.put(ws, new LinkedList<>());
 			if(ws.getPurityReports() != null) {
 				for (WaterPurityReport p : ws.getPurityReports()) {
-					MainFXApplication.purityMap.put(p, ws);
+					MainFXApplication.purityMap.get(ws).add(p);
 					MainFXApplication.waterReports.add(p);
 					count++;
 				}
@@ -243,7 +246,6 @@ public class Client extends Thread {
 		}
 		WaterReport.reportCount = count;
 		handle = null;
-		return;
 	}
 
 	/**

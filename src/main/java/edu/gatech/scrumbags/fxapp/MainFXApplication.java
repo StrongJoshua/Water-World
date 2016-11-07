@@ -55,17 +55,17 @@ public class MainFXApplication extends Application {
 
 	public static final String version = "0.8.1.0";
 
-	public static List<User> allUsers;
+	private static List<User> allUsers;
 	public static List<WaterReport> waterReports;
 	public static List<Integer> years;
-	public static MainController mapController;
+	private static MainController mapController;
 
-	public static Stage mainStage;
+	private static Stage mainStage;
 	public static User userInfo;
 	public static Client client;
-	public static HashMap<WaterPurityReport,WaterSourceReport> purityMap = new HashMap<>();
+	public static HashMap<WaterSourceReport, List<WaterPurityReport>> purityMap = new HashMap<>();
 
-	public static WaterSourceReport lastUsedSourceReport;
+	private static WaterSourceReport lastUsedSourceReport;
 
 	private static boolean shouldReconnect;
 
