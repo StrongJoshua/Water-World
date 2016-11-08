@@ -1,6 +1,7 @@
 package edu.gatech.scrumbags.controller;
 
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
+import edu.gatech.scrumbags.model.HistoricalType;
 import javafx.fxml.FXML;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
@@ -12,7 +13,7 @@ import javafx.scene.chart.XYChart;
  *
  * @author Guillaume Noziere
  */
-public class HistoricalVirusGraphController {
+public class HistoricalReportGraphController {
 	@FXML private LineChart<String, Number> lineChart;
 	@FXML private CategoryAxis xAxis;
 	@FXML private NumberAxis yAxis;
@@ -21,21 +22,17 @@ public class HistoricalVirusGraphController {
 	 * Initializes the HistoricalVirusGraphView with ppm for a chosen year for each month.
 	 */
 	@FXML public void initialize () {
-		XYChart.Series virus = new XYChart.Series();
-		lineChart.setLegendVisible(false);
+        // modifying chart appearance options
+        lineChart.setLegendVisible(false);
+        if (MainFXApplication.getLastUsedHistoricalReportReport().getType().equals(HistoricalType.Virus)) {
+            lineChart.setTitle("Virus PPM");
+        } else {
+            lineChart.setTitle("Contaminant PPM");
+        }
 
-		virus.getData().add(new XYChart.Data("Jan", 23));
-		virus.getData().add(new XYChart.Data("Feb", 14));
-		virus.getData().add(new XYChart.Data("Mar", 15));
-		virus.getData().add(new XYChart.Data("Apr", 24));
-		virus.getData().add(new XYChart.Data("May", 34));
-		virus.getData().add(new XYChart.Data("Jun", 36));
-		virus.getData().add(new XYChart.Data("Jul", 22));
-		virus.getData().add(new XYChart.Data("Aug", 45));
-		virus.getData().add(new XYChart.Data("Sep", 43));
-		virus.getData().add(new XYChart.Data("Oct", 17));
-		virus.getData().add(new XYChart.Data("Nov", 29));
-		virus.getData().add(new XYChart.Data("Dec", 25));
+        XYChart.Series<String, Number> virus = new XYChart.Series<>();
+
+		virus.getData().add(new XYChart.Data<>("Jan", 23));
 
 		lineChart.getData().add(virus);
 	}

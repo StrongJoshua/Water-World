@@ -7,10 +7,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.stage.PopupWindow;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -36,8 +32,7 @@ public class MainFXApplication extends Application {
 			"/view/RegistrationView.fxml"), allReports("/view/AllReportsView.fxml"), waterSourceReport(
 			"/view/WaterSourceReportView.fxml"), waterPurityReport(
 			"/view/WaterPurityReportView.fxml"), historicalReport(
-			"/view/HistoricalReportView.fxml"), historicalVirusGraph("/view/HistoricalVirusGraphView.fxml"),
-			historicalContaminantGraph("/view/HistoricalContaminantGraphView.fxml");
+			"/view/HistoricalReportView.fxml"), historicalReportGraph("/view/HistoricalReportGraphView.fxml");
 
 		private String path;
 
@@ -66,6 +61,7 @@ public class MainFXApplication extends Application {
 	public static HashMap<WaterSourceReport, List<WaterPurityReport>> purityMap = new HashMap<>();
 
 	private static WaterSourceReport lastUsedSourceReport;
+    private static HistoricalReport lastUsedHistoricalReport;
 
 	private static boolean shouldReconnect;
 
@@ -156,22 +152,38 @@ public class MainFXApplication extends Application {
 	}
 
 	/**
-	 * Sets the last used report
-	 * @param report the last used report
+	 * Sets the last used source report.
+	 * @param report the last used source report
 	 */
 	public static void setLastUsedSourceReport (WaterSourceReport report) {
 		lastUsedSourceReport = report;
 	}
 
 	/**
-	 * Gets the last used report
-	 * @return the last used report
+	 * Gets the last used source report.
+	 * @return the last used source report
 	 */
 	public static WaterSourceReport getLastUsedSourceReport () {
 		return lastUsedSourceReport;
 	}
 
-	/**
+    /**
+     * Sets the last used historical report.
+     * @param report the last used report
+     */
+    public static void setLastUsedHistoricalReport (HistoricalReport report) {
+        lastUsedHistoricalReport = report;
+    }
+
+    /**
+     * Gets the last used historical report.
+     * @return the last used report
+     */
+    public static HistoricalReport getLastUsedHistoricalReportReport () {
+        return lastUsedHistoricalReport;
+    }
+
+    /**
 	 * This method will reattempt connection if it is ever lost
 	 */
 	public static void disconnect () {

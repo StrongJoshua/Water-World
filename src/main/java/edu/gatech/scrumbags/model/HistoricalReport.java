@@ -23,4 +23,28 @@ public class HistoricalReport {
 		this.year = year;
 	}
 
+    /**
+     * Getter for water source report.
+     * @return the water source report
+     */
+	public WaterSourceReport getWaterSource() {
+        return waterSource;
+    }
+
+    /**
+     * Getter for historical type.
+     * @return the historical type.
+     */
+    public HistoricalType getType() {
+        return type;
+    }
+
+    /**
+     * Getter for the year.
+     * @return the year
+     */
+    public int getYear() {
+        return year;
+    }
+
 }

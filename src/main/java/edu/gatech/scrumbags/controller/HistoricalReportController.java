@@ -1,6 +1,7 @@
 package edu.gatech.scrumbags.controller;
 
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
+import edu.gatech.scrumbags.model.HistoricalReport;
 import edu.gatech.scrumbags.model.HistoricalType;
 import edu.gatech.scrumbags.model.WaterPurityCondition;
 import edu.gatech.scrumbags.model.WaterSourceReport;
@@ -57,11 +58,17 @@ public class HistoricalReportController {
 	@FXML public void handleSubmitPressed () {
 		if (yearComboBox.getValue() == null) {
 			setErrorMessage("Must choose a year.");
-		} else if (typeComboBox.getValue().equals(HistoricalType.Virus)) {
-			MainFXApplication.loadScene(MainFXApplication.Scenes.historicalVirusGraph);
+		} else if (typeComboBox.getValue().equals(HistoricalType.Virus)){
+            MainFXApplication.setLastUsedHistoricalReport(new HistoricalReport(
+                    MainFXApplication.getLastUsedSourceReport(), HistoricalType.Virus,
+                    yearComboBox.getValue()));
+			MainFXApplication.loadScene(MainFXApplication.Scenes.historicalReportGraph);
 		} else if (typeComboBox.getValue().equals(HistoricalType.Contaminant)) {
-			MainFXApplication.loadScene(MainFXApplication.Scenes.historicalContaminantGraph);
-		}
+            MainFXApplication.setLastUsedHistoricalReport(new HistoricalReport(
+                    MainFXApplication.getLastUsedSourceReport(), HistoricalType.Contaminant,
+                    yearComboBox.getValue()));
+            MainFXApplication.loadScene(MainFXApplication.Scenes.historicalReportGraph);
+        }
 	}
 
 	/**
