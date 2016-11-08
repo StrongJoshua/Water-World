@@ -5,7 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by Beau on 10/30/2016.
+ * Abstract water report class to allow for inheritance.
+ * @author Beau Mitchell
  */
 public abstract class WaterReport {
 	public static int reportCount = 0;
@@ -71,11 +72,20 @@ public abstract class WaterReport {
 	/**
 	 * Returns the date of submission of this WaterReport as a String
 	 *
-	 * @return Returns a
+	 * @return Returns a Date string
 	 */
 	public String getDateString () {
 		DateFormat format = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
 		return format.format(reportDate);
+	}
+
+	/**
+	 * Returns the date of submission of this WaterReport
+	 *
+	 * @return a Date object
+	 */
+	public Date getReportDate () {
+		return reportDate;
 	}
 
 	/**

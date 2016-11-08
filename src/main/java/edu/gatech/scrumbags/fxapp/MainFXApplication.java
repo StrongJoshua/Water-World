@@ -179,7 +179,7 @@ public class MainFXApplication extends Application {
      * Gets the last used historical report.
      * @return the last used report
      */
-    public static HistoricalReport getLastUsedHistoricalReportReport () {
+    public static HistoricalReport getLastUsedHistoricalReport () {
         return lastUsedHistoricalReport;
     }
 
