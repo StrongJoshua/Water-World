@@ -60,6 +60,33 @@ public class WaterLocation {
 		return Double.toString(longitude);
 	}
 
+	public String getContinent() {
+        // checking for errors
+        if (latitude < -90.0 || latitude > 90.0) {
+            throw new IllegalArgumentException("latitude cannot be greater than 90 or less than -90 degrees");
+        } else if (longitude < -180.0 || longitude > 180.0) {
+            throw new IllegalArgumentException("longitude cannot be greater than 180 or less than -180 degrees");
+        }
+        // categorizing the world map
+        if (latitude > 15.0 && latitude < 75.0 && longitude > -165.0 && longitude < -45.0) {
+            return "North America";
+        } else if (latitude > -60.0 && latitude <= 15.0 && longitude > -105.0 && longitude < -30.0) {
+            return "South America";
+        } else if (latitude > -40.0 && latitude <= 35.0 && longitude > -25.0 && longitude < 45.0) {
+            return "Africa";
+        } else if (latitude > 35.0 && latitude < 70.0 && longitude > -15.0 && longitude < 45.0) {
+            return "Europe";
+        } else if (latitude > -10.0 && latitude < 75.0 && longitude >= 45.0 && longitude < 180.0) {
+            return "Asia";
+        } else if (latitude > -45.0 && latitude < -10.0 && longitude >= 105.0 && longitude < 180.0) {
+            return "Oceania";
+        } else if (latitude < -60.0) {
+            return "Antarctica";
+        } else {
+            return "n/a";
+        }
+    }
+
 	/**
 	 * Returns a string representation of this latitude, longitude pair
 	 *
