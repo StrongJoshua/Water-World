@@ -88,6 +88,7 @@ public class WaterPurityReportController {
 				MainFXApplication.userInfo.getFullName());
 
 			MainFXApplication.purityMap.get(MainFXApplication.getLastUsedSourceReport()).add(purityReport);
+			MainFXApplication.getLastUsedSourceReport().addPurityReport(purityReport);
 
 			if(MainFXApplication.client.sendPurityReport(purityReport, MainFXApplication.getLastUsedSourceReport()))
 				MainFXApplication.waterReports.add(purityReport);

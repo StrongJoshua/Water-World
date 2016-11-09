@@ -1,6 +1,7 @@
 package edu.gatech.scrumbags.model;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -54,6 +55,27 @@ public class WaterSourceReport extends WaterReport {
 		if(purityReports == null)
 			purityReports = new ArrayList<>();
 		this.purityReports.add(purityReport);
+	}
+
+	/**
+	 * Returns purity reports created in a given year (0 - 2017), month (0 - 11)
+	 * @param year year of purity reports
+	 * @param month month of purity reports
+	 * @return list of purity reports from given month, or empty list if none found
+	 */
+	public List<WaterPurityReport> getPurityReportsByMonth(int year, int month) {
+		if (month < 0 || month > 11) {
+			throw new IllegalArgumentException("Month must be between 0 (January) and 11 (December)");
+		}
+		List<WaterPurityReport> reports = new ArrayList<>();
+		Calendar cal = Calendar.getInstance();
+		for (WaterPurityReport report: reports) {
+			cal.setTime(report.getReportDate());
+			if (cal.get(Calendar.YEAR) == year && cal.get(Calendar.MONTH) == month) {
+				reports.add(report);
+			}
+		}
+		return reports;
 	}
 
 	/**
