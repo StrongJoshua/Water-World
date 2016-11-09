@@ -84,7 +84,7 @@ public class WaterPurityReportController {
 		if (successfulParse) {
 			WaterPurityReport purityReport = new WaterPurityReport(
 				MainFXApplication.getLastUsedSourceReport(), reportDate, waterConditionCombo.getValue(),
-				Double.parseDouble(virusPPMText.getText()), Double.parseDouble(virusPPMText.getText()),
+				Double.parseDouble(virusPPMText.getText()), Double.parseDouble(contaminantPPMText.getText()),
 				MainFXApplication.userInfo.getFullName());
 
 			MainFXApplication.purityMap.get(MainFXApplication.getLastUsedSourceReport()).add(purityReport);
