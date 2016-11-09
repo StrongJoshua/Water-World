@@ -7,10 +7,14 @@ import edu.gatech.scrumbags.model.WaterSourceReport;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Arrays;
+import java.util.Date;
 
 /**
  * Controls the flow of information when someone creates a new water purity report.
@@ -24,6 +28,7 @@ public class WaterPurityReportController {
 	@FXML private ComboBox<WaterPurityCondition> waterConditionCombo;
 	@FXML private TextField virusPPMText;
 	@FXML private TextField contaminantPPMText;
+	@FXML private DatePicker datePickerBox;
 
 	/**
 	 * Initializes the WaterPurityReportView as to minimize errors by populating
@@ -37,6 +42,7 @@ public class WaterPurityReportController {
 		waterConditionCombo
 			.setItems(FXCollections.observableArrayList(Arrays.asList(WaterPurityCondition.values())));
 		waterConditionCombo.setValue(WaterPurityCondition.Safe);
+//		datePickerBox.setValue(new LocalDate());
 		setErrorMessage(null);
 	}
 
@@ -63,10 +69,21 @@ public class WaterPurityReportController {
 		} catch (NumberFormatException e) {
 			setErrorMessage("PPM values must be valid integers.");
 		}
+
+        Date reportDate = new Date();
+        try {
+            Date attemptDate = Date.from(datePickerBox.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+            if (!attemptDate.after(new Date())) {
+                reportDate = attemptDate;
+            }
+        } catch (NullPointerException e) {
+            setErrorMessage("Incorrect date format.");
+        }
+
 		// submitting report if all data is valid
 		if (successfulParse) {
 			WaterPurityReport purityReport = new WaterPurityReport(
-				MainFXApplication.getLastUsedSourceReport(), waterConditionCombo.getValue(),
+				MainFXApplication.getLastUsedSourceReport(), reportDate, waterConditionCombo.getValue(),
 				Double.parseDouble(virusPPMText.getText()), Double.parseDouble(virusPPMText.getText()),
 				MainFXApplication.userInfo.getFullName());
 
