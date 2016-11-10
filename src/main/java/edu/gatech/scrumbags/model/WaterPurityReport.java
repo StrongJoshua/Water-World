@@ -110,4 +110,15 @@ public class WaterPurityReport extends WaterReport {
 		return super.toString() + ", Condition: " + getPurityConditionDescription() + ", Virus PPM: "
 			+ getVirusPPM() + ", Contaminant PPM: " + getContaminantPPM();
 	}
+
+	@Override
+	public boolean equals(Object other) {
+		if (!(other instanceof WaterPurityReport)) {
+			return false;
+		}
+		WaterPurityReport o = (WaterPurityReport) other;
+		return o.getVirusPPM() == getVirusPPM() && o.getContaminantPPM() == getContaminantPPM()
+				&& o.getReportDate().equals(getReportDate()) && o.getPurityCondition().equals(getPurityCondition())
+				&& o.getSubmitterName().equals(getSubmitterName());
+	}
 }
