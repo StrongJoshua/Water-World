@@ -56,8 +56,8 @@ public class HistoricalReportGraphController {
             }
             if (purityReports.size() != 0) {
                 avg /= purityReports.size();
+				graphSeries.getData().add(new XYChart.Data<>(months[i].substring(0, 3), avg));
             }
-            graphSeries.getData().add(new XYChart.Data<>(months[i].substring(0, 3), avg));
         }
         lineChart.getData().add(graphSeries);
 	}
