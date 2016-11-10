@@ -41,50 +41,25 @@ public class HistoricalReportGraphController {
         } else {
             lineChart.setTitle("Contaminant PPM");
         }
-
-        XYChart.Series<String, Number> graphSeries = new XYChart.Series<>();
-        List<WaterPurityReport> dataReportList = MainFXApplication.purityMap.get(report.getWaterSource());
-        Stack<Double>[] monthDataArray = (Stack<Double>[]) new Stack[12];
-        // getting the info into usable format
-        for (WaterPurityReport item : dataReportList) {
-            calendar.setTime(item.getReportDate());
-            if (calendar.get(Calendar.YEAR) == report.getYear()) {
-                double ppmValue;
-                if (report.getType().equals(HistoricalType.Virus)) {
-                    ppmValue = item.getVirusPPM();
-                } else {
-                    ppmValue = item.getContaminantPPM();
-                }
-                // adding to linked list array
-                if (monthDataArray[calendar.get(Calendar.MONTH)] == null) {
-                    Stack<Double> monthDataList = new Stack<>();
-                    monthDataList.push(ppmValue);
-                    monthDataArray[calendar.get(Calendar.MONTH)] = monthDataList;
-                } else {
-                    Stack<Double> monthDataList = monthDataArray[calendar.get(Calendar.MONTH)];
-                    monthDataList.push(ppmValue);
-                    monthDataArray[calendar.get(Calendar.MONTH)] = monthDataList;
-                }
-            }
-        }
-        // adding the data to the chart
-        double avg;
         DateFormatSymbols dfs = new DateFormatSymbols();
         String[] months = dfs.getMonths();
+        XYChart.Series<String, Number> graphSeries = new XYChart.Series<>();
         for (int i = 0; i < 12; i++) {
-            Stack<Double> stack = monthDataArray[i];
-            double sum = 0.0;
-            int count = 0;
-            while (stack != null && !stack.empty()) {
-                sum += stack.pop();
-                count++;
+            double avg = 0;
+            List<WaterPurityReport> purityReports = report.getWaterSource().getPurityReportsByMonth(report.getYear(), i);
+            for (WaterPurityReport purityReport : purityReports) {
+                if (report.getType() == HistoricalType.Contaminant) {
+                    avg += purityReport.getContaminantPPM();
+                } else if (report.getType() == HistoricalType.Virus) {
+                    avg += purityReport.getVirusPPM();
+                }
             }
-            avg = sum / count;
-            if (count > 0) {
-                graphSeries.getData().add(new XYChart.Data<>(months[i].substring(0, 3), avg));
+            if (purityReports.size() != 0) {
+                avg /= purityReports.size();
             }
+            graphSeries.getData().add(new XYChart.Data<>(months[i].substring(0, 3), avg));
         }
-		lineChart.getData().add(graphSeries);
+        lineChart.getData().add(graphSeries);
 	}
 
 	/**

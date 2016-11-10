@@ -69,7 +69,7 @@ public class WaterSourceReport extends WaterReport {
 		}
 		List<WaterPurityReport> reports = new ArrayList<>();
 		Calendar cal = Calendar.getInstance();
-		for (WaterPurityReport report: reports) {
+		for (WaterPurityReport report: purityReports) {
 			cal.setTime(report.getReportDate());
 			if (cal.get(Calendar.YEAR) == year && cal.get(Calendar.MONTH) == month) {
 				reports.add(report);
