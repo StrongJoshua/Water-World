@@ -83,7 +83,7 @@ public class WaterLocation {
         } else if (latitude < -60.0) {
             return "Antarctica";
         } else {
-            return "n/a";
+            return "undefined";
         }
     }
 
