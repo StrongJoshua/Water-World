@@ -58,7 +58,27 @@ public class WaterSourceReport extends WaterReport {
 	}
 
 	/**
-	 * Returns purity reports created in a given year (0 - 2017), month (0 - 11)
+	 * Returns purity reports created in a given year (0 - present)
+	 * @param year year of purity reports
+	 * @return list of purity reports from given month, or empty list if none found
+	 */
+	public List<WaterPurityReport> getPurityReportsByYear(int year) {
+		List<WaterPurityReport> reports = new ArrayList<>();
+		Calendar cal = Calendar.getInstance();
+		if (year > cal.get(Calendar.YEAR)) {
+			throw new IllegalArgumentException("Year cannot be in the future");
+		}
+		for (WaterPurityReport report : purityReports) {
+			cal.setTime(report.getReportDate());
+			if (cal.get(Calendar.YEAR) == year) {
+				reports.add(report);
+			}
+		}
+		return reports;
+	}
+
+	/**
+	 * Returns purity reports created in a given year (0 - present), month (0 - 11)
 	 * @param year year of purity reports
 	 * @param month month of purity reports
 	 * @return list of purity reports from given month, or empty list if none found
@@ -67,9 +87,13 @@ public class WaterSourceReport extends WaterReport {
 		if (month < 0 || month > 11) {
 			throw new IllegalArgumentException("Month must be between 0 (January) and 11 (December)");
 		}
+		List<WaterPurityReport> reportsInYear = getPurityReportsByYear(year);
 		List<WaterPurityReport> reports = new ArrayList<>();
 		Calendar cal = Calendar.getInstance();
-		for (WaterPurityReport report: purityReports) {
+//		if (year == cal.get(Calendar.YEAR) && month > cal.get(Calendar.MONTH)) {
+//			throw new IllegalArgumentException("Month cannot be in the future");
+//		}
+		for (WaterPurityReport report: reportsInYear) {
 			cal.setTime(report.getReportDate());
 			if (cal.get(Calendar.YEAR) == year && cal.get(Calendar.MONTH) == month) {
 				reports.add(report);
