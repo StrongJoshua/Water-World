@@ -1,3 +1,4 @@
+
 package edu.gatech.scrumbags.controller;
 
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
@@ -8,90 +9,83 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-/**
- * The controller for the profile view. Displays all user information and allows editing of the user's email and address.
+/** The controller for the profile view. Displays all user information and allows editing of the user's email and address.
  *
- * @author Jan Risse
- */
+ * @author Jan Risse */
 public class ProfileController {
-	@FXML private Label userFirstLast;
-	@FXML private Label userAccountType;
-	@FXML private Label userEmail;
-	@FXML private Label userAddress;
-	@FXML private TextField emailTextField;
-	@FXML private TextField addressTextField;
-	@FXML private Button editButton;
-	@FXML private Button backButton;
+    @FXML private Label userFirstLast;
+    @FXML private Label userAccountType;
+    @FXML private Label userEmail;
+    @FXML private Label userAddress;
+    @FXML private TextField emailTextField;
+    @FXML private TextField addressTextField;
+    @FXML private Button editButton;
+    @FXML private Button backButton;
 
-	private boolean editMode;
+    private boolean editMode;
 
-	/**
-	 * Initializes the ProfileView with name and account type.
-	 */
-	@FXML public void initialize () {
-		User userInfo = MainFXApplication.userInfo;
-		if (MainFXApplication.userInfo == null) {
-			MainFXApplication.loadScene(Scenes.welcome);
-		}
+    /** Initializes the ProfileView with name and account type. */
+    @FXML
+    public void initialize () {
+        User userInfo = MainFXApplication.userInfo;
+        if (MainFXApplication.userInfo == null) {
+            MainFXApplication.loadScene(Scenes.welcome);
+        }
 
-		userFirstLast.setText(userInfo.getFullName());
-		String account = userInfo.getAuthorization().toString();
-		userAccountType.setText(account.substring(0, 1).toUpperCase() + account.substring(1));
+        userFirstLast.setText(userInfo.getFullName());
+        String account = userInfo.getAuthorization().toString();
+        userAccountType.setText(account.substring(0, 1).toUpperCase() + account.substring(1));
 
-		resetEditableLabels();
+        resetEditableLabels();
 
-		editMode = false;
-	}
+        editMode = false;
+    }
 
-	/**
-	 * Resets email and address labels to the session's user's info.
-	 */
-	private void resetEditableLabels () {
-		User userInfo = MainFXApplication.userInfo;
-		userEmail.setVisible(true);
-		userEmail.setManaged(true);
-		userAddress.setVisible(true);
-		userAddress.setManaged(true);
-		userEmail.setText(userInfo.getEmail());
-		userAddress.setText(userInfo.getAddress());
-	}
+    /** Resets email and address labels to the session's user's info. */
+    private void resetEditableLabels () {
+        User userInfo = MainFXApplication.userInfo;
+        userEmail.setVisible(true);
+        userEmail.setManaged(true);
+        userAddress.setVisible(true);
+        userAddress.setManaged(true);
+        userEmail.setText(userInfo.getEmail());
+        userAddress.setText(userInfo.getAddress());
+    }
 
-	/**
-	 * Switches in between edit and view mode for the email and address fields.
-	 */
-	@FXML public void handleEditPressed () {
-		User userInfo = MainFXApplication.userInfo;
-		if (editMode) {
-			//userInfo.setEmail(emailTextField.getText());
-			//userInfo.setAddress(addressTextField.getText());
-			MainFXApplication.client.updateUserInfo(emailTextField.getText(), addressTextField.getText());
-			resetEditableLabels();
+    /** Switches in between edit and view mode for the email and address fields. */
+    @FXML
+    public void handleEditPressed () {
+        User userInfo = MainFXApplication.userInfo;
+        if (editMode) {
+            // userInfo.setEmail(emailTextField.getText());
+            // userInfo.setAddress(addressTextField.getText());
+            MainFXApplication.client.updateUserInfo(emailTextField.getText(), addressTextField.getText());
+            resetEditableLabels();
 
-			emailTextField.setVisible(false);
-			addressTextField.setVisible(false);
-			editButton.setText("Edit");
-		} else {
-			userEmail.setVisible(false);
-			userEmail.setManaged(false);
-			userAddress.setVisible(false);
-			userAddress.setManaged(false);
+            emailTextField.setVisible(false);
+            addressTextField.setVisible(false);
+            editButton.setText("Edit");
+        } else {
+            userEmail.setVisible(false);
+            userEmail.setManaged(false);
+            userAddress.setVisible(false);
+            userAddress.setManaged(false);
 
-			emailTextField.setVisible(true);
-			addressTextField.setVisible(true);
+            emailTextField.setVisible(true);
+            addressTextField.setVisible(true);
 
-			emailTextField.setText(userInfo.getEmail());
-			addressTextField.setText(userInfo.getAddress());
+            emailTextField.setText(userInfo.getEmail());
+            addressTextField.setText(userInfo.getAddress());
 
-			editButton.setText("Save");
-		}
-		editMode = !editMode;
-	}
+            editButton.setText("Save");
+        }
+        editMode = !editMode;
+    }
 
-	/**
-	 * Brings the user back to the main screen.
-	 */
-	@FXML public void handleBackPressed () {
-		MainFXApplication.loadScene(Scenes.main);
-		// MainFXApplication.userInfo = null;
-	}
+    /** Brings the user back to the main screen. */
+    @FXML
+    public void handleBackPressed () {
+        MainFXApplication.loadScene(Scenes.main);
+        // MainFXApplication.userInfo = null;
+    }
 }

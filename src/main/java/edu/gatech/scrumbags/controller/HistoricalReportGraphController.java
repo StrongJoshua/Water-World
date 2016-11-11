@@ -1,38 +1,30 @@
+
 package edu.gatech.scrumbags.controller;
 
-import edu.gatech.scrumbags.fxapp.MainFXApplication;
-import edu.gatech.scrumbags.model.HistoricalType;
-import edu.gatech.scrumbags.model.HistoricalReport;
-import edu.gatech.scrumbags.model.WaterPurityReport;
-import edu.gatech.scrumbags.model.WaterSourceReport;
-import javafx.fxml.FXML;
-
 import java.text.DateFormatSymbols;
-import java.util.Calendar;
 import java.util.List;
-import java.util.LinkedList;
-import java.util.Stack;
 
+import edu.gatech.scrumbags.fxapp.MainFXApplication;
+import edu.gatech.scrumbags.model.HistoricalReport;
+import edu.gatech.scrumbags.model.HistoricalType;
+import edu.gatech.scrumbags.model.WaterPurityReport;
+import javafx.fxml.FXML;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 
-/**
- * The controller for the historical report graph view.
+/** The controller for the historical report graph view.
  *
- * @author Guillaume Noziere
- */
+ * @author Guillaume Noziere */
 public class HistoricalReportGraphController {
-	@FXML private LineChart<String, Number> lineChart;
-	@FXML private CategoryAxis xAxis;
-	@FXML private NumberAxis yAxis;
-    private Calendar calendar = Calendar.getInstance();
+    @FXML private LineChart<String, Number> lineChart;
+    @FXML private CategoryAxis xAxis;
+    @FXML private NumberAxis yAxis;
 
-	/**
-	 * Initializes the HistoricalVirusGraphView with ppm for a chosen year for each month.
-	 */
-	@FXML public void initialize () {
+    /** Initializes the HistoricalVirusGraphView with ppm for a chosen year for each month. */
+    @FXML
+    public void initialize () {
         HistoricalReport report = MainFXApplication.getLastUsedHistoricalReport();
         // modifying chart appearance options
         lineChart.setLegendVisible(false);
@@ -56,16 +48,15 @@ public class HistoricalReportGraphController {
             }
             if (purityReports.size() != 0) {
                 avg /= purityReports.size();
-				graphSeries.getData().add(new XYChart.Data<>(months[i].substring(0, 3), avg));
+                graphSeries.getData().add(new XYChart.Data<>(months[i].substring(0, 3), avg));
             }
         }
         lineChart.getData().add(graphSeries);
-	}
+    }
 
-	/**
-	 * Returns to the main view when back button is pressed.
-	 */
-	@FXML public void handleBackPressed () {
-		MainFXApplication.loadScene(MainFXApplication.Scenes.main);
-	}
+    /** Returns to the main view when back button is pressed. */
+    @FXML
+    public void handleBackPressed () {
+        MainFXApplication.loadScene(MainFXApplication.Scenes.main);
+    }
 }

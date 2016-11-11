@@ -71,7 +71,6 @@
                                 <Font size="18.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="waterConditionOtherText" />
                     </children>
                     <padding>
                         <Insets right="27.0" />
@@ -92,12 +91,12 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Button fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmitPressed" text="Submit">
+                        <Button mnemonicParsing="false" onAction="#handleSubmitPressed" text="Submit">
                             <HBox.margin>
                                 <Insets right="20.0" />
                             </HBox.margin>
                         </Button>
-                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancelPressed" text="Cancel">
+                        <Button mnemonicParsing="false" onAction="#handleCancelPressed" text="Cancel">
                             <HBox.margin>
                                 <Insets left="20.0" />
                             </HBox.margin>

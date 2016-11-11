@@ -1,10 +1,9 @@
+
 package edu.gatech.scrumbags.model;
 
-/**
- * List of possible water types.
+/** List of possible water types.
  *
- * @author gnoziere
- */
+ * @author gnoziere */
 public enum WaterType {
-	Bottled, Well, Stream, Lake, Spring, Other
+    Bottled, Well, Stream, Lake, Spring, Other
 }
