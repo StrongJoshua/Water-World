@@ -57,6 +57,8 @@ public class MainController implements MapComponentInitializedListener {
             historicalReportButton.setVisible(false);
             historicalReportButton.setManaged(false);
         }
+        waterPurityReportButton.setDisable(true);
+		historicalReportButton.setDisable(true);
         mapView.addMapInializedListener(this);
     }
 
@@ -88,6 +90,8 @@ public class MainController implements MapComponentInitializedListener {
                         window.open(map, marker);
                         MainFXApplication.setLastUsedSourceReport((WaterSourceReport)report);
                         hasClickedPin = true;
+						waterPurityReportButton.setDisable(false);
+						historicalReportButton.setDisable(false);
                     });
                     // opens basic info window on mouse over
                     map.addUIEventHandler(marker, UIEventType.mouseover, (JSObject obj) -> {

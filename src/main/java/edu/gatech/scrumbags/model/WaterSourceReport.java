@@ -80,9 +80,6 @@ public class WaterSourceReport extends WaterReport {
         List<WaterPurityReport> reportsInYear = getPurityReportsByYear(year);
         List<WaterPurityReport> reports = new ArrayList<>();
         Calendar cal = Calendar.getInstance();
-// if (year == cal.get(Calendar.YEAR) && month > cal.get(Calendar.MONTH)) {
-// throw new IllegalArgumentException("Month cannot be in the future");
-// }
         for (WaterPurityReport report : reportsInYear) {
             cal.setTime(report.getReportDate());
             if (cal.get(Calendar.YEAR) == year && cal.get(Calendar.MONTH) == month) {
