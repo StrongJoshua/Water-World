@@ -9,18 +9,16 @@
             fx:controller="edu.gatech.scrumbags.controller.AllReportsController">
     <bottom>
         <HBox alignment="CENTER" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <children>
-                <Button mnemonicParsing="false" onAction="#handleViewPressed" text="View on map">
-                    <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                    </HBox.margin>
-                </Button>
-                <Button mnemonicParsing="false" onAction="#handleBackPressed" text="Back">
-                    <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                    </HBox.margin>
-                </Button>
-            </children>
+            <Button mnemonicParsing="false" onAction="#handleViewPressed" text="View on map">
+                <HBox.margin>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#handleBackPressed" text="Back">
+                <HBox.margin>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                </HBox.margin>
+            </Button>
         </HBox>
     </bottom>
     <center>

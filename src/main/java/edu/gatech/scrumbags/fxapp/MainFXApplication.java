@@ -192,6 +192,6 @@ public class MainFXApplication extends Application {
         if (null == mapController) {
             throw new IllegalStateException("Cannot set Map location before map has been loaded.");
         }
-        mapController.setMapCoords(location.getLatitude(), location.getLongitude());
+        mapController.setMapCoordinates(location.getLatitude(), location.getLongitude());
     }
 }

@@ -145,7 +145,7 @@ public class MainController implements MapComponentInitializedListener {
         MainFXApplication.loadScene(Scenes.allReports);
     }
 
-    /** Brings the user to the profle screen. */
+    /** Brings the user to the profile screen. */
     @FXML
     public void handleProfilePressed () {
         MainFXApplication.loadScene(Scenes.profile);
@@ -162,7 +162,7 @@ public class MainController implements MapComponentInitializedListener {
      *
      * @param latitude latitude of new center
      * @param longitude longitude of new center */
-    public void setMapCoords (double latitude, double longitude) {
+    public void setMapCoordinates (double latitude, double longitude) {
         try {
             map.setCenter(new LatLong(latitude, longitude));
         } catch (Exception e) {

@@ -73,7 +73,7 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Button fx:id="sumbitButton" mnemonicParsing="false" onAction="#handleSubmitPressed" text="Submit">
+                        <Button fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmitPressed" text="Submit">
                             <HBox.margin>
                                 <Insets right="20.0" />
                             </HBox.margin>

@@ -36,16 +36,6 @@ public class User {
         this.setAddress(address);
     }
 
-    /** Checks if the username and password given match this user's username and password.
-     *
-     * @param username username of this user
-     * @param pass hashed password for this user
-     * @return Whether the user is authenticated. */
-    public boolean authenticate (String username, String pass) {
-        return false; // broken
-        // return username.equalsIgnoreCase(this.username) && BCrypt.checkpw(pass, this.password);
-    }
-
     /** @return User's first name. */
     public String getFirst () {
         return first;
