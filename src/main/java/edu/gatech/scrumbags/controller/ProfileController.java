@@ -5,9 +5,9 @@ import edu.gatech.scrumbags.fxapp.MainFXApplication;
 import edu.gatech.scrumbags.fxapp.MainFXApplication.Scenes;
 import edu.gatech.scrumbags.model.User;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+
+import java.util.Optional;
 
 /** The controller for the profile view. Displays all user information and allows editing of the user's email and address.
  *
@@ -87,5 +87,25 @@ public class ProfileController {
     public void handleBackPressed () {
         MainFXApplication.loadScene(Scenes.main);
         // MainFXApplication.userInfo = null;
+    } /** Brings the user back to the main screen. */
+    @FXML
+    public void handleDeleteAccountPressed () {
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText("Delete Account");
+        alert.setContentText("Are you sure you want to DELETE your account?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            // ... user chose OK
+            MainFXApplication.client.deleteAccount();
+            MainFXApplication.loadScene(Scenes.welcome);
+        } else {
+            // ... user chose CANCEL or closed the dialog
+        }
+
+        // MainFXApplication.userInfo = null;
     }
+
 }

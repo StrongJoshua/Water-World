@@ -112,6 +112,7 @@
                 </FlowPane>
             </GridPane>
             <Button fx:id="editButton" mnemonicParsing="false" onAction="#handleEditPressed" text="Edit"/>
+            <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#handleDeleteAccountPressed" text="Delete Account"/>
         </VBox>
     </center>
 </BorderPane>

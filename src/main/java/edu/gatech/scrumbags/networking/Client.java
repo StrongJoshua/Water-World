@@ -119,6 +119,14 @@ public class Client extends Thread {
             user.getAuthorization().toString(), user.getEmail(), user.getAddress()));
     }
 
+    /** Deletes an account from the database
+     *
+     */
+    public void deleteAccount () {
+        sendMessage(new Message(Message.MessageType.deleteAccount));
+        MainFXApplication.logout();
+    }
+
     /** Sends username and password for verification server-side. If successful, returns user's information
      *
      * @param username User's username
