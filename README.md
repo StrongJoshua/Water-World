@@ -3,9 +3,9 @@ CS 2340 Final
 
 Versions
 ========
-Latest Stable: **0.8.1.0**
+Latest Stable: **0.10.0.0**
 
-Current Development Build **0.8.1.0**
+Current Development Build **0.10.0.0**
 
 ###How the Numbers Work
 ####First Digit
