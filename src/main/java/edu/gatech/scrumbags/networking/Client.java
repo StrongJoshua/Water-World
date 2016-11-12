@@ -81,7 +81,7 @@ public class Client extends Thread {
 
     /** Sends message and payload to server.
      *
-     * @param m Message with type and paylod */
+     * @param m Message with type and payload */
     private void sendMessage (Message m) {
         if (!connected) {
             // System.out.println("Not connected to server, cannot send message");
@@ -108,15 +108,6 @@ public class Client extends Thread {
             handle = m;
             return;
         }
-        // System.out.println("Recieved: " + o);
-        if (m.getType() == Message.MessageType.registration) {
-
-        } else if (m.getType() == Message.MessageType.login) {
-
-        } else if (m.getType() == Message.MessageType.console) {
-
-        }
-
     }
 
     /** Pulls values from user object to send and also reads password field. Sends data to server to store.
@@ -128,7 +119,7 @@ public class Client extends Thread {
             user.getAuthorization().toString(), user.getEmail(), user.getAddress()));
     }
 
-    /** Sends username and password for verification serverside. If successful, returns user's information
+    /** Sends username and password for verification server-side. If successful, returns user's information
      *
      * @param username User's username
      * @param password User's password

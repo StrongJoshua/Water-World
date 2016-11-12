@@ -10,72 +10,66 @@
             fx:controller="edu.gatech.scrumbags.controller.MainController">
     <bottom>
         <HBox alignment="CENTER" prefHeight="48.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-            <children>
-                <Button fx:id="waterSourceReportButton" mnemonicParsing="false"
-                        onAction="#handleWaterSourceReportPressed" text="Source Report">
-                    <HBox.margin>
-                        <Insets left="20.0" right="20.0"/>
-                    </HBox.margin>
-                </Button>
-                <Button fx:id="waterPurityReportButton" mnemonicParsing="false"
-                        onAction="#handleWaterPurityReportPressed" text="Purity Report">
-                    <HBox.margin>
-                        <Insets left="20.0" right="20.0"/>
-                    </HBox.margin>
-                </Button>
-                <Button fx:id="historicalReportButton" mnemonicParsing="false"
-                        onAction="#handleHistoricalReportPressed" text="Historical Report">
-                    <HBox.margin>
-                        <Insets left="20.0" right="20.0"/>
-                    </HBox.margin>
-                </Button>
-                <Button fx:id="allReportsButton" mnemonicParsing="false" onAction="#handleAllReportsPressed"
-                        text="All Reports">
-                    <HBox.margin>
-                        <Insets left="20.0" right="20.0"/>
-                    </HBox.margin>
-                </Button>
-            </children>
+            <Button fx:id="waterSourceReportButton" mnemonicParsing="false"
+                    onAction="#handleWaterSourceReportPressed" text="Source Report">
+                <HBox.margin>
+                    <Insets left="20.0" right="20.0"/>
+                </HBox.margin>
+            </Button>
+            <Button fx:id="waterPurityReportButton" mnemonicParsing="false"
+                    onAction="#handleWaterPurityReportPressed" text="Purity Report">
+                <HBox.margin>
+                    <Insets left="20.0" right="20.0"/>
+                </HBox.margin>
+            </Button>
+            <Button fx:id="historicalReportButton" mnemonicParsing="false"
+                    onAction="#handleHistoricalReportPressed" text="Historical Report">
+                <HBox.margin>
+                    <Insets left="20.0" right="20.0"/>
+                </HBox.margin>
+            </Button>
+            <Button fx:id="allReportsButton" mnemonicParsing="false" onAction="#handleAllReportsPressed"
+                    text="All Reports">
+                <HBox.margin>
+                    <Insets left="20.0" right="20.0"/>
+                </HBox.margin>
+            </Button>
         </HBox>
     </bottom>
     <top>
         <HBox alignment="CENTER_RIGHT" prefHeight="43.0" prefWidth="600.0"
               BorderPane.alignment="CENTER_RIGHT">
-            <children>
-                <Button fx:id="profileButton" mnemonicParsing="false" onAction="#handleProfilePressed"
-                        text="Profile">
-                    <HBox.margin>
-                        <Insets right="5.0"/>
-                    </HBox.margin>
-                </Button>
-                <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutPressed"
-                        text="Logout">
-                    <HBox.margin>
-                        <Insets left="5.0" right="20.0"/>
-                    </HBox.margin>
-                </Button>
-            </children>
             <BorderPane.margin>
                 <Insets/>
             </BorderPane.margin>
+            <Button fx:id="profileButton" mnemonicParsing="false" onAction="#handleProfilePressed"
+                    text="Profile">
+                <HBox.margin>
+                    <Insets right="5.0"/>
+                </HBox.margin>
+            </Button>
+            <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogoutPressed"
+                    text="Logout">
+                <HBox.margin>
+                    <Insets left="5.0" right="20.0"/>
+                </HBox.margin>
+            </Button>
         </HBox>
     </top>
     <center>
         <Pane fx:id="mapPane" BorderPane.alignment="CENTER">
-            <children>
-                <GoogleMapView fx:id="mapView" layoutX="53.0" layoutY="2.0" prefHeight="306.0"
-                               prefWidth="494.0">
-                    <opaqueInsets>
-                        <Insets/>
-                    </opaqueInsets>
-                </GoogleMapView>
-            </children>
             <BorderPane.margin>
                 <Insets/>
             </BorderPane.margin>
             <opaqueInsets>
                 <Insets/>
             </opaqueInsets>
+            <GoogleMapView fx:id="mapView" layoutX="53.0" layoutY="2.0" prefHeight="306.0"
+                           prefWidth="494.0">
+                <opaqueInsets>
+                    <Insets/>
+                </opaqueInsets>
+            </GoogleMapView>
         </Pane>
     </center>
 </BorderPane>

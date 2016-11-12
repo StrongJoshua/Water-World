@@ -15,4 +15,4 @@ This digit goes up whenever we reach a milestone.
 ####Third Digit
 This digit goes up whenever a new feature is added by merging a feature branch to master and resets whenever the first digit goes up.
 ####Fourth Digit
-This diigt goes up whenever a bug is fixed and resets whenever a new feature is released. 
+This digit goes up whenever a bug is fixed and resets whenever a new feature is released.
