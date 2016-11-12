@@ -4,6 +4,7 @@ package edu.gatech.scrumbags.controller;
 import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
 import edu.gatech.scrumbags.model.WaterPurityCondition;
@@ -81,6 +82,10 @@ public class WaterPurityReportController {
                 waterConditionCombo.getValue(), Double.parseDouble(virusPPMText.getText()),
                 Double.parseDouble(contaminantPPMText.getText()), MainFXApplication.userInfo.getFullName());
 
+            if(MainFXApplication.purityMap == null)
+            {
+                MainFXApplication.purityMap = new HashMap<>();
+            }
             MainFXApplication.purityMap.get(MainFXApplication.getLastUsedSourceReport()).add(purityReport);
             MainFXApplication.getLastUsedSourceReport().addPurityReport(purityReport);
 
