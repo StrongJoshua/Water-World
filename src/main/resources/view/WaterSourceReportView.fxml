@@ -23,90 +23,85 @@
     </top>
     <center>
         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-            <children>
-                <Label id="errorMessage" fx:id="errorMessage" style="-fx-text-fill: red;" styleClass="subtitleText" stylesheets="@../css/main.css" text="Error" textFill="RED">
-                    <VBox.margin>
-                        <Insets top="10.0" />
-                    </VBox.margin>
+            <Label id="errorMessage" fx:id="errorMessage" style="-fx-text-fill: red;"
+                   styleClass="subtitleText" stylesheets="@../css/main.css" text="Error" textFill="RED">
+                <VBox.margin>
+                    <Insets top="10.0"/>
+                </VBox.margin>
+                <font>
+                    <Font size="16.0"/>
+                </font>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
+                <Label prefHeight="35.0" prefWidth="255.0" styleClass="subtitleText"
+                       stylesheets="@../css/main.css" text="Water Location (GPS):">
                     <font>
-                        <Font size="16.0" />
+                        <Font size="18.0"/>
                     </font>
                 </Label>
-                <HBox alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
-                    <children>
-                        <Label prefHeight="35.0" prefWidth="255.0" styleClass="subtitleText" stylesheets="@../css/main.css" text="Water Location (GPS):">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                        </Label>
-                        <TextField fx:id="latitudeText" prefHeight="25.0" prefWidth="151.0" promptText="Latitude">
-                            <HBox.margin>
-                                <Insets right="5.0" />
-                            </HBox.margin>
-                        </TextField>
-                        <TextField fx:id="longitudeText" prefHeight="25.0" prefWidth="151.0" promptText="Longitude">
-                            <HBox.margin>
-                                <Insets left="5.0" />
-                            </HBox.margin>
-                        </TextField>
-                    </children>
-                </HBox>
-                <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
-                    <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="306.0" styleClass="subtitleText" stylesheets="@../css/main.css" text="Water Type:  ">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                        </Label>
-                        <ComboBox fx:id="waterTypeCombo" prefWidth="150.0" />
-                    </children>
-                    <padding>
-                        <Insets right="27.0" />
-                    </padding>
-                </HBox>
-                <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
-                    <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="303.0" styleClass="subtitleText" stylesheets="@../css/main.css" text="If &quot;Other&quot;, please specify:  ">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                        </Label>
-                    </children>
-                    <padding>
-                        <Insets right="27.0" />
-                    </padding>
-                </HBox>
-                <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
-                    <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="305.0" styleClass="subtitleText" stylesheets="@../css/main.css" text="Water Condition:  ">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                        </Label>
-                        <ComboBox fx:id="waterConditionCombo" prefWidth="150.0" />
-                    </children>
-                    <padding>
-                        <Insets right="27.0" />
-                    </padding>
-                </HBox>
-                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                    <children>
-                        <Button mnemonicParsing="false" onAction="#handleSubmitPressed" text="Submit">
-                            <HBox.margin>
-                                <Insets right="20.0" />
-                            </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#handleCancelPressed" text="Cancel">
-                            <HBox.margin>
-                                <Insets left="20.0" />
-                            </HBox.margin>
-                        </Button>
-                    </children>
-                    <VBox.margin>
-                        <Insets />
-                    </VBox.margin>
-                </HBox>
-            </children>
+                <TextField fx:id="latitudeText" prefHeight="25.0" prefWidth="151.0" promptText="Latitude">
+                    <HBox.margin>
+                        <Insets right="5.0"/>
+                    </HBox.margin>
+                </TextField>
+                <TextField fx:id="longitudeText" prefHeight="25.0" prefWidth="151.0"
+                           promptText="Longitude">
+                    <HBox.margin>
+                        <Insets left="5.0"/>
+                    </HBox.margin>
+                </TextField>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
+                <padding>
+                    <Insets right="27.0"/>
+                </padding>
+                <Label alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="306.0"
+                       styleClass="subtitleText" stylesheets="@../css/main.css" text="Water Type:  ">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+                <ComboBox fx:id="waterTypeCombo" prefWidth="150.0"/>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
+                <padding>
+                    <Insets right="27.0"/>
+                </padding>
+                <Label alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="303.0"
+                       styleClass="subtitleText" stylesheets="@../css/main.css"
+                       text="If &quot;Other&quot;, please specify:  ">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
+                <padding>
+                    <Insets right="27.0"/>
+                </padding>
+                <Label alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="305.0"
+                       styleClass="subtitleText" stylesheets="@../css/main.css" text="Water Condition:  ">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+                <ComboBox fx:id="waterConditionCombo" prefWidth="150.0"/>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                <VBox.margin>
+                    <Insets/>
+                </VBox.margin>
+                <Button mnemonicParsing="false" onAction="#handleSubmitPressed" text="Submit">
+                    <HBox.margin>
+                        <Insets right="20.0"/>
+                    </HBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#handleCancelPressed" text="Cancel">
+                    <HBox.margin>
+                        <Insets left="20.0"/>
+                    </HBox.margin>
+                </Button>
+            </HBox>
         </VBox>
     </center>
 </BorderPane>

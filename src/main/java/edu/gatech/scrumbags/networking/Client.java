@@ -108,14 +108,6 @@ public class Client extends Thread {
             handle = m;
             return;
         }
-        if (m.getType() == Message.MessageType.registration) {
-
-        } else if (m.getType() == Message.MessageType.login) {
-
-        } else if (m.getType() == Message.MessageType.console) {
-
-        }
-
     }
 
     /** Pulls values from user object to send and also reads password field. Sends data to server to store.
