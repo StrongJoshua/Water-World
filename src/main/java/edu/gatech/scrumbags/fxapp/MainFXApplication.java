@@ -55,7 +55,6 @@ public class MainFXApplication extends Application {
 
     public static final String version = "0.10.1.0";
 
-    private static List<User> allUsers;
     public static List<WaterReport> waterReports;
     public static List<Integer> years;
     private static MainController mapController;
@@ -79,14 +78,7 @@ public class MainFXApplication extends Application {
         shouldReconnect = true;
         disconnect();
 
-        allUsers = new ArrayList<>();
-        // createAccount("SCRUMBags", "2340", "SCRUMBags", "2340", Authorization.admin);
         waterReports = new ArrayList<>();
-        // waterReports.add(new WaterSourceReport(new WaterLocation(0d, 0d), WaterType.Other, WaterCondition.Treatable_Muddy,
-        // "Bill", new Date(1460000000000L)));
-        // WaterSourceReport test = new WaterSourceReport(new WaterLocation(33.7490, -84.3880), WaterType.Bottled,
-        // WaterCondition.Treatable_Clear, "Francis");
-        // waterReports.add(test);
 
         years = new ArrayList<>();
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
@@ -138,15 +130,7 @@ public class MainFXApplication extends Application {
      *
      * @return The Authorized user object that was created, if the given username does not already exist. */
     public static User createAccount (String first, String last, String username, String password, Authorization accountType) {
-        for (User auth : allUsers) {
-            if (auth.getUsername().equals(username)) return null;
-        }
-        User auth = new User(first, last, username, accountType);
-        allUsers.add(auth);
-
-        client.registerUser(auth, password);
-
-        return auth;
+        return client.registerUser(new User(first, last, username, accountType), password);
     }
 
     /** Sets the last used source report.

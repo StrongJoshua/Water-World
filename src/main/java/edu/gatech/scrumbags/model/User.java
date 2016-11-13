@@ -84,4 +84,9 @@ public class User {
     public void setAddress (String address) {
         this.address = address;
     }
+    
+    @Override
+    public String toString () {
+        return String.format("%s %s - %s %s - %s - %s", authorization, username, first, last, email, address);
+    }
 }

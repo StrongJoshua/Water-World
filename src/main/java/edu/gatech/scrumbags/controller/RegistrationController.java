@@ -8,6 +8,7 @@ import edu.gatech.scrumbags.model.Authorization;
 import edu.gatech.scrumbags.model.User;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -25,6 +26,7 @@ public class RegistrationController {
     @FXML private PasswordField confirmPasswordField;
     @FXML private ComboBox<Authorization> accountTypeCombo;
     @FXML private Label errorLabel;
+    @FXML private Button confirmRegistrationButton;
 
     /** Initializes the RegistrationView with account types */
     @FXML
@@ -37,20 +39,25 @@ public class RegistrationController {
     /** Ensures the password and confirm password match then creates a new user in the backend. */
     @FXML
     public void handleRegisterPressed () {
-        if (passwordField.getText().equals(confirmPasswordField.getText())) {
-            User userInfo = MainFXApplication.createAccount(firstNameField.getText(), lastNameField.getText(),
-                usernameField.getText(), passwordField.getText(), accountTypeCombo.getValue());
-            if (userInfo != null) {
-                MainFXApplication.userInfo = userInfo;
-                MainFXApplication.authorizeUser(userInfo.getUsername(), passwordField.getText());
-                MainFXApplication.client.requestAllReports();
-                MainFXApplication.loadScene(MainFXApplication.Scenes.main);
-            } else {
-                setErrorMessage("Error: Username already exists.");
-            }
+        confirmRegistrationButton.disableProperty().set(true);
+        if (passwordField.getText().length() < 6 || passwordField.getText().length() > 40) {
+            setErrorMessage("Password must be between 6 and 40 characters.");
         } else {
-            setErrorMessage("Error: Passwords did not match.");
+            if (passwordField.getText().equals(confirmPasswordField.getText())) {
+                User userInfo = MainFXApplication.createAccount(firstNameField.getText(), lastNameField.getText(),
+                    usernameField.getText(), passwordField.getText(), accountTypeCombo.getValue());
+                if (userInfo != null) {
+                    MainFXApplication.userInfo = userInfo;
+                    MainFXApplication.client.requestAllReports();
+                    MainFXApplication.loadScene(MainFXApplication.Scenes.main);
+                } else {
+                    setErrorMessage("Username already exists.");
+                }
+            } else {
+                setErrorMessage("Passwords did not match.");
+            }
         }
+        confirmRegistrationButton.disableProperty().set(false);
     }
 
     /** Shows the error label and sets the message.

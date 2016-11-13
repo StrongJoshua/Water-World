@@ -114,14 +114,26 @@ public class Client extends Thread {
      *
      * @param user User object containing all user info
      * @param password User's password, never stored locally */
-    public void registerUser (User user, String password) {
+    public User registerUser (User user, String password) {
         sendMessage(new Message(Message.MessageType.registration, user.getFirst(), user.getLast(), user.getUsername(), password,
             user.getAuthorization().toString(), user.getEmail(), user.getAddress()));
+        request = true;
+        while (running && handle == null) {
+            try {
+                Thread.sleep(5);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        if (handle.getType() != Message.MessageType.userInfo || handle.getPayload().length == 0) {
+            return null;
+        }
+        String[] info = handle.getPayload();
+        handle = null;
+        return new User(info[0], info[1], info[2], Authorization.valueOf(info[3]), info[4], info[5]);
     }
 
-    /** Deletes an account from the database
-     *
-     */
+    /** Deletes an account from the database */
     public void deleteAccount () {
         sendMessage(new Message(Message.MessageType.deleteAccount));
         MainFXApplication.logout();
