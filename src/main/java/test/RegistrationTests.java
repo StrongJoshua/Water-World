@@ -10,6 +10,8 @@ import org.junit.Test;
 import edu.gatech.scrumbags.networking.Client;
 import edu.gatech.scrumbags.networking.messages.Message;
 
+/** Class that tests interaction between the client and server for registration.
+ * @author Jan Risse */
 public class RegistrationTests {
     Client client;
 
@@ -84,7 +86,8 @@ public class RegistrationTests {
 
     @Test
     public void testSuccessfulRegistration () {
-        assertEquals("Valid credentials shouldn't fail.", 6, client.jUnitRegister(randomUsername(), "password").getPayload().length);
+        assertEquals("Valid credentials shouldn't fail.", 6,
+            client.jUnitRegister(randomUsername(), "password").getPayload().length);
         client.jUnitDelete();
     }
 
