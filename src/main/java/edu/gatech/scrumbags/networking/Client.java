@@ -17,6 +17,7 @@ import edu.gatech.scrumbags.model.WaterPurityReport;
 import edu.gatech.scrumbags.model.WaterReport;
 import edu.gatech.scrumbags.model.WaterSourceReport;
 import edu.gatech.scrumbags.networking.messages.Message;
+import edu.gatech.scrumbags.networking.messages.Message.MessageType;
 
 public class Client extends Thread {
     private Socket socket;
@@ -43,7 +44,6 @@ public class Client extends Thread {
         } catch (IOException e) {
             if (running) disconnect();
         }
-        connected = true;
 
         new Thread() {
             @Override
@@ -59,6 +59,8 @@ public class Client extends Thread {
                 }
             }
         }.start();
+
+        connected = true;
     }
 
     /** This method will stop the client entirely */
@@ -71,6 +73,7 @@ public class Client extends Thread {
         } catch (IOException e) {
             System.out.println("Error closing connection with server.");
         }
+        connected = false;
     }
 
     /** This method will reattempt connection if it is lost */
@@ -251,10 +254,6 @@ public class Client extends Thread {
             }
         }
         if (handle.getType() != Message.MessageType.infoUpdate || handle.getPayload().length == 0) {
-            // System.out.println(handle.getType() + "==" + Message.MessageType.infoUpdate + "?" + (handle.getType() !=
-            // Message.MessageType.infoUpdate));
-            // System.out.println(handle.getPayload().length);
-            // System.out.println("Returning");
             return;
         }
         MainFXApplication.userInfo.setEmail(handle.getPayload()[0]);
@@ -267,8 +266,33 @@ public class Client extends Thread {
         sendMessage(new Message(Message.MessageType.logout));
     }
 
+    /** @return If the client is currently connected to the server. */
     public boolean isConnected () {
         return connected;
     }
 
+    /** Used by the JUnit tests to register an account.
+     * @param username Username to register.
+     * @param password Password to register with.
+     * @return The message returned by the server. */
+    public Message jUnitRegister (String username, String password) {
+        sendMessage(new Message(MessageType.registration, "", "", username, password, Authorization.user.toString(), "", ""));
+        request = true;
+        while (running && handle == null) {
+            try {
+                Thread.sleep(5);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        Message m = handle;
+        handle = null;
+        return m;
+    }
+
+    /** Used by JUnit tests to delete an account. */
+    public void jUnitDelete () {
+        sendMessage(new Message(Message.MessageType.deleteAccount));
+        sendMessage(new Message(Message.MessageType.logout));
+    }
 }
