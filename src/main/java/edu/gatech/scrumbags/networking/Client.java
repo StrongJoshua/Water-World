@@ -28,6 +28,7 @@ public class Client extends Thread {
     private volatile boolean running;
     private volatile Message handle = null;
     private volatile boolean request;
+    private boolean loggedIn = false;
 
     /** Constructs client object */
     public Client () {
@@ -162,6 +163,7 @@ public class Client extends Thread {
         }
         String[] info = handle.getPayload();
         handle = null;
+        loggedIn = true;
         return new User(info[0], info[1], info[2], Authorization.valueOf(info[3]), info[4], info[5]);
 
     }
@@ -264,6 +266,7 @@ public class Client extends Thread {
     /** Sends logout information */
     public void logout () {
         sendMessage(new Message(Message.MessageType.logout));
+        loggedIn = false;
     }
 
     /** @return If the client is currently connected to the server. */
@@ -294,5 +297,10 @@ public class Client extends Thread {
     public void jUnitDelete () {
         sendMessage(new Message(Message.MessageType.deleteAccount));
         sendMessage(new Message(Message.MessageType.logout));
+    }
+
+    public boolean isLoggedIn()
+    {
+        return loggedIn;
     }
 }
