@@ -168,9 +168,11 @@ public class Client extends Thread {
 
     }
 
-    /** Method is not done.
-     *
-     * @param report Water report to be stored */
+    /**
+     * This method sends data from a source report to the database server for storage
+     * @param report Water source report to be stored
+     * @return True if report is successfully stored, false otherwise
+     */
     public boolean sendSourceReport (WaterSourceReport report) {
         sendMessage(new Message(Message.MessageType.sourceReport, json.toJson(report)));
         request = true;
@@ -189,9 +191,11 @@ public class Client extends Thread {
         return true;
     }
 
-    /** Method is not done.
-     *
-     * @param report Water report to be stored */
+    /**
+     * This method sends data from a purity report to the database server for storage
+     * @param report Water source report to be stored
+     * @return True if report is successfully stored, false otherwise
+     */
     public boolean sendPurityReport (WaterPurityReport report, WaterSourceReport source) {
         sendMessage(new Message(Message.MessageType.purityReport, source.getId() + "", json.toJson(report)));
         request = true;
@@ -209,7 +213,9 @@ public class Client extends Thread {
         return true;
     }
 
-    /** Method is not done */
+    /**
+     * This method will load all water reports from the database server into the client application
+     */
     public void requestAllReports () {
         sendMessage(new Message(Message.MessageType.requestAllReports));
         request = true;
@@ -241,8 +247,8 @@ public class Client extends Thread {
         handle = null;
     }
 
-    /** Sends user info to server to update info in database
-     *
+    /**
+     * Sends user info to the database server to updates user's info
      * @param email User's inputted email
      * @param address User's inputted physical address */
     public void updateUserInfo (String email, String address) {
@@ -299,6 +305,7 @@ public class Client extends Thread {
         sendMessage(new Message(Message.MessageType.logout));
     }
 
+    /** @return If the client is currently logged into an account */
     public boolean isLoggedIn()
     {
         return loggedIn;
