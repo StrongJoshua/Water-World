@@ -130,6 +130,7 @@ public class Client extends Thread {
             }
         }
         if (handle.getType() != Message.MessageType.userInfo || handle.getPayload().length == 0) {
+            handle = null;
             return null;
         }
         String[] info = handle.getPayload();
@@ -159,6 +160,7 @@ public class Client extends Thread {
             }
         }
         if (handle.getType() != Message.MessageType.userInfo || handle.getPayload().length == 0) {
+            handle = null;
             return null;
         }
         String[] info = handle.getPayload();
@@ -168,11 +170,9 @@ public class Client extends Thread {
 
     }
 
-    /**
-     * This method sends data from a source report to the database server for storage
+    /** This method sends data from a source report to the database server for storage
      * @param report Water source report to be stored
-     * @return True if report is successfully stored, false otherwise
-     */
+     * @return True if report is successfully stored, false otherwise */
     public boolean sendSourceReport (WaterSourceReport report) {
         sendMessage(new Message(Message.MessageType.sourceReport, json.toJson(report)));
         request = true;
@@ -184,18 +184,16 @@ public class Client extends Thread {
             }
         }
         if (handle.getType() != Message.MessageType.sourceReport || handle.getPayload().length == 0) {
+            handle = null;
             return false;
         }
-        System.out.println(handle.getPayload()[0]);
         handle = null;
         return true;
     }
 
-    /**
-     * This method sends data from a purity report to the database server for storage
+    /** This method sends data from a purity report to the database server for storage
      * @param report Water source report to be stored
-     * @return True if report is successfully stored, false otherwise
-     */
+     * @return True if report is successfully stored, false otherwise */
     public boolean sendPurityReport (WaterPurityReport report, WaterSourceReport source) {
         sendMessage(new Message(Message.MessageType.purityReport, source.getId() + "", json.toJson(report)));
         request = true;
@@ -207,15 +205,14 @@ public class Client extends Thread {
             }
         }
         if (handle.getType() != Message.MessageType.purityReport || handle.getPayload().length == 0) {
+            handle = null;
             return false;
         }
         handle = null;
         return true;
     }
 
-    /**
-     * This method will load all water reports from the database server into the client application
-     */
+    /** This method will load all water reports from the database server into the client application */
     public void requestAllReports () {
         sendMessage(new Message(Message.MessageType.requestAllReports));
         request = true;
@@ -247,8 +244,7 @@ public class Client extends Thread {
         handle = null;
     }
 
-    /**
-     * Sends user info to the database server to updates user's info
+    /** Sends user info to the database server to updates user's info
      * @param email User's inputted email
      * @param address User's inputted physical address */
     public void updateUserInfo (String email, String address) {
@@ -262,6 +258,7 @@ public class Client extends Thread {
             }
         }
         if (handle.getType() != Message.MessageType.infoUpdate || handle.getPayload().length == 0) {
+            handle = null;
             return;
         }
         MainFXApplication.userInfo.setEmail(handle.getPayload()[0]);
@@ -302,12 +299,11 @@ public class Client extends Thread {
     /** Used by JUnit tests to delete an account. */
     public void jUnitDelete () {
         sendMessage(new Message(Message.MessageType.deleteAccount));
-        sendMessage(new Message(Message.MessageType.logout));
+        logout();
     }
 
     /** @return If the client is currently logged into an account */
-    public boolean isLoggedIn()
-    {
+    public boolean isLoggedIn () {
         return loggedIn;
     }
 }
