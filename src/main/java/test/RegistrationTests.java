@@ -22,7 +22,7 @@ public class RegistrationTests {
         while (!client.isConnected()) {
             try {
                 Thread.sleep(5);
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
         }
     }
@@ -33,7 +33,7 @@ public class RegistrationTests {
         while (client.isConnected()) {
             try {
                 Thread.sleep(5);
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
         }
     }

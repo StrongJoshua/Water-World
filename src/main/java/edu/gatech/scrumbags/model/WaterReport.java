@@ -19,8 +19,9 @@ public abstract class WaterReport {
      * @param location The location of this WaterReport.
      * @param submitterName The name of the submitter of this WaterReport. */
     WaterReport (WaterLocation location, String submitterName) {
-        this.reportID = reportCount++;
-        this.location = location;
+        this.reportID = reportCount;
+		reportCount++;
+		this.location = location;
         this.reportDate = new Date();
         this.submitterName = submitterName;
     }
@@ -31,8 +32,9 @@ public abstract class WaterReport {
      * @param reportDate The date of this WaterReport.
      * @param submitterName The name of the submitter of this WaterReport. */
     WaterReport (WaterLocation location, Date reportDate, String submitterName) {
-        this.reportID = reportCount++;
-        this.location = location;
+        this.reportID = reportCount;
+		reportCount++;
+		this.location = location;
         this.reportDate = reportDate;
         this.submitterName = submitterName;
     }

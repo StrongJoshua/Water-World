@@ -26,7 +26,7 @@ public class LoginTests {
         while (!client.isConnected()) {
             try {
                 Thread.sleep(5);
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
         }
         client.jUnitRegister(username, password);
@@ -89,7 +89,7 @@ public class LoginTests {
         while (client.isConnected()) {
             try {
                 Thread.sleep(5);
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
         }
     }
