@@ -13,6 +13,7 @@ public class HistoricalReport {
     /** Creates a new historical report with given information.
      *
      * @param waterSource The historical report's water source.
+     * @param type The type of the historical report
      * @param year The historical report's year. */
     public HistoricalReport (WaterSourceReport waterSource, HistoricalType type, int year) {
         this.waterSource = waterSource;

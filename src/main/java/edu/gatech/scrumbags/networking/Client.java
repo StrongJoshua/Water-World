@@ -19,6 +19,10 @@ import edu.gatech.scrumbags.model.WaterSourceReport;
 import edu.gatech.scrumbags.networking.messages.Message;
 import edu.gatech.scrumbags.networking.messages.Message.MessageType;
 
+/**
+ * The client class of the main application
+ */
+
 public class Client extends Thread {
     private Socket socket;
     private ObjectInputStream in;
@@ -117,19 +121,21 @@ public class Client extends Thread {
     /** Pulls values from user object to send and also reads password field. Sends data to server to store.
      *
      * @param user User object containing all user info
-     * @param password User's password, never stored locally */
+     * @param password User's password, never stored locally
+     * @return the user registered
+     */
     public User registerUser (User user, String password) {
         sendMessage(new Message(Message.MessageType.registration, user.getFirst(), user.getLast(), user.getUsername(), password,
             user.getAuthorization().toString(), user.getEmail(), user.getAddress()));
         request = true;
-        while (running && handle == null) {
+        while (running && (handle == null)) {
             try {
                 Thread.sleep(5);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        if (handle.getType() != Message.MessageType.userInfo || handle.getPayload().length == 0) {
+        if ((handle.getType() != MessageType.userInfo) || (handle.getPayload().length == 0)) {
             handle = null;
             return null;
         }
@@ -152,14 +158,14 @@ public class Client extends Thread {
     public User loginUser (String username, String password) {
         sendMessage(new Message(Message.MessageType.login, username, password));
         request = true;
-        while (running && handle == null) {
+        while (running && (handle == null)) {
             try {
                 Thread.sleep(5);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        if (handle.getType() != Message.MessageType.userInfo || handle.getPayload().length == 0) {
+        if ((handle.getType() != MessageType.userInfo) || (handle.getPayload().length == 0)) {
             handle = null;
             return null;
         }
@@ -176,14 +182,14 @@ public class Client extends Thread {
     public boolean sendSourceReport (WaterSourceReport report) {
         sendMessage(new Message(Message.MessageType.sourceReport, json.toJson(report)));
         request = true;
-        while (running && handle == null) {
+        while (running && (handle == null)) {
             try {
                 Thread.sleep(5);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        if (handle.getType() != Message.MessageType.sourceReport || handle.getPayload().length == 0) {
+        if ((handle.getType() != MessageType.sourceReport) || (handle.getPayload().length == 0)) {
             handle = null;
             return false;
         }
@@ -192,19 +198,20 @@ public class Client extends Thread {
     }
 
     /** This method sends data from a purity report to the database server for storage
-     * @param report Water source report to be stored
+     * @param report Water purity report to be stored
+     * @param source Water source report the purity report belongs to
      * @return True if report is successfully stored, false otherwise */
     public boolean sendPurityReport (WaterPurityReport report, WaterSourceReport source) {
         sendMessage(new Message(Message.MessageType.purityReport, source.getId() + "", json.toJson(report)));
         request = true;
-        while (running && handle == null) {
+        while (running && (handle == null)) {
             try {
                 Thread.sleep(5);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        if (handle.getType() != Message.MessageType.purityReport || handle.getPayload().length == 0) {
+        if ((handle.getType() != MessageType.purityReport) || (handle.getPayload().length == 0)) {
             handle = null;
             return false;
         }
@@ -216,14 +223,14 @@ public class Client extends Thread {
     public void requestAllReports () {
         sendMessage(new Message(Message.MessageType.requestAllReports));
         request = true;
-        while (running && handle == null) {
+        while (running && (handle == null)) {
             try {
                 Thread.sleep(5);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        if (handle.getType() != Message.MessageType.requestAllReports || handle.getPayload().length == 0) {
+        if ((handle.getType() != MessageType.requestAllReports) || (handle.getPayload().length == 0)) {
             return;
         }
         int count = 0;
@@ -250,14 +257,14 @@ public class Client extends Thread {
     public void updateUserInfo (String email, String address) {
         sendMessage(new Message(Message.MessageType.infoUpdate, email, address));
         request = true;
-        while (running && handle == null) {
+        while (running && (handle == null)) {
             try {
                 Thread.sleep(5);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        if (handle.getType() != Message.MessageType.infoUpdate || handle.getPayload().length == 0) {
+        if ((handle.getType() != MessageType.infoUpdate) || (handle.getPayload().length == 0)) {
             handle = null;
             return;
         }
@@ -284,7 +291,7 @@ public class Client extends Thread {
     public Message jUnitRegister (String username, String password) {
         sendMessage(new Message(MessageType.registration, "", "", username, password, Authorization.user.toString(), "", ""));
         request = true;
-        while (running && handle == null) {
+        while (running && (handle == null)) {
             try {
                 Thread.sleep(5);
             } catch (InterruptedException e) {

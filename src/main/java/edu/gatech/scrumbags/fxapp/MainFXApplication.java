@@ -2,10 +2,7 @@
 package edu.gatech.scrumbags.fxapp;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import edu.gatech.scrumbags.controller.MainController;
 import edu.gatech.scrumbags.model.Authorization;
@@ -62,7 +59,7 @@ public class MainFXApplication extends Application {
     private static Stage mainStage;
     public static User userInfo;
     public static Client client;
-    public static HashMap<WaterSourceReport, List<WaterPurityReport>> purityMap = new HashMap<>();
+    public static Map<WaterSourceReport, List<WaterPurityReport>> purityMap = new HashMap<>();
 
     private static WaterSourceReport lastUsedSourceReport;
     private static HistoricalReport lastUsedHistoricalReport;
@@ -113,6 +110,10 @@ public class MainFXApplication extends Application {
         }
     }
 
+    /**
+     * Launch the application
+     * @param args the arguments passed in
+     */
     public static void main (String[] args) {
         launch(args);
     }
@@ -128,6 +129,11 @@ public class MainFXApplication extends Application {
 
     /** See {@link User Authorized(String, String, String, String, Authorization)}
      *
+     * @param first User's first name
+     * @param last User's last name
+     * @param username User's username
+     * @param password User's password
+     * @param accountType User's account type
      * @return The Authorized user object that was created, if the given username does not already exist. */
     public static User createAccount (String first, String last, String username, String password, Authorization accountType) {
         return client.registerUser(new User(first, last, username, accountType), password);
@@ -172,6 +178,10 @@ public class MainFXApplication extends Application {
         client.logout();
     }
 
+    /**
+     * Sets map center to location
+     * @param location the location the map should center to
+     */
     public static void setMapLocation (WaterLocation location) {
         if (null == mapController) {
             throw new IllegalStateException("Cannot set Map location before map has been loaded.");

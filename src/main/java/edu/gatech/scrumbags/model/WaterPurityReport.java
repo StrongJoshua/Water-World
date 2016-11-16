@@ -95,8 +95,8 @@ public class WaterPurityReport extends WaterReport {
             return false;
         }
         WaterPurityReport o = (WaterPurityReport)other;
-        return o.getVirusPPM() == getVirusPPM() && o.getContaminantPPM() == getContaminantPPM()
-            && o.getReportDate().equals(getReportDate()) && o.getPurityCondition().equals(getPurityCondition())
+        return (o.getVirusPPM() == getVirusPPM()) && (o.getContaminantPPM() == getContaminantPPM()) && o
+            .getReportDate().equals(getReportDate()) && o.getPurityCondition().equals(getPurityCondition())
             && o.getSubmitterName().equals(getSubmitterName());
     }
 }

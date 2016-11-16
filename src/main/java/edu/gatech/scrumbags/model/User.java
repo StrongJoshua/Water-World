@@ -26,14 +26,16 @@ public class User {
      * @param first The user's first name.
      * @param last The user's last name.
      * @param username The user's username.
-     * @param authorization The user's authorization. */
+     * @param authorization The user's authorization.
+     * @param email The user's email.
+     * @param address The user's address*/
     public User (String first, String last, String username, Authorization authorization, String email, String address) {
         this.first = first;
         this.last = last;
         this.username = username;
         this.authorization = authorization;
-        this.setEmail(email);
-        this.setAddress(address);
+        this.email = email;
+        this.address = address;
     }
 
     /** @return User's first name. */

@@ -1,5 +1,8 @@
 package edu.gatech.scrumbags.networking.messages;
 
+/**
+ * The message class for the main application
+ */
 public class Message {
 	public enum MessageType {
 		registration, login, userInfo, console, sourceReport, purityReport, requestAllReports, infoUpdate, logout, deleteAccount

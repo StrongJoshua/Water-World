@@ -19,6 +19,9 @@ public class LoginController {
 
     @FXML private PasswordField passwordField;
 
+    /**
+     * Initializes the login label to invisible
+     */
     @FXML
     public void initialize () {
         badLoginLabel.setVisible(false);

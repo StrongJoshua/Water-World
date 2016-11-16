@@ -40,9 +40,9 @@ public class RegistrationController {
     @FXML
     public void handleRegisterPressed () {
         confirmRegistrationButton.disableProperty().set(true);
-        if (usernameField.getText().length() < 6 || usernameField.getText().length() > 20) {
+        if ((usernameField.getText().length() < 6) || (usernameField.getText().length() > 20)) {
             setErrorMessage("Username must be between 6 and 20 characters.");
-        } else if (passwordField.getText().length() < 6 || passwordField.getText().length() > 40) {
+        } else if ((passwordField.getText().length() < 6) || (passwordField.getText().length() > 40)) {
             setErrorMessage("Password must be between 6 and 40 characters.");
         } else {
             if (passwordField.getText().equals(confirmPasswordField.getText())) {

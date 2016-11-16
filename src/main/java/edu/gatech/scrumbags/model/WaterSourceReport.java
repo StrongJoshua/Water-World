@@ -42,10 +42,18 @@ public class WaterSourceReport extends WaterReport {
         purityReports = new ArrayList<>();
     }
 
+    /**
+     * Get the source report's purity reports
+     * @return A list of the source report's purity reports
+     */
     public List<WaterPurityReport> getPurityReports () {
         return purityReports;
     }
 
+    /**
+     * Adds a purity report to the source report
+     * @param purityReport The purity report to be added
+     */
     public void addPurityReport (WaterPurityReport purityReport) {
         if (purityReports == null) purityReports = new ArrayList<>();
         this.purityReports.add(purityReport);
@@ -74,7 +82,7 @@ public class WaterSourceReport extends WaterReport {
      * @param month month of purity reports
      * @return list of purity reports from given month, or empty list if none found */
     public List<WaterPurityReport> getPurityReportsByMonth (int year, int month) {
-        if (month < 0 || month > 11) {
+        if ((month < 0) || (month > 11)) {
             throw new IllegalArgumentException("Month must be between 0 (January) and 11 (December)");
         }
         List<WaterPurityReport> reportsInYear = getPurityReportsByYear(year);
@@ -82,7 +90,7 @@ public class WaterSourceReport extends WaterReport {
         Calendar cal = Calendar.getInstance();
         for (WaterPurityReport report : reportsInYear) {
             cal.setTime(report.getReportDate());
-            if (cal.get(Calendar.YEAR) == year && cal.get(Calendar.MONTH) == month) {
+            if ((cal.get(Calendar.YEAR) == year) && (cal.get(Calendar.MONTH) == month)) {
                 reports.add(report);
             }
         }

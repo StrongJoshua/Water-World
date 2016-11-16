@@ -46,7 +46,7 @@ public class HistoricalReportGraphController {
                     avg += purityReport.getVirusPPM();
                 }
             }
-            if (purityReports.size() != 0) {
+            if (!purityReports.isEmpty()) {
                 avg /= purityReports.size();
                 graphSeries.getData().add(new XYChart.Data<>(months[i].substring(0, 3), avg));
             }
