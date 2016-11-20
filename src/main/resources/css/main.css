@@ -1,6 +1,5 @@
 .root {
-    -fx-background-image: url("WaterBackground.jpg");
-    -fx-background-size: cover;
+    -fx-background-color: #4286f4;
 }
 
 .button {
@@ -46,4 +45,9 @@
 .loggedInVBox {
 	-fx-border-color: black;
 	-fx-border-width: 1px;
+}
+
+.errorMessage {
+	-fx-text-fill: #f4f142;
+	-fx-font-weight: bold;
 }

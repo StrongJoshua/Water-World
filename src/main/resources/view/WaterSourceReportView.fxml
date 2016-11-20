@@ -23,8 +23,8 @@
     </top>
     <center>
         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-            <Label id="errorMessage" fx:id="errorMessage" style="-fx-text-fill: red;"
-                   styleClass="subtitleText" stylesheets="@../css/main.css" text="Error" textFill="RED">
+            <Label id="errorMessage" fx:id="errorMessage"
+                   styleClass="subtitleText errorMessage" stylesheets="@../css/main.css" text="Error">
                 <VBox.margin>
                     <Insets top="10.0"/>
                 </VBox.margin>

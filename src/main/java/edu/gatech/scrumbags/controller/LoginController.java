@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
 
 /** The controller for the login view.
  *
@@ -19,9 +18,7 @@ public class LoginController {
 
     @FXML private PasswordField passwordField;
 
-    /**
-     * Initializes the login label to invisible
-     */
+    /** Initializes the login label to invisible */
     @FXML
     public void initialize () {
         badLoginLabel.setVisible(false);
@@ -36,8 +33,6 @@ public class LoginController {
             MainFXApplication.client.requestAllReports();
         } else {
             badLoginLabel.setVisible(true);
-            badLoginLabel.setText("Bad login attempt! Try again.");
-            badLoginLabel.setTextFill(Color.DARKRED);
         }
     }
 

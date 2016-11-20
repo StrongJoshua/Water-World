@@ -23,7 +23,7 @@
     </top>
     <center>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-            <Label fx:id="badLoginLabel" text="Bad login attempt! Try again." textFill="#ab0000" visible="false">
+            <Label fx:id="badLoginLabel" styleClass="errorMessage" stylesheets="@../css/main.css" text="Bad login attempt! Try again." visible="false">
                 <font>
                     <Font size="18.0" />
                 </font>

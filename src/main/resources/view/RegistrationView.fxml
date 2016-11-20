@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -26,104 +27,100 @@
         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
                 <padding>
-                    <Insets right="8.0"/>
+                    <Insets right="8.0" />
                 </padding>
-                <Label styleClass="subtitleText" stylesheets="@../css/main.css" text="First Name: "
-                       textAlignment="RIGHT">
+                <Label styleClass="subtitleText" stylesheets="@../css/main.css" text="First Name: " textAlignment="RIGHT">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
-                <TextField fx:id="firstNameField"/>
+                <TextField fx:id="firstNameField" />
             </HBox>
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
                 <padding>
-                    <Insets right="6.0"/>
+                    <Insets right="6.0" />
                 </padding>
-                <Label styleClass="subtitleText" stylesheets="@../css/main.css" text="Last Name: "
-                       textAlignment="RIGHT">
+                <Label styleClass="subtitleText" stylesheets="@../css/main.css" text="Last Name: " textAlignment="RIGHT">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                     <HBox.margin>
-                        <Insets/>
+                        <Insets />
                     </HBox.margin>
                 </Label>
-                <TextField fx:id="lastNameField"/>
+                <TextField fx:id="lastNameField" />
             </HBox>
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
-                <Label styleClass="subtitleText" stylesheets="@../css/main.css" text="Username: "
-                       textAlignment="RIGHT">
+                <Label styleClass="subtitleText" stylesheets="@../css/main.css" text="Username: " textAlignment="RIGHT">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                     <HBox.margin>
-                        <Insets/>
+                        <Insets />
                     </HBox.margin>
                 </Label>
-                <TextField fx:id="usernameField"/>
+                <TextField fx:id="usernameField" />
             </HBox>
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="595.0">
                 <VBox.margin>
-                    <Insets left="5.0"/>
+                    <Insets left="5.0" />
                 </VBox.margin>
-                <Label prefHeight="35.0" prefWidth="123.0" styleClass="subtitleText"
-                       stylesheets="@../css/main.css" text="Password: " textAlignment="RIGHT">
+                <Label prefHeight="35.0" prefWidth="123.0" styleClass="subtitleText" stylesheets="@../css/main.css" text="Password: " textAlignment="RIGHT">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
-                <PasswordField fx:id="passwordField"/>
+                <PasswordField fx:id="passwordField" />
             </HBox>
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="536.0">
                 <VBox.margin>
-                    <Insets right="64.0"/>
+                    <Insets right="64.0" />
                 </VBox.margin>
-                <Label prefHeight="35.0" prefWidth="220.0" styleClass="subtitleText"
-                       stylesheets="@../css/main.css" text="Confirm Password: " textAlignment="RIGHT">
+                <Label prefHeight="35.0" prefWidth="220.0" styleClass="subtitleText" stylesheets="@../css/main.css" text="Confirm Password: " textAlignment="RIGHT">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                     <HBox.margin>
-                        <Insets/>
+                        <Insets />
                     </HBox.margin>
                 </Label>
-                <PasswordField fx:id="confirmPasswordField"/>
+                <PasswordField fx:id="confirmPasswordField" />
             </HBox>
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0">
                 <padding>
-                    <Insets right="27.0"/>
+                    <Insets right="27.0" />
                 </padding>
                 <Label styleClass="subtitleText" stylesheets="@../css/main.css" text="Account Type: ">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
-                <ComboBox fx:id="accountTypeCombo" prefWidth="150.0"/>
+                <ComboBox fx:id="accountTypeCombo" prefWidth="150.0" />
             </HBox>
-            <Label fx:id="errorLabel" style="-fx-text-fill: red;" styleClass="subtitleText"
-                   stylesheets="@../css/main.css" text="Error" textFill="RED">
+            <Label fx:id="errorLabel" stylesheets="@../css/main.css" text="Error">
                 <VBox.margin>
-                    <Insets top="10.0"/>
+                    <Insets top="10.0" />
                 </VBox.margin>
                 <font>
-                    <Font size="16.0"/>
+                    <Font size="16.0" />
                 </font>
+            <styleClass>
+               <String fx:value="subtitleText" />
+               <String fx:value="errorMessage" />
+            </styleClass>
             </Label>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                 <VBox.margin>
-                    <Insets/>
+                    <Insets />
                 </VBox.margin>
-                <Button fx:id="confirmRegistrationButton" mnemonicParsing="false"
-                        onAction="#handleRegisterPressed" text="OK">
+                <Button fx:id="confirmRegistrationButton" mnemonicParsing="false" onAction="#handleRegisterPressed" text="OK">
                     <HBox.margin>
-                        <Insets right="20.0"/>
+                        <Insets right="20.0" />
                     </HBox.margin>
                 </Button>
-                <Button fx:id="cancelRegistrationButton" mnemonicParsing="false"
-                        onAction="#handleCancelPressed" text="Cancel">
+                <Button fx:id="cancelRegistrationButton" mnemonicParsing="false" onAction="#handleCancelPressed" text="Cancel">
                     <HBox.margin>
-                        <Insets left="20.0"/>
+                        <Insets left="20.0" />
                     </HBox.margin>
                 </Button>
             </HBox>

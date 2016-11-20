@@ -39,6 +39,8 @@ public class ProfileController {
         resetEditableLabels();
 
         editMode = false;
+        emailTextField.setVisible(false);
+        addressTextField.setVisible(false);
     }
 
     /** Resets email and address labels to the session's user's info. */
@@ -90,7 +92,6 @@ public class ProfileController {
     } /** Brings the user back to the main screen. */
     @FXML
     public void handleDeleteAccountPressed () {
-
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText("Delete Account");
