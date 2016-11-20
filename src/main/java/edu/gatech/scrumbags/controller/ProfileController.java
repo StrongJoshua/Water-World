@@ -1,13 +1,17 @@
 
 package edu.gatech.scrumbags.controller;
 
+import java.util.Optional;
+
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
 import edu.gatech.scrumbags.fxapp.MainFXApplication.Scenes;
 import edu.gatech.scrumbags.model.User;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-
-import java.util.Optional;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 /** The controller for the profile view. Displays all user information and allows editing of the user's email and address.
  *
@@ -39,19 +43,27 @@ public class ProfileController {
         resetEditableLabels();
 
         editMode = false;
-        emailTextField.setVisible(false);
-        addressTextField.setVisible(false);
+        setManageds(editMode);
     }
 
     /** Resets email and address labels to the session's user's info. */
     private void resetEditableLabels () {
         User userInfo = MainFXApplication.userInfo;
-        userEmail.setVisible(true);
-        userEmail.setManaged(true);
-        userAddress.setVisible(true);
-        userAddress.setManaged(true);
         userEmail.setText(userInfo.getEmail());
         userAddress.setText(userInfo.getAddress());
+    }
+
+    /** Handles managing and visibility when swapping between edit and view modes.
+     * @param editMode The current edit mode. */
+    private void setManageds (boolean editMode) {
+        userEmail.setVisible(!editMode);
+        userEmail.setManaged(!editMode);
+        userAddress.setVisible(!editMode);
+        userAddress.setManaged(!editMode);
+        emailTextField.setVisible(editMode);
+        emailTextField.setManaged(editMode);
+        addressTextField.setVisible(editMode);
+        addressTextField.setManaged(editMode);
     }
 
     /** Switches in between edit and view mode for the email and address fields. */
@@ -63,25 +75,15 @@ public class ProfileController {
             // userInfo.setAddress(addressTextField.getText());
             MainFXApplication.client.updateUserInfo(emailTextField.getText(), addressTextField.getText());
             resetEditableLabels();
-
-            emailTextField.setVisible(false);
-            addressTextField.setVisible(false);
             editButton.setText("Edit");
         } else {
-            userEmail.setVisible(false);
-            userEmail.setManaged(false);
-            userAddress.setVisible(false);
-            userAddress.setManaged(false);
-
-            emailTextField.setVisible(true);
-            addressTextField.setVisible(true);
-
             emailTextField.setText(userInfo.getEmail());
             addressTextField.setText(userInfo.getAddress());
 
             editButton.setText("Save");
         }
         editMode = !editMode;
+        setManageds(editMode);
     }
 
     /** Brings the user back to the main screen. */
@@ -89,7 +91,9 @@ public class ProfileController {
     public void handleBackPressed () {
         MainFXApplication.loadScene(Scenes.main);
         // MainFXApplication.userInfo = null;
-    } /** Brings the user back to the main screen. */
+    }
+
+    /** Brings the user back to the main screen. */
     @FXML
     public void handleDeleteAccountPressed () {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -98,7 +102,7 @@ public class ProfileController {
         alert.setContentText("Are you sure you want to DELETE your account?");
 
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
+        if (result.get() == ButtonType.OK) {
             // ... user chose OK
             MainFXApplication.client.deleteAccount();
             MainFXApplication.loadScene(Scenes.welcome);
