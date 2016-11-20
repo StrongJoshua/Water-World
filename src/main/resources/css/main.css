@@ -3,10 +3,9 @@
 }
 
 .button {
-    -fx-background-color:
-            #3c7fb1,
-            linear-gradient(#fafdfe, #e8f5fc),
-            linear-gradient(#eaf6fd 0%, #d9f0fc 49%, #bee6fd 50%, #a7d9f5 100%);
+    -fx-background-color: #FFFFFF;
+           /* linear-gradient(#fafdfe, #e8f5fc),
+            linear-gradient(#eaf6fd 0%, #d9f0fc 49%, #bee6fd 50%, #a7d9f5 100%);*/
     -fx-background-insets: 0,1,2;
     -fx-background-radius: 3,2,1;
     -fx-padding: 5 10 5 10;
@@ -15,17 +14,15 @@
 }
 
 .button:hover {
-    -fx-background-color:
-            #3c7fb1,
-            linear-gradient(#fafdfe, #e8f5fc),
-            linear-gradient(#eaf6fd 0%, #d9f0fc 49%, #bee6fd 50%, #3c7fb1 100%);
+    -fx-background-color: #6bb9f0;
+           /* linear-gradient(#fafdfe, #e8f5fc),
+            linear-gradient(#eaf6fd 0%, #d9f0fc 49%, #bee6fd 50%, #3c7fb1 100%);*/
 }
 
 .button:armed {
-    -fx-background-color:
-            #3c7fb1,
-            linear-gradient(#a7d9f5, #3c7fb1),
-            linear-gradient(#d9f0fc 0%, #bee6fd 49%, #a7d9f5 50%, #3c7fb1 100%);
+    -fx-background-color: #3c7fb1;
+            /* linear-gradient(#a7d9f5, #3c7fb1),
+            linear-gradient(#d9f0fc 0%, #bee6fd 49%, #a7d9f5 50%, #3c7fb1 100%); */
 }
 
 .titleText {
