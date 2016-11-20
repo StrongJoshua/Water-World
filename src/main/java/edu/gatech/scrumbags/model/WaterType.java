@@ -5,5 +5,5 @@ package edu.gatech.scrumbags.model;
  *
  * @author gnoziere */
 public enum WaterType {
-    Bottled, Well, Stream, Lake, Spring, Other
+    Bottled, Well, Stream, Lake, Spring
 }
