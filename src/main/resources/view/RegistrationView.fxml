@@ -118,7 +118,7 @@
                         <Insets right="20.0" />
                     </HBox.margin>
                 </Button>
-                <Button fx:id="cancelRegistrationButton" mnemonicParsing="false" onAction="#handleCancelPressed" text="Cancel">
+                <Button mnemonicParsing="false" onAction="#handleCancelPressed" text="Cancel">
                     <HBox.margin>
                         <Insets left="20.0" />
                     </HBox.margin>
