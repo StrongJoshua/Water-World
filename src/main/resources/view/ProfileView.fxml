@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -98,9 +99,19 @@
                   <TextField fx:id="addressTextField" />
                     </children>
                 </FlowPane>
+            <VBox.margin>
+               <Insets />
+            </VBox.margin>
             </GridPane>
-            <Button fx:id="editButton" mnemonicParsing="false" onAction="#handleEditPressed" text="Edit" />
-            <Button mnemonicParsing="false" onAction="#handleDeleteAccountPressed" text="Delete Account" />
+         <Pane VBox.vgrow="ALWAYS" />
+         <BorderPane>
+            <left>
+                  <Button fx:id="editButton" mnemonicParsing="false" onAction="#handleEditPressed" text="Edit" BorderPane.alignment="CENTER" />
+            </left>
+            <right>
+                  <Button mnemonicParsing="false" onAction="#handleDeleteAccountPressed" text="Delete Account" BorderPane.alignment="CENTER" />
+            </right>
+         </BorderPane>
         </VBox>
     </center>
 </BorderPane>
