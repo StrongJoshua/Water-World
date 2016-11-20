@@ -7,7 +7,7 @@
            /* linear-gradient(#fafdfe, #e8f5fc),
             linear-gradient(#eaf6fd 0%, #d9f0fc 49%, #bee6fd 50%, #a7d9f5 100%);*/
     -fx-background-insets: 0,1,2;
-    -fx-background-radius: 3,2,1;
+    -fx-background-radius: 0;
     -fx-padding: 5 10 5 10;
     -fx-text-fill: black;
     -fx-font-size: 14px;
@@ -30,6 +30,7 @@
     -fx-font-style: normal;
     -fx-font-weight: bold;
     -fx-font-size: 56px;
+    -fx-font: 56px Georgia;
 }
 
 .subtitleText {

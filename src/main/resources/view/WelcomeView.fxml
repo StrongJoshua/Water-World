@@ -28,12 +28,12 @@
     </bottom>
     <center>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0" BorderPane.alignment="CENTER">
-            <Label styleClass="titleText" stylesheets="@../css/main.css" text="Clean Water">
+            <Label styleClass="titleText" stylesheets="@../css/main.css" text="AQUAFINDA">
                 <font>
                     <Font size="52.0" />
                 </font>
             </Label>
-            <Label styleClass="subtitleText" stylesheets="@../css/main.css" text="By SCRUMbags for CS 2340" textAlignment="CENTER" />
+            <Label styleClass="subtitleText" stylesheets="@../css/main.css" text="By the SCRUMbags" textAlignment="CENTER" />
         </VBox>
     </center>
 </BorderPane>
