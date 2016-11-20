@@ -1,5 +1,6 @@
 .root {
     -fx-background-color: #4286f4;
+    -fx-font-family: "Chaparral Pro Light";
 }
 
 .button {
@@ -25,9 +26,6 @@
 }
 
 .subtitleText {
-    -fx-font-family: fantasy;
-    -fx-font-style: normal;
-    -fx-font-weight: bold;
     -fx-font-size: 24px;
 }
 
