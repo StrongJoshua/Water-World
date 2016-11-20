@@ -49,19 +49,19 @@
                <Insets bottom="10.0" />
             </VBox.margin>
             </FlowPane>
-            <GridPane>
+            <GridPane prefWidth="558.0">
                 <columnConstraints>
                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="285.0" minWidth="10.0" prefWidth="162.0" />
                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="484.0" minWidth="10.0" prefWidth="396.0" />
                 </columnConstraints>
                 <rowConstraints>
-                    <RowConstraints prefHeight="30.0" vgrow="NEVER" />
-                    <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="NEVER" />
-                    <RowConstraints maxHeight="36.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+                    <RowConstraints maxHeight="33.0" vgrow="NEVER" />
+                    <RowConstraints maxHeight="33.0" vgrow="NEVER" />
+                    <RowConstraints maxHeight="72.0" minHeight="20.0" prefHeight="54.0" vgrow="SOMETIMES" />
                 </rowConstraints>
                 <Label prefHeight="35.0" prefWidth="177.0" styleClass="subtitleText" stylesheets="@../css/main.css" text="Account Type:" GridPane.halignment="RIGHT" />
                 <Label prefHeight="54.0" prefWidth="68.0" styleClass="subtitleText" stylesheets="@../css/main.css" text="Email:" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-                <Label prefHeight="10.0" prefWidth="97.0" styleClass="subtitleText" stylesheets="@../css/main.css" text="Address:" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                <Label prefHeight="10.0" prefWidth="97.0" styleClass="subtitleText" stylesheets="@../css/main.css" text="Address:" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP" />
                 <FlowPane alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                     <children>
                         <Label fx:id="userAccountType" prefHeight="35.0" prefWidth="387.0" styleClass="subtitleText" stylesheets="@../css/main.css" text="ACCOUNT">
@@ -82,7 +82,7 @@
                         <Insets left="10.0" />
                     </GridPane.margin>
                     <children>
-                        <Label fx:id="userEmail" styleClass="subtitleText" stylesheets="@../css/main.css" text="EMAIL">
+                        <Label fx:id="userEmail" styleClass="subtitleText" stylesheets="@../css/main.css" text="EMAIL" wrapText="true">
                             <font>
                                 <Font name="System Bold" size="12.0" />
                             </font>
@@ -90,12 +90,12 @@
                   <TextField fx:id="emailTextField" />
                     </children>
                 </FlowPane>
-                <FlowPane alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <FlowPane prefWidth="386.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
                     <GridPane.margin>
                         <Insets left="10.0" />
                     </GridPane.margin>
                     <children>
-                        <Label fx:id="userAddress" styleClass="subtitleText" stylesheets="@../css/main.css" text="ADDRESS" />
+                        <Label fx:id="userAddress" maxWidth="300.0" styleClass="subtitleText" stylesheets="@../css/main.css" text="ADDRESS" wrapText="true" />
                   <TextField fx:id="addressTextField" />
                     </children>
                 </FlowPane>
