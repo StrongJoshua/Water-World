@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,6 +33,7 @@ Client client;
 				user = client.loginUser(username.getText().toString(), password.getText().toString());
 				System.out.println("Reconnecting");
 				if(client.isLoggedIn()) {
+					Log.d(user.toString(),"");
 					Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
 					startActivity(intent);
 				}
@@ -44,8 +46,6 @@ Client client;
 		});
 
 	}
-
-
 	public  void disconnect () {
 		if(connect) {
 			user = null;

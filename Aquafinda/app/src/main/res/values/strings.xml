@@ -16,4 +16,18 @@
         completions."
     </string>
     <string name="title_activity_source_report">SourceReportActivity</string>
+
+    <string-array name="type_array">
+        <item>Bottled</item>
+        <item>Well</item>
+        <item>Stream</item>
+        <item>Lake</item>
+        <item>Spring</item>
+    </string-array>
+    <string-array name="condition_array">
+        <item>Waste Water</item>
+        <item>Treatable(Clear)</item>
+        <item>Treatable(Muddy)</item>
+        <item>Potable Water</item>
+    </string-array>
 </resources>
