@@ -14,11 +14,4 @@
     tools:context="scrumbags.aquafindamobile.SourceReportActivity"
     tools:showIn="@layout/activity_source_report">
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
-        android:layout_marginLeft="75dp" android:layout_marginStart="75dp"
-        android:layout_marginTop="63dp" android:id="@+id/textView2"/>
 </RelativeLayout>
