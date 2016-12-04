@@ -26,8 +26,8 @@
     </string-array>
     <string-array name="condition_array">
         <item>Waste Water</item>
-        <item>Treatable(Clear)</item>
-        <item>Treatable(Muddy)</item>
+        <item>Treatable (Clear)</item>
+        <item>Treatable (Muddy)</item>
         <item>Potable Water</item>
     </string-array>
 </resources>
