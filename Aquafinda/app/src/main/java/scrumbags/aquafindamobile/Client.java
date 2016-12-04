@@ -30,7 +30,7 @@ public class Client extends Thread {
 	private volatile Message handle = null;
 	private volatile boolean request;
 	private boolean loggedIn = false;
-	public ArrayList<WaterReport> reports = new ArrayList<>();
+	public static ArrayList<WaterReport> reports = new ArrayList<>();
 	public static Map<WaterSourceReport, List<WaterPurityReport>> purityMap = new HashMap<>();
 	public static User user;
 

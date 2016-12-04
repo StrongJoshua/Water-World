@@ -34,6 +34,7 @@ public class CustomLoginActivity extends AppCompatActivity {
 				System.out.println("Reconnecting");
 				if(client.isLoggedIn()) {
 					Log.d(user.toString(),"");
+					client.requestAllReports();
 					Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
 					startActivity(intent);
 				}

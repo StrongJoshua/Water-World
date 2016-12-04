@@ -8,7 +8,8 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="scrumbags.aquafindamobile.SourceReportActivity"
-    >
+    android:background="#4286f4"
+>
 
     <LinearLayout
         android:orientation="vertical"
@@ -17,9 +18,16 @@
         android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
         android:layout_alignParentTop="true">
         <TextView
+            android:text="SUBMIT SOURCE REPORT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView6"
+            android:textSize="24sp"
+            android:textColor="@android:color/white" android:textAlignment="center"/>
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/textView3"
-            android:text="Water Location(Coordinates)"/>
+            android:text="Water Location(Coordinates)"
+            android:textColor="@android:color/white"/>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -27,30 +35,45 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:inputType="numberDecimal|numberSigned"
                 android:ems="10"
-                android:id="@+id/lat" android:layout_weight="1"/>
+                android:id="@+id/lat"
+                android:layout_weight="1"
+                android:textColor="@android:color/white"/>
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
+                android:inputType="numberDecimal|numberSigned"
                 android:ems="10"
-                android:id="@+id/longt" android:layout_weight="1"/>
+                android:id="@+id/longt"
+                android:layout_weight="1"
+                android:textColor="@android:color/white"/>
         </LinearLayout>
         <TextView
             android:text="Water Type"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/textView"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:textColor="@android:color/white"/>
         <Spinner
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/typeSpinner"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/typeSpinner"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"/>
         <TextView
             android:text="Water Condition"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/textView2"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2"
+            android:textColor="@android:color/white"/>
         <Spinner
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/condSpinner"
+            android:layout_height="wrap_content"
+            android:id="@+id/condSpinner"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
         />
         <LinearLayout
             android:orientation="horizontal"
@@ -60,12 +83,14 @@
                 android:text="Submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/submitButton"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="#ffffff"/>
             <Button
                 android:text="Cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/cancelButton"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="#ffffff"/>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
