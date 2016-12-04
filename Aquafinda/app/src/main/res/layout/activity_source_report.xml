@@ -29,13 +29,13 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/editText2" android:layout_weight="1"/>
+                android:id="@+id/lat" android:layout_weight="1"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:ems="10"
-                android:id="@+id/editText" android:layout_weight="1"/>
+                android:id="@+id/longt" android:layout_weight="1"/>
         </LinearLayout>
         <TextView
             android:text="Water Type"
@@ -59,12 +59,12 @@
             <Button
                 android:text="Submit"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/button2"
+                android:layout_height="wrap_content" android:id="@+id/submitButton"
                 android:layout_weight="1"/>
             <Button
                 android:text="Cancel"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/button3"
+                android:layout_height="wrap_content" android:id="@+id/cancelButton"
                 android:layout_weight="1"/>
         </LinearLayout>
     </LinearLayout>

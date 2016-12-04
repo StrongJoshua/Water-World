@@ -10,11 +10,11 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class CustomLoginActivity extends AppCompatActivity {
-Client client;
-	User user;
+	public static Client client;
+	public static User user;
 	boolean connect;
 	EditText username;
-			EditText password;
+	EditText password;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

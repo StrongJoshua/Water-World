@@ -171,7 +171,7 @@ public class Client extends Thread {
 	/** This method sends data from a source report to the database server for storage
 	 * @param report Water source report to be stored
 	 * @return True if report is successfully stored, false otherwise */
-	/*
+
 	public boolean sendSourceReport (WaterSourceReport report) {
 		sendMessage(new Message(Message.MessageType.sourceReport, json.toJson(report)));
 		request = true;
@@ -189,7 +189,7 @@ public class Client extends Thread {
 		handle = null;
 		return true;
 	}
-	*/
+
 
 	/** This method sends data from a purity report to the database server for storage
 	 * @param report Water purity report to be stored
