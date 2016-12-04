@@ -39,6 +39,7 @@ public class CustomLoginActivity extends AppCompatActivity {
 				}
 				else
 				{
+					password.setError("Incorrect Login!");
 					Snackbar.make(v, "Fuck You", Snackbar.LENGTH_LONG)
 							.setAction("Action", null).show();
 				}

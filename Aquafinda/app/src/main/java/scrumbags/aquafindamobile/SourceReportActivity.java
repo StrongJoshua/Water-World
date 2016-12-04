@@ -12,9 +12,15 @@ import android.widget.Spinner;
 
 public class SourceReportActivity extends AppCompatActivity {
 
+	EditText latText;
+	EditText longText;
 
 	WaterType type;
 	WaterCondition cond;
+
+	double lat;
+	double longt;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -22,8 +28,8 @@ public class SourceReportActivity extends AppCompatActivity {
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
-		final EditText latText = (EditText) findViewById(R.id.lat);
-		final EditText longText = (EditText) findViewById(R.id.longt);
+		latText = (EditText) findViewById(R.id.lat);
+		longText = (EditText) findViewById(R.id.longt);
 
 		final Spinner countryView = (Spinner) findViewById(R.id.typeSpinner);
 		final ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.type_array, android.R.layout.simple_spinner_item);
@@ -36,17 +42,19 @@ public class SourceReportActivity extends AppCompatActivity {
 		countryView.setAdapter(adapter);
 		countryView2.setAdapter(adapter2);
 
-		final double lat = Double.parseDouble(latText.getText().toString());
-		final double longt = Double.parseDouble(longText.getText().toString());
+		if(latText.getText().toString().length() > 0 && longText.getText().toString().length() > 0) {
+			lat = Double.parseDouble(latText.getText().toString());
+			longt = Double.parseDouble(longText.getText().toString());
+		}
 		String t = countryView.getSelectedItem().toString();
 		String c = countryView2.getSelectedItem().toString();
 
-		for(WaterType wt:WaterType.values())
+		for(WaterType wt: WaterType.values())
 		{
 			if(wt.toString().equals(t))
 				type = wt;
 		}
-		for(WaterCondition wc:WaterCondition.values())
+		for(WaterCondition wc: WaterCondition.values())
 		{
 			if(wc.toString().equals(c))
 				cond = wc;
@@ -57,8 +65,8 @@ public class SourceReportActivity extends AppCompatActivity {
 			@Override
 			public void onClick(View v) {
 				Client client = CustomLoginActivity.client;
-				WaterSourceReport report = new WaterSourceReport(new WaterLocation(lat,longt ),
-						type , cond, CustomLoginActivity.user.getFullName());
+				WaterSourceReport report = new WaterSourceReport(new WaterLocation(lat,longt),
+						type, cond, CustomLoginActivity.user.getFullName());
 				client.sendSourceReport(report);
 			}
 		});
