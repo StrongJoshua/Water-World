@@ -8,6 +8,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 import scrumbags.aquafindamobile.Message.MessageType;
 
@@ -25,6 +30,9 @@ public class Client extends Thread {
 	private volatile Message handle = null;
 	private volatile boolean request;
 	private boolean loggedIn = false;
+	public ArrayList<WaterReport> reports = new ArrayList<>();
+	public static Map<WaterSourceReport, List<WaterPurityReport>> purityMap = new HashMap<>();
+	public static User user;
 
 	/** Constructs client object */
 	public Client () {
@@ -164,7 +172,8 @@ public class Client extends Thread {
 		String[] info = handle.getPayload();
 		handle = null;
 		loggedIn = true;
-		return new User(info[0], info[1], info[2], Authorization.valueOf(info[3]), info[4], info[5]);
+		user = new User(info[0], info[1], info[2], Authorization.valueOf(info[3]), info[4], info[5]);
+		return user;
 
 	}
 
@@ -216,7 +225,7 @@ public class Client extends Thread {
 	*/
 
 	/** This method will load all water reports from the database server into the client application */
-	/*
+
 	public void requestAllReports () {
 		sendMessage(new Message(Message.MessageType.requestAllReports));
 		request = true;
@@ -233,12 +242,12 @@ public class Client extends Thread {
 		int count = 0;
 		for (String s : handle.getPayload()) {
 			WaterSourceReport ws = json.fromJson(s, WaterSourceReport.class);
-			MainFXApplication.waterReports.add(ws);
-			MainFXApplication.purityMap.put(ws, new LinkedList<>());
+			reports.add(ws);
+			purityMap.put(ws, new LinkedList<WaterPurityReport>());
 			if (ws.getPurityReports() != null) {
 				for (WaterPurityReport p : ws.getPurityReports()) {
-					MainFXApplication.purityMap.get(ws).add(p);
-					MainFXApplication.waterReports.add(p);
+					purityMap.get(ws).add(p);
+					reports.add(p);
 					count++;
 				}
 			}
@@ -247,7 +256,7 @@ public class Client extends Thread {
 		WaterReport.reportCount = count;
 		handle = null;
 	}
-	*/
+
 
 	/** Sends user info to the database server to updates user's info
 	 * @param email User's inputted email

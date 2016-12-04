@@ -2,6 +2,7 @@ package scrumbags.aquafindamobile;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -42,32 +43,48 @@ public class SourceReportActivity extends AppCompatActivity {
 		countryView.setAdapter(adapter);
 		countryView2.setAdapter(adapter2);
 
-		if(latText.getText().toString().length() > 0 && longText.getText().toString().length() > 0) {
-			lat = Double.parseDouble(latText.getText().toString());
-			longt = Double.parseDouble(longText.getText().toString());
-		}
-		String t = countryView.getSelectedItem().toString();
-		String c = countryView2.getSelectedItem().toString();
 
-		for(WaterType wt: WaterType.values())
-		{
-			if(wt.toString().equals(t))
-				type = wt;
-		}
-		for(WaterCondition wc: WaterCondition.values())
-		{
-			if(wc.toString().equals(c))
-				cond = wc;
-		}
 
 		Button button = (Button) findViewById(R.id.submitButton);
 		button.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				if(latText.getText().toString().length() > 0 && longText.getText().toString().length() > 0) {
+					lat = Double.parseDouble(latText.getText().toString());
+					longt = Double.parseDouble(longText.getText().toString());
+				}
+				String t = countryView.getSelectedItem().toString();
+				String c = countryView2.getSelectedItem().toString();
+
+				for(WaterType wt: WaterType.values())
+				{
+					if(wt.toString().equals(t))
+						type = wt;
+				}
+				for(WaterCondition wc: WaterCondition.values())
+				{
+					if(wc.toString().equals(c))
+						cond = wc;
+				}
+
+
 				Client client = CustomLoginActivity.client;
-				WaterSourceReport report = new WaterSourceReport(new WaterLocation(lat,longt),
-						type, cond, CustomLoginActivity.user.getFullName());
-				client.sendSourceReport(report);
+				WaterSourceReport report = new WaterSourceReport(new WaterLocation(lat, longt),
+						type, cond, client.user.getFullName());
+
+				System.out.println(report);
+				if (client.sendSourceReport(report))
+				{
+					Snackbar.make(v, "Success", Snackbar.LENGTH_LONG)
+							.setAction("Action", null).show();
+				Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+				startActivity(intent);
+				}
+				else
+				{
+					Snackbar.make(v, "Fuck You", Snackbar.LENGTH_LONG)
+							.setAction("Action", null).show();
+				}
 			}
 		});
 

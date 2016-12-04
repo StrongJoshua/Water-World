@@ -48,7 +48,7 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".CustomLoginActivity"
-            android:label="@string/title_activity_login">
+            android:label="Aquafinda">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

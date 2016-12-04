@@ -344,6 +344,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             if (success &&  user != null) {
                 // Click action
+				client.requestAllReports();
                 Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
                 startActivity(intent);
                 //finish();
