@@ -233,6 +233,7 @@ public class Client extends Thread {
         if ((handle.getType() != MessageType.requestAllReports) || (handle.getPayload().length == 0)) {
             return;
         }
+        int maxReport = 0;
         int count = 0;
         for (String s : handle.getPayload()) {
             WaterSourceReport ws = json.fromJson(s, WaterSourceReport.class);
@@ -242,12 +243,16 @@ public class Client extends Thread {
                 for (WaterPurityReport p : ws.getPurityReports()) {
                     MainFXApplication.purityMap.get(ws).add(p);
                     MainFXApplication.waterReports.add(p);
+                    if(p.getId() > maxReport)
+                        maxReport = p.getId();
                     count++;
                 }
             }
+            if(ws.getId() > maxReport)
+                maxReport = ws.getId();
             count++;
         }
-        WaterReport.reportCount = count;
+        WaterReport.reportCount = maxReport + 1;
         handle = null;
     }
 

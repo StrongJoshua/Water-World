@@ -33,6 +33,7 @@ public class Client extends Thread {
 	public static ArrayList<WaterReport> reports = new ArrayList<>();
 	public static Map<WaterSourceReport, List<WaterPurityReport>> purityMap = new HashMap<>();
 	public static User user;
+	public static int maxReportID;
 
 	/** Constructs client object */
 	public Client () {
@@ -239,6 +240,8 @@ public class Client extends Thread {
 		if ((handle.getType() != MessageType.requestAllReports) || (handle.getPayload().length == 0)) {
 			return;
 		}
+
+		int maxReport = 0;
 		int count = 0;
 		for (String s : handle.getPayload()) {
 			WaterSourceReport ws = json.fromJson(s, WaterSourceReport.class);
@@ -248,11 +251,16 @@ public class Client extends Thread {
 				for (WaterPurityReport p : ws.getPurityReports()) {
 					purityMap.get(ws).add(p);
 					reports.add(p);
+					if(p.getId() > maxReport)
+						maxReport = p.getId();
 					count++;
 				}
 			}
+			if(ws.getId() > maxReport)
+				maxReport = ws.getId();
 			count++;
 		}
+		maxReportID = maxReport;
 		WaterReport.reportCount = count;
 		handle = null;
 	}
