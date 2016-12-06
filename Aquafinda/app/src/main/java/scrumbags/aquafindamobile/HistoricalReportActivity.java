@@ -2,7 +2,6 @@ package scrumbags.aquafindamobile;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -87,7 +86,7 @@ public class HistoricalReportActivity extends AppCompatActivity {
 		//mChart.getViewPortHandler().setMaximumScaleX(2f);
 		List<Entry> entries = new ArrayList<Entry>();
 
-		Log.d(HistoricalReportPromptActivity.sourceReport.getPurityReports().toString(), "\nHERE");
+		/*Log.d(HistoricalReportPromptActivity.sourceReport.getPurityReports().toString(), "\nHERE");
 		for(int i = 0; i < 12; i++ ) {
 			double avg = 0;
 			List<WaterPurityReport> purityReports = HistoricalReportPromptActivity.sourceReport.getPurityReportsByMonth(Integer.parseInt(HistoricalReportPromptActivity.year), i);
@@ -99,12 +98,16 @@ public class HistoricalReportActivity extends AppCompatActivity {
 				} else if (HistoricalReportPromptActivity.reportType.equals(HistoricalType.Virus.toString())) {
 					avg += purityReport.getVirusPPM();
 				}
-			}*/
+			}
 			if (!purityReports.isEmpty()) {
 				avg /= purityReports.size();
 				entries.add(new Entry(i, (int)avg));
 			}
-		}
+		}*/
+
+		entries.add(new Entry(1,3));
+		entries.add(new Entry(2,4));
+		entries.add(new Entry(3,5));
 
 		LineDataSet dataSet = new LineDataSet(entries, "Label");
 
