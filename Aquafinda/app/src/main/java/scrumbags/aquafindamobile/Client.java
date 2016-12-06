@@ -31,7 +31,6 @@ public class Client extends Thread implements Serializable {
 	private boolean loggedIn = false;
 	public static ArrayList<WaterReport> reports = new ArrayList<>();
 	public static User user;
-	public static int maxReportID;
 	public static Updateable updateable;
 
 	/** Constructs client object */
@@ -148,8 +147,8 @@ public class Client extends Thread implements Serializable {
 		}
 		for(WaterReport wr: newReports)
 		{
-			if(wr.getId() > maxReportID)
-				maxReportID = wr.getId();
+			if(wr.getId() > WaterReport.reportCount)
+				WaterReport.reportCount = wr.getId() + 1;
 		}
         reports.addAll(newReports);
        if(updateable != null)
@@ -294,8 +293,7 @@ public class Client extends Thread implements Serializable {
 			if(ws.getId() > maxReport)
 				maxReport = ws.getId();
 		}
-		maxReportID = maxReport;
-		WaterReport.reportCount = reports.size();
+		WaterReport.reportCount = maxReport + 1;
 		handle = null;
 	}
 
