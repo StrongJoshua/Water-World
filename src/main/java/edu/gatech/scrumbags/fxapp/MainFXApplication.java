@@ -52,7 +52,7 @@ public class MainFXApplication extends Application {
         }
     }
 
-    public static final String version = "1.1.0.0";
+    public static final String version = "1.1.0.1";
 
     public static List<WaterReport> waterReports;
     public static List<Integer> years;

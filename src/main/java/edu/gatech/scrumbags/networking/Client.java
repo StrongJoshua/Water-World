@@ -19,6 +19,7 @@ import edu.gatech.scrumbags.model.WaterReport;
 import edu.gatech.scrumbags.model.WaterSourceReport;
 import edu.gatech.scrumbags.networking.messages.Message;
 import edu.gatech.scrumbags.networking.messages.Message.MessageType;
+import javafx.application.Platform;
 
 /** The client class of the main application */
 
@@ -130,7 +131,12 @@ public class Client extends Thread {
             if(!l.stream().anyMatch(x -> x.getId() == wpr.getId()))
                 newReports.add(wpr);
         l.addAll(newReports);
-        MainFXApplication.updateControllerReports(newReports);
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run () {
+                MainFXApplication.updateControllerReports(newReports);
+            }
+        });
     }
 
     /** Pulls values from user object to send and also reads password field. Sends data to server to store.
