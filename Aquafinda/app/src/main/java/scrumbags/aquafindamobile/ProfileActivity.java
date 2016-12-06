@@ -30,6 +30,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 		editMode = false;
 
+		edit = (FloatingActionButton) findViewById(R.id.fab);
 		submit = (Button)findViewById(R.id.submitButton);
 		cancel = (Button)findViewById(R.id.cancelButton);
 		email = (TextView)findViewById(R.id.emailText);
@@ -37,7 +38,14 @@ public class ProfileActivity extends AppCompatActivity {
 		emailEdit = (EditText)findViewById(R.id.emailEdit);
 		addressEdit = (EditText)findViewById(R.id.addressEdit);
 
-		edit = (FloatingActionButton) findViewById(R.id.fab);
+		((TextView)findViewById(R.id.accountType)).setText(Client.user.getAuthorization().toString());
+		email.setText(Client.user.getEmail());
+		address.setText(Client.user.getAddress());
+		email.setVisibility(View.VISIBLE);
+		address.setVisibility(View.VISIBLE);
+		emailEdit.setVisibility(View.GONE);
+		addressEdit.setVisibility(View.GONE);
+
 		edit.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -81,10 +89,6 @@ public class ProfileActivity extends AppCompatActivity {
 				addressEdit.setVisibility(View.GONE);
 			}
 		});
-
-		((TextView)findViewById(R.id.accountType)).setText(Client.user.getAuthorization().toString());
-		email.setText(Client.user.getEmail());
-		address.setText(Client.user.getAddress());
 	}
 
 }
