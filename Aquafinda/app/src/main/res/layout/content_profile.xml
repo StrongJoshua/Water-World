@@ -25,26 +25,7 @@
             android:background="#89C4F4"
             android:textColor="@android:color/white" android:textAlignment="center"
         />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/textView3"
-            android:text="Email Address"
-            android:textColor="@android:color/black" android:padding="10dp"
-            android:textSize="24sp"/>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:id="@+id/emailText"
-                android:layout_weight="1"
-                android:textColor="@android:color/black" android:inputType="textEmailAddress"/>
-
-        </LinearLayout>
         <TextView
             android:text="Account Type"
             android:layout_width="match_parent"
@@ -53,28 +34,70 @@
             android:textColor="@android:color/black"
             android:padding="10dp"
             android:textSize="24sp"/>
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/accountTypeSpinner"
-            android:textColor="@android:color/black"
-            android:textSize="36sp"
-            android:padding="10dp" android:fadeScrollbars="false"
-        />
+
         <TextView
-            android:text="Physical Address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/accountType"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/textView3"
+            android:text="Email"
+            android:textColor="@android:color/black" android:padding="10dp"
+            android:textSize="24sp"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/emailText"
+                android:layout_weight="1"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:id="@+id/emailEdit"
+                android:layout_weight="1"
+                android:textColor="@android:color/black" android:inputType="textEmailAddress"
+                tools:visibility="gone"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:text="Address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView2"
             android:textColor="@android:color/black"
             android:padding="10dp"
             android:textSize="24sp"/>
-        <EditText
+
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPostalAddress"
-            android:ems="10"
-            android:id="@+id/addressText"/>
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/addressText"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPostalAddress"
+                android:ems="10"
+                android:id="@+id/addressEdit"
+                android:visibility="gone"/>
+        </LinearLayout>
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
