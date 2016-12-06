@@ -2,8 +2,7 @@ package scrumbags.aquafindamobile;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+import android.util.Log;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -20,13 +19,17 @@ import java.util.List;
 public class HistoricalReportActivity extends AppCompatActivity {
 
 	private LineChart mChart;
+	/** All available historical types. Used for Historical Report.
+	 *
+	 * @author Kevin Lun */
+	public enum HistoricalType {
+		Virus, Contaminant
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_historical_report);
-
-
 
 		mChart = (LineChart) findViewById(R.id.chart1);
 
@@ -82,12 +85,26 @@ public class HistoricalReportActivity extends AppCompatActivity {
 
 		//mChart.getViewPortHandler().setMaximumScaleY(2f);
 		//mChart.getViewPortHandler().setMaximumScaleX(2f);
-
-
 		List<Entry> entries = new ArrayList<Entry>();
 
-			// turn your data into Entry objects
-			entries.add(new Entry(3, 5));
+		Log.d(HistoricalReportPromptActivity.sourceReport.getPurityReports().toString(), "\nHERE");
+		for(int i = 0; i < 12; i++ ) {
+			double avg = 0;
+			List<WaterPurityReport> purityReports = HistoricalReportPromptActivity.sourceReport.getPurityReportsByMonth(Integer.parseInt(HistoricalReportPromptActivity.year), i);
+			System.out.println("HERE");
+			avg += purityReports.get(0).getVirusPPM();
+			/*for (WaterPurityReport purityReport : purityReports) {
+				if (HistoricalReportPromptActivity.reportType.equals(HistoricalType.Contaminant.toString())) {
+					avg += purityReport.getContaminantPPM();
+				} else if (HistoricalReportPromptActivity.reportType.equals(HistoricalType.Virus.toString())) {
+					avg += purityReport.getVirusPPM();
+				}
+			}*/
+			if (!purityReports.isEmpty()) {
+				avg /= purityReports.size();
+				entries.add(new Entry(i, (int)avg));
+			}
+		}
 
 		LineDataSet dataSet = new LineDataSet(entries, "Label");
 

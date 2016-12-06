@@ -11,7 +11,9 @@ import android.widget.TextView;
 
 public class HistoricalReportPromptActivity extends AppCompatActivity {
 
-	WaterSourceReport sourceReport;
+	public static WaterSourceReport sourceReport;
+	public static String reportType;
+	public  static  String year;
 
 	TextView latText;
 	TextView longText;
@@ -44,11 +46,15 @@ public class HistoricalReportPromptActivity extends AppCompatActivity {
 
 		countryView.setAdapter(adapter);
 
+		reportType = countryView.getSelectedItem().toString();
+
 		countryView2 = (Spinner) findViewById(R.id.yearSpinner);
 		adapter2 = ArrayAdapter.createFromResource(this, R.array.years_array, android.R.layout.simple_spinner_item);
 		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 		countryView2.setAdapter(adapter2);
+
+		year = countryView2.getSelectedItem().toString();
 
 
 		Button button = (Button) findViewById(R.id.submitButton);

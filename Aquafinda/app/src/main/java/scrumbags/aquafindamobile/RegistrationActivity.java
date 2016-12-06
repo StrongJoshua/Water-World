@@ -36,12 +36,13 @@ public class RegistrationActivity extends AppCompatActivity {
 												((EditText) findViewById(R.id.firstField)).getText().toString(),
 												((EditText) findViewById(R.id.lastField)).getText().toString(),
 												username,
-												(Authorization) ((Spinner) findViewById(R.id.accountTypeSpinner)).getSelectedItem()),
+												Authorization.valueOf(((Spinner) findViewById(R.id.accountTypeSpinner)).getSelectedItem().toString().toLowerCase())),
 										password);
 								if(user == null) {
 									usernameField.setError("Username taken.");
 								} else {
 									CustomLoginActivity.user = user;
+									Client.user = user;
 									CustomLoginActivity.client.requestAllReports();
 									Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 									startActivity(intent);
