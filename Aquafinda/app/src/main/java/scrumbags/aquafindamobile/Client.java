@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ import scrumbags.aquafindamobile.Message.MessageType;
  * The client class of the main application
  */
 
-public class Client extends Thread {
+public class Client extends Thread implements Serializable {
 	private Socket socket;
 	private ObjectInputStream in;
 	private static ObjectOutputStream out;

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_source"
+            android:icon="@android:drawable/ic_menu_edit"
+            android:title="Create a Source Report"/>
+        <item
+            android:id="@+id/nav_all"
+            android:icon="@android:drawable/ic_menu_slideshow"
+            android:title="View All Reports"/>
+        <item
+            android:id="@+id/nav_historical"
+            android:icon="@android:drawable/ic_menu_sort_by_size"
+            android:title="View Historical Reports"/>
+    </group>
+
+    <item android:title="Personal Info">
+        <menu>
+            <item
+                android:id="@+id/nav_edit"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Edit Profile"/>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@android:drawable/ic_menu_directions"
+                android:title="Logout"/>
+        </menu>
+    </item>
+
+</menu>

@@ -40,20 +40,25 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login">
-
         </activity>
         <activity
             android:name=".SourceReportActivity"
             android:label="@string/title_activity_source_report"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".CustomLoginActivity"
+        <activity
+            android:name=".CustomLoginActivity"
             android:label="Aquafinda">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 

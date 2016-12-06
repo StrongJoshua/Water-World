@@ -22,6 +22,7 @@ public class SourceReportActivity extends AppCompatActivity {
 	double lat;
 	double longt;
 
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -31,6 +32,7 @@ public class SourceReportActivity extends AppCompatActivity {
 
 		latText = (EditText) findViewById(R.id.lat);
 		longText = (EditText) findViewById(R.id.longt);
+
 
 		final Spinner countryView = (Spinner) findViewById(R.id.typeSpinner);
 		final ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.type_array, android.R.layout.simple_spinner_item);
