@@ -1,7 +1,9 @@
 
-package edu.gatech.scrumbags.model;
+package edu.gatech.scrumbags.controller;
 
 import java.util.List;
+
+import edu.gatech.scrumbags.model.WaterReport;
 
 /** Interface to allow a dynamic multi-user environment.
  * @author Jan Risse */

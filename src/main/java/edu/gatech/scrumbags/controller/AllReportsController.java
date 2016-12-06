@@ -5,7 +5,6 @@ import java.util.List;
 
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
 import edu.gatech.scrumbags.fxapp.MainFXApplication.Scenes;
-import edu.gatech.scrumbags.model.UpdateableController;
 import edu.gatech.scrumbags.model.WaterReport;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;

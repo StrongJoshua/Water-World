@@ -18,7 +18,6 @@ import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
 import edu.gatech.scrumbags.fxapp.MainFXApplication.Scenes;
 import edu.gatech.scrumbags.model.Authorization;
-import edu.gatech.scrumbags.model.UpdateableController;
 import edu.gatech.scrumbags.model.User;
 import edu.gatech.scrumbags.model.WaterLocation;
 import edu.gatech.scrumbags.model.WaterReport;
