@@ -35,7 +35,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Name"
             android:ems="10"
             android:id="@+id/editText3"/>
         <TextView
@@ -47,7 +46,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Name"
             android:ems="10"
             android:id="@+id/editText4"/>
         <TextView
@@ -58,7 +56,6 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Name"
             android:ems="10"
             android:id="@+id/editText5"/>
         <TextView
@@ -70,7 +67,6 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Name"
             android:ems="10"
             android:id="@+id/editText6" android:inputType="textVisiblePassword"/>
         <TextView
@@ -82,7 +78,6 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Name"
             android:ems="10"
             android:id="@+id/editText7" android:inputType="textVisiblePassword"/>
         <TextView

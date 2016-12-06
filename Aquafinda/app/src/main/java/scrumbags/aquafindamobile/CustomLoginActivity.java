@@ -23,8 +23,10 @@ public class CustomLoginActivity extends AppCompatActivity {
 
 		username = (EditText) findViewById(R.id.usernameField);
 		password = (EditText) findViewById(R.id.passwordField);
-		client = new Client();
-		client.start();
+		if(client == null) {
+			client = new Client();
+			client.start();
+		}
 
 		Button button= (Button) findViewById(R.id.loginButton);
 		button.setOnClickListener(new View.OnClickListener() {

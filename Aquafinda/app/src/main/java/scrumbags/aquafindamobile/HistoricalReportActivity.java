@@ -2,6 +2,8 @@ package scrumbags.aquafindamobile;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -23,6 +25,8 @@ public class HistoricalReportActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_historical_report);
+
+
 
 		mChart = (LineChart) findViewById(R.id.chart1);
 
