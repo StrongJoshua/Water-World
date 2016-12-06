@@ -133,6 +133,8 @@ public class MainActivity extends AppCompatActivity
 			Intent intent = new Intent(getApplicationContext(), SourceReportActivity.class);
 			startActivity(intent);
 		} else if (id == R.id.nav_all) {
+			Intent intent = new Intent(getApplicationContext(), AllReportsActivity.class);
+			startActivity(intent);
 
 		} else if (id == R.id.nav_historical) {
 

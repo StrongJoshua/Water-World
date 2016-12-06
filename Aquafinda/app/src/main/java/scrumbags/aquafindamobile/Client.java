@@ -291,6 +291,7 @@ public class Client extends Thread implements Serializable {
 
 	/** Sends logout information */
 	public void logout () {
+		reports.clear();
 		sendMessage(new Message(Message.MessageType.logout));
 		loggedIn = false;
 	}
