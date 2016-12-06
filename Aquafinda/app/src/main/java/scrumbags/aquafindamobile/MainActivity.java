@@ -141,6 +141,8 @@ public class MainActivity extends AppCompatActivity
 			startActivity(intent);
 
 		} else if (id == R.id.nav_edit) {
+			Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+			startActivity(intent);
 
 		} else if (id == R.id.nav_logout) {
 			CustomLoginActivity.client.logout();
