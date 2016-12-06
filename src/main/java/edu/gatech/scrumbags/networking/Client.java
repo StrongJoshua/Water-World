@@ -125,11 +125,16 @@ public class Client extends Thread {
     private void updateReports (WaterSourceReport report) {
         List<WaterReport> l = MainFXApplication.waterReports;
         List<WaterReport> newReports = new LinkedList<>();
-        if (!l.stream().anyMatch(x -> x.getId() == report.getId())) newReports.add(report);
+        if (!l.stream().anyMatch(x -> x.getId() == report.getId())) {
+            newReports.add(report);
+            if(report.getId() >= WaterReport.reportCount) WaterReport.reportCount = report.getId() + 1;
+        }
         if (report.getPurityReports() != null)
         for (WaterPurityReport wpr : report.getPurityReports())
-            if(!l.stream().anyMatch(x -> x.getId() == wpr.getId()))
+            if(!l.stream().anyMatch(x -> x.getId() == wpr.getId())) {
                 newReports.add(wpr);
+                if(wpr.getId() >= WaterReport.reportCount) WaterReport.reportCount = wpr.getId() + 1;
+            }
         l.addAll(newReports);
         Platform.runLater(new Runnable() {
             @Override
