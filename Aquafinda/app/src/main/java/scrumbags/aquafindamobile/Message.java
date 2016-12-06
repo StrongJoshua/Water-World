@@ -5,7 +5,8 @@ package scrumbags.aquafindamobile;
  */
 public class Message {
 	public enum MessageType {
-		registration, login, userInfo, console, sourceReport, purityReport, requestAllReports, infoUpdate, logout, deleteAccount
+		registration, login, userInfo, console, sourceReport, purityReport, requestAllReports, infoUpdate, logout,
+		    deleteAccount, reportUpdate
 	}
 
 	private MessageType type;
