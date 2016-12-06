@@ -13,10 +13,9 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
     <uses-permission android:name="android.permission.READ_PROFILE"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET"/>
-
 
     <application
         android:allowBackup="true"
@@ -72,6 +71,8 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".HistoricalReportPromptActivity">
+        </activity>
+        <activity android:name=".HistoricalReportActivity">
         </activity>
     </application>
 

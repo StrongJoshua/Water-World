@@ -7,10 +7,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="scrumbags.aquafindamobile.SourceReportActivity"
-    android:background="#89C4F4"
 >
 
     <LinearLayout
@@ -24,14 +22,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/textView6"
             android:textSize="24sp"
-            android:background="@android:color/white"
-            android:textColor="#4286f4" android:textAlignment="center"
+            android:background="#89C4F4"
+            android:textColor="@android:color/white" android:textAlignment="center"
         />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/textView3"
             android:text="Water Location(Coordinates)"
-            android:textColor="@android:color/white" android:padding="10dp"
+            android:textColor="@android:color/black" android:padding="10dp"
             android:textSize="18sp"/>
         <LinearLayout
             android:orientation="horizontal"
@@ -44,7 +42,7 @@
                 android:ems="10"
                 android:id="@+id/lat"
                 android:layout_weight="1"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/black"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -53,35 +51,35 @@
                 android:ems="10"
                 android:id="@+id/longt"
                 android:layout_weight="1"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/black"/>
         </LinearLayout>
         <TextView
             android:text="Water Type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:padding="10dp"
             android:textSize="18sp"/>
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/typeSpinner"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:textSize="20sp"/>
         <TextView
             android:text="Water Condition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView2"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:padding="10dp"
             android:textSize="18sp"/>
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/condSpinner"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:textSize="20sp"
         />
         <LinearLayout
@@ -93,14 +91,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/submitButton"
                 android:layout_weight="1"
-                android:background="#ffffff"
+                android:background="#89C4F4"
                 android:textSize="18sp"/>
             <Button
                 android:text="Cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/cancelButton"
                 android:layout_weight="1"
-                android:background="#ffffff"
+                android:background="#89C4F4"
                 android:textSize="18sp"/>
         </LinearLayout>
     </LinearLayout>

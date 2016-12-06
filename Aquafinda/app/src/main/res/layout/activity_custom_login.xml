@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="scrumbags.aquafindamobile.CustomLoginActivity"
-    android:background="#89C4F4"
 >
 
     <LinearLayout
@@ -19,7 +18,7 @@
             android:text="Username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:id="@+id/textView4" android:textSize="24sp" android:textAlignment="center"
             android:padding="20dp"/>
         <EditText
@@ -28,12 +27,12 @@
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/usernameField"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/black"/>
         <TextView
             android:text="Password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:id="@+id/textView5" android:textSize="24sp" android:textAlignment="center"
             android:padding="20dp"/>
         <EditText
@@ -42,11 +41,11 @@
             android:inputType="textPassword"
             android:ems="10"
             android:id="@+id/passwordField"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/black"/>
         <Button
             android:text="Login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/loginButton"
-            android:background="#ffffff" android:textSize="24sp"/>
+            android:background="#89C4F4" android:textSize="24sp"/>
     </LinearLayout>
 </RelativeLayout>
