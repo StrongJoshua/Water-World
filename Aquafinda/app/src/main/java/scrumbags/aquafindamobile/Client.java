@@ -206,7 +206,7 @@ public class Client extends Thread implements Serializable {
 	 * @param report Water purity report to be stored
 	 * @param source Water source report the purity report belongs to
 	 * @return True if report is successfully stored, false otherwise */
-	/*
+
 	public boolean sendPurityReport (WaterPurityReport report, WaterSourceReport source) {
 		sendMessage(new Message(Message.MessageType.purityReport, source.getId() + "", json.toJson(report)));
 		request = true;
@@ -224,7 +224,7 @@ public class Client extends Thread implements Serializable {
 		handle = null;
 		return true;
 	}
-	*/
+
 
 	/** This method will load all water reports from the database server into the client application */
 

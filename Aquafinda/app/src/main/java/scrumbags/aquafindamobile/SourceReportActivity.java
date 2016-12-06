@@ -79,8 +79,8 @@ public class SourceReportActivity extends AppCompatActivity {
 				{
 					Snackbar.make(v, "Success", Snackbar.LENGTH_LONG)
 							.setAction("Action", null).show();
-				Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-				startActivity(intent);
+					Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+					startActivity(intent);
 				}
 				else
 				{

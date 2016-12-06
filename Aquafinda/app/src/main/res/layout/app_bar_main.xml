@@ -23,12 +23,12 @@
     </android.support.design.widget.AppBarLayout>
 
     <!--include layout="@layout/content_main"/-->
-
-    <FrameLayout
-        android:id="@+id/flContent"
+    <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"/>
+        android:id="@+id/map2"
+        tools:context="scrumbags.aquafindamobile.MainActivity"
+        android:name="com.google.android.gms.maps.SupportMapFragment"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
