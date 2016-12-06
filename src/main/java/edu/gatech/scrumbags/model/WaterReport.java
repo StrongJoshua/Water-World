@@ -20,7 +20,6 @@ public abstract class WaterReport {
      * @param submitterName The name of the submitter of this WaterReport. */
     WaterReport (WaterLocation location, String submitterName) {
         this.reportID = reportCount;
-		reportCount++;
 		this.location = location;
         this.reportDate = new Date();
         this.submitterName = submitterName;

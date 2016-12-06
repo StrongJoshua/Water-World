@@ -6,20 +6,19 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.scrumbags.controller.WelcomeController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.gatech.scrumbags.controller.WelcomeController">
     <bottom>
-        <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+        <HBox alignment="BOTTOM_CENTER" prefHeight="140.0" prefWidth="669.0" BorderPane.alignment="CENTER">
             <padding>
                 <Insets bottom="40.0" />
             </padding>
-            <Button mnemonicParsing="false" onAction="#handleRegisterPressed" text="Register">
+            <Button mnemonicParsing="false" onAction="#handleRegisterPressed" prefHeight="35.0" prefWidth="100.0" text="Register">
                 <HBox.margin>
                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                 </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handleLoginPressed" text="Login">
+            <Button mnemonicParsing="false" onAction="#handleLoginPressed" prefHeight="35.0" prefWidth="100.0" text="Login">
                 <HBox.margin>
                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                 </HBox.margin>

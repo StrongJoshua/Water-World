@@ -52,7 +52,7 @@ public class MainFXApplication extends Application {
         }
     }
 
-    public static final String version = "1.1.2.0";
+    public static final String version = "1.1.3.0";
 
     public static List<WaterReport> waterReports;
     public static List<Integer> years;
@@ -67,9 +67,11 @@ public class MainFXApplication extends Application {
     private static HistoricalReport lastUsedHistoricalReport;
 
     private static boolean shouldReconnect;
+    private static boolean firstScene;
 
     @Override
     public void start (Stage primaryStage) {
+        firstScene = true;
         mainStage = primaryStage;
         loadScene(Scenes.welcome);
         primaryStage.show();
@@ -102,7 +104,13 @@ public class MainFXApplication extends Application {
             Parent root = loader.load();
             mainStage.setTitle("Clean Water by SCRUMbags for CS 2340");
             Scene newScene = new Scene(root);
+            double oldW = mainStage.getWidth(), oldH = mainStage.getHeight();
             mainStage.setScene(newScene);
+            if (!firstScene) {
+                mainStage.setWidth(oldW);
+                mainStage.setHeight(oldH);
+            }
+            firstScene = false;
             newScene.getStylesheets().add("/css/main.css");
             if (scene == Scenes.main)
                 mapController = loader.getController();
