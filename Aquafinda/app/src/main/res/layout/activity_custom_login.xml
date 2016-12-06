@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="scrumbags.aquafindamobile.CustomLoginActivity"
-    android:background="#4286f4"
+    android:background="#89C4F4"
 >
 
     <LinearLayout
@@ -20,7 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
-            android:id="@+id/textView4"/>
+            android:id="@+id/textView4" android:textSize="24sp" android:textAlignment="center"
+            android:padding="20dp"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,7 +34,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
-            android:id="@+id/textView5"/>
+            android:id="@+id/textView5" android:textSize="24sp" android:textAlignment="center"
+            android:padding="20dp"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,6 +47,6 @@
             android:text="Login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/loginButton"
-            android:background="#ffffff"/>
+            android:background="#ffffff" android:textSize="24sp"/>
     </LinearLayout>
 </RelativeLayout>

@@ -46,7 +46,7 @@ public class CustomLoginActivity extends AppCompatActivity {
 				}
 			}
 		});
-
+		Client.updateable = null;
 	}
 	public  void disconnect () {
 		if(connect) {

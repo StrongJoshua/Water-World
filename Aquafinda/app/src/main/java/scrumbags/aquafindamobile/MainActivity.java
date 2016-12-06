@@ -18,15 +18,21 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity
-		implements NavigationView.OnNavigationItemSelectedListener,OnMapReadyCallback {
+		implements NavigationView.OnNavigationItemSelectedListener,OnMapReadyCallback, Updateable {
 
 	TextView name;
 	TextView email;
 	private GoogleMap mMap;
+	Marker prevMarker;
+	public static int selectedID = -1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,19 +50,11 @@ public class MainActivity extends AppCompatActivity
 			@Override
 			public void onClick(View view) {
 				// Click action
-				Intent intent = new Intent(getApplicationContext(), SourceReportActivity.class);
+				Intent intent = new Intent(getApplicationContext(), PurityReportActivity.class);
 				startActivity(intent);
 			}
 		});
-		FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.fab2);
-		fab2.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				// Click action
-				Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-				startActivity(intent);
-			}
-		});
+
 
 		DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 		ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -72,6 +70,8 @@ public class MainActivity extends AppCompatActivity
 		email = (TextView)header.findViewById(R.id.email_header);
 		name.setText(Client.user.getFullName());
 		email.setText(Client.user.getEmail());
+
+		Client.updateable = this;
 	}
 
 	@Override
@@ -137,6 +137,8 @@ public class MainActivity extends AppCompatActivity
 			startActivity(intent);
 
 		} else if (id == R.id.nav_historical) {
+			Intent intent = new Intent(getApplicationContext(), HistoricalReportPromptActivity.class);
+			startActivity(intent);
 
 		} else if (id == R.id.nav_edit) {
 
@@ -184,7 +186,45 @@ public class MainActivity extends AppCompatActivity
 		mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 		for(WaterReport wr: Client.reports)
 		{
-			mMap.addMarker(new MarkerOptions().position(new LatLng(wr.getLocation().getLatitude(),wr.getLocation().getLongitude())).title(wr.toString()));
+			mMap.addMarker(new MarkerOptions().position(new LatLng(wr.getLocation().getLatitude(),wr.getLocation().getLongitude())).title(wr.toString())).setTag(wr.getId());
 		}
+
+		mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+
+			@Override
+			public boolean onMarkerClick(Marker marker) {
+
+
+				if (prevMarker != null) {
+					//Set prevMarker back to default color
+					prevMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+				}
+
+				//leave Marker default color if re-click current Marker
+				if (!marker.equals(prevMarker)) {
+					marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+					prevMarker = marker;
+					selectedID = (int)marker.getTag();
+				}
+				prevMarker = marker;
+				return false;
+			}
+
+		});
+
+	}
+
+	@Override
+	public void update(final List<WaterReport> newReports) {
+
+		runOnUiThread (new Thread(new Runnable() {
+			public void run() {
+				for(WaterReport wr: newReports)
+				{
+					mMap.addMarker(new MarkerOptions().position(new LatLng(wr.getLocation().getLatitude(),wr.getLocation().getLongitude())).title(wr.toString())).setTag(wr.getId());
+				}
+			}
+		}));
+
 	}
 }

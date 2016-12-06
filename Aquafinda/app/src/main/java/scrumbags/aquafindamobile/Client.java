@@ -3,12 +3,6 @@ package scrumbags.aquafindamobile;
 
 import com.google.gson.Gson;
 
-import edu.gatech.scrumbags.fxapp.MainFXApplication;
-import edu.gatech.scrumbags.model.WaterPurityReport;
-import edu.gatech.scrumbags.model.WaterReport;
-import edu.gatech.scrumbags.model.WaterSourceReport;
-import javafx.application.Platform;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -16,10 +10,8 @@ import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import scrumbags.aquafindamobile.Message.MessageType;
 
@@ -40,6 +32,7 @@ public class Client extends Thread implements Serializable {
 	public static ArrayList<WaterReport> reports = new ArrayList<>();
 	public static User user;
 	public static int maxReportID;
+	public static Updateable updateable;
 
 	/** Constructs client object */
 	public Client () {
@@ -130,20 +123,39 @@ public class Client extends Thread implements Serializable {
     /** Receives a new report from the server and updates the local cache.
      * @param report */
     private void updateReports (WaterSourceReport report) {
-        List<WaterReport> l = MainFXApplication.waterReports;
+       // List<WaterReport> l = reports;
         List<WaterReport> newReports = new LinkedList<>();
-        if (!l.stream().anyMatch(x -> x.getId() == report.getId())) newReports.add(report);
-        if (report.getPurityReports() != null)
-        for (WaterPurityReport wpr : report.getPurityReports())
-            if(!l.stream().anyMatch(x -> x.getId() == wpr.getId()))
-                newReports.add(wpr);
-        l.addAll(newReports);
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run () {
-                MainFXApplication.updateControllerReports(newReports);
-            }
-        });
+       // if (!l.stream().anyMatch(x -> x.getId() == report.getId()))
+		boolean hit = false;
+			for(WaterReport wr : reports) {
+				if(wr.getId() == report.getId())
+				hit = true;
+			}
+		if(!hit)
+			newReports.add(report);
+
+        if (report.getPurityReports() != null) {
+			for (WaterPurityReport wpr : report.getPurityReports()) {
+				hit = false;
+				for (WaterReport wr : reports) {
+					if (wpr.getId() == wr.getId()) {
+						hit = true;
+					}
+				}
+				if (!hit)
+					newReports.add(wpr);
+			}
+		}
+		for(WaterReport wr: newReports)
+		{
+			if(wr.getId() > maxReportID)
+				maxReportID = wr.getId();
+		}
+        reports.addAll(newReports);
+       if(updateable != null)
+	   {
+		   updateable.update(newReports);
+	   }
     }
 
 	/** Pulls values from user object to send and also reads password field. Sends data to server to store.
@@ -233,8 +245,8 @@ public class Client extends Thread implements Serializable {
 	 * @param source Water source report the purity report belongs to
 	 * @return True if report is successfully stored, false otherwise */
 
-	public boolean sendPurityReport (WaterPurityReport report, WaterSourceReport source) {
-		sendMessage(new Message(Message.MessageType.purityReport, source.getId() + "", json.toJson(report)));
+	public boolean sendPurityReport (WaterPurityReport report, int source) {
+		sendMessage(new Message(Message.MessageType.purityReport, source + "", json.toJson(report)));
 		request = true;
 		while (running && (handle == null)) {
 			try {
@@ -283,7 +295,7 @@ public class Client extends Thread implements Serializable {
 				maxReport = ws.getId();
 		}
 		maxReportID = maxReport;
-		WaterReport.reportCount = count;
+		WaterReport.reportCount = reports.size();
 		handle = null;
 	}
 

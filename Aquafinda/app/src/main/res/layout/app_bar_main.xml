@@ -22,21 +22,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|start"
-        app:srcCompat="@drawable/plus" android:layout_marginBottom="90dp"
-        android:layout_marginLeft="16dp"/>
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|start"
-        app:srcCompat="@drawable/plus"
-        android:layout_marginBottom="30dp"
-        android:layout_marginLeft="16dp"/>
+
 
     <!--include layout="@layout/content_main"/-->
     <fragment
@@ -45,5 +31,14 @@
         android:id="@+id/map2"
         tools:context="scrumbags.aquafindamobile.MainActivity"
         android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            app:srcCompat="@drawable/plus"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="16dp"/>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -12,10 +12,14 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class AllReportsActivity extends AppCompatActivity {
+import java.util.List;
+
+public class AllReportsActivity extends AppCompatActivity implements Updateable {
 
 	ListView lv;
 	ArrayAdapter<WaterReport> arrayAdapter;
+	boolean alt = true;
+	LinearLayout linearLayout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +37,7 @@ public class AllReportsActivity extends AppCompatActivity {
 			}
 		});
 
-		boolean alt = true;
-		LinearLayout linearLayout = (LinearLayout)findViewById(R.id.allReportsList);
+		linearLayout = (LinearLayout)findViewById(R.id.allReportsList);
 		for(WaterReport wr : Client.reports) {
 			TextView valueTV = new TextView(this);
 			valueTV.setText(wr.toString());
@@ -46,13 +49,15 @@ public class AllReportsActivity extends AppCompatActivity {
 			else
 			{
 				valueTV.setTextColor(Color.WHITE);
-				valueTV.setBackgroundColor(Color.parseColor("#4286f4"));
+				valueTV.setBackgroundColor(Color.parseColor("#89C4F4"));
 				alt = true;
 			}
 			valueTV.setLayoutParams(new LinearLayout.LayoutParams(
 					LinearLayout.LayoutParams.WRAP_CONTENT,
 					LinearLayout.LayoutParams.WRAP_CONTENT));
 			linearLayout.addView(valueTV);
+
+			Client.updateable = this;
 		}
 
 		/*lv = (ListView) findViewById(R.id.allReportsListView);
@@ -69,5 +74,33 @@ public class AllReportsActivity extends AppCompatActivity {
 		//arrayAdapter.notifyDataSetChanged();
 
 
+	}
+	int i = 0;
+	@Override
+	public void update(final List<WaterReport> newReports) {
+		runOnUiThread (new Thread(new Runnable() {
+			public void run() {
+				for(WaterReport wr: newReports)
+				{
+					TextView valueTV = new TextView(getApplicationContext());
+					valueTV.setText(wr.toString());
+					if(alt) {
+						valueTV.setTextColor(Color.BLACK);
+						valueTV.setBackgroundColor(Color.parseColor("#ffffff"));
+						alt = false;
+					}
+					else
+					{
+						valueTV.setTextColor(Color.WHITE);
+						valueTV.setBackgroundColor(Color.parseColor("#4286f4"));
+						alt = true;
+					}
+					valueTV.setLayoutParams(new LinearLayout.LayoutParams(
+							LinearLayout.LayoutParams.WRAP_CONTENT,
+							LinearLayout.LayoutParams.WRAP_CONTENT));
+					linearLayout.addView(valueTV);
+				}
+			}
+		}));
 	}
 }

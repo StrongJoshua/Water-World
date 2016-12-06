@@ -31,6 +31,12 @@
         <item>Potable Water</item>
     </string-array>
 
+    <string-array name="condition_array_2">
+        <item>Safe</item>
+        <item>Treatable</item>
+        <item>Unsafe</item>
+    </string-array>
+
     <string name="title_activity_main">Aquafinda</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
