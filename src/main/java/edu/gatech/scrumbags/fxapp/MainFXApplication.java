@@ -2,14 +2,16 @@
 package edu.gatech.scrumbags.fxapp;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 import edu.gatech.scrumbags.controller.MainController;
 import edu.gatech.scrumbags.model.Authorization;
 import edu.gatech.scrumbags.model.HistoricalReport;
+import edu.gatech.scrumbags.model.UpdateableController;
 import edu.gatech.scrumbags.model.User;
 import edu.gatech.scrumbags.model.WaterLocation;
-import edu.gatech.scrumbags.model.WaterPurityReport;
 import edu.gatech.scrumbags.model.WaterReport;
 import edu.gatech.scrumbags.model.WaterSourceReport;
 import edu.gatech.scrumbags.networking.Client;
@@ -50,16 +52,16 @@ public class MainFXApplication extends Application {
         }
     }
 
-    public static final String version = "1.0.0.0";
+    public static final String version = "1.1.0.0";
 
     public static List<WaterReport> waterReports;
     public static List<Integer> years;
     private static MainController mapController;
+    private static UpdateableController updateableController;
 
     private static Stage mainStage;
     public static User userInfo;
     public static Client client;
-    public static Map<WaterSourceReport, List<WaterPurityReport>> purityMap = new HashMap<>();
 
     private static WaterSourceReport lastUsedSourceReport;
     private static HistoricalReport lastUsedHistoricalReport;
@@ -102,18 +104,21 @@ public class MainFXApplication extends Application {
             Scene newScene = new Scene(root);
             mainStage.setScene(newScene);
             newScene.getStylesheets().add("/css/main.css");
-            if (scene == Scenes.main) {
+            if (scene == Scenes.main)
                 mapController = loader.getController();
-            }
+            else
+                mapController = null;
+            if (loader.getController() instanceof UpdateableController)
+                updateableController = loader.getController();
+            else
+                updateableController = null;
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    /**
-     * Launch the application
-     * @param args the arguments passed in
-     */
+    /** Launch the application
+     * @param args the arguments passed in */
     public static void main (String[] args) {
         launch(args);
     }
@@ -178,14 +183,18 @@ public class MainFXApplication extends Application {
         client.logout();
     }
 
-    /**
-     * Sets map center to location
-     * @param location the location the map should center to
-     */
+    /** Sets map center to location
+     * @param location the location the map should center to */
     public static void setMapLocation (WaterLocation location) {
-        if (null == mapController) {
+        if (mapController == null) {
             throw new IllegalStateException("Cannot set Map location before map has been loaded.");
         }
         mapController.setMapCoordinates(location.getLatitude(), location.getLongitude());
+    }
+
+    public static void updateControllerReports (List<WaterReport> newReports) {
+        if (updateableController != null) {
+            updateableController.updateReports(newReports);
+        }
     }
 }

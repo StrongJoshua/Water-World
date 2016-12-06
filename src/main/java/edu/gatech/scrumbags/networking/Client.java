@@ -7,6 +7,7 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.LinkedList;
+import java.util.List;
 
 import com.google.gson.Gson;
 
@@ -19,9 +20,7 @@ import edu.gatech.scrumbags.model.WaterSourceReport;
 import edu.gatech.scrumbags.networking.messages.Message;
 import edu.gatech.scrumbags.networking.messages.Message.MessageType;
 
-/**
- * The client class of the main application
- */
+/** The client class of the main application */
 
 public class Client extends Thread {
     private Socket socket;
@@ -111,19 +110,34 @@ public class Client extends Thread {
     private void readMessage (Object o) {
         Message m = json.fromJson((String)o, Message.class);
         // System.out.println(o);
-        if (request) {
+        if (m.getType() == MessageType.reportUpdate) {
+            updateReports(json.fromJson(m.getPayload()[0], WaterSourceReport.class));
+        } else if (request) {
             request = false;
             handle = m;
             return;
         }
     }
 
+    /** Receives a new report from the server and updates the local cache.
+     * @param report */
+    private void updateReports (WaterSourceReport report) {
+        List<WaterReport> l = MainFXApplication.waterReports;
+        List<WaterReport> newReports = new LinkedList<>();
+        if (!l.stream().anyMatch(x -> x.getId() == report.getId())) newReports.add(report);
+        if (report.getPurityReports() != null)
+        for (WaterPurityReport wpr : report.getPurityReports())
+            if(!l.stream().anyMatch(x -> x.getId() == wpr.getId()))
+                newReports.add(wpr);
+        l.addAll(newReports);
+        MainFXApplication.updateControllerReports(newReports);
+    }
+
     /** Pulls values from user object to send and also reads password field. Sends data to server to store.
      *
      * @param user User object containing all user info
      * @param password User's password, never stored locally
-     * @return the user registered
-     */
+     * @return the user registered */
     public User registerUser (User user, String password) {
         sendMessage(new Message(Message.MessageType.registration, user.getFirst(), user.getLast(), user.getUsername(), password,
             user.getAuthorization().toString(), user.getEmail(), user.getAddress()));
@@ -234,23 +248,16 @@ public class Client extends Thread {
             return;
         }
         int maxReport = 0;
-        int count = 0;
         for (String s : handle.getPayload()) {
             WaterSourceReport ws = json.fromJson(s, WaterSourceReport.class);
             MainFXApplication.waterReports.add(ws);
-            MainFXApplication.purityMap.put(ws, new LinkedList<>());
             if (ws.getPurityReports() != null) {
                 for (WaterPurityReport p : ws.getPurityReports()) {
-                    MainFXApplication.purityMap.get(ws).add(p);
                     MainFXApplication.waterReports.add(p);
-                    if(p.getId() > maxReport)
-                        maxReport = p.getId();
-                    count++;
+                    if (p.getId() > maxReport) maxReport = p.getId();
                 }
             }
-            if(ws.getId() > maxReport)
-                maxReport = ws.getId();
-            count++;
+            if (ws.getId() > maxReport) maxReport = ws.getId();
         }
         WaterReport.reportCount = maxReport + 1;
         handle = null;

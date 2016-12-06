@@ -18,6 +18,7 @@ import com.lynden.gmapsfx.javascript.object.MarkerOptions;
 import edu.gatech.scrumbags.fxapp.MainFXApplication;
 import edu.gatech.scrumbags.fxapp.MainFXApplication.Scenes;
 import edu.gatech.scrumbags.model.Authorization;
+import edu.gatech.scrumbags.model.UpdateableController;
 import edu.gatech.scrumbags.model.User;
 import edu.gatech.scrumbags.model.WaterLocation;
 import edu.gatech.scrumbags.model.WaterReport;
@@ -31,7 +32,7 @@ import netscape.javascript.JSObject;
 /** The controller for the main view.
  *
  * @author Kevin Lun */
-public class MainController implements MapComponentInitializedListener {
+public class MainController implements MapComponentInitializedListener, UpdateableController {
     @FXML private Button waterSourceReportButton;
     @FXML private Button waterPurityReportButton;
     @FXML private Button historicalReportButton;
@@ -58,7 +59,7 @@ public class MainController implements MapComponentInitializedListener {
             historicalReportButton.setManaged(false);
         }
         waterPurityReportButton.setDisable(true);
-		historicalReportButton.setDisable(true);
+        historicalReportButton.setDisable(true);
         mapView.addMapInializedListener(this);
     }
 
@@ -76,35 +77,7 @@ public class MainController implements MapComponentInitializedListener {
             List<WaterReport> reports = MainFXApplication.waterReports;
             for (WaterReport report : reports) {
                 if (report instanceof WaterSourceReport) {
-                    WaterLocation location = report.getLocation();
-                    MarkerOptions markerOptions = new MarkerOptions();
-                    LatLong loc = new LatLong(location.getLatitude(), location.getLongitude());
-
-                    markerOptions.position(loc).visible(Boolean.TRUE).title(location.toString());
-
-                    Marker marker = new Marker(markerOptions);
-                    InfoWindow window = new InfoWindow();
-                    // opens detailed window on click
-                    map.addUIEventHandler(marker, UIEventType.click, (JSObject obj) -> {
-                        window.setContent(report.toString());
-                        window.open(map, marker);
-                        MainFXApplication.setLastUsedSourceReport((WaterSourceReport)report);
-                        hasClickedPin = true;
-						waterPurityReportButton.setDisable(false);
-						historicalReportButton.setDisable(false);
-                    });
-                    // opens basic info window on mouse over
-                    map.addUIEventHandler(marker, UIEventType.mouseover, (JSObject obj) -> {
-                        window.setContent(((WaterSourceReport)report).getSourceConditionDescription());
-                        window.open(map, marker);
-                    });
-                    // closes window on mouse out
-                    map.addUIEventHandler(marker, UIEventType.mouseout, (JSObject obj) -> {
-                        if (!window.getContent().equals(report.toString())) {
-                            window.close();
-                        }
-                    });
-                    map.addMarker(marker);
+                    addSourceReportMarker((WaterSourceReport)report);
                 }
             }
         } catch (JSException e) {
@@ -115,6 +88,40 @@ public class MainController implements MapComponentInitializedListener {
             System.err.println("GMapsFX threw exception: Map not initialized successfully.");
         }
 
+    }
+
+    /** Adds a Water Source Report marker to the map.
+     * @param report The report to add to the map. */
+    private void addSourceReportMarker (WaterSourceReport report) {
+        WaterLocation location = report.getLocation();
+        MarkerOptions markerOptions = new MarkerOptions();
+        LatLong loc = new LatLong(location.getLatitude(), location.getLongitude());
+
+        markerOptions.position(loc).visible(Boolean.TRUE).title(location.toString());
+
+        Marker marker = new Marker(markerOptions);
+        InfoWindow window = new InfoWindow();
+        // opens detailed window on click
+        map.addUIEventHandler(marker, UIEventType.click, (JSObject obj) -> {
+            window.setContent(report.toString());
+            window.open(map, marker);
+            MainFXApplication.setLastUsedSourceReport(report);
+            hasClickedPin = true;
+            waterPurityReportButton.setDisable(false);
+            historicalReportButton.setDisable(false);
+        });
+        // opens basic info window on mouse over
+        map.addUIEventHandler(marker, UIEventType.mouseover, (JSObject obj) -> {
+            window.setContent((report).getSourceConditionDescription());
+            window.open(map, marker);
+        });
+        // closes window on mouse out
+        map.addUIEventHandler(marker, UIEventType.mouseout, (JSObject obj) -> {
+            if (!window.getContent().equals(report.toString())) {
+                window.close();
+            }
+        });
+        map.addMarker(marker);
     }
 
     /** Brings the user to the water source report screen. */
@@ -168,5 +175,11 @@ public class MainController implements MapComponentInitializedListener {
         } catch (Exception e) {
             System.err.println("Failed to center map @ (" + latitude + ", " + longitude + ")");
         }
+    }
+
+    @Override
+    public void updateReports (List<WaterReport> newReports) {
+        for (WaterReport wp : newReports)
+            if (wp instanceof WaterSourceReport) addSourceReportMarker((WaterSourceReport)wp);
     }
 }
