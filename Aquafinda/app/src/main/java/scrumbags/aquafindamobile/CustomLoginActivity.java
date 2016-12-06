@@ -46,6 +46,15 @@ public class CustomLoginActivity extends AppCompatActivity {
 				}
 			}
 		});
+
+		Button button2= (Button) findViewById(R.id.registerButton);
+		button2.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(getApplicationContext(), RegistrationActivity.class);
+				startActivity(intent);
+			}
+		});
 		Client.updateable = null;
 	}
 	public  void disconnect () {
