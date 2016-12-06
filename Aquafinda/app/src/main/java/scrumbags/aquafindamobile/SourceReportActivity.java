@@ -118,6 +118,7 @@ public class SourceReportActivity extends AppCompatActivity implements LocationL
 		}
 		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+		locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
 		findViewById(R.id.currentLocation).setOnClickListener(new View.OnClickListener() {
 			   @Override
 			   public void onClick(View view) {
