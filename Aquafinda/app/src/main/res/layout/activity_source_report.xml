@@ -31,6 +31,7 @@
             android:text="Water Location(Coordinates)"
             android:textColor="@android:color/black" android:padding="10dp"
             android:textSize="18sp"/>
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -52,6 +53,13 @@
                 android:id="@+id/longt"
                 android:layout_weight="1"
                 android:textColor="@android:color/black"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/currentLocation"
+                android:drawable="@android:drawable/ic_menu_mylocation"
+                style="@style/Widget.AppCompat.Button.Small"/>
         </LinearLayout>
         <TextView
             android:text="Water Type"

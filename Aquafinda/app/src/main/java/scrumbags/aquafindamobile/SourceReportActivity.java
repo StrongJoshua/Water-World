@@ -25,8 +25,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
-public class SourceReportActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
-		GoogleApiClient.OnConnectionFailedListener, LocationListener {
+public class SourceReportActivity extends AppCompatActivity implements LocationListener {
 
 	EditText latText;
 	EditText longText;
@@ -37,14 +36,7 @@ public class SourceReportActivity extends AppCompatActivity implements GoogleApi
 	double lat;
 	double longt;
 
-	LocationManager mLocationManager;
-
-	GoogleApiClient mGoogleApiClient;
-	Location location;
-	private LocationRequest mLocationRequest;
-
 	protected LocationManager locationManager;
-	protected LocationListener locationListener;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,20 +45,8 @@ public class SourceReportActivity extends AppCompatActivity implements GoogleApi
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 
-		mGoogleApiClient = new GoogleApiClient.Builder(this)
-				.addConnectionCallbacks(this)
-				.addOnConnectionFailedListener(this)
-				.addApi(LocationServices.API)
-				.build();
-		// Create the LocationRequest object
-		mLocationRequest = LocationRequest.create()
-				.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-				.setInterval(10 * 1000)        // 10 seconds, in milliseconds
-				.setFastestInterval(1 * 1000); // 1 second, in milliseconds
-
 		latText = (EditText) findViewById(R.id.lat);
 		longText = (EditText) findViewById(R.id.longt);
-
 
 		final Spinner countryView = (Spinner) findViewById(R.id.typeSpinner);
 		final ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.type_array, android.R.layout.simple_spinner_item);
@@ -78,7 +58,6 @@ public class SourceReportActivity extends AppCompatActivity implements GoogleApi
 
 		countryView.setAdapter(adapter);
 		countryView2.setAdapter(adapter2);
-
 
 		Button button = (Button) findViewById(R.id.submitButton);
 		button.setOnClickListener(new View.OnClickListener() {
@@ -125,16 +104,8 @@ public class SourceReportActivity extends AppCompatActivity implements GoogleApi
 				startActivity(intent);
 			}
 		});
-
-		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-
-
 		Client.updateable = null;
-	}
 
-	@Override
-	public void onConnected(@Nullable Bundle bundle) {
 		if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 			// TODO: Consider calling
 			//    ActivityCompat#requestPermissions
@@ -145,35 +116,23 @@ public class SourceReportActivity extends AppCompatActivity implements GoogleApi
 			// for ActivityCompat#requestPermissions for more details.
 			return;
 		}
-		location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-		if (location == null) {
-			LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, (com.google.android.gms.location.LocationListener) getApplicationContext());
-			latText.setText(location.getLatitude() + "");
-			longText.setText(location.getLongitude() + "");
-			System.out.println(location.getLatitude() + " " + location.getLongitude());
-		}
-		else {
-			//handleNewLocation(location);
-		}
-
-	}
-
-	@Override
-	public void onConnectionSuspended(int i) {
-
-	}
-
-	@Override
-	public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
+		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+		((Button) findViewById(R.id.currentLocation)).setOnClickListener(new View.OnClickListener() {
+			   @Override
+			   public void onClick(View view) {
+				   latText.setText(lat + "");
+				   longText.setText(longt + "");
+			   }
+		   }
+		);
 	}
 
 	@Override
 	public void onLocationChanged(Location location) {
-		//txtLat = (TextView) findViewById(R.id.textview1);
-		//txtLat.setText("Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
+		lat = location.getLatitude();
+		longt = location.getLongitude();
 		System.out.println("Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
-
 	}
 
 	@Override
