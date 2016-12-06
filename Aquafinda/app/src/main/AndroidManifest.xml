@@ -74,6 +74,11 @@
         </activity>
         <activity android:name=".HistoricalReportActivity">
         </activity>
+        <activity
+            android:name=".ProfileActivity"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
