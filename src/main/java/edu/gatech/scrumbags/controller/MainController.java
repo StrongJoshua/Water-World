@@ -22,6 +22,8 @@ import edu.gatech.scrumbags.model.User;
 import edu.gatech.scrumbags.model.WaterLocation;
 import edu.gatech.scrumbags.model.WaterReport;
 import edu.gatech.scrumbags.model.WaterSourceReport;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
@@ -43,6 +45,7 @@ public class MainController implements MapComponentInitializedListener, Updateab
     @FXML private GoogleMapView mapView;
     private GoogleMap map;
     private boolean hasClickedPin = false;
+    private double widthRatio, heightRatio;
 
     /** Initialize the Main screen. */
     @FXML
@@ -79,6 +82,19 @@ public class MainController implements MapComponentInitializedListener, Updateab
                     addSourceReportMarker((WaterSourceReport)report);
                 }
             }
+            
+            mapPane.widthProperty().addListener(new ChangeListener<Number>() {
+                @Override
+                public void changed (ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                    mapView.setPrefWidth(mapView.getWidth() / oldValue.doubleValue() * newValue.doubleValue());
+                }
+            });
+            mapPane.heightProperty().addListener(new ChangeListener<Number>() {
+                @Override
+                public void changed (ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                    mapView.setPrefHeight(mapView.getHeight() / oldValue.doubleValue() * newValue.doubleValue());
+                }
+            });
         } catch (JSException e) {
             e.printStackTrace();
             System.err.println("Javascript exception while initializing map.");

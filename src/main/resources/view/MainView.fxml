@@ -57,19 +57,10 @@
         </HBox>
     </top>
     <center>
-        <Pane fx:id="mapPane" BorderPane.alignment="CENTER">
-            <BorderPane.margin>
-                <Insets/>
-            </BorderPane.margin>
-            <opaqueInsets>
-                <Insets/>
-            </opaqueInsets>
+        <HBox fx:id="mapPane" alignment="CENTER">
             <GoogleMapView fx:id="mapView" layoutX="53.0" layoutY="2.0" prefHeight="306.0"
                            prefWidth="494.0">
-                <opaqueInsets>
-                    <Insets/>
-                </opaqueInsets>
             </GoogleMapView>
-        </Pane>
+        </HBox>
     </center>
 </BorderPane>
