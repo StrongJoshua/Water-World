@@ -47,5 +47,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/loginButton"
             android:background="#89C4F4" android:textSize="24sp"/>
+        <Button
+            android:text="Register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/registerButton"
+            android:background="#89C4F4" android:textSize="24sp" android:layout_marginTop="30dp"/>
     </LinearLayout>
+
 </RelativeLayout>
