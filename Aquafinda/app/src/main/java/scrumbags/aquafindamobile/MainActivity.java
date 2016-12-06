@@ -146,6 +146,7 @@ public class MainActivity extends AppCompatActivity
 
 		} else if (id == R.id.nav_logout) {
 			CustomLoginActivity.client.logout();
+			CustomLoginActivity.user = null;
 			Intent intent = new Intent(getApplicationContext(), CustomLoginActivity.class);
 			startActivity(intent);
 		}

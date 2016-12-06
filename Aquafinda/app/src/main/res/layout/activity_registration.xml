@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText3"/>
+            android:id="@+id/firstField"/>
         <TextView
             android:text="Last Name"
             android:layout_width="match_parent"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/editText4"/>
+            android:id="@+id/lastField"/>
         <TextView
             android:text="Username"
             android:layout_width="match_parent"
@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:id="@+id/editText5"/>
+            android:id="@+id/usernameField"/>
         <TextView
             android:text="Password"
             android:layout_width="match_parent"
@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:id="@+id/editText6" android:inputType="textVisiblePassword"/>
+            android:id="@+id/passwordField" android:inputType="textVisiblePassword"/>
         <TextView
             android:text="Confirm Password"
             android:layout_width="match_parent"
@@ -79,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:id="@+id/editText7" android:inputType="textVisiblePassword"/>
+            android:id="@+id/confirmField" android:inputType="textVisiblePassword"/>
         <TextView
             android:text="Account Type"
             android:layout_width="match_parent"
@@ -91,7 +91,7 @@
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/typeSpinner"
+            android:id="@+id/accountTypeSpinner"
             android:textColor="@android:color/black"
             android:textSize="36sp"
             android:padding="10dp" android:fadeScrollbars="false"
