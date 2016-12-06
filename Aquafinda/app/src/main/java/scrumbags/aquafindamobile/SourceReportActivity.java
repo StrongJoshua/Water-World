@@ -79,7 +79,7 @@ public class SourceReportActivity extends AppCompatActivity {
 				{
 					Snackbar.make(v, "Success", Snackbar.LENGTH_LONG)
 							.setAction("Action", null).show();
-					Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+					Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 					startActivity(intent);
 				}
 				else
@@ -94,7 +94,7 @@ public class SourceReportActivity extends AppCompatActivity {
 		button2.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+				Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 				startActivity(intent);
 			}
 		});

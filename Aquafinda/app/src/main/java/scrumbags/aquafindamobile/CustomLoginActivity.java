@@ -35,7 +35,7 @@ public class CustomLoginActivity extends AppCompatActivity {
 				if(client.isLoggedIn()) {
 					Log.d(user.toString(),"");
 					client.requestAllReports();
-					Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+					Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 					startActivity(intent);
 				}
 				else
