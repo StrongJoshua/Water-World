@@ -30,8 +30,7 @@
             android:layout_height="wrap_content" android:id="@+id/textView3"
             android:text="Water Location(Coordinates)"
             android:textColor="@android:color/black" android:padding="10dp"
-            android:textSize="18sp"/>
-
+            android:textSize="24sp"/>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -53,13 +52,6 @@
                 android:id="@+id/longt"
                 android:layout_weight="1"
                 android:textColor="@android:color/black"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/currentLocation"
-                android:drawable="@android:drawable/ic_menu_mylocation"
-                style="@style/Widget.AppCompat.Button.Small"/>
         </LinearLayout>
         <TextView
             android:text="Water Type"
@@ -68,13 +60,15 @@
             android:id="@+id/textView"
             android:textColor="@android:color/black"
             android:padding="10dp"
-            android:textSize="18sp"/>
+            android:textSize="24sp"/>
         <Spinner
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/typeSpinner"
             android:textColor="@android:color/black"
-            android:textSize="20sp"/>
+            android:textSize="36sp"
+            android:padding="10dp" android:fadeScrollbars="false"
+        />
         <TextView
             android:text="Water Condition"
             android:layout_width="match_parent"
@@ -82,14 +76,14 @@
             android:id="@+id/textView2"
             android:textColor="@android:color/black"
             android:padding="10dp"
-            android:textSize="18sp"/>
+            android:textSize="24sp"/>
         <Spinner
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/condSpinner"
             android:textColor="@android:color/black"
-            android:textSize="20sp"
-        />
+            android:textSize="36sp"
+            android:padding="10dp" android:layout_marginBottom="10dp"/>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"

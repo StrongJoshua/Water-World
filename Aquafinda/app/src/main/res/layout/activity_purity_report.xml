@@ -88,7 +88,7 @@
             android:padding="10dp"
             android:textSize="18sp"/>
         <Spinner
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/overallConditionSpinner"
             android:textColor="@android:color/black"

@@ -28,28 +28,32 @@
             android:layout_height="wrap_content" android:id="@+id/textView3"
             android:text="Water Location(Coordinates)"
             android:textColor="@android:color/black" android:padding="10dp"
-            android:textSize="18sp"/>
+            android:textSize="24sp"/>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal|numberSigned"
+                android:text="0.0"
                 android:ems="10"
                 android:id="@+id/lat"
                 android:layout_weight="1"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black" android:textSize="24sp"
+                android:textAlignment="viewStart" android:padding="10dp"/>
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal|numberSigned"
+                android:text="0.0"
                 android:ems="10"
                 android:id="@+id/longt"
                 android:layout_weight="1"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black" android:textSize="24sp"
+                android:padding="10dp"/>
         </LinearLayout>
         <TextView
             android:text="Type"
@@ -57,26 +61,26 @@
             android:layout_height="wrap_content"
             android:id="@+id/textView"
             android:textColor="@android:color/black" android:padding="10dp"
-            android:textSize="18sp"/>
+            android:textSize="24sp"/>
         <Spinner
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/typeSpinner"
             android:textColor="@android:color/black"
-            android:textSize="20sp"/>
+            android:textSize="24sp"/>
         <TextView
             android:text="Year"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView2"
             android:textColor="@android:color/black" android:padding="10dp"
-            android:textSize="18sp"/>
+            android:textSize="24sp"/>
         <Spinner
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/condSpinner"
             android:textColor="@android:color/black"
-            android:textSize="20sp"
+            android:textSize="24sp"
         />
         <LinearLayout
             android:orientation="horizontal"
